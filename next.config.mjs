@@ -2,6 +2,12 @@ import nextMDX from "@next/mdx";
 import withPlugins from "next-compose-plugins";
 import path from "path";
 
+const ESM_PACKAGES = [
+  "axios",
+  "@databiosphere/findable-ui",
+  "@tanstack/react-table",
+];
+
 const withMDX = nextMDX({
   extension: /\.mdx?$/,
 });
@@ -26,6 +32,7 @@ export default withPlugins(
         },
       ];
     },
+    transpilePackages: [...ESM_PACKAGES],
     webpack: (config) => {
       // Add the alias for the peer dependency
       config.resolve.alias["@emotion/react"] = path.resolve(

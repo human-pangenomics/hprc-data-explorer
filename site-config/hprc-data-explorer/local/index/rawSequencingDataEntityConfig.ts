@@ -6,6 +6,7 @@ import {
 } from "@databiosphere/findable-ui/lib/config/entities";
 import { EXPLORE_MODE } from "@databiosphere/findable-ui/lib/hooks/useExploreMode";
 import { HPRCDataExplorerRawSequencingData } from "../../../../app/apis/catalog/hprc-data-explorer/common/entities";
+import { getRawSequencingDataId } from "../../../../app/apis/catalog/hprc-data-explorer/common/utils";
 import * as C from "../../../../app/components/index";
 import * as V from "../../../../app/viewModelBuilders/catalog/hprc-data-explorer/common/viewModelBuilders";
 import {
@@ -25,6 +26,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
       top: [],
     },
     exploreMode: EXPLORE_MODE.CS_FETCH_CS_FILTERING,
+    getId: getRawSequencingDataId,
     label: "Raw Sequencing Data",
     list: {
       columns: [
