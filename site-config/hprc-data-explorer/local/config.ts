@@ -1,4 +1,5 @@
 import { SiteConfig } from "@databiosphere/findable-ui/lib/config/entities";
+import * as C from "../../../app/components/index";
 import { ROUTE } from "../../../app/routes/constants";
 import { rawSequencingDataEntityConfig } from "./index/rawSequencingDataEntityConfig";
 
@@ -22,7 +23,12 @@ export function makeConfig(browserUrl: string): SiteConfig {
         Branding: "",
       },
       header: {
-        logo: "",
+        logo: C.Logo({
+          alt: APP_TITLE,
+          height: 32.5,
+          link: HOME_PAGE_PATH,
+          src: "/images/hprcDataExplorer.png",
+        }),
       },
     },
     redirectRootToPath: HOME_PAGE_PATH,
