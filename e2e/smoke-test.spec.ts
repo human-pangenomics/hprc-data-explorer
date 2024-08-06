@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-const REDIRECT_DESTINATION_URL = "/raw-sequencing-data";
+const REDIRECT_DESTINATION_URL = "/raw-sequencing-data-lalalala";
 
 test("Expect visiting / to redirect to /raw-sequence-data", async ({
   page,
