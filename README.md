@@ -11,17 +11,17 @@ git clone git@github.com:human-pangenomics/hprc-data-explorer.git
 
 Then, install the required packages using:
 ```shell
-npm i
+npm ci
 ```
 
-You're now ready to go! Check that the file `files/out/raw-sequencing-data.json` is present.
+Check that the file `files/out/raw-sequencing-data.json` is present.
 If it is not, build it by running:
 
 ```shell
 npm run build-hprc-db
 ```
 
-With that file made, you can run the development server:
+You're now ready to go! With that file made, you can run the development server:
 
 ```shell
 npm run dev
