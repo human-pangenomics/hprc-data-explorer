@@ -103,6 +103,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
       top: [],
     },
     exploreMode: EXPLORE_MODE.CS_FETCH_CS_FILTERING,
+    explorerTitle: "Raw Sequencing Data",
     getId: getRawSequencingDataId,
     label: "Raw Sequencing Data",
     list: {

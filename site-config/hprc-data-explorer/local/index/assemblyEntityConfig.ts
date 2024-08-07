@@ -113,6 +113,7 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
     top: [],
   },
   exploreMode: EXPLORE_MODE.CS_FETCH_CS_FILTERING,
+  explorerTitle: "Assemblies",
   getId: getAssemblyId,
   label: "Assemblies",
   list: {
