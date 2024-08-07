@@ -10,5 +10,5 @@ export function getRawSequencingDataId(
 }
 
 export function getAssemblyId(assembly: HPRCDataExplorerAssembly): string {
-  return `${assembly.sampleId}_${assembly.haplotype}_${assembly.awsFasta}`;
+  return `${assembly.sampleId}_${assembly.haplotype}`;
 }
