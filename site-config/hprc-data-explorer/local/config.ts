@@ -1,3 +1,4 @@
+import { ANCHOR_TARGET } from "@databiosphere/findable-ui/lib/components/Links/common/entities";
 import { SiteConfig } from "@databiosphere/findable-ui/lib/config/entities";
 import * as C from "../../../app/components/index";
 import { ROUTE } from "../../../app/routes/constants";
@@ -39,7 +40,20 @@ export function makeConfig(browserUrl: string): SiteConfig {
             },
             { label: "Assemblies", url: ROUTE.ASSEMBLIES },
           ],
-          undefined,
+          [
+            {
+              label: "Help & Documentation",
+              menuItems: [
+                {
+                  icon: C.GitHubIcon({ fontSize: "small" }),
+                  label: "GitHub",
+                  target: ANCHOR_TARGET.BLANK,
+                  url: "https://github.com/human-pangenomics/hprc-data-explorer",
+                },
+              ],
+              url: "",
+            },
+          ],
         ],
       },
     },
