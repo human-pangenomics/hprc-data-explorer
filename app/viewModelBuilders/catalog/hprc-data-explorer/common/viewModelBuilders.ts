@@ -1,5 +1,73 @@
-import { HPRCDataExplorerRawSequencingData } from "app/apis/catalog/hprc-data-explorer/common/entities";
+import {
+  HPRCDataExplorerAssembly,
+  HPRCDataExplorerRawSequencingData,
+} from "../../../../apis/catalog/hprc-data-explorer/common/entities";
 import * as C from "../../../../components/index";
+
+/**
+ * Build props for the accession cell.
+ * @param entity - Raw sequencing data or assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildAccession = (
+  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: entity.accession,
+  };
+};
+
+/**
+ * Build props for the ASat annotation file cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildAsatAnnotationFile = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.asatAnnotationFile,
+  };
+};
+
+/**
+ * Build props for the AWS FASTA cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildAwsFasta = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.awsFasta,
+  };
+};
+
+/**
+ * Build props for the CAT genes CHM13 annotation file cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildCatGenesChm13AnnotationFile = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.catGenesChm13AnnotationFile,
+  };
+};
+
+/**
+ * Build props for the CAT genes hg38 annotation file cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildCatGenesHg38AnnotationFile = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.catGenesHg38AnnotationFile,
+  };
+};
 
 /**
  * Build props for the data type cell.
@@ -28,6 +96,45 @@ export const buildDesignDescription = (
 };
 
 /**
+ * Build props for the DNA BRNN annotation file cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildDnaBrnnAnnotationFile = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.dnaBrnnAnnotationFile,
+  };
+};
+
+/**
+ * Build props for the family ID cell.
+ * @param entity - Raw sequencing data or assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildFamilyId = (
+  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: entity.familyId,
+  };
+};
+
+/**
+ * Build props for the FASTA SHA-256 cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildFastaSha256 = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.fastaSha256,
+  };
+};
+
+/**
  * Build props for the filename cell.
  * @param rawSequencingData - Raw sequencing data entity.
  * @returns Props to be used for the cell.
@@ -37,6 +144,71 @@ export const buildFilename = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.filename,
+  };
+};
+
+/**
+ * Build props for the Flagger annotation file cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildFlaggerAnnotationFile = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.flaggerAnnotationFile,
+  };
+};
+
+/**
+ * Build props for the frag cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildFrag = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.frag?.toLocaleString(),
+  };
+};
+
+/**
+ * Build props for the full dup cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildFullDup = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.fullDup?.toLocaleString(),
+  };
+};
+
+/**
+ * Build props for the full SGL cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildFullSgl = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.fullSgl?.toLocaleString(),
+  };
+};
+
+/**
+ * Build props for the GCP FASTA cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildGcpFasta = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.gcpFasta,
   };
 };
 
@@ -67,6 +239,48 @@ export const buildGeneratorFacility = (
 };
 
 /**
+ * Build props for the Hamming err rate cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildHammingErrRate = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value:
+      assembly.hammingErrRate === null
+        ? undefined
+        : formatPercentage(assembly.hammingErrRate),
+  };
+};
+
+/**
+ * Build props for the haplotype cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildHaplotype = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.haplotype,
+  };
+};
+
+/**
+ * Build props for the HSat annotation file cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildHsatAnnotationFile = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.hsatAnnotationFile,
+  };
+};
+
+/**
  * Build props for the intrument model cell.
  * @param rawSequencingData - Raw sequencing data entity.
  * @returns Props to be used for the cell.
@@ -76,6 +290,19 @@ export const buildInstrumentModel = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.instrumentModel,
+  };
+};
+
+/**
+ * Build props for the L50 cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildL50 = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.l50?.toLocaleString(),
   };
 };
 
@@ -145,6 +372,19 @@ export const buildLibraryStrategy = (
 };
 
 /**
+ * Build props for the N50 cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildN50 = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.n50?.toLocaleString(),
+  };
+};
+
+/**
  * Build props for the notes cell.
  * @param rawSequencingData - Raw sequencing data entity.
  * @returns Props to be used for the cell.
@@ -154,6 +394,19 @@ export const buildNotes = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.notes,
+  };
+};
+
+/**
+ * Build props for the num configs cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildNumContigs = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.numContigs?.toLocaleString(),
   };
 };
 
@@ -184,15 +437,67 @@ export const buildPlatform = (
 };
 
 /**
+ * Build props for the production year cell.
+ * @param entity - Raw sequencing data or assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildProductionYear = (
+  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: entity.productionYear,
+  };
+};
+
+/**
+ * Build props for the QV cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildQv = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.qv?.toLocaleString(),
+  };
+};
+
+/**
+ * Build props for the repeat masker annotation file cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildRepeatMaskerAnnotationFile = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.repeatMaskerAnnotationFile,
+  };
+};
+
+/**
  * Build props for the sample ID cell.
- * @param rawSequencingData - Raw sequencing data entity.
+ * @param entity - Raw sequencing data or assembly entity.
  * @returns Props to be used for the cell.
  */
 export const buildSampleId = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
+  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
-    value: rawSequencingData.sampleId,
+    value: entity.sampleId,
+  };
+};
+
+/**
+ * Build props for the seg dups annotation file cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildSegDupsAnnotationFile = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.segDupsAnnotationFile,
   };
 };
 
@@ -221,3 +526,80 @@ export const buildSizeSelection = (
     value: rawSequencingData.sizeSelection,
   };
 };
+
+/**
+ * Build props for the subpopulation cell.
+ * @param entity - Raw sequencing data or assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildSubpopulation = (
+  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: entity.subpopulation,
+  };
+};
+
+/**
+ * Build props for the superpopulation cell.
+ * @param entity - Raw sequencing data or assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildSuperpopulation = (
+  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: entity.superpopulation,
+  };
+};
+
+/**
+ * Build props for the switch err rate cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildSwitchErrRate = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value:
+      assembly.switchErrRate === null
+        ? undefined
+        : formatPercentage(assembly.switchErrRate),
+  };
+};
+
+/**
+ * Build props for the total len cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildTotalLen = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.totalLen?.toLocaleString(),
+  };
+};
+
+/**
+ * Build props for the TRF annotation file cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildTrfAnnotationFile = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.trfAnnotationFile,
+  };
+};
+
+/**
+ * Format a decimal value as a fraction.
+ * @param decimalFraction - Value to format.
+ * @returns Percentage string.
+ */
+function formatPercentage(decimalFraction: number): string {
+  return `${(decimalFraction * 100).toLocaleString()}%`;
+}
