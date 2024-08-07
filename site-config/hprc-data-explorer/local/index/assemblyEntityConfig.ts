@@ -407,6 +407,7 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
   listView: {
     disablePagination: true,
     enableDownload: true,
+    enableTab: false,
   },
   route: "assemblies",
   staticLoadFile: "files/out/assemblies.json",

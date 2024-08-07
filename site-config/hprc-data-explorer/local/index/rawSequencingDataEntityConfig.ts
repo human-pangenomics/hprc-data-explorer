@@ -329,6 +329,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
     listView: {
       disablePagination: true,
       enableDownload: true,
+      enableTab: false,
     },
     route: "raw-sequencing-data",
     staticLoadFile: "files/out/raw-sequencing-data.json",
