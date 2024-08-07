@@ -31,8 +31,10 @@ async function buildRawSequencingData(): Promise<
   );
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerRawSequencingData => ({
+      accession: parseStringOrNull(row.Accession),
       dataType: row.data_type,
       designDescription: row.design_description,
+      familyId: parseStringOrNull(row.familyID),
       filename: row.filename,
       generatorContact: row.generator_contact,
       generatorFacility: row.generator_facility,
@@ -45,9 +47,12 @@ async function buildRawSequencingData(): Promise<
       notes: row.notes,
       path: row.path,
       platform: row.platform,
+      productionYear: parseStringOrNull(row["Production Year"]),
       sampleId: row.sample_ID,
       shearMethod: row.shear_method,
       sizeSelection: row.size_selection,
+      subpopulation: parseStringOrNull(row.Subpopulation),
+      superpopulation: parseStringOrNull(row.Superpopulation),
     })
   );
   return mappedRows.sort((a, b) => a.filename.localeCompare(b.filename));

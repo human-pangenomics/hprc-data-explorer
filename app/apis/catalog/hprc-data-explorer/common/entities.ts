@@ -1,6 +1,8 @@
 export interface HPRCDataExplorerRawSequencingData {
+  accession: string | null;
   dataType: string;
   designDescription: string;
+  familyId: string | null;
   filename: string;
   generatorContact: string;
   generatorFacility: string;
@@ -13,9 +15,12 @@ export interface HPRCDataExplorerRawSequencingData {
   notes: string;
   path: string;
   platform: string;
+  productionYear: string | null;
   sampleId: string;
   shearMethod: string;
   sizeSelection: string;
+  subpopulation: string | null;
+  superpopulation: string | null;
 }
 
 export interface HPRCDataExplorerAssembly {

@@ -6,14 +6,14 @@ import * as C from "../../../../components/index";
 
 /**
  * Build props for the accession cell.
- * @param assembly - Assembly entity.
+ * @param entity - Raw sequencing data or assembly entity.
  * @returns Props to be used for the cell.
  */
 export const buildAccession = (
-  assembly: HPRCDataExplorerAssembly
+  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
-    value: assembly.accession,
+    value: entity.accession,
   };
 };
 
@@ -110,14 +110,14 @@ export const buildDnaBrnnAnnotationFile = (
 
 /**
  * Build props for the family ID cell.
- * @param assembly - Assembly entity.
+ * @param entity - Raw sequencing data or assembly entity.
  * @returns Props to be used for the cell.
  */
 export const buildFamilyId = (
-  assembly: HPRCDataExplorerAssembly
+  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
-    value: assembly.familyId,
+    value: entity.familyId,
   };
 };
 
@@ -438,14 +438,14 @@ export const buildPlatform = (
 
 /**
  * Build props for the production year cell.
- * @param assembly - Assembly entity.
+ * @param entity - Raw sequencing data or assembly entity.
  * @returns Props to be used for the cell.
  */
 export const buildProductionYear = (
-  assembly: HPRCDataExplorerAssembly
+  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
-    value: assembly.productionYear,
+    value: entity.productionYear,
   };
 };
 
@@ -529,27 +529,27 @@ export const buildSizeSelection = (
 
 /**
  * Build props for the subpopulation cell.
- * @param assembly - Assembly entity.
+ * @param entity - Raw sequencing data or assembly entity.
  * @returns Props to be used for the cell.
  */
 export const buildSubpopulation = (
-  assembly: HPRCDataExplorerAssembly
+  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
-    value: assembly.subpopulation,
+    value: entity.subpopulation,
   };
 };
 
 /**
  * Build props for the superpopulation cell.
- * @param assembly - Assembly entity.
+ * @param entity - Raw sequencing data or assembly entity.
  * @returns Props to be used for the cell.
  */
 export const buildSuperpopulation = (
-  assembly: HPRCDataExplorerAssembly
+  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
-    value: assembly.superpopulation,
+    value: entity.superpopulation,
   };
 };
 

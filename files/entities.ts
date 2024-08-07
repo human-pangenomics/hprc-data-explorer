@@ -1,6 +1,8 @@
 export interface SourceRawSequencingData {
+  Accession: string;
   data_type: string;
   design_description: string;
+  familyID: string;
   filename: string;
   generator_contact: string;
   generator_facility: string;
@@ -13,9 +15,12 @@ export interface SourceRawSequencingData {
   notes: string;
   path: string;
   platform: string;
+  "Production Year": string;
   sample_ID: string;
   shear_method: string;
   size_selection: string;
+  Subpopulation: string;
+  Superpopulation: string;
 }
 
 export interface SourceAssembly {

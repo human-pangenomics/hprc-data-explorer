@@ -27,6 +27,30 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ACCESSION,
           },
           {
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
+          },
+          {
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PRODUCTION_YEAR,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PRODUCTION_YEAR,
+          },
+          {
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SAMPLE_ID,
+          },
+          {
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SUBPOPULATION,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SUBPOPULATION,
+          },
+          {
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SUPERPOPULATION,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SUPERPOPULATION,
+          },
+        ],
+      },
+      {
+        categoryConfigs: [
+          {
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.ASAT_ANNOTATION_FILE,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ASAT_ANNOTATION_FILE,
           },
@@ -49,10 +73,6 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.DNA_BRNN_ANNOTATION_FILE,
           },
           {
-            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
-            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
-          },
-          {
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FASTA_SHA256,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FASTA_SHA256,
           },
@@ -73,29 +93,13 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.HSAT_ANNOTATION_FILE,
           },
           {
-            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PRODUCTION_YEAR,
-            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PRODUCTION_YEAR,
-          },
-          {
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.REPEAT_MASKER_ANNOTATION_FILE,
             label:
               HPRC_DATA_EXPLORER_CATEGORY_LABEL.REPEAT_MASKER_ANNOTATION_FILE,
           },
           {
-            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
-            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SAMPLE_ID,
-          },
-          {
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SEG_DUPS_ANNOTATION_FILE,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SEG_DUPS_ANNOTATION_FILE,
-          },
-          {
-            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SUBPOPULATION,
-            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SUBPOPULATION,
-          },
-          {
-            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SUPERPOPULATION,
-            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SUPERPOPULATION,
           },
           {
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.TRF_ANNOTATION_FILE,
