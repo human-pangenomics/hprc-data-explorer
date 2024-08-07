@@ -88,7 +88,7 @@ async function buildAssemblies(): Promise<HPRCDataExplorerAssembly[]> {
       repeatMaskerAnnotationFile: parseStringOrNull(
         row.Repeat_masker_annotation_file
       ),
-      sample: row.sample,
+      sampleId: row.sample,
       segDupsAnnotationFile: parseStringOrNull(row.Seg_Dups_annotation_file),
       subpopulation: parseStringOrNull(row.Subpopulation),
       superpopulation: parseStringOrNull(row.Superpopulation),
@@ -98,7 +98,9 @@ async function buildAssemblies(): Promise<HPRCDataExplorerAssembly[]> {
     })
   );
   return mappedRows.sort((a, b) =>
-    (a.sample + "_" + a.haplotype).localeCompare(b.sample + "_" + b.haplotype)
+    (a.sampleId + "_" + a.haplotype).localeCompare(
+      b.sampleId + "_" + b.haplotype
+    )
   );
 }
 

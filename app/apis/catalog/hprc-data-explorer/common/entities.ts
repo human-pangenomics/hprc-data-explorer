@@ -41,7 +41,7 @@ export interface HPRCDataExplorerAssembly {
   productionYear: string | null;
   qv: number | string | null;
   repeatMaskerAnnotationFile: string | null;
-  sample: string;
+  sampleId: string;
   segDupsAnnotationFile: string | null;
   subpopulation: string | null;
   superpopulation: string | null;

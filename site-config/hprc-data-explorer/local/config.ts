@@ -1,6 +1,7 @@
 import { SiteConfig } from "@databiosphere/findable-ui/lib/config/entities";
 import * as C from "../../../app/components/index";
 import { ROUTE } from "../../../app/routes/constants";
+import { assemblyEntityConfig } from "./index/assemblyEntityConfig";
 import { rawSequencingDataEntityConfig } from "./index/rawSequencingDataEntityConfig";
 
 // Template constants
@@ -16,7 +17,7 @@ export function makeConfig(browserUrl: string): SiteConfig {
     dataSource: {
       url: "",
     },
-    entities: [rawSequencingDataEntityConfig],
+    entities: [rawSequencingDataEntityConfig, assemblyEntityConfig],
     explorerTitle: APP_TITLE,
     layout: {
       footer: {
@@ -29,6 +30,17 @@ export function makeConfig(browserUrl: string): SiteConfig {
           link: HOME_PAGE_PATH,
           src: "/images/hprcDataExplorer.png",
         }),
+        navigation: [
+          undefined,
+          [
+            {
+              label: "Raw Sequencing Data",
+              url: ROUTE.RAW_SEQUENCING_DATA,
+            },
+            { label: "Assemblies", url: ROUTE.ASSEMBLIES },
+          ],
+          undefined,
+        ],
       },
     },
     redirectRootToPath: HOME_PAGE_PATH,
