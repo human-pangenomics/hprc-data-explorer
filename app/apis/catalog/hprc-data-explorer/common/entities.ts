@@ -54,3 +54,11 @@ export interface HPRCDataExplorerAssembly {
   totalLen: number | null;
   trfAnnotationFile: string | null;
 }
+
+export interface HPRCDataExplorerPangenome {
+  filename: string | null;
+  loc: string;
+  pipeline: string;
+  referenceCoordinates: string;
+  useCase: string[];
+}

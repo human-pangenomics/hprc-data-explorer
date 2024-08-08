@@ -54,3 +54,11 @@ export interface SourceAssembly {
   total_len: string;
   TRF_annotation_file: string;
 }
+
+export interface SourcePangenome {
+  file: string;
+  loc: string;
+  pipeline: string;
+  reference_coordinates: string;
+  use_case: string;
+}
