@@ -5,7 +5,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 STORAGE_FOLDER_PATH = "./files/unprocessed_files/"
-OUTPUT_PATH = "./files/source/raw_sequencing_data.tsv"
+OUTPUT_PATH = "./files/source/raw-sequencing-data.tsv"
 DEEPCONSENSUS_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/sample-files/hprc_metadata_sample_files_DEEPCONSENSUS.tsv"
 HIFI_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/sample-files/hprc_metadata_sample_files_HiFi.tsv"
 ONT_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/sample-files/hprc_metadata_sample_files_ONT.tsv"
