@@ -23,6 +23,10 @@ export const pangenomeEntityConfig: EntityConfig<HPRCDataExplorerPangenome> = {
       {
         categoryConfigs: [
           {
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.USE_CASE,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.USE_CASE,
+          },
+          {
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILENAME,
           },
@@ -33,10 +37,6 @@ export const pangenomeEntityConfig: EntityConfig<HPRCDataExplorerPangenome> = {
           {
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.REFERENCE_COORDINATES,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.REFERENCE_COORDINATES,
-          },
-          {
-            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.USE_CASE,
-            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.USE_CASE,
           },
         ],
       },
