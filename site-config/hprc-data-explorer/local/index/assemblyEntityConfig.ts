@@ -406,7 +406,7 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
     ],
     defaultSort: {
       desc: SORT_DIRECTION.ASCENDING,
-      id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
+      id: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
     },
   } as ListConfig<HPRCDataExplorerAssembly>,
   listView: {

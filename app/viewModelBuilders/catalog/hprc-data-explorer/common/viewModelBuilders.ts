@@ -1,8 +1,11 @@
 import {
   HPRCDataExplorerAssembly,
+  HPRCDataExplorerPangenome,
   HPRCDataExplorerRawSequencingData,
 } from "../../../../apis/catalog/hprc-data-explorer/common/entities";
 import * as C from "../../../../components/index";
+import { METADATA_KEY } from "./entities";
+import { getPluralizedMetadataLabel } from "./utils";
 
 /**
  * Build props for the accession cell.
@@ -136,14 +139,14 @@ export const buildFastaSha256 = (
 
 /**
  * Build props for the filename cell.
- * @param rawSequencingData - Raw sequencing data entity.
+ * @param entity - Raw sequencing data or pangenome entity.
  * @returns Props to be used for the cell.
  */
 export const buildFilename = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
+  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerPangenome
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
-    value: rawSequencingData.filename,
+    value: entity.filename,
   };
 };
 
@@ -372,6 +375,19 @@ export const buildLibraryStrategy = (
 };
 
 /**
+ * Build props for the loc cell.
+ * @param pangenome - Pangenome entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildLoc = (
+  pangenome: HPRCDataExplorerPangenome
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: pangenome.loc,
+  };
+};
+
+/**
  * Build props for the N50 cell.
  * @param assembly - Assembly entity.
  * @returns Props to be used for the cell.
@@ -424,6 +440,19 @@ export const buildPath = (
 };
 
 /**
+ * Build props for the pipeline cell.
+ * @param pangenome - Pangenome entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildPipeline = (
+  pangenome: HPRCDataExplorerPangenome
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: pangenome.pipeline,
+  };
+};
+
+/**
  * Build props for the platform cell.
  * @param rawSequencingData - Raw sequencing data entity.
  * @returns Props to be used for the cell.
@@ -459,6 +488,19 @@ export const buildQv = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: assembly.qv?.toLocaleString(),
+  };
+};
+
+/**
+ * Build props for the reference coordinates cell.
+ * @param pangenome - Pangenome entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildReferenceCoordinates = (
+  pangenome: HPRCDataExplorerPangenome
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: pangenome.referenceCoordinates,
   };
 };
 
@@ -592,6 +634,20 @@ export const buildTrfAnnotationFile = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: assembly.trfAnnotationFile,
+  };
+};
+
+/**
+ * Build props for the use case cell.
+ * @param pangenome - Pangenome entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildUseCase = (
+  pangenome: HPRCDataExplorerPangenome
+): React.ComponentProps<typeof C.NTagCell> => {
+  return {
+    label: getPluralizedMetadataLabel(METADATA_KEY.USE_CASE),
+    values: pangenome.useCase,
   };
 };
 

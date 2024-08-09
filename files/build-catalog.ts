@@ -2,22 +2,30 @@ import { parse as parseCsv } from "csv-parse/sync";
 import fsp from "fs/promises";
 import {
   HPRCDataExplorerAssembly,
+  HPRCDataExplorerPangenome,
   HPRCDataExplorerRawSequencingData,
 } from "../app/apis/catalog/hprc-data-explorer/common/entities";
-import { SourceAssembly, SourceRawSequencingData } from "./entities";
+import {
+  SourceAssembly,
+  SourcePangenome,
+  SourceRawSequencingData,
+} from "./entities";
 
 buildCatalog();
 
 async function buildCatalog(): Promise<void> {
   const rawSequencingData = await buildRawSequencingData();
-
   const assemblies = await buildAssemblies();
+  const pangenomes = await buildPangenomes();
 
   console.log("Raw sequencing data:", rawSequencingData.length);
   await saveJson("files/out/raw-sequencing-data.json", rawSequencingData);
 
   console.log("Assemblies:", assemblies.length);
   await saveJson("files/out/assemblies.json", assemblies);
+
+  console.log("Pangenomes:", pangenomes.length);
+  await saveJson("files/out/pangenomes.json", pangenomes);
 
   console.log("Done");
 }
@@ -109,6 +117,23 @@ async function buildAssemblies(): Promise<HPRCDataExplorerAssembly[]> {
   );
 }
 
+async function buildPangenomes(): Promise<HPRCDataExplorerPangenome[]> {
+  const sourceRows = await readValuesFile<SourcePangenome>(
+    "files/source/pangenomes.csv",
+    ","
+  );
+  const mappedRows = sourceRows.map(
+    (row): HPRCDataExplorerPangenome => ({
+      filename: row.file,
+      loc: row.loc,
+      pipeline: row.pipeline,
+      referenceCoordinates: parseStringOrNull(row.reference_coordinates),
+      useCase: parseStringArray(row.use_case),
+    })
+  );
+  return mappedRows.sort((a, b) => a.loc.localeCompare(b.loc));
+}
+
 async function readValuesFile<T>(
   filePath: string,
   delimiter: string
@@ -153,4 +178,13 @@ function parsePercentageOrNull(value: string): number | null {
   if (!match)
     throw new Error(`Invalid percentage value: ${JSON.stringify(value)}`);
   return Number(match[1]) / 100;
+}
+
+function parseStringArray(value: string): string[] {
+  const items: string[] = [];
+  for (const sourceItem of value.split(",")) {
+    const item = sourceItem.trim();
+    if (item) items.push(item);
+  }
+  return items;
 }
