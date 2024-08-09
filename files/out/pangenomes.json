@@ -1,6 +1,6 @@
 [
   {
-    "filename": null,
+    "filename": "hprc-v1.0-mc-chm13-minaf.0.1.dist",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/filtered/hprc-v1.0-mc-chm13-minaf.0.1.dist",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "chm13",
@@ -9,7 +9,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.0-mc-chm13-minaf.0.1.gbwt",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/filtered/hprc-v1.0-mc-chm13-minaf.0.1.gbwt",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "chm13",
@@ -18,7 +18,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.0-mc-chm13-minaf.0.1.gg",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/filtered/hprc-v1.0-mc-chm13-minaf.0.1.gg",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "chm13",
@@ -27,7 +27,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.0-mc-chm13-minaf.0.1.min",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/filtered/hprc-v1.0-mc-chm13-minaf.0.1.min",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "chm13",
@@ -36,7 +36,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.0-mc-chm13-minaf.0.1.min.old",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/filtered/hprc-v1.0-mc-chm13-minaf.0.1.min.old",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "grch38",
@@ -45,7 +45,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.0-mc-grch38-minaf.0.1.dist",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/filtered/hprc-v1.0-mc-grch38-minaf.0.1.dist",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "grch38",
@@ -54,7 +54,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.0-mc-grch38-minaf.0.1.dist.old",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/filtered/hprc-v1.0-mc-grch38-minaf.0.1.dist.old",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "grch38",
@@ -63,7 +63,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.0-mc-grch38-minaf.0.1.dist.old",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/filtered/hprc-v1.0-mc-grch38-minaf.0.1.dist.old",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "chm13",
@@ -72,7 +72,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.0-mc-grch38-minaf.0.1.gbwt",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/filtered/hprc-v1.0-mc-grch38-minaf.0.1.gbwt",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "grch38",
@@ -81,7 +81,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.0-mc-grch38-minaf.0.1.gg",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/filtered/hprc-v1.0-mc-grch38-minaf.0.1.gg",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "grch38",
@@ -90,7 +90,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.0-mc-grch38-minaf.0.1.min",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/filtered/hprc-v1.0-mc-grch38-minaf.0.1.min",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "grch38",
@@ -99,7 +99,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.0-mc-grch38-minaf.0.1.min.old",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/filtered/hprc-v1.0-mc-grch38-minaf.0.1.min.old",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "chm13",
@@ -108,7 +108,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.0-mc-chm13.grch38.vcf.gz",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.grch38.vcf.gz",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "chm13",
@@ -117,7 +117,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.0-mc-chm13.grch38.vcf.gz.tbi",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.grch38.vcf.gz.tbi",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "chm13",
@@ -126,7 +126,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.0-mc-grch38.vcf.gz",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.vcf.gz",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "grch38",
@@ -135,7 +135,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.0-mc-grch38.vcf.gz.tbi",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.vcf.gz.tbi",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "grch38",
@@ -144,7 +144,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.1-mc-chm13.d9.dist",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.1-mc-chm13/hprc-v1.1-mc-chm13.d9.dist",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "chm13",
@@ -153,7 +153,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.1-mc-chm13.d9.gbz",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.1-mc-chm13/hprc-v1.1-mc-chm13.d9.gbz",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "chm13",
@@ -162,7 +162,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.1-mc-chm13.d9.min",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.1-mc-chm13/hprc-v1.1-mc-chm13.d9.min",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "chm13",
@@ -171,7 +171,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.1-mc-chm13.gbz",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.1-mc-chm13/hprc-v1.1-mc-chm13.gbz",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "chm13",
@@ -181,7 +181,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.1-mc-chm13.hapl",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.1-mc-chm13/hprc-v1.1-mc-chm13.hapl",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "chm13",
@@ -190,7 +190,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.1-mc-chm13.raw.vcf.gz",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.1-mc-chm13/hprc-v1.1-mc-chm13.raw.vcf.gz",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "chm13",
@@ -199,7 +199,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.1-mc-chm13.raw.vcf.gz.tbi",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.1-mc-chm13/hprc-v1.1-mc-chm13.raw.vcf.gz.tbi",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "chm13",
@@ -208,7 +208,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.1-mc-grch38.d9.dist",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.1-mc-grch38/hprc-v1.1-mc-grch38.d9.dist",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "grch38",
@@ -217,7 +217,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.1-mc-grch38.d9.gbz",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.1-mc-grch38/hprc-v1.1-mc-grch38.d9.gbz",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "grch38",
@@ -226,7 +226,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.1-mc-grch38.d9.min",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.1-mc-grch38/hprc-v1.1-mc-grch38.d9.min",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "grch38",
@@ -235,7 +235,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.1-mc-grch38.gbz",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.1-mc-grch38/hprc-v1.1-mc-grch38.gbz",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "grch38",
@@ -245,7 +245,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.1-mc-grch38.hapl",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.1-mc-grch38/hprc-v1.1-mc-grch38.hapl",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "grch38",
@@ -254,7 +254,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.1-mc-grch38.raw.vcf.gz",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.1-mc-grch38/hprc-v1.1-mc-grch38.raw.vcf.gz",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "grch38",
@@ -263,7 +263,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "hprc-v1.1-mc-grch38.raw.vcf.gz.tbi",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.1-mc-grch38/hprc-v1.1-mc-grch38.raw.vcf.gz.tbi",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "grch38",
@@ -272,7 +272,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "cactus_filtered_ids.vcf.gz",
     "loc": "https://zenodo.org/record/6797328/files/cactus_filtered_ids.vcf.gz",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "grch38",
@@ -281,7 +281,7 @@
     ]
   },
   {
-    "filename": null,
+    "filename": "cactus_filtered_ids.vcf.gz.tbi",
     "loc": "https://zenodo.org/record/6797328/files/cactus_filtered_ids.vcf.gz.tbi",
     "pipeline": "minigraph-cactus",
     "referenceCoordinates": "grch38",
@@ -543,91 +543,91 @@
     "filename": "hprc-v1.0-pggb.gfa.gz",
     "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/hprc-v1.0-pggb.gfa.gz",
     "pipeline": "pggb",
-    "referenceCoordinates": "NA",
+    "referenceCoordinates": null,
     "useCase": []
   },
   {
     "filename": "hprc-v1.0-pggb.all.vs.grch38.untangle-m10000-s0-j0.delta.gz",
     "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/untangle/hprc-v1.0-pggb.all.vs.grch38.untangle-m10000-s0-j0.delta.gz",
     "pipeline": "pggb",
-    "referenceCoordinates": "NA",
+    "referenceCoordinates": null,
     "useCase": []
   },
   {
     "filename": "hprc-v1.0-pggb.all.vs.grch38.untangle-m10000-s0-j0.paf.gz",
     "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/untangle/hprc-v1.0-pggb.all.vs.grch38.untangle-m10000-s0-j0.paf.gz",
     "pipeline": "pggb",
-    "referenceCoordinates": "NA",
+    "referenceCoordinates": null,
     "useCase": []
   },
   {
     "filename": "hprc-v1.0-pggb.chm13.1-22+X.vcf.gz",
     "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.chm13.1-22+X.vcf.gz",
     "pipeline": "pggb",
-    "referenceCoordinates": "NA",
+    "referenceCoordinates": null,
     "useCase": []
   },
   {
     "filename": "hprc-v1.0-pggb.chm13.1-22+X.vcf.gz.tbi",
     "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.chm13.1-22+X.vcf.gz.tbi",
     "pipeline": "pggb",
-    "referenceCoordinates": "NA",
+    "referenceCoordinates": null,
     "useCase": []
   },
   {
     "filename": "hprc-v1.0-pggb.chm13.M.vcf.gz",
     "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.chm13.M.vcf.gz",
     "pipeline": "pggb",
-    "referenceCoordinates": "NA",
+    "referenceCoordinates": null,
     "useCase": []
   },
   {
     "filename": "hprc-v1.0-pggb.chm13.M.vcf.gz.tbi",
     "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.chm13.M.vcf.gz.tbi",
     "pipeline": "pggb",
-    "referenceCoordinates": "NA",
+    "referenceCoordinates": null,
     "useCase": []
   },
   {
     "filename": "hprc-v1.0-pggb.grch38.1-22+X.vcf.gz",
     "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.1-22+X.vcf.gz",
     "pipeline": "pggb",
-    "referenceCoordinates": "NA",
+    "referenceCoordinates": null,
     "useCase": []
   },
   {
     "filename": "hprc-v1.0-pggb.grch38.1-22+X.vcf.gz.tbi",
     "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.1-22+X.vcf.gz.tbi",
     "pipeline": "pggb",
-    "referenceCoordinates": "NA",
+    "referenceCoordinates": null,
     "useCase": []
   },
   {
     "filename": "hprc-v1.0-pggb.grch38.M.vcf.gz",
     "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.M.vcf.gz",
     "pipeline": "pggb",
-    "referenceCoordinates": "NA",
+    "referenceCoordinates": null,
     "useCase": []
   },
   {
     "filename": "hprc-v1.0-pggb.grch38.M.vcf.gz.tbi",
     "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.M.vcf.gz.tbi",
     "pipeline": "pggb",
-    "referenceCoordinates": "NA",
+    "referenceCoordinates": null,
     "useCase": []
   },
   {
     "filename": "hprc-v1.0-pggb.grch38.Y.vcf.gz",
     "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.Y.vcf.gz",
     "pipeline": "pggb",
-    "referenceCoordinates": "NA",
+    "referenceCoordinates": null,
     "useCase": []
   },
   {
     "filename": "hprc-v1.0-pggb.grch38.Y.vcf.gz.tbi",
     "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.Y.vcf.gz.tbi",
     "pipeline": "pggb",
-    "referenceCoordinates": "NA",
+    "referenceCoordinates": null,
     "useCase": []
   }
 ]

@@ -56,9 +56,9 @@ export interface HPRCDataExplorerAssembly {
 }
 
 export interface HPRCDataExplorerPangenome {
-  filename: string | null;
+  filename: string;
   loc: string;
   pipeline: string;
-  referenceCoordinates: string;
+  referenceCoordinates: string | null;
   useCase: string[];
 }

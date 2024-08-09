@@ -119,20 +119,18 @@ async function buildAssemblies(): Promise<HPRCDataExplorerAssembly[]> {
 
 async function buildPangenomes(): Promise<HPRCDataExplorerPangenome[]> {
   const sourceRows = await readValuesFile<SourcePangenome>(
-    "files/source/pangenomes.tsv",
-    "\t"
+    "files/source/pangenomes.csv",
+    ","
   );
-  const mappedRows: HPRCDataExplorerPangenome[] = [];
-  for (const row of sourceRows) {
-    if (!row.loc) continue;
-    mappedRows.push({
-      filename: parseStringOrNull(row.file),
+  const mappedRows = sourceRows.map(
+    (row): HPRCDataExplorerPangenome => ({
+      filename: row.file,
       loc: row.loc,
       pipeline: row.pipeline,
-      referenceCoordinates: row.reference_coordinates,
+      referenceCoordinates: parseStringOrNull(row.reference_coordinates),
       useCase: parseStringArray(row.use_case),
-    });
-  }
+    })
+  );
   return mappedRows.sort((a, b) => a.loc.localeCompare(b.loc));
 }
 
