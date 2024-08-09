@@ -49,3 +49,6 @@ _templates
 
 # favicons
 /public/favicons/*
+
+# unprocessed files
+/files/unprocessed_files/*
