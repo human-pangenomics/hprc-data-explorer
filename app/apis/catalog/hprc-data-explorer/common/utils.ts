@@ -15,5 +15,5 @@ export function getAssemblyId(assembly: HPRCDataExplorerAssembly): string {
 }
 
 export function getPangenomeId(pangenome: HPRCDataExplorerPangenome): string {
-  return pangenome.loc;
+  return `${pangenome.referenceCoordinates}_${pangenome.loc}`;
 }
