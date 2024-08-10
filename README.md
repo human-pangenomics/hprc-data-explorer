@@ -31,13 +31,14 @@ yarn dev
 
 Once the server is running, visit [localhost:3000](localhost:3000) to view the Explorer!
 
-### Building the raw annotation data
-The raw annotation data is generated through a Python script. To install the required libraries
+### Building the raw sequencing and data
+The raw seqencing and annotation data are generated through a Python script. To install the required libraries
 use the following command from the root project directory:
 ```shell
 pip install -r files/requirements.txt
 ```
-Then run the script with:
+Then run the scripts with:
 ```shell
 python3 files/build-raw-sequencing-files.py
+python3 files/build-annotation-files.py
 ```
