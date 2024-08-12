@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-import requests
 from buildHelp import downloadFile
 
 ASSEMBLY_URL = "https://raw.githubusercontent.com/human-pangenomics/HPP_Year1_Assemblies/main/assembly_index/Year1_assemblies_v2_genbank.index"
@@ -16,15 +15,19 @@ ANNOTATION_URLS = {
     "Seg_Dups_annotation_file": "https://raw.githubusercontent.com/human-pangenomics/HPP_Year1_Assemblies/main/annotation_index/Year1_assemblies_v2_genbank_Seg_Dups.index",
     "TRF_annotation_file": "https://raw.githubusercontent.com/human-pangenomics/HPP_Year1_Assemblies/main/annotation_index/Year1_assemblies_v2_genbank_TRF.index",
 }
-
 EXCLUDED_SAMPLE_IDS = ["CHM13_v1.1", "GRCh38_no_alt_analysis_set"]
 
 DOWNLOADS_FOLDER_PATH = "./files/unprocessed_files"
-OUTPUT_FILE_PATH = "./files/source/raw-annotation-data.tsv"
+OUTPUT_FILE_PATH = "./files/source/assemblies.csv"
 
 CHM13 = "chm13"
 HG38 = "hg38"
 CAT_COLUMN_NAMES = {CHM13: "CAT_genes_chm13_annotation_file", HG38: "CAT_genes_hg38_annotation_file"}
+FLAGGER_COLUMN_NAMES = {
+    "unreliable_only_no_MT_file_location": "Flagger_annotation_file_unreliable_only_no_MT_file_location",
+    "unreliable_only_file_location": "Flagger_annotation_file_unreliable_only_file_location",
+    "all_file_location": "Flagger_annotation_file_all_file_location"
+}
 
 HAPLOTYPES = ["maternal", "paternal"]
 MATERNAL_HAPLOTYPE_ID = 0
@@ -61,7 +64,7 @@ def formatAssembliesDf(data):
             (awsHaplotype != gcpHaplotype) & ~awsHaplotype.isna() & ~gcpHaplotype.isna(), "sample"
         ]
         raise RuntimeError(
-            f"Haplotypes disagree between AWS and GCP filenames for the following entries. Are the files for these sample IDs correct? {",".join(disagreementFilenames)}"
+            f"Haplotypes disagree between AWS and GCP filenames for the following entries. Are the files for these sample IDs correct? {','.join(disagreementFilenames)}"
         )
     combinedData["haplotype"] = awsHaplotype.fillna(NA_HAPLOTYPE)
     # Output the sorted data
@@ -108,7 +111,7 @@ if __name__ == "__main__":
     assemblyDf = pd.read_csv(assemblyPath, sep="\t")
     biosampleDf = pd.read_csv(biosamplePath, sep="\t")
     catDf = pd.read_csv(catPath, sep="\t")
-    flaggerDf = pd.read_csv(flaggerPath, sep="\t")
+    flaggerDf = pd.read_csv(flaggerPath, sep="\t").rename(columns=FLAGGER_COLUMN_NAMES)
     qcDf = pd.read_csv(qcPath)
     annotationDfs = {
         column: pd.read_csv(annotationPaths[column], sep="\t") for column in annotationPaths
@@ -122,31 +125,28 @@ if __name__ == "__main__":
     hg38Df = catDf[catDf["reference"] == HG38].copy().rename(
         columns={"file_location": CAT_COLUMN_NAMES[HG38]}
     )
-    annotationDfs["CAT_genes_chm13_annotation_file"] = chm13Df
-    annotationDfs["CAT_genes_hg38_annotation_file"] = hg38Df
+    annotationDfs[CAT_COLUMN_NAMES[CHM13]] = chm13Df
+    annotationDfs[CAT_COLUMN_NAMES[HG38]] = hg38Df
     combinedDf = assemblyDfWithHaplotypes.merge(
         biosampleDf, left_on="sample", right_on="Sample", how="left", validate="many_to_one"
     ).drop(
         columns=["Sample"]
     ).merge(
-        flaggerDf,
-        how="left",
-        on="sample",
-        validate="many_to_one"
+        flaggerDf, how="left", on="sample", validate="many_to_one"
     )
-    print("The following sample IDs did not correspond to a value in the Biosample sheet, so no value was entered:")
+    print("The following sample IDs did not correspond to a value in the Biosample sheet, so NA values were entered:")
     print(", ".join(
         assemblyDfWithHaplotypes.loc[~assemblyDfWithHaplotypes["sample"].isin(biosampleDf["Sample"]), "sample"]
     ))
     # Merge the DF with the annotation files
     annotationJoinedDf = joinOneRowFiles(combinedDf, annotationDfs, "file_location", ["sample", "haplotype"])
     # Add the QC DataFrame
-    qcDfCombinedWithHaplotype = processQcDf(qcDf)
+    qcDfJoinedWithHaplotype = processQcDf(qcDf)
     outputDf = annotationJoinedDf.merge(
-        qcDfCombinedWithHaplotype,
+        qcDfJoinedWithHaplotype,
         on=["sample", "haplotype"],
         how="left",
         validate="one_to_one"
     )
-    outputDf.to_csv(OUTPUT_FILE_PATH, sep="\t", index=False)
+    outputDf.to_csv(OUTPUT_FILE_PATH, index=False)
     print("Done!")
