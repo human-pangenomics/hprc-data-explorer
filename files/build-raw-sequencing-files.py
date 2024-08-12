@@ -1,8 +1,6 @@
 import pandas as pd
 import numpy as np
-import requests
-from pathlib import Path
-from urllib.parse import urlparse
+from buildHelp import downloadFile
 
 STORAGE_FOLDER_PATH = "./files/unprocessed_files/"
 OUTPUT_PATH = "./files/source/raw-sequencing-data.tsv"
@@ -16,15 +14,7 @@ def downloadSourceFiles(urls, outputFolderPath):
     paths = []
     for url in urls:
         # Get the filename and the path where the output will be saved
-        filename = Path(urlparse(url).path).name
-        outputPath = Path(outputFolderPath, filename)
-        # Download the text associated with each of the provided urls
-        with requests.get(url) as r:
-            if r.status_code != 200:
-                raise RuntimeError(f"{url} caused error {r.status_code}. See details below:\n {r.text}")
-            with open(outputPath.resolve(), "w") as f:
-                f.write(r.text)
-            paths.append(outputPath)
+        paths.append(downloadFile(url, outputFolderPath))
     return paths
 
 def joinSamples(metadataPaths, biosamplesTablePath):
