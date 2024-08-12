@@ -85,7 +85,15 @@ async function buildAssemblies(): Promise<HPRCDataExplorerAssembly[]> {
       dnaBrnnAnnotationFile: parseStringOrNull(row.DNA_BRNN_annotation_file),
       familyId: parseStringOrNull(row.familyID),
       fastaSha256: parseStringOrNull(row.fasta_sha256),
-      flaggerAnnotationFile: parseStringOrNull(row.Flagger_annotation_file),
+      flaggerAll: parseStringOrNull(
+        row.Flagger_annotation_file_all_file_location
+      ),
+      flaggerUnreliableOnly: parseStringOrNull(
+        row.Flagger_annotation_file_unreliable_only_file_location
+      ),
+      flaggerUnreliableOnlyNoMT: parseStringOrNull(
+        row.Flagger_annotation_file_unreliable_only_no_MT_file_location
+      ),
       frag: parseNumberOrNull(row.frag),
       fullDup: parseNumberOrNull(row.full_dup),
       fullSgl: parseNumberOrNull(row.full_sgl),

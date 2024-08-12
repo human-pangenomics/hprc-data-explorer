@@ -32,7 +32,9 @@ export interface SourceAssembly {
   DNA_BRNN_annotation_file: string;
   familyID: string;
   fasta_sha256: string;
-  Flagger_annotation_file: string;
+  Flagger_annotation_file_all_file_location: string;
+  Flagger_annotation_file_unreliable_only_file_location: string;
+  Flagger_annotation_file_unreliable_only_no_MT_file_location: string;
   frag: string;
   full_dup: string;
   full_sgl: string;
