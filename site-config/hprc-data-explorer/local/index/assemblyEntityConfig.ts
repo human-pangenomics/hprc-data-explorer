@@ -77,8 +77,8 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FASTA_SHA256,
           },
           {
-            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FLAGGER_ANNOTATION_FILE,
-            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FLAGGER_ANNOTATION_FILE,
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FLAGGER_ALL,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FLAGGER_All,
           },
           {
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.GCP_FASTA,
@@ -181,10 +181,28 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
       {
         componentConfig: {
           component: C.BasicCell,
-          viewBuilder: V.buildFlaggerAnnotationFile,
+          viewBuilder: V.buildFlaggerAll,
         } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FLAGGER_ANNOTATION_FILE,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FLAGGER_ANNOTATION_FILE,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FLAGGER_All,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FLAGGER_ALL,
+        width: { max: "1.5fr", min: "212px" },
+      },
+      {
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildFlaggerUnreliableOnly,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FLAGGER_UNRELIABLE_ONLY,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FLAGGER_UNRELIABLE_ONLY,
+        width: { max: "1.5fr", min: "212px" },
+      },
+      {
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildFlaggerUnreliableOnlyNoMT,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FLAGGER_UNRELIABLE_ONLY_NO_MT,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FLAGGER_UNRELIABLE_ONLY_NO_MT,
         width: { max: "1.5fr", min: "212px" },
       },
       {

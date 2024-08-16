@@ -32,7 +32,9 @@ export interface HPRCDataExplorerAssembly {
   dnaBrnnAnnotationFile: string | null;
   familyId: string | null;
   fastaSha256: string | null;
-  flaggerAnnotationFile: string | null;
+  flaggerAll: string | null;
+  flaggerUnreliableOnly: string | null;
+  flaggerUnreliableOnlyNoMT: string | null;
   frag: number | null;
   fullDup: number | null;
   fullSgl: number | null;

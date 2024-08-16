@@ -151,15 +151,41 @@ export const buildFilename = (
 };
 
 /**
- * Build props for the Flagger annotation file cell.
+ * Build props for the Flagger_all annotation file cell.
  * @param assembly - Assembly entity.
  * @returns Props to be used for the cell.
  */
-export const buildFlaggerAnnotationFile = (
+export const buildFlaggerAll = (
   assembly: HPRCDataExplorerAssembly
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
-    value: assembly.flaggerAnnotationFile,
+    value: assembly.flaggerAll,
+  };
+};
+
+/**
+ * Build props for the Flagger_unreliable_only_file_location annotation file cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildFlaggerUnreliableOnly = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.flaggerUnreliableOnly,
+  };
+};
+
+/**
+ * Build props for the Flagger_unreliable_only_no_MT annotation file cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildFlaggerUnreliableOnlyNoMT = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.flaggerUnreliableOnlyNoMT,
   };
 };
 
