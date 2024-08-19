@@ -103,10 +103,10 @@ export async function testFilterPresence(
   // Goto the selected tab
   await page.goto(tab.url);
   await expect(page.getByRole("button").getByText(tab.tabName)).toBeVisible();
-  for (const filter of filterNames) {
+  for (const filterName of filterNames) {
     // Check that each filter is visible and clickable
-    await expect(page.getByText(filterRegex(filter))).toBeVisible();
-    await page.getByText(filterRegex(filter)).dispatchEvent("click");
+    await expect(page.getByText(filterRegex(filterName))).toBeVisible();
+    await page.getByText(filterRegex(filterName)).dispatchEvent("click");
     await expect(page.getByRole("checkbox").first()).toBeVisible();
     await expect(page.getByRole("checkbox").first()).not.toBeChecked();
     // Check that clicking out of the filter menu causes it to disappear
@@ -195,9 +195,9 @@ export async function testFilterCounts(
     return false;
   }
   // For each arbitrarily selected filter
-  for (const filter of filterNames) {
+  for (const filterName of filterNames) {
     // Select the filter
-    await page.getByText(filterRegex(filter)).dispatchEvent("click");
+    await page.getByText(filterRegex(filterName)).dispatchEvent("click");
     // Get the number associated with the first filter button, and select it
     await page.waitForLoadState("load");
     const filterButton = getFirstFilterButtonLocator(page);
@@ -319,6 +319,9 @@ export async function testSortFirstColumn(
   const firstElementText = await firstElementTextLocator.innerText();
   await scrollToBottom(page);
   // Expect the last cell to still be visible
+  await expect(
+    page.getByRole("rowgroup").nth(1).getByRole("row").last()
+  ).not.toHaveText("");
   await expect(lastElementTextLocator).toBeVisible();
   const lastElementText = await lastElementTextLocator.innerText();
   await scrollToTop(page);
