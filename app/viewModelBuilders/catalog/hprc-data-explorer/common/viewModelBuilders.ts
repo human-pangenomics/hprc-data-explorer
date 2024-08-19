@@ -583,6 +583,19 @@ export const buildMean = (
 };
 
 /**
+ * Build props for the metadata accession cell.
+ * @param rawSequencingData - Raw sequencing data entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildMetadataAccession = (
+  rawSequencingData: HPRCDataExplorerRawSequencingData
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: rawSequencingData.metadataAccession,
+  };
+};
+
+/**
  * Build props for the min cell.
  * @param rawSequencingData - Raw sequencing data entity.
  * @returns Props to be used for the cell.

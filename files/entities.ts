@@ -6,6 +6,7 @@ export interface SourceRawSequencingData {
   "400kb+": string;
   "500kb+": string;
   Accession: string;
+  accession: string;
   basecaller: string;
   basecaller_model: string;
   basecaller_version: string;

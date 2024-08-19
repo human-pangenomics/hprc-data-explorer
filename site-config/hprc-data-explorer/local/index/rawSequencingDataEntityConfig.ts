@@ -173,6 +173,19 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           columnVisible: false,
           componentConfig: {
             component: C.BasicCell,
+            viewBuilder: V.buildMetadataAccession,
+          } as ComponentConfig<
+            typeof C.BasicCell,
+            HPRCDataExplorerRawSequencingData
+          >,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.METADATA_ACCESSION,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.METADATA_ACCESSION,
+          width: { max: "1fr", min: "160px" },
+        },
+        {
+          columnVisible: false,
+          componentConfig: {
+            component: C.BasicCell,
             viewBuilder: V.buildBasecaller,
           } as ComponentConfig<
             typeof C.BasicCell,

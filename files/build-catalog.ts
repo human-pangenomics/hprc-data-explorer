@@ -65,6 +65,7 @@ async function buildRawSequencingData(): Promise<
       libraryStrategy: row.library_strategy,
       max: parseNumberOrNull(row.max),
       mean: parseNumberOrNull(row.mean),
+      metadataAccession: row.accession,
       min: parseNumberOrNull(row.min),
       n25: parseNumberOrNull(row.N25),
       n50: parseNumberOrNull(row.N50),

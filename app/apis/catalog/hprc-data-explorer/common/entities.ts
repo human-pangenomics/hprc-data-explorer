@@ -25,6 +25,7 @@ export interface HPRCDataExplorerRawSequencingData {
   libraryStrategy: string;
   max: number | null;
   mean: number | null;
+  metadataAccession: string;
   min: number | null;
   n25: number | null;
   n50: number | null;
