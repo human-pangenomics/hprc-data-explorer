@@ -1,9 +1,25 @@
 export interface SourceRawSequencingData {
+  "100kb+": string;
+  "1Mb+": string;
+  "200kb+": string;
+  "300kb+": string;
+  "400kb+": string;
+  "500kb+": string;
   Accession: string;
+  accession: string;
+  basecaller: string;
+  basecaller_model: string;
+  basecaller_version: string;
+  biosample_accession: string;
+  ccs_algorithm: string;
+  coverage: string;
   data_type: string;
+  DeepConsensus_version: string;
   design_description: string;
   familyID: string;
   filename: string;
+  filetype: string;
+  Gb: string;
   generator_contact: string;
   generator_facility: string;
   instrument_model: string;
@@ -12,15 +28,35 @@ export interface SourceRawSequencingData {
   library_selection: string;
   library_source: string;
   library_strategy: string;
+  max: string;
+  mean: string;
+  min: string;
+  N25: string;
+  N50: string;
+  N75: string;
   notes: string;
+  ntsm_score: string;
   path: string;
   platform: string;
+  polymerase_version: string;
   "Production Year": string;
+  quartile_25: string;
+  quartile_50: string;
+  quartile_75: string;
+  read_N50: string;
+  result: string;
   sample_ID: string;
+  seq_kit: string;
+  seq_plate_chemistry_version: string;
   shear_method: string;
   size_selection: string;
+  study: string;
   Subpopulation: string;
   Superpopulation: string;
+  total_bp: string;
+  total_Gbp: string;
+  total_reads: string;
+  whales: string;
 }
 
 export interface SourceAssembly {

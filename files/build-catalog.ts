@@ -39,11 +39,22 @@ async function buildRawSequencingData(): Promise<
   );
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerRawSequencingData => ({
+      Gb: parseNumberOrNull(row.Gb),
       accession: parseStringOrNull(row.Accession),
+      basecaller: row.basecaller,
+      basecallerModel: row.basecaller_model,
+      basecallerVersion: row.basecaller_version,
+      biosampleAccession: row.biosample_accession,
+      ccsAlgorithm: row.ccs_algorithm,
+      coverage: parseNumberOrNull(row.coverage),
       dataType: row.data_type,
+      deepConsensusVersion: row.DeepConsensus_version,
       designDescription: row.design_description,
       familyId: parseStringOrNull(row.familyID),
       filename: row.filename,
+      filetype: row.filetype,
+      fiveHundredkbPlus: parseNumberOrNull(row["500kb+"]),
+      fourHundredkbPlus: parseNumberOrNull(row["400kb+"]),
       generatorContact: row.generator_contact,
       generatorFacility: row.generator_facility,
       instrumentModel: row.instrument_model,
@@ -52,15 +63,40 @@ async function buildRawSequencingData(): Promise<
       librarySelection: row.library_selection,
       librarySource: row.library_source,
       libraryStrategy: row.library_strategy,
+      max: parseNumberOrNull(row.max),
+      mean: parseNumberOrNull(row.mean),
+      metadataAccession: row.accession,
+      min: parseNumberOrNull(row.min),
+      n25: parseNumberOrNull(row.N25),
+      n50: parseNumberOrNull(row.N50),
+      n75: parseNumberOrNull(row.N75),
       notes: row.notes,
+      ntsmScore: parseNumberOrNull(row.ntsm_score),
+      oneHundredkbPlus: parseNumberOrNull(row["100kb+"]),
+      oneMbPlus: parseNumberOrNull(row["1Mb+"]),
       path: row.path,
       platform: row.platform,
+      polymeraseVersion: row.polymerase_version,
       productionYear: parseStringOrNull(row["Production Year"]),
+      quartile25: parseNumberOrNull(row.quartile_25),
+      quartile50: parseNumberOrNull(row.quartile_50),
+      quartile75: parseNumberOrNull(row.quartile_75),
+      readN50: parseNumberOrNull(row.read_N50),
+      result: row.result,
       sampleId: row.sample_ID,
+      seqKit: row.seq_kit,
+      seqPlateChemistryVersion: row.seq_plate_chemistry_version,
       shearMethod: row.shear_method,
       sizeSelection: row.size_selection,
+      study: row.study,
       subpopulation: parseStringOrNull(row.Subpopulation),
       superpopulation: parseStringOrNull(row.Superpopulation),
+      threeHundredkbPlus: parseNumberOrNull(row["300kb+"]),
+      totalBp: parseNumberOrNull(row.total_bp),
+      totalGbp: parseNumberOrNull(row.total_Gbp),
+      totalReads: parseNumberOrNull(row.total_reads),
+      twoHundredkbPlus: parseNumberOrNull(row["200kb+"]),
+      whales: parseNumberOrNull(row.whales),
     })
   );
   return mappedRows.sort((a, b) => a.filename.localeCompare(b.filename));
@@ -164,7 +200,7 @@ function parseStringOrNull(value: string): string | null {
 
 function parseNumberOrNull(value: string): number | null {
   value = value.trim();
-  if (!value) return null;
+  if (!value || value === "N/A") return null;
   const n = Number(value);
   if (isNaN(n))
     throw new Error(`Invalid number value: ${JSON.stringify(value)}`);
