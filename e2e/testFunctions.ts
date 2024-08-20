@@ -45,26 +45,34 @@ export async function testTableExists(
 }
 
 /**
+ * Returns a string with special characters escaped
+ * @param string - the string to escape
+ * @returns - a string with special characters escaped
+ */
+export function escapeRegExp(string: string): string {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+/**
  * Returns a regex that matches the sidebar filter buttons
  * This is useful for selecting a filter from the sidebar
  * @param filterName - the name of the filter to match
  * @returns a regular expression matching "[filterName] ([n])"
  */
 export const filterRegex = (filterName: string): RegExp =>
-  new RegExp("^(" + filterName + ")" + "\\s+\\([0-9]+\\)\\s*");
+  new RegExp("^(" + escapeRegExp(filterName) + ")" + "\\s+\\([0-9]+\\)\\s*");
 
+const allFilterRegex = /^(.+)\s+\([0-9]+\)\s*/;
 /**
  * Get an array of all filter names on the current page
  * @param page - a Playwright Page object
  * @returns - an array of filter names
  */
 const getAllFilterNames = async (page: Page): Promise<string[]> => {
-  await expect(page.getByText(filterRegex(".+")).first()).toBeVisible();
-  const allFilterRegex = filterRegex(".+");
+  await expect(page.getByText(allFilterRegex).first()).toBeVisible();
   /*await expect(page.getByText(allFilterRegex).first()).toContainText(
     /\(([0-9])+\)/
   );*/
-  const filterStrings = await page.getByText(filterRegex(".+")).allInnerTexts();
+  const filterStrings = await page.getByText(allFilterRegex).allInnerTexts();
   return filterStrings.map(
     (x: string) => (x.match(allFilterRegex) ?? ["", ""])[1]
   );
@@ -299,7 +307,7 @@ export async function testSortFirstColumn(
 ): Promise<void> {
   // Get the current tab, and go to it's URL
   await page.goto(tab.url);
-  await expect(page.getByText(filterRegex(".+")).first()).toBeVisible();
+  await expect(page.getByText(allFilterRegex).first()).toBeVisible();
   const columnSortLocator = page
     .getByRole("table")
     .getByRole("columnheader")
