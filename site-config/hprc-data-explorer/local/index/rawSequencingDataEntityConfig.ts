@@ -24,10 +24,6 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
         {
           categoryConfigs: [
             {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.ACCESSION,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ACCESSION,
-            },
-            {
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
             },
@@ -48,65 +44,47 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SUPERPOPULATION,
             },
           ],
+          label: "Sample",
         },
         {
           categoryConfigs: [
             {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.DATA_TYPE,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.DATA_TYPE,
-            },
-            {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.DESIGN_DESCRIPTION,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.DESIGN_DESCRIPTION,
-            },
-            {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILENAME,
-            },
-            {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.GENERATOR_CONTACT,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.GENERATOR_CONTACT,
-            },
-            {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.GENERATOR_FACILITY,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.GENERATOR_FACILITY,
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILETYPE,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILETYPE,
             },
             {
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.INSTRUMENT_MODEL,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.INSTRUMENT_MODEL,
             },
             {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.LIBRARY_ID,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.LIBRARY_ID,
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.COVERAGE,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.COVERAGE,
             },
             {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.LIBRARY_LAYOUT,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.LIBRARY_LAYOUT,
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.GB,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.GB,
             },
             {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.LIBRARY_SELECTION,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.LIBRARY_SELECTION,
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.TOTAL_GBP,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TOTAL_GBP,
             },
             {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.LIBRARY_SOURCE,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.LIBRARY_SOURCE,
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.TOTAL_BP,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TOTAL_BP,
             },
             {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.LIBRARY_STRATEGY,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.LIBRARY_STRATEGY,
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.READ_N50,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.READ_N50,
             },
             {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.NOTES,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.NOTES,
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.N50,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.N50,
             },
-            {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PATH,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PATH,
-            },
-            {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PLATFORM,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PLATFORM,
-            },
+          ],
+          label: "Common Attributes",
+        },
+        {
+          categoryConfigs: [
             {
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SHEAR_METHOD,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SHEAR_METHOD,
@@ -115,7 +93,29 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SIZE_SELECTION,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SIZE_SELECTION,
             },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.DEEPCONSENSUS_VERSION,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.DEEPCONSENSUS_VERSION,
+            },
           ],
+          label: "PacBio",
+        },
+        {
+          categoryConfigs: [
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.BASECALLER,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BASECALLER,
+            },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.BASECALLER_VERSION,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BASECALLER_VERSION,
+            },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.ONE_HUNDRED_KB_PLUS,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ONE_HUNDRED_KB_PLUS,
+            },
+          ],
+          label: "ONT",
         },
       ],
       key: "raw-sequencing-data",
