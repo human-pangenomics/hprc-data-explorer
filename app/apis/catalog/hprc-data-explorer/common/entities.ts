@@ -5,16 +5,16 @@ export interface HPRCDataExplorerRawSequencingData {
   basecallerVersion: string;
   biosampleAccession: string;
   ccsAlgorithm: string;
-  coverage: number | null;
+  coverage: number | LABEL.NA;
   dataType: string;
   deepConsensusVersion: string;
   designDescription: string;
   familyId: string | null;
   filename: string;
   filetype: string;
-  fiveHundredkbPlus: number | null;
-  fourHundredkbPlus: number | null;
-  Gb: number | null;
+  fiveHundredkbPlus: number | LABEL.NA;
+  fourHundredkbPlus: number | LABEL.NA;
+  Gb: number | LABEL.NA;
   generatorContact: string;
   generatorFacility: string;
   instrumentModel: string;
@@ -23,25 +23,25 @@ export interface HPRCDataExplorerRawSequencingData {
   librarySelection: string;
   librarySource: string;
   libraryStrategy: string;
-  max: number | null;
-  mean: number | null;
+  max: number | LABEL.NA;
+  mean: number | LABEL.NA;
   metadataAccession: string;
-  min: number | null;
-  n25: number | null;
-  n50: number | null;
-  n75: number | null;
+  min: number | LABEL.NA;
+  n25: number | LABEL.NA;
+  n50: number | LABEL.NA;
+  n75: number | LABEL.NA;
   notes: string;
-  ntsmScore: number | null;
-  oneHundredkbPlus: number | null;
-  oneMbPlus: number | null;
+  ntsmScore: number | LABEL.NA;
+  oneHundredkbPlus: number | LABEL.NA;
+  oneMbPlus: number | LABEL.NA;
   path: string;
   platform: string;
   polymeraseVersion: string;
   productionYear: string | null;
-  quartile25: number | null;
-  quartile50: number | null;
-  quartile75: number | null;
-  readN50: number | null;
+  quartile25: number | LABEL.NA;
+  quartile50: number | LABEL.NA;
+  quartile75: number | LABEL.NA;
+  readN50: number | LABEL.NA;
   result: string;
   sampleId: string;
   seqKit: string;
@@ -51,12 +51,12 @@ export interface HPRCDataExplorerRawSequencingData {
   study: string;
   subpopulation: string | null;
   superpopulation: string | null;
-  threeHundredkbPlus: number | null;
-  totalBp: number | null;
-  totalGbp: number | null;
-  totalReads: number | null;
-  twoHundredkbPlus: number | null;
-  whales: number | null;
+  threeHundredkbPlus: number | LABEL.NA;
+  totalBp: number | LABEL.NA;
+  totalGbp: number | LABEL.NA;
+  totalReads: number | LABEL.NA;
+  twoHundredkbPlus: number | LABEL.NA;
+  whales: number | LABEL.NA;
 }
 
 export interface HPRCDataExplorerAssembly {
@@ -99,4 +99,8 @@ export interface HPRCDataExplorerPangenome {
   pipeline: string;
   referenceCoordinates: string | null;
   useCase: string[];
+}
+
+export enum LABEL {
+  NA = "N/A",
 }
