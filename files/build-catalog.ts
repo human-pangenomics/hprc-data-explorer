@@ -4,6 +4,7 @@ import {
   HPRCDataExplorerAssembly,
   HPRCDataExplorerPangenome,
   HPRCDataExplorerRawSequencingData,
+  LABEL,
 } from "../app/apis/catalog/hprc-data-explorer/common/entities";
 import {
   SourceAssembly,
@@ -39,22 +40,22 @@ async function buildRawSequencingData(): Promise<
   );
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerRawSequencingData => ({
-      Gb: parseNumberOrNull(row.Gb),
+      Gb: parseNumberOrNA(row.Gb),
       accession: parseStringOrNull(row.Accession),
       basecaller: row.basecaller,
       basecallerModel: row.basecaller_model,
       basecallerVersion: row.basecaller_version,
       biosampleAccession: row.biosample_accession,
       ccsAlgorithm: row.ccs_algorithm,
-      coverage: parseNumberOrNull(row.coverage),
+      coverage: parseNumberOrNA(row.coverage),
       dataType: row.data_type,
       deepConsensusVersion: row.DeepConsensus_version,
       designDescription: row.design_description,
       familyId: parseStringOrNull(row.familyID),
       filename: row.filename,
       filetype: row.filetype,
-      fiveHundredkbPlus: parseNumberOrNull(row["500kb+"]),
-      fourHundredkbPlus: parseNumberOrNull(row["400kb+"]),
+      fiveHundredkbPlus: parseNumberOrNA(row["500kb+"]),
+      fourHundredkbPlus: parseNumberOrNA(row["400kb+"]),
       generatorContact: row.generator_contact,
       generatorFacility: row.generator_facility,
       instrumentModel: row.instrument_model,
@@ -63,25 +64,25 @@ async function buildRawSequencingData(): Promise<
       librarySelection: row.library_selection,
       librarySource: row.library_source,
       libraryStrategy: row.library_strategy,
-      max: parseNumberOrNull(row.max),
-      mean: parseNumberOrNull(row.mean),
+      max: parseNumberOrNA(row.max),
+      mean: parseNumberOrNA(row.mean),
       metadataAccession: row.accession,
-      min: parseNumberOrNull(row.min),
-      n25: parseNumberOrNull(row.N25),
-      n50: parseNumberOrNull(row.N50),
-      n75: parseNumberOrNull(row.N75),
+      min: parseNumberOrNA(row.min),
+      n25: parseNumberOrNA(row.N25),
+      n50: parseNumberOrNA(row.N50),
+      n75: parseNumberOrNA(row.N75),
       notes: row.notes,
-      ntsmScore: parseNumberOrNull(row.ntsm_score),
-      oneHundredkbPlus: parseNumberOrNull(row["100kb+"]),
-      oneMbPlus: parseNumberOrNull(row["1Mb+"]),
+      ntsmScore: parseNumberOrNA(row.ntsm_score),
+      oneHundredkbPlus: parseNumberOrNA(row["100kb+"]),
+      oneMbPlus: parseNumberOrNA(row["1Mb+"]),
       path: row.path,
       platform: row.platform,
       polymeraseVersion: row.polymerase_version,
       productionYear: parseStringOrNull(row["Production Year"]),
-      quartile25: parseNumberOrNull(row.quartile_25),
-      quartile50: parseNumberOrNull(row.quartile_50),
-      quartile75: parseNumberOrNull(row.quartile_75),
-      readN50: parseNumberOrNull(row.read_N50),
+      quartile25: parseNumberOrNA(row.quartile_25),
+      quartile50: parseNumberOrNA(row.quartile_50),
+      quartile75: parseNumberOrNA(row.quartile_75),
+      readN50: parseNumberOrNA(row.read_N50),
       result: row.result,
       sampleId: row.sample_ID,
       seqKit: row.seq_kit,
@@ -91,12 +92,12 @@ async function buildRawSequencingData(): Promise<
       study: row.study,
       subpopulation: parseStringOrNull(row.Subpopulation),
       superpopulation: parseStringOrNull(row.Superpopulation),
-      threeHundredkbPlus: parseNumberOrNull(row["300kb+"]),
-      totalBp: parseNumberOrNull(row.total_bp),
-      totalGbp: parseNumberOrNull(row.total_Gbp),
-      totalReads: parseNumberOrNull(row.total_reads),
-      twoHundredkbPlus: parseNumberOrNull(row["200kb+"]),
-      whales: parseNumberOrNull(row.whales),
+      threeHundredkbPlus: parseNumberOrNA(row["300kb+"]),
+      totalBp: parseNumberOrNA(row.total_bp),
+      totalGbp: parseNumberOrNA(row.total_Gbp),
+      totalReads: parseNumberOrNA(row.total_reads),
+      twoHundredkbPlus: parseNumberOrNA(row["200kb+"]),
+      whales: parseNumberOrNA(row.whales),
     })
   );
   return mappedRows.sort((a, b) => a.filename.localeCompare(b.filename));
@@ -200,9 +201,18 @@ function parseStringOrNull(value: string): string | null {
 
 function parseNumberOrNull(value: string): number | null {
   value = value.trim();
-  if (!value || value === "N/A") return null;
+  if (!value) return null;
   const n = Number(value);
   if (isNaN(n))
+    throw new Error(`Invalid number value: ${JSON.stringify(value)}`);
+  return n;
+}
+
+function parseNumberOrNA(value: string): number | LABEL.NA {
+  value = value.trim();
+  if (value === LABEL.NA) return value;
+  const n = Number(value);
+  if (!value || isNaN(n))
     throw new Error(`Invalid number value: ${JSON.stringify(value)}`);
   return n;
 }
