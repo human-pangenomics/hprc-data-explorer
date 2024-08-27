@@ -211,8 +211,10 @@ export async function testFilterCounts(
     const filterButton = getFirstFilterButtonLocator(page);
     const filterNumbers = (await filterButton.innerText()).split("\n");
     const filterNumber =
-      filterNumbers.map((x) => Number(x)).find((x) => !isNaN(x) && x !== 0) ??
-      -1;
+      filterNumbers
+        .reverse()
+        .map((x) => Number(x))
+        .find((x) => !isNaN(x) && x !== 0) ?? -1;
     if (filterNumber < 0) {
       console.log(filterNumbers.map((x) => Number(x)));
       return false;
