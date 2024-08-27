@@ -52,3 +52,6 @@ _templates
 
 # unprocessed files
 /files/unprocessed_files/*
+
+# python
+__pycache__
