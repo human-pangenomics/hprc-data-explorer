@@ -13,6 +13,10 @@ import {
   SourceRawSequencingData,
 } from "./entities";
 
+const SOURCE_PATH_RAW_SEQUENCING_DATA = "files/source/raw-sequencing-data.csv";
+const SOURCE_PATH_ASSEMBLIES = "files/source/assemblies.csv";
+const SOURCE_PATH_PANGENOMES = "files/source/pangenomes.csv";
+
 buildCatalog();
 
 async function buildCatalog(): Promise<void> {
@@ -36,8 +40,7 @@ async function buildRawSequencingData(): Promise<
   HPRCDataExplorerRawSequencingData[]
 > {
   const sourceRows = await readValuesFile<SourceRawSequencingData>(
-    "files/source/raw-sequencing-data.tsv",
-    "\t"
+    SOURCE_PATH_RAW_SEQUENCING_DATA
   );
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerRawSequencingData => ({
@@ -113,8 +116,7 @@ async function buildRawSequencingData(): Promise<
 
 async function buildAssemblies(): Promise<HPRCDataExplorerAssembly[]> {
   const sourceRows = await readValuesFile<SourceAssembly>(
-    "files/source/assemblies.csv",
-    ","
+    SOURCE_PATH_ASSEMBLIES
   );
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerAssembly => ({
@@ -172,8 +174,7 @@ async function buildAssemblies(): Promise<HPRCDataExplorerAssembly[]> {
 
 async function buildPangenomes(): Promise<HPRCDataExplorerPangenome[]> {
   const sourceRows = await readValuesFile<SourcePangenome>(
-    "files/source/pangenomes.csv",
-    ","
+    SOURCE_PATH_PANGENOMES
   );
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerPangenome => ({
@@ -189,7 +190,7 @@ async function buildPangenomes(): Promise<HPRCDataExplorerPangenome[]> {
 
 async function readValuesFile<T>(
   filePath: string,
-  delimiter: string
+  delimiter = ","
 ): Promise<T[]> {
   const content = await fsp.readFile(filePath, "utf8");
   return parseCsv(content, {

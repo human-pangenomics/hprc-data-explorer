@@ -3,7 +3,7 @@ import numpy as np
 from buildHelp import downloadFile
 
 STORAGE_FOLDER_PATH = "./files/unprocessed_files/"
-OUTPUT_PATH = "./files/source/raw-sequencing-data.tsv"
+OUTPUT_PATH = "./files/source/raw-sequencing-data.csv"
 HIC_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/hprc-data-explorer-tables/HPRC_HiC.tsv"
 ONT_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/hprc-data-explorer-tables/HPRC_ONT.tsv"
 PACBIO_HIFI_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/hprc-data-explorer-tables/HPRC_PacBio_HiFi.tsv"
@@ -47,4 +47,4 @@ if __name__ == "__main__":
     metadataFiles = downloadSourceFiles(METADATA_URLS, STORAGE_FOLDER_PATH)
     biosamplesTableFile = downloadSourceFiles([BIOSAMPLES_TABLE_URL], STORAGE_FOLDER_PATH)[0]
     joined = joinSamples(metadataFiles, biosamplesTableFile)
-    joined.to_csv(OUTPUT_PATH, sep="\t", index=False)
+    joined.to_csv(OUTPUT_PATH, index=False)
