@@ -34,6 +34,19 @@ export const buildAsatAnnotationFile = (
 };
 
 /**
+ * Build props for the assembly cell.
+ * @param rawSequencingData - Raw sequencing data entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildAssembly = (
+  rawSequencingData: HPRCDataExplorerRawSequencingData
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: rawSequencingData.assembly,
+  };
+};
+
+/**
  * Build props for the AWS FASTA cell.
  * @param assembly - Assembly entity.
  * @returns Props to be used for the cell.
@@ -82,6 +95,19 @@ export const buildBasecallerVersion = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.basecallerVersion,
+  };
+};
+
+/**
+ * Build props for the bioproject accession cell.
+ * @param rawSequencingData - Raw sequencing data entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildBioprojectAccession = (
+  rawSequencingData: HPRCDataExplorerRawSequencingData
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: rawSequencingData.bioprojectAccession,
   };
 };
 
@@ -609,6 +635,19 @@ export const buildMin = (
 };
 
 /**
+ * Build props for the MM tag cell.
+ * @param rawSequencingData - Raw sequencing data entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildMmTag = (
+  rawSequencingData: HPRCDataExplorerRawSequencingData
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: String(rawSequencingData.mmTag),
+  };
+};
+
+/**
  * Build props for the N25 cell.
  * @param rawSequencingData - Raw sequencing data entity.
  * @returns Props to be used for the cell.
@@ -657,6 +696,19 @@ export const buildNotes = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.notes,
+  };
+};
+
+/**
+ * Build props for the ntsm result cell.
+ * @param rawSequencingData - Raw sequencing data entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildNtsmResult = (
+  rawSequencingData: HPRCDataExplorerRawSequencingData
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: rawSequencingData.ntsmResult,
   };
 };
 
@@ -1024,6 +1076,19 @@ export const buildThreeHundredkbPlus = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.threeHundredkbPlus?.toLocaleString(),
+  };
+};
+
+/**
+ * Build props for the title cell.
+ * @param rawSequencingData - Raw sequencing data entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildTitle = (
+  rawSequencingData: HPRCDataExplorerRawSequencingData
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: rawSequencingData.title,
   };
 };
 

@@ -183,6 +183,18 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
         {
           componentConfig: {
             component: C.BasicCell,
+            viewBuilder: V.buildAssembly,
+          } as ComponentConfig<
+            typeof C.BasicCell,
+            HPRCDataExplorerRawSequencingData
+          >,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ASSEMBLY,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ASSEMBLY,
+          width: { max: "0.5fr", min: "112px" },
+        },
+        {
+          componentConfig: {
+            component: C.BasicCell,
             viewBuilder: V.buildBasecaller,
           } as ComponentConfig<
             typeof C.BasicCell,
@@ -214,6 +226,18 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           >,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BASECALLER_VERSION,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.BASECALLER_VERSION,
+          width: { max: "0.5fr", min: "112px" },
+        },
+        {
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildBioprojectAccession,
+          } as ComponentConfig<
+            typeof C.BasicCell,
+            HPRCDataExplorerRawSequencingData
+          >,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOPROJECT_ACCESSION,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOPROJECT_ACCESSION,
           width: { max: "0.5fr", min: "112px" },
         },
         {
@@ -483,6 +507,18 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
         {
           componentConfig: {
             component: C.BasicCell,
+            viewBuilder: V.buildMmTag,
+          } as ComponentConfig<
+            typeof C.BasicCell,
+            HPRCDataExplorerRawSequencingData
+          >,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.MM_TAG,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.MM_TAG,
+          width: { max: "0.5fr", min: "112px" },
+        },
+        {
+          componentConfig: {
+            component: C.BasicCell,
             viewBuilder: V.buildN25,
           } as ComponentConfig<
             typeof C.BasicCell,
@@ -527,6 +563,18 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.NOTES,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.NOTES,
           width: { max: "1fr", min: "160px" },
+        },
+        {
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildNtsmResult,
+          } as ComponentConfig<
+            typeof C.BasicCell,
+            HPRCDataExplorerRawSequencingData
+          >,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.NTSM_RESULT,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.NTSM_RESULT,
+          width: { max: "0.5fr", min: "112px" },
         },
         {
           componentConfig: {
@@ -767,6 +815,18 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.THREE_HUNDRED_KB_PLUS,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.THREE_HUNDRED_KB_PLUS,
           width: { max: "0.5fr", min: "112px" },
+        },
+        {
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildTitle,
+          } as ComponentConfig<
+            typeof C.BasicCell,
+            HPRCDataExplorerRawSequencingData
+          >,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TITLE,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.TITLE,
+          width: { max: "1fr", min: "160px" },
         },
         {
           componentConfig: {

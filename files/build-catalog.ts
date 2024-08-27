@@ -6,11 +6,16 @@ import {
   HPRCDataExplorerRawSequencingData,
   LABEL,
 } from "../app/apis/catalog/hprc-data-explorer/common/entities";
+import { getRawSequencingDataId } from "../app/apis/catalog/hprc-data-explorer/common/utils";
 import {
   SourceAssembly,
   SourcePangenome,
   SourceRawSequencingData,
 } from "./entities";
+
+const SOURCE_PATH_RAW_SEQUENCING_DATA = "files/source/raw-sequencing-data.csv";
+const SOURCE_PATH_ASSEMBLIES = "files/source/assemblies.csv";
+const SOURCE_PATH_PANGENOMES = "files/source/pangenomes.csv";
 
 buildCatalog();
 
@@ -35,16 +40,17 @@ async function buildRawSequencingData(): Promise<
   HPRCDataExplorerRawSequencingData[]
 > {
   const sourceRows = await readValuesFile<SourceRawSequencingData>(
-    "files/source/raw-sequencing-data.tsv",
-    "\t"
+    SOURCE_PATH_RAW_SEQUENCING_DATA
   );
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerRawSequencingData => ({
       Gb: parseNumberOrNA(row.Gb),
       accession: parseStringOrNull(row.Accession),
+      assembly: parseStringOrNull(row.assembly),
       basecaller: row.basecaller,
       basecallerModel: row.basecaller_model,
       basecallerVersion: row.basecaller_version,
+      bioprojectAccession: row.bioproject_accession,
       biosampleAccession: row.biosample_accession,
       ccsAlgorithm: row.ccs_algorithm,
       coverage: parseNumberOrNA(row.coverage),
@@ -68,10 +74,12 @@ async function buildRawSequencingData(): Promise<
       mean: parseNumberOrNA(row.mean),
       metadataAccession: row.accession,
       min: parseNumberOrNA(row.min),
+      mmTag: parseBooleanOrNa(row.MM_tag),
       n25: parseNumberOrNA(row.N25),
       n50: parseNumberOrNA(row.N50),
       n75: parseNumberOrNA(row.N75),
       notes: row.notes,
+      ntsmResult: row.ntsm_result,
       ntsmScore: parseNumberOrNA(row.ntsm_score),
       oneHundredkbPlus: parseNumberOrNA(row["100kb+"]),
       oneMbPlus: parseNumberOrNA(row["1Mb+"]),
@@ -93,6 +101,7 @@ async function buildRawSequencingData(): Promise<
       subpopulation: parseStringOrNull(row.Subpopulation),
       superpopulation: parseStringOrNull(row.Superpopulation),
       threeHundredkbPlus: parseNumberOrNA(row["300kb+"]),
+      title: row.title,
       totalBp: parseNumberOrNA(row.total_bp),
       totalGbp: parseNumberOrNA(row.total_Gbp),
       totalReads: parseNumberOrNA(row.total_reads),
@@ -100,13 +109,14 @@ async function buildRawSequencingData(): Promise<
       whales: parseNumberOrNA(row.whales),
     })
   );
-  return mappedRows.sort((a, b) => a.filename.localeCompare(b.filename));
+  return mappedRows.sort((a, b) =>
+    getRawSequencingDataId(a).localeCompare(getRawSequencingDataId(b))
+  );
 }
 
 async function buildAssemblies(): Promise<HPRCDataExplorerAssembly[]> {
   const sourceRows = await readValuesFile<SourceAssembly>(
-    "files/source/assemblies.csv",
-    ","
+    SOURCE_PATH_ASSEMBLIES
   );
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerAssembly => ({
@@ -164,8 +174,7 @@ async function buildAssemblies(): Promise<HPRCDataExplorerAssembly[]> {
 
 async function buildPangenomes(): Promise<HPRCDataExplorerPangenome[]> {
   const sourceRows = await readValuesFile<SourcePangenome>(
-    "files/source/pangenomes.csv",
-    ","
+    SOURCE_PATH_PANGENOMES
   );
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerPangenome => ({
@@ -181,7 +190,7 @@ async function buildPangenomes(): Promise<HPRCDataExplorerPangenome[]> {
 
 async function readValuesFile<T>(
   filePath: string,
-  delimiter: string
+  delimiter = ","
 ): Promise<T[]> {
   const content = await fsp.readFile(filePath, "utf8");
   return parseCsv(content, {
@@ -241,4 +250,11 @@ function parseStringArray(value: string): string[] {
     if (item) items.push(item);
   }
   return items;
+}
+
+function parseBooleanOrNa(value: string): boolean | LABEL.NA {
+  if (value === LABEL.NA) return LABEL.NA;
+  if (value === "True") return true;
+  if (value === "False") return false;
+  throw new Error(`Invalid boolean value: ${JSON.stringify(value)}`);
 }

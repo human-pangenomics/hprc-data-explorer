@@ -3,11 +3,14 @@ import numpy as np
 from buildHelp import downloadFile
 
 STORAGE_FOLDER_PATH = "./files/unprocessed_files/"
-OUTPUT_PATH = "./files/source/raw-sequencing-data.tsv"
-DEEPCONSENSUS_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/sample-files/hprc_metadata_sample_files_DEEPCONSENSUS.tsv"
-HIFI_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/sample-files/hprc_metadata_sample_files_HiFi.tsv"
-ONT_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/sample-files/hprc_metadata_sample_files_ONT.tsv"
-METADATA_URLS = [DEEPCONSENSUS_URL, HIFI_URL, ONT_URL]
+OUTPUT_PATH = "./files/source/raw-sequencing-data.csv"
+HIC_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/hprc-data-explorer-tables/HPRC_HiC.tsv"
+ONT_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/hprc-data-explorer-tables/HPRC_ONT.tsv"
+PACBIO_HIFI_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/hprc-data-explorer-tables/HPRC_PacBio_HiFi.tsv"
+# DEEPCONSENSUS_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/sample-files/hprc_metadata_sample_files_DEEPCONSENSUS.tsv"
+# HIFI_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/sample-files/hprc_metadata_sample_files_HiFi.tsv"
+# ONT_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/sample-files/hprc_metadata_sample_files_ONT.tsv"
+METADATA_URLS = [HIC_URL, ONT_URL, PACBIO_HIFI_URL]
 BIOSAMPLES_TABLE_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/production/hprc-production-biosample-table.tsv"
 
 def downloadSourceFiles(urls, outputFolderPath):
@@ -19,8 +22,8 @@ def downloadSourceFiles(urls, outputFolderPath):
 
 def joinSamples(metadataPaths, biosamplesTablePath):
     # Generate each column across all provided sheets
-    metadataList = [pd.read_csv(path, sep="\t") for path in metadataPaths]
-    metadataColumns = np.unique([df.columns for df in metadataList])
+    metadataList = [pd.read_csv(path, sep="\t", keep_default_na=False).drop_duplicates() for path in metadataPaths]
+    metadataColumns = np.unique([col for df in metadataList for col in df.columns])
     # Concatenate all the provided metadata sheets
     allMetadata = pd.concat(
         metadataList,
@@ -44,4 +47,4 @@ if __name__ == "__main__":
     metadataFiles = downloadSourceFiles(METADATA_URLS, STORAGE_FOLDER_PATH)
     biosamplesTableFile = downloadSourceFiles([BIOSAMPLES_TABLE_URL], STORAGE_FOLDER_PATH)[0]
     joined = joinSamples(metadataFiles, biosamplesTableFile)
-    joined.to_csv(OUTPUT_PATH, sep="\t", index=False)
+    joined.to_csv(OUTPUT_PATH, index=False)
