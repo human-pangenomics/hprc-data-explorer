@@ -7,9 +7,11 @@ export interface SourceRawSequencingData {
   "500kb+": string;
   Accession: string;
   accession: string;
+  assembly: string;
   basecaller: string;
   basecaller_model: string;
   basecaller_version: string;
+  bioproject_accession: string;
   biosample_accession: string;
   ccs_algorithm: string;
   coverage: string;
@@ -31,10 +33,12 @@ export interface SourceRawSequencingData {
   max: string;
   mean: string;
   min: string;
+  MM_tag: string;
   N25: string;
   N50: string;
   N75: string;
   notes: string;
+  ntsm_result: string;
   ntsm_score: string;
   path: string;
   platform: string;
@@ -53,6 +57,7 @@ export interface SourceRawSequencingData {
   study: string;
   Subpopulation: string;
   Superpopulation: string;
+  title: string;
   total_bp: string;
   total_Gbp: string;
   total_reads: string;

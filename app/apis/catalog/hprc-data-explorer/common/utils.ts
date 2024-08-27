@@ -7,7 +7,7 @@ import {
 export function getRawSequencingDataId(
   rawSequencingData: HPRCDataExplorerRawSequencingData
 ): string {
-  return rawSequencingData.filename;
+  return `${rawSequencingData.mmTag}_${rawSequencingData.filename}`;
 }
 
 export function getAssemblyId(assembly: HPRCDataExplorerAssembly): string {

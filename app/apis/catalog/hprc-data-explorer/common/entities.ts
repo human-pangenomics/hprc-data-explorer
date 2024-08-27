@@ -1,8 +1,10 @@
 export interface HPRCDataExplorerRawSequencingData {
   accession: string | null;
+  assembly: string | null;
   basecaller: string;
   basecallerModel: string;
   basecallerVersion: string;
+  bioprojectAccession: string;
   biosampleAccession: string;
   ccsAlgorithm: string;
   coverage: number | LABEL.NA;
@@ -27,10 +29,12 @@ export interface HPRCDataExplorerRawSequencingData {
   mean: number | LABEL.NA;
   metadataAccession: string;
   min: number | LABEL.NA;
+  mmTag: boolean | LABEL.NA;
   n25: number | LABEL.NA;
   n50: number | LABEL.NA;
   n75: number | LABEL.NA;
   notes: string;
+  ntsmResult: string;
   ntsmScore: number | LABEL.NA;
   oneHundredkbPlus: number | LABEL.NA;
   oneMbPlus: number | LABEL.NA;
@@ -52,6 +56,7 @@ export interface HPRCDataExplorerRawSequencingData {
   subpopulation: string | null;
   superpopulation: string | null;
   threeHundredkbPlus: number | LABEL.NA;
+  title: string;
   totalBp: number | LABEL.NA;
   totalGbp: number | LABEL.NA;
   totalReads: number | LABEL.NA;
