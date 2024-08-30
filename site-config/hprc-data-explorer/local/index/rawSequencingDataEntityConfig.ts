@@ -24,6 +24,27 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
         {
           categoryConfigs: [
             {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.ACCESSION,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ACCESSION,
+            },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.METADATA_ACCESSION,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.METADATA_ACCESSION,
+            },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOPROJECT_ACCESSION,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOPROJECT_ACCESSION,
+            },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
+            },
+          ],
+          label: "Accession",
+        },
+        {
+          categoryConfigs: [
+            {
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
             },
@@ -61,8 +82,24 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.COVERAGE,
             },
             {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.DATA_TYPE,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.DATA_TYPE,
+            },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.DESIGN_DESCRIPTION,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.DESIGN_DESCRIPTION,
+            },
+            {
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.GB,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.GB,
+            },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.LIBRARY_SOURCE,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.LIBRARY_SOURCE,
+            },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.LIBRARY_STRATEGY,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.LIBRARY_STRATEGY,
             },
             {
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.TOTAL_GBP,
