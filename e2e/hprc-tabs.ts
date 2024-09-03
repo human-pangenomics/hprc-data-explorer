@@ -1,17 +1,17 @@
 import { HprcTabCollection } from "./testInterfaces";
 
 export const HPRC_TABS: HprcTabCollection = {
+  alignments: {
+    preselectedColumns: [],
+    selectableColumns: [],
+    tabName: "Alignments",
+    url: "/alignments",
+  },
   assemblies: {
     preselectedColumns: [],
     selectableColumns: [],
     tabName: "Assemblies",
     url: "/assemblies",
-  },
-  pangenomes: {
-    preselectedColumns: [],
-    selectableColumns: [],
-    tabName: "Pangenomes",
-    url: "/pangenomes",
   },
   rawSequencingData: {
     preselectedColumns: [],
@@ -24,5 +24,5 @@ export const HPRC_TABS: HprcTabCollection = {
 export const HPRC_TAB_LIST = [
   HPRC_TABS.rawSequencingData,
   HPRC_TABS.assemblies,
-  HPRC_TABS.pangenomes,
+  HPRC_TABS.alignments,
 ];

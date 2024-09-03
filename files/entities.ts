@@ -98,7 +98,7 @@ export interface SourceAssembly {
   TRF_annotation_file: string;
 }
 
-export interface SourcePangenome {
+export interface SourceAlignment {
   file: string;
   loc: string;
   pipeline: string;

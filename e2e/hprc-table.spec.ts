@@ -14,8 +14,8 @@ test("Expect the table to exist and have at least one row on the Assemblies tab"
   await testTableExists(page, HPRC_TABS.assemblies);
 });
 
-test("Expect the table to exist and have at least one row on the Pangenomes tab", async ({
+test("Expect the table to exist and have at least one row on the Alignments tab", async ({
   page,
 }) => {
-  await testTableExists(page, HPRC_TABS.pangenomes);
+  await testTableExists(page, HPRC_TABS.alignments);
 });

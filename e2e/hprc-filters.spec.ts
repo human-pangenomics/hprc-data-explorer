@@ -17,10 +17,10 @@ test("Expect at least one filter to exist on the Assemblies tab and for all filt
   await testAllFiltersPresence(page, HPRC_TABS.assemblies);
 });
 
-test("Expect at least one filter to exist on the Pangenomes tab and for all filters to function", async ({
+test("Expect at least one filter to exist on the Alignments tab and for all filters to function", async ({
   page,
 }) => {
-  await testAllFiltersPresence(page, HPRC_TABS.pangenomes);
+  await testAllFiltersPresence(page, HPRC_TABS.alignments);
 });
 
 test("Expect filter counts to update for the first five filters on the Raw Sequencing Data tab", async ({
@@ -45,10 +45,10 @@ test("Expect filter counts to update for the first five filters on the Assemblie
   }
 });
 
-test("Expect filter counts to update for the first five on the Pangenomes tab", async ({
+test("Expect filter counts to update for the first five on the Alignments tab", async ({
   page,
 }) => {
-  const result = await testFirstNFilterCounts(page, HPRC_TABS.pangenomes, 3);
+  const result = await testFirstNFilterCounts(page, HPRC_TABS.alignments, 3);
   if (!result) {
     test.fail();
   }

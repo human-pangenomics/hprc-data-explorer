@@ -1,28 +1,28 @@
 import { parse as parseCsv } from "csv-parse/sync";
 import fsp from "fs/promises";
 import {
+  HPRCDataExplorerAlignment,
   HPRCDataExplorerAssembly,
-  HPRCDataExplorerPangenome,
   HPRCDataExplorerRawSequencingData,
   LABEL,
 } from "../app/apis/catalog/hprc-data-explorer/common/entities";
 import { getRawSequencingDataId } from "../app/apis/catalog/hprc-data-explorer/common/utils";
 import {
+  SourceAlignment,
   SourceAssembly,
-  SourcePangenome,
   SourceRawSequencingData,
 } from "./entities";
 
 const SOURCE_PATH_RAW_SEQUENCING_DATA = "files/source/raw-sequencing-data.csv";
 const SOURCE_PATH_ASSEMBLIES = "files/source/assemblies.csv";
-const SOURCE_PATH_PANGENOMES = "files/source/pangenomes.csv";
+const SOURCE_PATH_ALIGNMENTS = "files/source/alignments.csv";
 
 buildCatalog();
 
 async function buildCatalog(): Promise<void> {
   const rawSequencingData = await buildRawSequencingData();
   const assemblies = await buildAssemblies();
-  const pangenomes = await buildPangenomes();
+  const alignments = await buildAlignments();
 
   console.log("Raw sequencing data:", rawSequencingData.length);
   await saveJson("files/out/raw-sequencing-data.json", rawSequencingData);
@@ -30,8 +30,8 @@ async function buildCatalog(): Promise<void> {
   console.log("Assemblies:", assemblies.length);
   await saveJson("files/out/assemblies.json", assemblies);
 
-  console.log("Pangenomes:", pangenomes.length);
-  await saveJson("files/out/pangenomes.json", pangenomes);
+  console.log("Alignments:", alignments.length);
+  await saveJson("files/out/alignments.json", alignments);
 
   console.log("Done");
 }
@@ -172,12 +172,12 @@ async function buildAssemblies(): Promise<HPRCDataExplorerAssembly[]> {
   );
 }
 
-async function buildPangenomes(): Promise<HPRCDataExplorerPangenome[]> {
-  const sourceRows = await readValuesFile<SourcePangenome>(
-    SOURCE_PATH_PANGENOMES
+async function buildAlignments(): Promise<HPRCDataExplorerAlignment[]> {
+  const sourceRows = await readValuesFile<SourceAlignment>(
+    SOURCE_PATH_ALIGNMENTS
   );
   const mappedRows = sourceRows.map(
-    (row): HPRCDataExplorerPangenome => ({
+    (row): HPRCDataExplorerAlignment => ({
       filename: row.file,
       loc: row.loc,
       pipeline: row.pipeline,

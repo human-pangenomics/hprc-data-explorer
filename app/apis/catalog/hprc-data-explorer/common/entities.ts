@@ -98,7 +98,7 @@ export interface HPRCDataExplorerAssembly {
   trfAnnotationFile: string | null;
 }
 
-export interface HPRCDataExplorerPangenome {
+export interface HPRCDataExplorerAlignment {
   filename: string;
   loc: string;
   pipeline: string;

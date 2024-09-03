@@ -1,6 +1,6 @@
 import {
+  HPRCDataExplorerAlignment,
   HPRCDataExplorerAssembly,
-  HPRCDataExplorerPangenome,
   HPRCDataExplorerRawSequencingData,
 } from "../../../../apis/catalog/hprc-data-explorer/common/entities";
 import * as C from "../../../../components/index";
@@ -256,11 +256,11 @@ export const buildFastaSha256 = (
 
 /**
  * Build props for the filename cell.
- * @param entity - Raw sequencing data or pangenome entity.
+ * @param entity - Raw sequencing data or alignment entity.
  * @returns Props to be used for the cell.
  */
 export const buildFilename = (
-  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerPangenome
+  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAlignment
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: entity.filename,
@@ -571,14 +571,14 @@ export const buildLibraryStrategy = (
 
 /**
  * Build props for the loc cell.
- * @param pangenome - Pangenome entity.
+ * @param alignment - Alignment entity.
  * @returns Props to be used for the cell.
  */
 export const buildLoc = (
-  pangenome: HPRCDataExplorerPangenome
+  alignment: HPRCDataExplorerAlignment
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
-    value: pangenome.loc,
+    value: alignment.loc,
   };
 };
 
@@ -779,14 +779,14 @@ export const buildPath = (
 
 /**
  * Build props for the pipeline cell.
- * @param pangenome - Pangenome entity.
+ * @param alignment - Alignment entity.
  * @returns Props to be used for the cell.
  */
 export const buildPipeline = (
-  pangenome: HPRCDataExplorerPangenome
+  alignment: HPRCDataExplorerAlignment
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
-    value: pangenome.pipeline,
+    value: alignment.pipeline,
   };
 };
 
@@ -896,14 +896,14 @@ export const buildReadN50 = (
 
 /**
  * Build props for the reference coordinates cell.
- * @param pangenome - Pangenome entity.
+ * @param alignment - Alignment entity.
  * @returns Props to be used for the cell.
  */
 export const buildReferenceCoordinates = (
-  pangenome: HPRCDataExplorerPangenome
+  alignment: HPRCDataExplorerAlignment
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
-    value: pangenome.referenceCoordinates,
+    value: alignment.referenceCoordinates,
   };
 };
 
@@ -1172,15 +1172,15 @@ export const buildTwoHundredkbPlus = (
 
 /**
  * Build props for the use case cell.
- * @param pangenome - Pangenome entity.
+ * @param alignment - Alignment entity.
  * @returns Props to be used for the cell.
  */
 export const buildUseCase = (
-  pangenome: HPRCDataExplorerPangenome
+  alignment: HPRCDataExplorerAlignment
 ): React.ComponentProps<typeof C.NTagCell> => {
   return {
     label: getPluralizedMetadataLabel(METADATA_KEY.USE_CASE),
-    values: pangenome.useCase,
+    values: alignment.useCase,
   };
 };
 

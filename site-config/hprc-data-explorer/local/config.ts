@@ -2,8 +2,8 @@ import { ANCHOR_TARGET } from "@databiosphere/findable-ui/lib/components/Links/c
 import { SiteConfig } from "@databiosphere/findable-ui/lib/config/entities";
 import * as C from "../../../app/components/index";
 import { ROUTE } from "../../../app/routes/constants";
+import { alignmentEntityConfig } from "./index/alignmentEntityConfig";
 import { assemblyEntityConfig } from "./index/assemblyEntityConfig";
-import { pangenomeEntityConfig } from "./index/pangenomeEntityConfig";
 import { rawSequencingDataEntityConfig } from "./index/rawSequencingDataEntityConfig";
 
 // Template constants
@@ -22,7 +22,7 @@ export function makeConfig(browserUrl: string): SiteConfig {
     entities: [
       rawSequencingDataEntityConfig,
       assemblyEntityConfig,
-      pangenomeEntityConfig,
+      alignmentEntityConfig,
     ],
     explorerTitle: APP_TITLE,
     layout: {
@@ -44,7 +44,7 @@ export function makeConfig(browserUrl: string): SiteConfig {
               url: ROUTE.RAW_SEQUENCING_DATA,
             },
             { label: "Assemblies", url: ROUTE.ASSEMBLIES },
-            { label: "Pangenomes", url: ROUTE.PANGENOMES },
+            { label: "Alignments", url: ROUTE.ALIGNMENTS },
           ],
           [
             {
