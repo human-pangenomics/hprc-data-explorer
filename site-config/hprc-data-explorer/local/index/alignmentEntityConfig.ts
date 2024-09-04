@@ -5,8 +5,8 @@ import {
   SORT_DIRECTION,
 } from "@databiosphere/findable-ui/lib/config/entities";
 import { EXPLORE_MODE } from "@databiosphere/findable-ui/lib/hooks/useExploreMode";
-import { HPRCDataExplorerPangenome } from "../../../../app/apis/catalog/hprc-data-explorer/common/entities";
-import { getPangenomeId } from "../../../../app/apis/catalog/hprc-data-explorer/common/utils";
+import { HPRCDataExplorerAlignment } from "../../../../app/apis/catalog/hprc-data-explorer/common/entities";
+import { getAlignmentId } from "../../../../app/apis/catalog/hprc-data-explorer/common/utils";
 import * as C from "../../../../app/components/index";
 import * as V from "../../../../app/viewModelBuilders/catalog/hprc-data-explorer/common/viewModelBuilders";
 import {
@@ -15,9 +15,9 @@ import {
 } from "../../category";
 
 /**
- * Entity config object responsible to config anything related to the /pangenomes route.
+ * Entity config object responsible to config anything related to the /alignments route.
  */
-export const pangenomeEntityConfig: EntityConfig<HPRCDataExplorerPangenome> = {
+export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
   categoryGroupConfig: {
     categoryGroups: [
       {
@@ -41,7 +41,7 @@ export const pangenomeEntityConfig: EntityConfig<HPRCDataExplorerPangenome> = {
         ],
       },
     ],
-    key: "pangenomes",
+    key: "alignments",
   },
   detail: {
     detailOverviews: [],
@@ -50,16 +50,16 @@ export const pangenomeEntityConfig: EntityConfig<HPRCDataExplorerPangenome> = {
     top: [],
   },
   exploreMode: EXPLORE_MODE.CS_FETCH_CS_FILTERING,
-  explorerTitle: "Pangenomes",
-  getId: getPangenomeId,
-  label: "Pangenomes",
+  explorerTitle: "Alignments",
+  getId: getAlignmentId,
+  label: "Alignments",
   list: {
     columns: [
       {
         componentConfig: {
           component: C.BasicCell,
           viewBuilder: V.buildFilename,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerPangenome>,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILENAME,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
         width: { max: "1fr", min: "160px" },
@@ -68,7 +68,7 @@ export const pangenomeEntityConfig: EntityConfig<HPRCDataExplorerPangenome> = {
         componentConfig: {
           component: C.BasicCell,
           viewBuilder: V.buildPipeline,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerPangenome>,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PIPELINE,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.PIPELINE,
         width: { max: "0.5fr", min: "160px" },
@@ -77,7 +77,7 @@ export const pangenomeEntityConfig: EntityConfig<HPRCDataExplorerPangenome> = {
         componentConfig: {
           component: C.BasicCell,
           viewBuilder: V.buildReferenceCoordinates,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerPangenome>,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.REFERENCE_COORDINATES,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.REFERENCE_COORDINATES,
         width: { max: "0.5fr", min: "112px" },
@@ -86,7 +86,7 @@ export const pangenomeEntityConfig: EntityConfig<HPRCDataExplorerPangenome> = {
         componentConfig: {
           component: C.NTagCell,
           viewBuilder: V.buildUseCase,
-        } as ComponentConfig<typeof C.NTagCell, HPRCDataExplorerPangenome>,
+        } as ComponentConfig<typeof C.NTagCell, HPRCDataExplorerAlignment>,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.USE_CASE,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.USE_CASE,
         width: { max: "1fr", min: "160px" },
@@ -96,7 +96,7 @@ export const pangenomeEntityConfig: EntityConfig<HPRCDataExplorerPangenome> = {
         componentConfig: {
           component: C.BasicCell,
           viewBuilder: V.buildLoc,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerPangenome>,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.LOC,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.LOC,
         width: { max: "1.5fr", min: "212px" },
@@ -106,12 +106,12 @@ export const pangenomeEntityConfig: EntityConfig<HPRCDataExplorerPangenome> = {
       desc: SORT_DIRECTION.ASCENDING,
       id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
     },
-  } as ListConfig<HPRCDataExplorerPangenome>,
+  } as ListConfig<HPRCDataExplorerAlignment>,
   listView: {
     disablePagination: true,
     enableDownload: true,
     enableTab: false,
   },
-  route: "pangenomes",
-  staticLoadFile: "files/out/pangenomes.json",
+  route: "alignments",
+  staticLoadFile: "files/out/alignments.json",
 };

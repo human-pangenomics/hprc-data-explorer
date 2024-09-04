@@ -6,8 +6,8 @@ export interface TabDescription {
 }
 
 export interface HprcTabCollection {
+  alignments: TabDescription;
   assemblies: TabDescription;
-  pangenomes: TabDescription;
   rawSequencingData: TabDescription;
 }
 
