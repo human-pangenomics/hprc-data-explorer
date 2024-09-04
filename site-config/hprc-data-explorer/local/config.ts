@@ -40,7 +40,7 @@ export function makeConfig(browserUrl: string): SiteConfig {
           undefined,
           [
             {
-              label: "Raw Sequencing Data",
+              label: "Sequencing Data",
               url: ROUTE.RAW_SEQUENCING_DATA,
             },
             { label: "Assemblies", url: ROUTE.ASSEMBLIES },

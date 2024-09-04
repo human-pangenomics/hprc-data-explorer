@@ -123,6 +123,16 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
   list: {
     columns: [
       {
+        columnVisible: true,
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildAccession,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ACCESSION,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ACCESSION,
+        width: { max: "1fr", min: "160px" },
+      },
+      {
         componentConfig: {
           component: C.BasicCell,
           viewBuilder: V.buildSampleId,
@@ -139,6 +149,16 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.HAPLOTYPE,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.HAPLOTYPE,
         width: { max: "0.5fr", min: "112px" },
+      },
+      {
+        columnVisible: true,
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildAwsFasta,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.AWS_FASTA,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.AWS_FASTA,
+        width: { max: "1.5fr", min: "212px" },
       },
       {
         componentConfig: {
@@ -239,26 +259,6 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TRF_ANNOTATION_FILE,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.TRF_ANNOTATION_FILE,
-        width: { max: "1.5fr", min: "212px" },
-      },
-      {
-        columnVisible: false,
-        componentConfig: {
-          component: C.BasicCell,
-          viewBuilder: V.buildAccession,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ACCESSION,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ACCESSION,
-        width: { max: "1fr", min: "160px" },
-      },
-      {
-        columnVisible: false,
-        componentConfig: {
-          component: C.BasicCell,
-          viewBuilder: V.buildAwsFasta,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.AWS_FASTA,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.AWS_FASTA,
         width: { max: "1.5fr", min: "212px" },
       },
       {
