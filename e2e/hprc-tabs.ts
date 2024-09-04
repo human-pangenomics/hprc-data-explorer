@@ -16,7 +16,7 @@ export const HPRC_TABS: HprcTabCollection = {
   rawSequencingData: {
     preselectedColumns: [],
     selectableColumns: [],
-    tabName: "Raw Sequencing Data",
+    tabName: "Sequencing Data",
     url: "/raw-sequencing-data",
   },
 };
