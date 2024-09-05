@@ -94,9 +94,12 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
       {
         columnVisible: false,
         componentConfig: {
-          component: C.BasicCell,
+          component: C.TypographyNoWrap,
           viewBuilder: V.buildLoc,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
+        } as ComponentConfig<
+          typeof C.TypographyNoWrap,
+          HPRCDataExplorerAlignment
+        >,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.LOC,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.LOC,
         width: { max: "1.5fr", min: "212px" },

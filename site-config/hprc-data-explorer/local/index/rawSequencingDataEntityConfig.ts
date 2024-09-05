@@ -710,10 +710,10 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
         {
           columnVisible: true,
           componentConfig: {
-            component: C.BasicCell,
+            component: C.TypographyNoWrap,
             viewBuilder: V.buildPath,
           } as ComponentConfig<
-            typeof C.BasicCell,
+            typeof C.TypographyNoWrap,
             HPRCDataExplorerRawSequencingData
           >,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PATH,
