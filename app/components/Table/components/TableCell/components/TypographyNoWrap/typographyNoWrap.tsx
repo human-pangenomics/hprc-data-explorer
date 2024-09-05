@@ -1,4 +1,3 @@
-import { LABEL } from "@databiosphere/findable-ui/lib/apis/azul/common/entities";
 import { CopyToClipboard } from "@databiosphere/findable-ui/lib/components/common/CopyToClipboard/copyToClipboard";
 import {
   Tooltip as MTooltip,
@@ -6,22 +5,25 @@ import {
   TypographyProps as MTypographyProps,
 } from "@mui/material";
 import { Fragment } from "react";
+import { LABEL } from "../../../../../../apis/common/entities";
 
 export interface TypographyNoWrapProps
   extends Omit<MTypographyProps, "children"> {
   copyable?: boolean;
+  label?: string;
   value: string | null;
 }
 
 export const TypographyNoWrap = ({
   copyable = true,
+  label = LABEL.DASH,
   noWrap = true,
   value,
   variant = "inherit",
   ...props
 }: TypographyNoWrapProps): JSX.Element => {
-  if (!value) return <span>{LABEL.UNSPECIFIED}</span>;
-  if (value === "N/A") return <span>{value}</span>;
+  if (!value) return <span>{label}</span>;
+  if (value === LABEL.NA) return <span>{value}</span>;
   return (
     <Fragment>
       <MTooltip title={value}>

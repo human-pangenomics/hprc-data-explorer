@@ -161,7 +161,7 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         >,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.AWS_FASTA,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.AWS_FASTA,
-        width: { max: "1.5fr", min: "212px" },
+        width: { max: "1fr", min: "112px" },
       },
       {
         componentConfig: {
@@ -173,7 +173,7 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         >,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ASAT_ANNOTATION_FILE,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ASAT_ANNOTATION_FILE,
-        width: { max: "1.5fr", min: "212px" },
+        width: { max: "1fr", min: "112px" },
       },
       {
         componentConfig: {
@@ -186,7 +186,7 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         header:
           HPRC_DATA_EXPLORER_CATEGORY_LABEL.CAT_GENES_CHM13_ANNOTATION_FILE,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.CAT_GENES_CHM13_ANNOTATION_FILE,
-        width: { max: "1.5fr", min: "212px" },
+        width: { max: "1fr", min: "112px" },
       },
       {
         componentConfig: {
@@ -199,7 +199,7 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         header:
           HPRC_DATA_EXPLORER_CATEGORY_LABEL.CAT_GENES_HG38_ANNOTATION_FILE,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.CAT_GENES_HG38_ANNOTATION_FILE,
-        width: { max: "1.5fr", min: "212px" },
+        width: { max: "1fr", min: "112px" },
       },
       {
         componentConfig: {
@@ -211,7 +211,7 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         >,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.DNA_BRNN_ANNOTATION_FILE,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.DNA_BRNN_ANNOTATION_FILE,
-        width: { max: "1.5fr", min: "212px" },
+        width: { max: "1fr", min: "112px" },
       },
       {
         componentConfig: {
@@ -223,7 +223,7 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         >,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FLAGGER_All,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FLAGGER_ALL,
-        width: { max: "1.5fr", min: "212px" },
+        width: { max: "1fr", min: "112px" },
       },
       {
         componentConfig: {
@@ -235,7 +235,7 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         >,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FLAGGER_UNRELIABLE_ONLY,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FLAGGER_UNRELIABLE_ONLY,
-        width: { max: "1.5fr", min: "212px" },
+        width: { max: "1fr", min: "112px" },
       },
       {
         componentConfig: {
@@ -247,7 +247,7 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         >,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FLAGGER_UNRELIABLE_ONLY_NO_MT,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FLAGGER_UNRELIABLE_ONLY_NO_MT,
-        width: { max: "1.5fr", min: "212px" },
+        width: { max: "1fr", min: "112px" },
       },
       {
         componentConfig: {
@@ -259,7 +259,7 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         >,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.HSAT_ANNOTATION_FILE,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.HSAT_ANNOTATION_FILE,
-        width: { max: "1.5fr", min: "212px" },
+        width: { max: "1fr", min: "112px" },
       },
       {
         componentConfig: {
@@ -271,7 +271,7 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         >,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.REPEAT_MASKER_ANNOTATION_FILE,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.REPEAT_MASKER_ANNOTATION_FILE,
-        width: { max: "1.5fr", min: "212px" },
+        width: { max: "1fr", min: "112px" },
       },
       {
         componentConfig: {
@@ -283,7 +283,7 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         >,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SEG_DUPS_ANNOTATION_FILE,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.SEG_DUPS_ANNOTATION_FILE,
-        width: { max: "1.5fr", min: "212px" },
+        width: { max: "1fr", min: "112px" },
       },
       {
         componentConfig: {
@@ -295,7 +295,7 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         >,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TRF_ANNOTATION_FILE,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.TRF_ANNOTATION_FILE,
-        width: { max: "1.5fr", min: "212px" },
+        width: { max: "1fr", min: "112px" },
       },
       {
         columnVisible: false,
@@ -318,7 +318,7 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         >,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FASTA_SHA256,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FASTA_SHA256,
-        width: { max: "1.5fr", min: "212px" },
+        width: { max: "1fr", min: "112px" },
       },
       {
         columnVisible: false,
@@ -361,7 +361,7 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         >,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.GCP_FASTA,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.GCP_FASTA,
-        width: { max: "1.5fr", min: "212px" },
+        width: { max: "1fr", min: "112px" },
       },
       {
         columnVisible: false,
