@@ -93,7 +93,7 @@ export const HPRC_DATA_EXPLORER_CATEGORY_KEY = {
 };
 
 export const HPRC_DATA_EXPLORER_CATEGORY_LABEL = {
-  ACCESSION: "Accession",
+  ACCESSION: "Sample Accession",
   ASAT_ANNOTATION_FILE: "ASat",
   ASSEMBLY: "Assembly",
   AWS_FASTA: "AWS FASTA",
@@ -139,7 +139,7 @@ export const HPRC_DATA_EXPLORER_CATEGORY_LABEL = {
   LOC: "Location",
   MAX: "Max",
   MEAN: "Mean",
-  METADATA_ACCESSION: "Accession (Metadata)",
+  METADATA_ACCESSION: "File Accession",
   MIN: "Min",
   MM_TAG: "MM Tag",
   N25: "N25",
