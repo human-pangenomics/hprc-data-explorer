@@ -27,7 +27,7 @@ export const buildAccession = (
  */
 export const buildAsatAnnotationFile = (
   assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
+): React.ComponentProps<typeof C.TypographyNoWrap> => {
   return {
     value: assembly.asatAnnotationFile,
   };
@@ -53,7 +53,7 @@ export const buildAssembly = (
  */
 export const buildAwsFasta = (
   assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
+): React.ComponentProps<typeof C.TypographyNoWrap> => {
   return {
     value: assembly.awsFasta,
   };
@@ -131,7 +131,7 @@ export const buildBiosampleAccession = (
  */
 export const buildCatGenesChm13AnnotationFile = (
   assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
+): React.ComponentProps<typeof C.TypographyNoWrap> => {
   return {
     value: assembly.catGenesChm13AnnotationFile,
   };
@@ -144,7 +144,7 @@ export const buildCatGenesChm13AnnotationFile = (
  */
 export const buildCatGenesHg38AnnotationFile = (
   assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
+): React.ComponentProps<typeof C.TypographyNoWrap> => {
   return {
     value: assembly.catGenesHg38AnnotationFile,
   };
@@ -222,7 +222,7 @@ export const buildDesignDescription = (
  */
 export const buildDnaBrnnAnnotationFile = (
   assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
+): React.ComponentProps<typeof C.TypographyNoWrap> => {
   return {
     value: assembly.dnaBrnnAnnotationFile,
   };
@@ -248,7 +248,7 @@ export const buildFamilyId = (
  */
 export const buildFastaSha256 = (
   assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
+): React.ComponentProps<typeof C.TypographyNoWrap> => {
   return {
     value: assembly.fastaSha256,
   };
@@ -300,7 +300,7 @@ export const buildFiveHundredkbPlus = (
  */
 export const buildFlaggerAll = (
   assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
+): React.ComponentProps<typeof C.TypographyNoWrap> => {
   return {
     value: assembly.flaggerAll,
   };
@@ -313,7 +313,7 @@ export const buildFlaggerAll = (
  */
 export const buildFlaggerUnreliableOnly = (
   assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
+): React.ComponentProps<typeof C.TypographyNoWrap> => {
   return {
     value: assembly.flaggerUnreliableOnly,
   };
@@ -326,7 +326,7 @@ export const buildFlaggerUnreliableOnly = (
  */
 export const buildFlaggerUnreliableOnlyNoMT = (
   assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
+): React.ComponentProps<typeof C.TypographyNoWrap> => {
   return {
     value: assembly.flaggerUnreliableOnlyNoMT,
   };
@@ -404,7 +404,7 @@ export const buildGb = (
  */
 export const buildGcpFasta = (
   assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
+): React.ComponentProps<typeof C.TypographyNoWrap> => {
   return {
     value: assembly.gcpFasta,
   };
@@ -472,7 +472,7 @@ export const buildHaplotype = (
  */
 export const buildHsatAnnotationFile = (
   assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
+): React.ComponentProps<typeof C.TypographyNoWrap> => {
   return {
     value: assembly.hsatAnnotationFile,
   };
@@ -576,7 +576,7 @@ export const buildLibraryStrategy = (
  */
 export const buildLoc = (
   alignment: HPRCDataExplorerAlignment
-): React.ComponentProps<typeof C.BasicCell> => {
+): React.ComponentProps<typeof C.TypographyNoWrap> => {
   return {
     value: alignment.loc,
   };
@@ -771,7 +771,7 @@ export const buildOneMbPlus = (
  */
 export const buildPath = (
   rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
+): React.ComponentProps<typeof C.TypographyNoWrap> => {
   return {
     value: rawSequencingData.path,
   };
@@ -914,7 +914,7 @@ export const buildReferenceCoordinates = (
  */
 export const buildRepeatMaskerAnnotationFile = (
   assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
+): React.ComponentProps<typeof C.TypographyNoWrap> => {
   return {
     value: assembly.repeatMaskerAnnotationFile,
   };
@@ -953,7 +953,7 @@ export const buildSampleId = (
  */
 export const buildSegDupsAnnotationFile = (
   assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
+): React.ComponentProps<typeof C.TypographyNoWrap> => {
   return {
     value: assembly.segDupsAnnotationFile,
   };
@@ -1151,7 +1151,7 @@ export const buildTotalReads = (
  */
 export const buildTrfAnnotationFile = (
   assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
+): React.ComponentProps<typeof C.TypographyNoWrap> => {
   return {
     value: assembly.trfAnnotationFile,
   };

@@ -62,7 +62,7 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
         } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILENAME,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
-        width: { max: "1fr", min: "160px" },
+        width: { max: "1.5fr", min: "212px" },
       },
       {
         componentConfig: {
@@ -71,7 +71,7 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
         } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PIPELINE,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.PIPELINE,
-        width: { max: "0.5fr", min: "160px" },
+        width: { max: "1fr", min: "140px" },
       },
       {
         componentConfig: {
@@ -80,7 +80,7 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
         } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.REFERENCE_COORDINATES,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.REFERENCE_COORDINATES,
-        width: { max: "0.5fr", min: "112px" },
+        width: { max: "1fr", min: "112px" },
       },
       {
         componentConfig: {
@@ -89,17 +89,20 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
         } as ComponentConfig<typeof C.NTagCell, HPRCDataExplorerAlignment>,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.USE_CASE,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.USE_CASE,
-        width: { max: "1fr", min: "160px" },
+        width: { max: "1.2fr", min: "160px" },
       },
       {
         columnVisible: false,
         componentConfig: {
-          component: C.BasicCell,
+          component: C.TypographyNoWrap,
           viewBuilder: V.buildLoc,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
+        } as ComponentConfig<
+          typeof C.TypographyNoWrap,
+          HPRCDataExplorerAlignment
+        >,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.LOC,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.LOC,
-        width: { max: "1.5fr", min: "212px" },
+        width: { max: "0.8fr", min: "112px" },
       },
     ],
     defaultSort: {

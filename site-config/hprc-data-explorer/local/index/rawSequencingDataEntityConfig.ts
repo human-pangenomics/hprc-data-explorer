@@ -710,15 +710,15 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
         {
           columnVisible: true,
           componentConfig: {
-            component: C.BasicCell,
+            component: C.TypographyNoWrap,
             viewBuilder: V.buildPath,
           } as ComponentConfig<
-            typeof C.BasicCell,
+            typeof C.TypographyNoWrap,
             HPRCDataExplorerRawSequencingData
           >,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PATH,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.PATH,
-          width: { max: "1fr", min: "160px" },
+          width: { max: "1fr", min: "112px" },
         },
         {
           columnVisible: false,
@@ -874,7 +874,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           >,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.STUDY,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.STUDY,
-          width: { max: "0.5fr", min: "112px" },
+          width: { max: "0.5fr", min: "120px" },
         },
         {
           columnVisible: false,
@@ -913,7 +913,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           >,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TOTAL_BP,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.TOTAL_BP,
-          width: { max: "0.5fr", min: "112px" },
+          width: { max: "0.5fr", min: "144px" },
         },
         {
           columnVisible: false,
@@ -926,7 +926,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           >,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TOTAL_GBP,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.TOTAL_GBP,
-          width: { max: "0.5fr", min: "112px" },
+          width: { max: "0.5fr", min: "144px" },
         },
         {
           columnVisible: false,
