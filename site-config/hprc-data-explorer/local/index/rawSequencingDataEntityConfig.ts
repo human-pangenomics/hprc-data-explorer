@@ -32,25 +32,13 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.METADATA_ACCESSION,
             },
           ],
-          label: "Accession",
+          label: "SRA",
         },
         {
           categoryConfigs: [
             {
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SAMPLE_ID,
-            },
-            {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
-            },
-            {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SUPERPOPULATION,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SUPERPOPULATION,
-            },
-            {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SUBPOPULATION,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SUBPOPULATION,
             },
             {
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PRODUCTION_YEAR,
@@ -104,7 +92,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.DEEPCONSENSUS_VERSION,
             },
           ],
-          label: "Sequencing - PacBio",
+          label: "Sequencing - PacBio HiFi",
         },
         {
           categoryConfigs: [
@@ -116,29 +104,8 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.BASECALLER_VERSION,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BASECALLER_VERSION,
             },
-            {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.ONE_HUNDRED_KB_PLUS,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ONE_HUNDRED_KB_PLUS,
-            },
           ],
-          label: "Sequencing - ONT",
-        },
-        {
-          categoryConfigs: [
-            {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.COVERAGE,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.COVERAGE,
-            },
-            {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.TOTAL_GBP,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TOTAL_GBP,
-            },
-            {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.N50,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.N50,
-            },
-          ],
-          label: "Quality",
+          label: "Sequencing - ONT UL",
         },
       ],
       key: "raw-sequencing-data",
@@ -180,6 +147,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           width: { max: "0.5fr", min: "112px" },
         },
         {
+          columnVisible: false,
           componentConfig: {
             component: C.BasicCell,
             viewBuilder: V.buildFamilyId,
@@ -192,7 +160,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           width: { max: "0.5fr", min: "112px" },
         },
         {
-          columnVisible: true,
+          columnVisible: false,
           componentConfig: {
             component: C.BasicCell,
             viewBuilder: V.buildSuperpopulation,
@@ -205,7 +173,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           width: { max: "0.5fr", min: "112px" },
         },
         {
-          columnVisible: true,
+          columnVisible: false,
           componentConfig: {
             component: C.BasicCell,
             viewBuilder: V.buildSubpopulation,
