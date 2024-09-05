@@ -107,7 +107,7 @@ export const HPRC_DATA_EXPLORER_CATEGORY_LABEL = {
   CCS_ALGORITHM: "CCS Algorithm",
   COVERAGE: "Coverage",
   DATA_TYPE: "Data Type",
-  DEEPCONSENSUS_VERSION: "DeepConsensus Version",
+  DEEPCONSENSUS_VERSION: "Deep Consensus Version",
   DESIGN_DESCRIPTION: "Design Description",
   DNA_BRNN_ANNOTATION_FILE: "DNA BRNN",
   FAMILY_ID: "Family ID",
