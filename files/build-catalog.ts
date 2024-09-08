@@ -2,19 +2,26 @@ import { parse as parseCsv } from "csv-parse/sync";
 import fsp from "fs/promises";
 import {
   HPRCDataExplorerAlignment,
+  HPRCDataExplorerAnnotation,
   HPRCDataExplorerAssembly,
   HPRCDataExplorerRawSequencingData,
   LABEL,
 } from "../app/apis/catalog/hprc-data-explorer/common/entities";
-import { getRawSequencingDataId } from "../app/apis/catalog/hprc-data-explorer/common/utils";
+import {
+  getAnnotationId,
+  getAssemblyId,
+  getRawSequencingDataId,
+} from "../app/apis/catalog/hprc-data-explorer/common/utils";
 import {
   SourceAlignment,
+  SourceAnnotation,
   SourceAssembly,
   SourceRawSequencingData,
 } from "./entities";
 
 const SOURCE_PATH_RAW_SEQUENCING_DATA = "files/source/raw-sequencing-data.csv";
 const SOURCE_PATH_ASSEMBLIES = "files/source/assemblies.csv";
+const SOURCE_PATH_ANNOTATIONS = "files/source/annotations.csv";
 const SOURCE_PATH_ALIGNMENTS = "files/source/alignments.csv";
 
 buildCatalog();
@@ -22,6 +29,7 @@ buildCatalog();
 async function buildCatalog(): Promise<void> {
   const rawSequencingData = await buildRawSequencingData();
   const assemblies = await buildAssemblies();
+  const annotations = await buildAnnotations();
   const alignments = await buildAlignments();
 
   console.log("Raw sequencing data:", rawSequencingData.length);
@@ -29,6 +37,9 @@ async function buildCatalog(): Promise<void> {
 
   console.log("Assemblies:", assemblies.length);
   await saveJson("files/out/assemblies.json", assemblies);
+
+  console.log("Annotations:", annotations.length);
+  await saveJson("files/out/annotations.json", annotations);
 
   console.log("Alignments:", alignments.length);
   await saveJson("files/out/alignments.json", alignments);
@@ -121,54 +132,47 @@ async function buildAssemblies(): Promise<HPRCDataExplorerAssembly[]> {
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerAssembly => ({
       accession: parseStringOrNull(row.Accession),
-      asatAnnotationFile: parseStringOrNull(row["ASat-annotation-file"]),
       awsFasta: parseStringOrNull(row.aws_fasta),
-      catGenesChm13AnnotationFile: parseStringOrNull(
-        row.CAT_genes_chm13_annotation_file
-      ),
-      catGenesHg38AnnotationFile: parseStringOrNull(
-        row.CAT_genes_hg38_annotation_file
-      ),
-      dnaBrnnAnnotationFile: parseStringOrNull(row.DNA_BRNN_annotation_file),
       familyId: parseStringOrNull(row.familyID),
       fastaSha256: parseStringOrNull(row.fasta_sha256),
-      flaggerAll: parseStringOrNull(
-        row.Flagger_annotation_file_all_file_location
-      ),
-      flaggerUnreliableOnly: parseStringOrNull(
-        row.Flagger_annotation_file_unreliable_only_file_location
-      ),
-      flaggerUnreliableOnlyNoMT: parseStringOrNull(
-        row.Flagger_annotation_file_unreliable_only_no_MT_file_location
-      ),
       frag: parseNumberOrNull(row.frag),
       fullDup: parseNumberOrNull(row.full_dup),
       fullSgl: parseNumberOrNull(row.full_sgl),
       gcpFasta: parseStringOrNull(row.gcp_fasta),
       hammingErrRate: parsePercentageOrNull(row.hamming_err_rate),
       haplotype: row.haplotype,
-      hsatAnnotationFile: parseStringOrNull(row.HSat_annotation_file),
       l50: parseNumberOrNull(row.L50),
       n50: parseNumberOrNull(row.N50),
       numContigs: parseNumberOrNull(row.num_contigs),
       productionYear: parseStringOrNull(row["Production Year"]),
       qv: parseNumberOrStringOrNull(row.qv),
-      repeatMaskerAnnotationFile: parseStringOrNull(
-        row.Repeat_masker_annotation_file
-      ),
       sampleId: row.sample,
-      segDupsAnnotationFile: parseStringOrNull(row.Seg_Dups_annotation_file),
       subpopulation: parseStringOrNull(row.Subpopulation),
       superpopulation: parseStringOrNull(row.Superpopulation),
       switchErrRate: parsePercentageOrNull(row.switch_err_rate),
       totalLen: parseNumberOrNull(row.total_len),
-      trfAnnotationFile: parseStringOrNull(row.TRF_annotation_file),
     })
   );
   return mappedRows.sort((a, b) =>
-    (a.sampleId + "_" + a.haplotype).localeCompare(
-      b.sampleId + "_" + b.haplotype
-    )
+    getAssemblyId(a).localeCompare(getAssemblyId(b))
+  );
+}
+
+async function buildAnnotations(): Promise<HPRCDataExplorerAnnotation[]> {
+  const sourceRows = await readValuesFile<SourceAnnotation>(
+    SOURCE_PATH_ANNOTATIONS
+  );
+  const mappedRows = sourceRows.map(
+    (row): HPRCDataExplorerAnnotation => ({
+      annotationType: row.annotation_type,
+      fileLocation: row.file_location,
+      haplotype: parseStringOrNull(row.haplotype),
+      reference: parseStringOrNull(row.reference),
+      sampleId: row.sample,
+    })
+  );
+  return mappedRows.sort((a, b) =>
+    getAnnotationId(a).localeCompare(getAnnotationId(b))
   );
 }
 

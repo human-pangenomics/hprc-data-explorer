@@ -1,5 +1,6 @@
 import {
   HPRCDataExplorerAlignment,
+  HPRCDataExplorerAnnotation,
   HPRCDataExplorerAssembly,
   HPRCDataExplorerRawSequencingData,
 } from "./entities";
@@ -12,6 +13,12 @@ export function getRawSequencingDataId(
 
 export function getAssemblyId(assembly: HPRCDataExplorerAssembly): string {
   return `${assembly.sampleId}_${assembly.haplotype}`;
+}
+
+export function getAnnotationId(
+  annotation: HPRCDataExplorerAnnotation
+): string {
+  return `${annotation.sampleId}_${annotation.haplotype}_${annotation.annotationType}`;
 }
 
 export function getAlignmentId(alignment: HPRCDataExplorerAlignment): string {

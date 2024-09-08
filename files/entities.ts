@@ -66,36 +66,33 @@ export interface SourceRawSequencingData {
 
 export interface SourceAssembly {
   Accession: string;
-  "ASat-annotation-file": string;
   aws_fasta: string;
-  CAT_genes_chm13_annotation_file: string;
-  CAT_genes_hg38_annotation_file: string;
-  DNA_BRNN_annotation_file: string;
   familyID: string;
   fasta_sha256: string;
-  Flagger_annotation_file_all_file_location: string;
-  Flagger_annotation_file_unreliable_only_file_location: string;
-  Flagger_annotation_file_unreliable_only_no_MT_file_location: string;
   frag: string;
   full_dup: string;
   full_sgl: string;
   gcp_fasta: string;
   hamming_err_rate: string;
   haplotype: string;
-  HSat_annotation_file: string;
   L50: string;
   N50: string;
   num_contigs: string;
   "Production Year": string;
   qv: string;
-  Repeat_masker_annotation_file: string;
   sample: string;
-  Seg_Dups_annotation_file: string;
   Subpopulation: string;
   Superpopulation: string;
   switch_err_rate: string;
   total_len: string;
-  TRF_annotation_file: string;
+}
+
+export interface SourceAnnotation {
+  annotation_type: string;
+  file_location: string;
+  haplotype: string;
+  reference: string;
+  sample: string;
 }
 
 export interface SourceAlignment {

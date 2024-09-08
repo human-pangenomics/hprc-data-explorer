@@ -1,5 +1,6 @@
 export const HPRC_DATA_EXPLORER_CATEGORY_KEY = {
   ACCESSION: "accession",
+  ANNOTATION_TYPE: "annotationType",
   ASAT_ANNOTATION_FILE: "asatAnnotationFile",
   ASSEMBLY: "assembly",
   AWS_FASTA: "awsFasta",
@@ -20,6 +21,7 @@ export const HPRC_DATA_EXPLORER_CATEGORY_KEY = {
   FASTA_SHA256: "fastaSha256",
   FILENAME: "filename",
   FILETYPE: "filetype",
+  FILE_LOCATION: "fileLocation",
   FIVE_HUNDRED_KB_PLUS: "fiveHundredkbPlus",
   FLAGGER_ALL: "flaggerAll",
   FLAGGER_UNRELIABLE_ONLY: "flaggerUnreliableOnly",
@@ -67,6 +69,7 @@ export const HPRC_DATA_EXPLORER_CATEGORY_KEY = {
   QUARTILE_75: "quartile75",
   QV: "qv",
   READ_N50: "readN50",
+  REFERENCE: "reference",
   REFERENCE_COORDINATES: "referenceCoordinates",
   REPEAT_MASKER_ANNOTATION_FILE: "repeatMaskerAnnotationFile",
   RESULT: "result",
@@ -94,6 +97,7 @@ export const HPRC_DATA_EXPLORER_CATEGORY_KEY = {
 
 export const HPRC_DATA_EXPLORER_CATEGORY_LABEL = {
   ACCESSION: "Sample Accession",
+  ANNOTATION_TYPE: "Annotation Type",
   ASAT_ANNOTATION_FILE: "ASat",
   ASSEMBLY: "Assembly",
   AWS_FASTA: "AWS FASTA",
@@ -114,6 +118,7 @@ export const HPRC_DATA_EXPLORER_CATEGORY_LABEL = {
   FASTA_SHA256: "FASTA SHA-256",
   FILENAME: "Filename",
   FILETYPE: "Filetype",
+  FILE_LOCATION: "File Location",
   FIVE_HUNDRED_KB_PLUS: "500kb+",
   FLAGGER_All: "Flagger all",
   FLAGGER_UNRELIABLE_ONLY: "Flagger unreliable only",
@@ -161,6 +166,7 @@ export const HPRC_DATA_EXPLORER_CATEGORY_LABEL = {
   QUARTILE_75: "Quartile 75",
   QV: "qv",
   READ_N50: "Read N50",
+  REFERENCE: "Reference",
   REFERENCE_COORDINATES: "Reference Coordinates",
   REPEAT_MASKER_ANNOTATION_FILE: "Repeat Masker",
   RESULT: "Result",

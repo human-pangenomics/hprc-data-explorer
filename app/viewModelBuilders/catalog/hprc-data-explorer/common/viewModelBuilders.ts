@@ -1,5 +1,6 @@
 import {
   HPRCDataExplorerAlignment,
+  HPRCDataExplorerAnnotation,
   HPRCDataExplorerAssembly,
   HPRCDataExplorerRawSequencingData,
 } from "../../../../apis/catalog/hprc-data-explorer/common/entities";
@@ -21,15 +22,15 @@ export const buildAccession = (
 };
 
 /**
- * Build props for the ASat annotation file cell.
- * @param assembly - Assembly entity.
+ * Build props for the annotation type cell.
+ * @param annotation - Annotation entity.
  * @returns Props to be used for the cell.
  */
-export const buildAsatAnnotationFile = (
-  assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.TypographyNoWrap> => {
+export const buildAnnotationType = (
+  annotation: HPRCDataExplorerAnnotation
+): React.ComponentProps<typeof C.BasicCell> => {
   return {
-    value: assembly.asatAnnotationFile,
+    value: annotation.annotationType,
   };
 };
 
@@ -125,32 +126,6 @@ export const buildBiosampleAccession = (
 };
 
 /**
- * Build props for the CAT genes CHM13 annotation file cell.
- * @param assembly - Assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildCatGenesChm13AnnotationFile = (
-  assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.TypographyNoWrap> => {
-  return {
-    value: assembly.catGenesChm13AnnotationFile,
-  };
-};
-
-/**
- * Build props for the CAT genes hg38 annotation file cell.
- * @param assembly - Assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildCatGenesHg38AnnotationFile = (
-  assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.TypographyNoWrap> => {
-  return {
-    value: assembly.catGenesHg38AnnotationFile,
-  };
-};
-
-/**
  * Build props for the CCS algorithm cell.
  * @param rawSequencingData - Raw sequencing data entity.
  * @returns Props to be used for the cell.
@@ -216,19 +191,6 @@ export const buildDesignDescription = (
 };
 
 /**
- * Build props for the DNA BRNN annotation file cell.
- * @param assembly - Assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildDnaBrnnAnnotationFile = (
-  assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.TypographyNoWrap> => {
-  return {
-    value: assembly.dnaBrnnAnnotationFile,
-  };
-};
-
-/**
  * Build props for the family ID cell.
  * @param entity - Raw sequencing data or assembly entity.
  * @returns Props to be used for the cell.
@@ -251,6 +213,19 @@ export const buildFastaSha256 = (
 ): React.ComponentProps<typeof C.TypographyNoWrap> => {
   return {
     value: assembly.fastaSha256,
+  };
+};
+
+/**
+ * Build props for the file location cell.
+ * @param annotation - Annotation entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildFileLocation = (
+  annotation: HPRCDataExplorerAnnotation
+): React.ComponentProps<typeof C.TypographyNoWrap> => {
+  return {
+    value: annotation.fileLocation,
   };
 };
 
@@ -290,45 +265,6 @@ export const buildFiveHundredkbPlus = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.fiveHundredkbPlus?.toLocaleString(),
-  };
-};
-
-/**
- * Build props for the Flagger_all annotation file cell.
- * @param assembly - Assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildFlaggerAll = (
-  assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.TypographyNoWrap> => {
-  return {
-    value: assembly.flaggerAll,
-  };
-};
-
-/**
- * Build props for the Flagger_unreliable_only_file_location annotation file cell.
- * @param assembly - Assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildFlaggerUnreliableOnly = (
-  assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.TypographyNoWrap> => {
-  return {
-    value: assembly.flaggerUnreliableOnly,
-  };
-};
-
-/**
- * Build props for the Flagger_unreliable_only_no_MT annotation file cell.
- * @param assembly - Assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildFlaggerUnreliableOnlyNoMT = (
-  assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.TypographyNoWrap> => {
-  return {
-    value: assembly.flaggerUnreliableOnlyNoMT,
   };
 };
 
@@ -454,27 +390,14 @@ export const buildHammingErrRate = (
 
 /**
  * Build props for the haplotype cell.
- * @param assembly - Assembly entity.
+ * @param entity - Assembly or annotation entity.
  * @returns Props to be used for the cell.
  */
 export const buildHaplotype = (
-  assembly: HPRCDataExplorerAssembly
+  entity: HPRCDataExplorerAssembly | HPRCDataExplorerAnnotation
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
-    value: assembly.haplotype,
-  };
-};
-
-/**
- * Build props for the HSat annotation file cell.
- * @param assembly - Assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildHsatAnnotationFile = (
-  assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.TypographyNoWrap> => {
-  return {
-    value: assembly.hsatAnnotationFile,
+    value: entity.haplotype,
   };
 };
 
@@ -895,6 +818,19 @@ export const buildReadN50 = (
 };
 
 /**
+ * Build props for the reference cell.
+ * @param annotation - Annotation entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildReference = (
+  annotation: HPRCDataExplorerAnnotation
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: annotation.reference,
+  };
+};
+
+/**
  * Build props for the reference coordinates cell.
  * @param alignment - Alignment entity.
  * @returns Props to be used for the cell.
@@ -904,19 +840,6 @@ export const buildReferenceCoordinates = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: alignment.referenceCoordinates,
-  };
-};
-
-/**
- * Build props for the repeat masker annotation file cell.
- * @param assembly - Assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildRepeatMaskerAnnotationFile = (
-  assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.TypographyNoWrap> => {
-  return {
-    value: assembly.repeatMaskerAnnotationFile,
   };
 };
 
@@ -935,27 +858,17 @@ export const buildResult = (
 
 /**
  * Build props for the sample ID cell.
- * @param entity - Raw sequencing data or assembly entity.
+ * @param entity - Entity containing sample ID.
  * @returns Props to be used for the cell.
  */
 export const buildSampleId = (
-  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
+  entity:
+    | HPRCDataExplorerRawSequencingData
+    | HPRCDataExplorerAssembly
+    | HPRCDataExplorerAnnotation
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: entity.sampleId,
-  };
-};
-
-/**
- * Build props for the seg dups annotation file cell.
- * @param assembly - Assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildSegDupsAnnotationFile = (
-  assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.TypographyNoWrap> => {
-  return {
-    value: assembly.segDupsAnnotationFile,
   };
 };
 
@@ -1141,19 +1054,6 @@ export const buildTotalReads = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.totalReads?.toLocaleString(),
-  };
-};
-
-/**
- * Build props for the TRF annotation file cell.
- * @param assembly - Assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildTrfAnnotationFile = (
-  assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.TypographyNoWrap> => {
-  return {
-    value: assembly.trfAnnotationFile,
   };
 };
 
