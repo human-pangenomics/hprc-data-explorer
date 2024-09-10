@@ -52,6 +52,7 @@ _templates
 
 # unprocessed files
 /files/unprocessed_files/*
+!.gitkeep
 
 # python
 __pycache__
