@@ -52,6 +52,8 @@ _templates
 
 # unprocessed files
 /files/unprocessed_files/*
+!/files/unprocessed_files/.gitkeep
 
 # python
 __pycache__
+venv

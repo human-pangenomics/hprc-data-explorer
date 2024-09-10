@@ -31,14 +31,19 @@ yarn dev
 
 Once the server is running, visit [localhost:3000](localhost:3000) to view the Explorer!
 
-### Building the raw sequencing and data
-The raw seqencing and assemblies data are generated through a Python script. To install the required libraries
-use the following command from the root project directory:
+### Building the data source files
+The raw seqencing, assemblies, and annotations data are generated through a Python script. To create a virtual environment
+and install the required libraries, use the following commands from the root project directory:
 ```shell
+python3 -m venv ./venv
+source ./venv/bin/activate
 pip install -r files/requirements.txt
 ```
 Then run the scripts with:
 ```shell
 python3 files/build-raw-sequencing-files.py
 python3 files/build-assemblies-data.py
+python3 files/build-annotations-data.py
 ```
+The environment can be deactivated by running `deactivate`, and re-activated by running `source ./venv/bin/activate`
+again.

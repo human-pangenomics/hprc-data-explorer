@@ -3,6 +3,7 @@ import { SiteConfig } from "@databiosphere/findable-ui/lib/config/entities";
 import * as C from "../../../app/components/index";
 import { ROUTE } from "../../../app/routes/constants";
 import { alignmentEntityConfig } from "./index/alignmentEntityConfig";
+import { annotationEntityConfig } from "./index/annotationEntityConfig";
 import { assemblyEntityConfig } from "./index/assemblyEntityConfig";
 import { rawSequencingDataEntityConfig } from "./index/rawSequencingDataEntityConfig";
 
@@ -22,6 +23,7 @@ export function makeConfig(browserUrl: string): SiteConfig {
     entities: [
       rawSequencingDataEntityConfig,
       assemblyEntityConfig,
+      annotationEntityConfig,
       alignmentEntityConfig,
     ],
     explorerTitle: APP_TITLE,
@@ -44,6 +46,7 @@ export function makeConfig(browserUrl: string): SiteConfig {
               url: ROUTE.RAW_SEQUENCING_DATA,
             },
             { label: "Assemblies", url: ROUTE.ASSEMBLIES },
+            { label: "Annotations", url: ROUTE.ANNOTATIONS },
             { label: "Alignments", url: ROUTE.ALIGNMENTS },
           ],
           [
