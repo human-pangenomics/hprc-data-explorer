@@ -54,6 +54,6 @@ if __name__ == "__main__":
     outputDf = pd.concat([
         *[getTypeDf(df, type, "file_location") for type, df in annotationDfs.items()],
         *getTypeDfs(flaggerDf, FLAGGER_ANNOTATION_TYPES)
-    ])
+    ]).fillna({"reference": "N/A"})
     outputDf.to_csv(OUTPUT_FILE_PATH, index=False)
     print("Done!")
