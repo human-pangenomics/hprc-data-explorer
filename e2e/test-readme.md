@@ -38,21 +38,22 @@ through the actions taken as part of the test and view the impact on the web pag
   - Check that all text that matches a filter regex is clickable, shows a filter menu with checkboxes when clicked, and that the filter menu disapperas when the center of the page is clicked
     - Uses the regex "^(.+)\s+\([0-9]+\)\s\*" to match all filter buttons
     - Once the list of filters is finalized, this should be converted to using a constant list of filters
-    - Runs on all three tabs
+    - Runs on all three tabs except Annotations
   - Check that the filter counts in the filter menus match the resulting row counts for the main table for the first three filters on each tab
     - Once the list of filters is finalized, this should be converted to using a constant list of filters
+  - Check that the filter search bar can be used to select and deselect tests (runs on all four tabs)
 - Sort (`hprc-sort.spec.ts`)
   - Check that clicking the table header of the first row switches the first and last rows in that row
     - Does not check that any actual sorting occurs, only that the first and last rows are switched
-    - Runs on all three tables
+    - Runs on all three tables except Annotations
     - Should be expanded to run on all sortable columns once column names are finalized
 - Navigation
   - Check that all tabs appear on each tab page
-    - Runs on all tabs
+    - Runs on all tabs except Annotations
     - Cannot tell what tabs are selected because the aria-selected value is not set for the tab buttons
     - `hprc-urls.spec.ts`
   - Check that the data table appears on each tab and that the first cell of the first column is visible
-    - Runs on all tabs
+    - Runs on all tabs except Annotations
     - `hprc-table.spec.ts`
   - Check that `/` redirects to `/raw-sequencing-data` (`smoke-test.spec.ts`)
 - All tests rely on correct lists of tabs in `hprc-tabs.ts`
