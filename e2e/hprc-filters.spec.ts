@@ -2,7 +2,9 @@ import { test } from "@playwright/test";
 import { HPRC_TABS } from "./hprc-tabs";
 import {
   testAllFiltersPresence,
+  testDeselectFiltersThroughSearchBarForFirstNFilters,
   testFirstNFilterCounts,
+  testSelectFiltersThroughSearchBarForFirstNFilters,
 } from "./testFunctions";
 
 test("Expect at least one filter to exist on the Raw Sequencing Data tab and for all filters to function", async ({
@@ -52,4 +54,92 @@ test("Expect filter counts to update for the first five on the Alignments tab", 
   if (!result) {
     test.fail();
   }
+});
+
+test('Check that selecting the first 3 filters through the "Search all Filters" textbox works correctly on the Raw Sequencing Data tab', async ({
+  page,
+}) => {
+  test.setTimeout(120000);
+  await testSelectFiltersThroughSearchBarForFirstNFilters(
+    page,
+    HPRC_TABS.rawSequencingData,
+    3
+  );
+});
+
+test('Check that selecting the first 3 filters through the "Search all Filters" textbox works correctly on the Assemblies tab', async ({
+  page,
+}) => {
+  test.setTimeout(120000);
+  await testSelectFiltersThroughSearchBarForFirstNFilters(
+    page,
+    HPRC_TABS.assemblies,
+    3
+  );
+});
+
+test('Check that selecting the first 3 filters through the "Search all Filters" textbox works correctly on the Annotations tab', async ({
+  page,
+}) => {
+  test.setTimeout(120000);
+  await testSelectFiltersThroughSearchBarForFirstNFilters(
+    page,
+    HPRC_TABS.annotations,
+    3
+  );
+});
+
+test('Check that selecting the first 3 filters through the "Search all Filters" textbox works correctly on the Alignments tab', async ({
+  page,
+}) => {
+  test.setTimeout(120000);
+  await testSelectFiltersThroughSearchBarForFirstNFilters(
+    page,
+    HPRC_TABS.alignments,
+    3
+  );
+});
+
+test('Check that deselecting the first 3 filters through the "Search all Filters" textbox works correctly on the Raw Sequencing Data tab', async ({
+  page,
+}) => {
+  test.setTimeout(120000);
+  await testDeselectFiltersThroughSearchBarForFirstNFilters(
+    page,
+    HPRC_TABS.rawSequencingData,
+    3
+  );
+});
+
+test('Check that deselecting the first 3 filters through the "Search all Filters" textbox works correctly on the Assemblies tab', async ({
+  page,
+}) => {
+  test.setTimeout(120000);
+  await testDeselectFiltersThroughSearchBarForFirstNFilters(
+    page,
+    HPRC_TABS.assemblies,
+    3
+  );
+});
+
+test('Check that deselecting the first 3 filters through the "Search all Filters" textbox works correctly on the Annotations tab', async ({
+  page,
+}) => {
+  test.setTimeout(120000);
+  await testDeselectFiltersThroughSearchBarForFirstNFilters(
+    page,
+    HPRC_TABS.annotations,
+    3
+  );
+});
+
+test('Check that deselecting the first 3 filters through the "Search all Filters" textbox works correctly on the Alignments tab', async ({
+  page,
+}) => {
+  test.setTimeout(120000);
+  await testDeselectFiltersThroughSearchBarForFirstNFilters(
+    page,
+    HPRC_TABS.alignments,
+    3
+  );
 });
