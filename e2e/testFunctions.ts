@@ -298,12 +298,12 @@ const getFirstNonEmptyFilterOptionNameAndIndex = async (
   let filterOptionLocator = undefined;
   let i = 0;
   while (filterToSelect === "" && i < MAX_FILTER_OPTIONS_TO_CHECK) {
-    // Filter options display as "[text]\n[number]" , sometimes with extra whitespace, so we split on newlines and take the first non-empty string
-    const regex = /^(.*)\n+([0-9]+)$/;
+    // Filter options display as "[text]\n[number]" , sometimes with extra whitespace, so we want the string before the newline
+    const filterOptionRegex = /^(.*)\n+([0-9]+)\s*$/;
     filterOptionLocator = getNthFilterOptionLocator(page, i);
     filterToSelect = ((await filterOptionLocator.innerText())
       .trim()
-      .match(regex) ?? ["", ""])[1];
+      .match(filterOptionRegex) ?? ["", ""])[1];
     i += 1;
   }
   if (filterOptionLocator === undefined) {
