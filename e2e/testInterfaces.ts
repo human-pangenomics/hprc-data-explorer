@@ -1,5 +1,6 @@
 export interface TabDescription {
   preselectedColumns: columnDescription[];
+  searchFiltersPlaceholderText: string;
   selectableColumns: columnDescription[];
   tabName: string;
   url: string;
@@ -7,6 +8,7 @@ export interface TabDescription {
 
 export interface HprcTabCollection {
   alignments: TabDescription;
+  annotations: TabDescription;
   assemblies: TabDescription;
   rawSequencingData: TabDescription;
 }
