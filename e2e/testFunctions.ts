@@ -409,7 +409,7 @@ export async function testDeselectFiltersThroughSearchBar(
     const filterOptionNameAndIndex =
       await getFirstNonEmptyFilterOptionNameAndIndex(page);
     const filterOptionName = filterOptionNameAndIndex.name;
-    await filterOptionNameAndIndex.locator.click();
+    await filterOptionNameAndIndex.locator.getByRole("checkbox").click();
     await page.locator("body").click();
     // Search for and check the selected filter
     const searchFiltersInputLocator = page.getByPlaceholder(
