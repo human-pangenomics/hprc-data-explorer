@@ -22,6 +22,7 @@ export default withPlugins(
     images: {
       unoptimized: true,
     },
+    output: "export",
     reactStrictMode: true,
     async redirects() {
       return [
