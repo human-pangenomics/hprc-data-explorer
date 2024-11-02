@@ -22,16 +22,8 @@ export default withPlugins(
     images: {
       unoptimized: true,
     },
+    output: "export",
     reactStrictMode: true,
-    async redirects() {
-      return [
-        {
-          destination: "/reports",
-          permanent: true,
-          source: "/tasks",
-        },
-      ];
-    },
     transpilePackages: [...ESM_PACKAGES],
     webpack: (config) => {
       // Add the alias for the peer dependency
