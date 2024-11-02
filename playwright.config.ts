@@ -28,7 +28,7 @@ const config: PlaywrightTestConfig = {
     screenshot: "only-on-failure",
   },
   webServer: {
-    command: "npm run build:local && npm start",
+    command: "npm run build:local && npx serve@latest out",
     reuseExistingServer: !process.env.CI,
     timeout: 240 * 1000,
     url: "http://localhost:3000/",
