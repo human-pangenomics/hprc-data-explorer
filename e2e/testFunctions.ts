@@ -203,6 +203,45 @@ export async function testFirstNFilterCounts(
 }
 
 /**
+ * Get the count associated with a filter option
+ * @param filterText - The text resulting from the innerText of a filter option
+ * @returns - the number associated with the filter option
+ */
+const getFilterNumberFromText = (filterText: string): number => {
+  const filterNumbers = filterText.split("\n");
+  return (
+    filterNumbers
+      .reverse()
+      .map((x) => Number(x))
+      .find((x) => !isNaN(x) && x !== 0) ?? -1
+  );
+};
+
+const verifyFilterCount = async (
+  page: Page,
+  expectedCount: number
+): Promise<boolean> => {
+  const elementsPerPageRegex = /^Results 1 - ([0-9]+) of [0-9]+/;
+  await expect(page.getByText(elementsPerPageRegex)).toBeVisible();
+  const elementsPerPageText = ((
+    await page.getByText(elementsPerPageRegex).innerText()
+  ).match(elementsPerPageRegex) ?? ["", "-1"])[1];
+  const elementsPerPage = parseInt(elementsPerPageText) ?? -1;
+  if (elementsPerPage < 0) {
+    console.log(
+      "The number of elements per page was negative or did not appear"
+    );
+    return false;
+  }
+  const firstNumber =
+    expectedCount <= elementsPerPage ? expectedCount : elementsPerPage;
+  await expect(
+    page.getByText("Results 1 - " + firstNumber + " of " + expectedCount)
+  ).toBeVisible();
+  return true;
+};
+
+/**
  * Test that the counts associated with an array of filter names are reflected
  * in the table
  * @param page - a Playwright page object
@@ -216,18 +255,6 @@ export async function testFilterCounts(
   filterNames: string[]
 ): Promise<boolean> {
   await page.goto(tab.url);
-  const elementsPerPageRegex = /^Results 1 - ([0-9]+) of [0-9]+/;
-  await expect(page.getByText(elementsPerPageRegex)).toBeVisible();
-  const elementsPerPageText = ((
-    await page.getByText(elementsPerPageRegex).innerText()
-  ).match(elementsPerPageRegex) ?? ["", "-1"])[1];
-  const elementsPerPage = parseInt(elementsPerPageText) ?? -1;
-  if (elementsPerPage < 0) {
-    console.log(
-      "The number of elements per page was negative or did not appear"
-    );
-    return false;
-  }
   // For each arbitrarily selected filter
   for (const filterName of filterNames) {
     // Select the filter
@@ -235,16 +262,9 @@ export async function testFilterCounts(
     // Get the number associated with the first filter button, and select it
     await page.waitForLoadState("load");
     const filterButton = getFirstFilterOptionLocator(page);
-    const filterNumbers = (await filterButton.innerText()).split("\n");
-    const filterNumber =
-      filterNumbers
-        .reverse()
-        .map((x) => Number(x))
-        .find((x) => !isNaN(x) && x !== 0) ?? -1;
-    if (filterNumber < 0) {
-      console.log(filterNumbers.map((x) => Number(x)));
-      return false;
-    }
+    const filterNumber = getFilterNumberFromText(
+      await filterButton.innerText()
+    );
     // Check the filter
     await filterButton.getByRole("checkbox").dispatchEvent("click");
     await page.waitForLoadState("load");
@@ -252,11 +272,10 @@ export async function testFilterCounts(
     await page.locator("body").click();
     await expect(page.getByRole("checkbox")).toHaveCount(0);
     // Expect the displayed count of elements to be 0
-    const firstNumber =
-      filterNumber <= elementsPerPage ? filterNumber : elementsPerPage;
-    await expect(
-      page.getByText("Results 1 - " + firstNumber + " of " + filterNumber)
-    ).toBeVisible();
+    const filterCountPassed = await verifyFilterCount(page, filterNumber);
+    if (!filterCountPassed) {
+      return false;
+    }
   }
   return true;
 }
@@ -329,125 +348,45 @@ const getFilterTagLocator = (page: Page, filterTagName: string): Locator => {
 };
 
 /**
- * Run a test that gets the first filter option of each of the filters specified in
- * filterNames, then attempts to select each through the filter search bar.
+ * Run a test that selects a filter option through the search bar and checks that it becomes selected
  * @param page - a Playwright page object
  * @param tab - the Tab object to run the test on
- * @param filterNames - an array of potential filter names on the selected tab
+ * @returns - true if the test passes and false if the test should fail
  */
 export async function testSelectFiltersThroughSearchBar(
   page: Page,
-  tab: TabDescription,
-  filterNames: string[]
-): Promise<void> {
-  await page.goto(tab.url);
-  for (const filterName of filterNames) {
-    // Get the first filter option
-    await expect(page.getByText(filterRegex(filterName))).toBeVisible();
-    await page.getByText(filterRegex(filterName)).dispatchEvent("click");
-    const filterOptionName = (
-      await getFirstNonEmptyFilterOptionNameAndIndex(page)
-    ).name;
-    await page.locator("body").click();
-    // Search for the filter option
-    const searchFiltersInputLocator = page.getByPlaceholder(
-      tab.searchFiltersPlaceholderText,
-      { exact: true }
-    );
-    await expect(searchFiltersInputLocator).toBeVisible();
-    await searchFiltersInputLocator.fill(filterOptionName);
-    // Select a filter option with a matching name
-    await getNamedFilterOptionLocator(page, filterOptionName).first().click();
-    await page.locator("body").click();
-    const filterTagLocator = getFilterTagLocator(page, filterOptionName);
-    // Check the filter tag is selected and click it to reset the filter
-    await expect(filterTagLocator).toBeVisible();
-    await filterTagLocator.dispatchEvent("click");
-  }
-}
-
-/**
- * Runs filter search test for the first n filters on the page
- * This is a temporary test that should only be used until a final list of
- * filters is available.
- * @param page - a Playwright page object
- * @param tab - the tab object to run the test on
- * @param n - the number of filters tot est
- * @returns - true if the test passes and false if the test should fail
- */
-export async function testSelectFiltersThroughSearchBarForFirstNFilters(
-  page: Page,
-  tab: TabDescription,
-  n: number
+  tab: TabDescription
 ): Promise<boolean> {
   await page.goto(tab.url);
-  const firstNFilterNames = await getFirstNFilterNames(page, n);
-  if (firstNFilterNames.length < n) {
+  // Select the filter search bar using placeholder text
+  const searchFiltersInputLocator = page.getByPlaceholder(
+    tab.searchFiltersPlaceholderText,
+    { exact: true }
+  );
+  await expect(searchFiltersInputLocator).toBeVisible();
+  await searchFiltersInputLocator.click();
+  // Select the first filter with associated text
+  const firstFilterWithTextNameAndLocator =
+    await getFirstNonEmptyFilterOptionNameAndIndex(page);
+  const filterCount = getFilterNumberFromText(
+    await firstFilterWithTextNameAndLocator.locator.innerText()
+  );
+  await firstFilterWithTextNameAndLocator.locator.click();
+  await page.locator("body").click();
+  const filterTagLocator = getFilterTagLocator(
+    page,
+    firstFilterWithTextNameAndLocator.name
+  );
+  // Check the filter tag is selected
+  await expect(filterTagLocator).toBeVisible();
+  // Check that the filter counts are equal to the number associated with the selected filter
+  const filterCountSuccess = await verifyFilterCount(page, filterCount);
+  if (!filterCountSuccess) {
     return false;
   }
-  await testSelectFiltersThroughSearchBar(page, tab, firstNFilterNames);
-  return true;
-}
-
-/**
- * Run a test that selects the first filter option of each of the filters specified in
- * filterNames, then attempts to deselect each through the filter search bar.
- * @param page - a Playwright page object
- * @param tab - the Tab object to run the test on
- * @param filterNames - an array of potential filter names on the selected tab
- */
-export async function testDeselectFiltersThroughSearchBar(
-  page: Page,
-  tab: TabDescription,
-  filterNames: string[]
-): Promise<void> {
-  await page.goto(tab.url);
-  for (const filterName of filterNames) {
-    // Select each filter option
-    await expect(page.getByText(filterRegex(filterName))).toBeVisible();
-    await page.getByText(filterRegex(filterName)).dispatchEvent("click");
-    const filterOptionNameAndIndex =
-      await getFirstNonEmptyFilterOptionNameAndIndex(page);
-    const filterOptionName = filterOptionNameAndIndex.name;
-    await filterOptionNameAndIndex.locator.getByRole("checkbox").click();
-    await page.locator("body").click();
-    // Search for and check the selected filter
-    const searchFiltersInputLocator = page.getByPlaceholder(
-      tab.searchFiltersPlaceholderText,
-      { exact: true }
-    );
-    await expect(searchFiltersInputLocator).toBeVisible();
-    await searchFiltersInputLocator.fill(filterOptionName);
-    await getNamedFilterOptionLocator(page, filterOptionName)
-      .locator("input[type='checkbox']:checked")
-      .first()
-      .click();
-    await page.locator("body").click();
-    const filterTagLocator = getFilterTagLocator(page, filterOptionName);
-    await expect(filterTagLocator).not.toBeVisible();
-  }
-}
-
-/**
- * Runs filter search test for the first n filters on the page
- * This is a temporary test that should only be used until a final list of
- * filters is available.
- * @param page - a Playwright page object
- * @param tab - the tab object to run the test on
- * @param n - the number of filters tot est
- * @returns - true if the test passes and false if the test should fail
- */
-export async function testDeselectFiltersThroughSearchBarForFirstNFilters(
-  page: Page,
-  tab: TabDescription,
-  n: number
-): Promise<boolean> {
-  await page.goto(tab.url);
-  const firstNFilterNames = await getFirstNFilterNames(page, n);
-  if (firstNFilterNames.length < n) {
-    return false;
-  }
-  await testDeselectFiltersThroughSearchBar(page, tab, firstNFilterNames);
+  // Click to remove the filter tag
+  await filterTagLocator.dispatchEvent("click");
+  await expect(filterTagLocator).not.toBeVisible();
   return true;
 }
 
