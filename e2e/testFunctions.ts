@@ -79,6 +79,26 @@ const getAllFilterNames = async (page: Page): Promise<string[]> => {
 };
 
 /**
+ * Get the names of the first n filters on the page
+ * @param page - a Playwright page object
+ * @param n - the number of filters to test
+ * @returns - true if the test passes and false if the test should fail
+ */
+const getFirstNFilterNames = async (
+  page: Page,
+  n: number
+): Promise<string[]> => {
+  const allFilterNames = await getAllFilterNames(page);
+  if (allFilterNames.length < n) {
+    console.log(
+      `There are only ${allFilterNames.length} filters, which is fewer than the ${n} specified for this test`
+    );
+    return [""];
+  }
+  return allFilterNames.slice(0, n);
+};
+
+/**
  * Test that all text that looks like a filter button is clickable and opens
  * a filter menu with at least one checkbox.
  * This is a temporary test to be used until a permanent list of filter names
@@ -139,15 +159,25 @@ export const getNamedFilterButtonLocator = (
 };
 
 /**
+ * Get a locator for the nth filter option on the page.
+ * @param page - a Playwright page object
+ * @param n - the index of the filter option to get
+ * @returns - a Playwright locator object for the first filter option on the page
+ */
+const getNthFilterOptionLocator = (page: Page, n: number): Locator => {
+  return page
+    .getByRole("button")
+    .filter({ has: page.getByRole("checkbox") })
+    .nth(n);
+};
+
+/**
  * Get a locator for the first filter option on the page.
  * @param page - a Playwright page object
  * @returns - a Playwright locator object for the first filter option on the page
  */
-export const getFirstFilterButtonLocator = (page: Page): Locator => {
-  return page
-    .getByRole("button")
-    .filter({ has: page.getByRole("checkbox") })
-    .first();
+export const getFirstFilterOptionLocator = (page: Page): Locator => {
+  return getNthFilterOptionLocator(page, 0);
 };
 
 /**
@@ -165,16 +195,51 @@ export async function testFirstNFilterCounts(
   n: number
 ): Promise<boolean> {
   await page.goto(tab.url);
-  const allFilterNames = await getAllFilterNames(page);
-  if (allFilterNames.length < n) {
+  const firstNFilterNames = await getFirstNFilterNames(page, n);
+  if (firstNFilterNames.length < n) {
+    return false;
+  }
+  return await testFilterCounts(page, tab, firstNFilterNames);
+}
+
+/**
+ * Get the count associated with a filter option
+ * @param filterText - The text resulting from the innerText of a filter option
+ * @returns - the number associated with the filter option
+ */
+const getFilterNumberFromText = (filterText: string): number => {
+  const filterNumbers = filterText.split("\n");
+  return (
+    filterNumbers
+      .reverse()
+      .map((x) => Number(x))
+      .find((x) => !isNaN(x) && x !== 0) ?? -1
+  );
+};
+
+const verifyFilterCount = async (
+  page: Page,
+  expectedCount: number
+): Promise<boolean> => {
+  const elementsPerPageRegex = /^Results 1 - ([0-9]+) of [0-9]+/;
+  await expect(page.getByText(elementsPerPageRegex)).toBeVisible();
+  const elementsPerPageText = ((
+    await page.getByText(elementsPerPageRegex).innerText()
+  ).match(elementsPerPageRegex) ?? ["", "-1"])[1];
+  const elementsPerPage = parseInt(elementsPerPageText) ?? -1;
+  if (elementsPerPage < 0) {
     console.log(
-      `There are only ${allFilterNames.length} filters, which is fewer than the ${n} specified for this test`
+      "The number of elements per page was negative or did not appear"
     );
     return false;
   }
-  const firstNFilterNames = allFilterNames.slice(0, n);
-  return await testFilterCounts(page, tab, firstNFilterNames);
-}
+  const firstNumber =
+    expectedCount <= elementsPerPage ? expectedCount : elementsPerPage;
+  await expect(
+    page.getByText("Results 1 - " + firstNumber + " of " + expectedCount)
+  ).toBeVisible();
+  return true;
+};
 
 /**
  * Test that the counts associated with an array of filter names are reflected
@@ -190,35 +255,16 @@ export async function testFilterCounts(
   filterNames: string[]
 ): Promise<boolean> {
   await page.goto(tab.url);
-  const elementsPerPageRegex = /^Results 1 - ([0-9]+) of [0-9]+/;
-  await expect(page.getByText(elementsPerPageRegex)).toBeVisible();
-  const elementsPerPageText = ((
-    await page.getByText(elementsPerPageRegex).innerText()
-  ).match(elementsPerPageRegex) ?? ["", "-1"])[1];
-  const elementsPerPage = parseInt(elementsPerPageText) ?? -1;
-  if (elementsPerPage < 0) {
-    console.log(
-      "The number of elements per page was negative or did not appear"
-    );
-    return false;
-  }
   // For each arbitrarily selected filter
   for (const filterName of filterNames) {
     // Select the filter
     await page.getByText(filterRegex(filterName)).dispatchEvent("click");
     // Get the number associated with the first filter button, and select it
     await page.waitForLoadState("load");
-    const filterButton = getFirstFilterButtonLocator(page);
-    const filterNumbers = (await filterButton.innerText()).split("\n");
-    const filterNumber =
-      filterNumbers
-        .reverse()
-        .map((x) => Number(x))
-        .find((x) => !isNaN(x) && x !== 0) ?? -1;
-    if (filterNumber < 0) {
-      console.log(filterNumbers.map((x) => Number(x)));
-      return false;
-    }
+    const filterButton = getFirstFilterOptionLocator(page);
+    const filterNumber = getFilterNumberFromText(
+      await filterButton.innerText()
+    );
     // Check the filter
     await filterButton.getByRole("checkbox").dispatchEvent("click");
     await page.waitForLoadState("load");
@@ -226,12 +272,121 @@ export async function testFilterCounts(
     await page.locator("body").click();
     await expect(page.getByRole("checkbox")).toHaveCount(0);
     // Expect the displayed count of elements to be 0
-    const firstNumber =
-      filterNumber <= elementsPerPage ? filterNumber : elementsPerPage;
-    await expect(
-      page.getByText("Results 1 - " + firstNumber + " of " + filterNumber)
-    ).toBeVisible();
+    const filterCountPassed = await verifyFilterCount(page, filterNumber);
+    if (!filterCountPassed) {
+      return false;
+    }
   }
+  return true;
+}
+
+/**
+ * Get a locator for the specified filter option. Requires a filter menu to be open
+ * @param page - a Playwright page object
+ * @param filterOptionName - the name of the filter option
+ * @returns a Playwright locator to the filter button
+ */
+export const getNamedFilterOptionLocator = (
+  page: Page,
+  filterOptionName: string
+): Locator => {
+  // The Regex matches a filter name with a number after it, with potential whitespace before and after the number.
+  // This matches how the innerText in the filter options menu appears to Playwright.
+  return page.getByRole("button").filter({
+    has: page.getByRole("checkbox"),
+    hasText: RegExp(`^${escapeRegExp(filterOptionName)}\\s*\\d+\\s*`),
+  });
+};
+
+interface FilterOptionNameAndLocator {
+  locator: Locator;
+  name: string;
+}
+
+const MAX_FILTER_OPTIONS_TO_CHECK = 10;
+
+/**
+ * Gets the name of the filter option associated with a locator
+ * @param page - a Playwright Page object, on which a filter must be currently selected
+ * @returns the innerText of the first nonempty filter option as a promise
+ */
+const getFirstNonEmptyFilterOptionNameAndIndex = async (
+  page: Page
+): Promise<FilterOptionNameAndLocator> => {
+  let filterToSelect = "";
+  let filterOptionLocator = undefined;
+  let i = 0;
+  while (filterToSelect === "" && i < MAX_FILTER_OPTIONS_TO_CHECK) {
+    // Filter options display as "[text]\n[number]" , sometimes with extra whitespace, so we want the string before the newline
+    const filterOptionRegex = /^(.*)\n+([0-9]+)\s*$/;
+    filterOptionLocator = getNthFilterOptionLocator(page, i);
+    filterToSelect = ((await filterOptionLocator.innerText())
+      .trim()
+      .match(filterOptionRegex) ?? ["", ""])[1];
+    i += 1;
+  }
+  if (filterOptionLocator === undefined) {
+    throw new Error(
+      "No locator found within the maximum number of filter options"
+    );
+  }
+  return { locator: filterOptionLocator, name: filterToSelect };
+};
+
+const FILTER_CSS_SELECTOR = "#sidebar-positioner";
+
+/**
+ * Get a locator for a named filter tag
+ * @param page - a Playwright page object
+ * @param filterTagName - the name of the filter tag to search for
+ * @returns - a locator for the named filter tag
+ */
+const getFilterTagLocator = (page: Page, filterTagName: string): Locator => {
+  return page
+    .locator(FILTER_CSS_SELECTOR)
+    .getByText(filterTagName, { exact: true });
+};
+
+/**
+ * Run a test that selects a filter option through the search bar and checks that it becomes selected
+ * @param page - a Playwright page object
+ * @param tab - the Tab object to run the test on
+ * @returns - true if the test passes and false if the test should fail
+ */
+export async function testSelectFiltersThroughSearchBar(
+  page: Page,
+  tab: TabDescription
+): Promise<boolean> {
+  await page.goto(tab.url);
+  // Select the filter search bar using placeholder text
+  const searchFiltersInputLocator = page.getByPlaceholder(
+    tab.searchFiltersPlaceholderText,
+    { exact: true }
+  );
+  await expect(searchFiltersInputLocator).toBeVisible();
+  await searchFiltersInputLocator.click();
+  // Select the first filter with associated text
+  const firstFilterWithTextNameAndLocator =
+    await getFirstNonEmptyFilterOptionNameAndIndex(page);
+  const filterCount = getFilterNumberFromText(
+    await firstFilterWithTextNameAndLocator.locator.innerText()
+  );
+  await firstFilterWithTextNameAndLocator.locator.click();
+  await page.locator("body").click();
+  const filterTagLocator = getFilterTagLocator(
+    page,
+    firstFilterWithTextNameAndLocator.name
+  );
+  // Check the filter tag is selected
+  await expect(filterTagLocator).toBeVisible();
+  // Check that the filter counts are equal to the number associated with the selected filter
+  const filterCountSuccess = await verifyFilterCount(page, filterCount);
+  if (!filterCountSuccess) {
+    return false;
+  }
+  // Click to remove the filter tag
+  await filterTagLocator.dispatchEvent("click");
+  await expect(filterTagLocator).not.toBeVisible();
   return true;
 }
 
