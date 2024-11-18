@@ -19,6 +19,8 @@ import {
   SourceRawSequencingData,
 } from "./entities";
 
+const CATALOG_DIR = "catalog";
+
 const SOURCE_PATH_RAW_SEQUENCING_DATA = "files/source/raw-sequencing-data.csv";
 const SOURCE_PATH_ASSEMBLIES = "files/source/assemblies.csv";
 const SOURCE_PATH_ANNOTATIONS = "files/source/annotations.csv";
@@ -33,16 +35,16 @@ async function buildCatalog(): Promise<void> {
   const alignments = await buildAlignments();
 
   console.log("Raw sequencing data:", rawSequencingData.length);
-  await saveJson("files/out/raw-sequencing-data.json", rawSequencingData);
+  await saveJson(`${CATALOG_DIR}/raw-sequencing-data.json`, rawSequencingData);
 
   console.log("Assemblies:", assemblies.length);
-  await saveJson("files/out/assemblies.json", assemblies);
+  await saveJson(`${CATALOG_DIR}/assemblies.json`, assemblies);
 
   console.log("Annotations:", annotations.length);
-  await saveJson("files/out/annotations.json", annotations);
+  await saveJson(`${CATALOG_DIR}/annotations.json`, annotations);
 
   console.log("Alignments:", alignments.length);
-  await saveJson("files/out/alignments.json", alignments);
+  await saveJson(`${CATALOG_DIR}/alignments.json`, alignments);
 
   console.log("Done");
 }

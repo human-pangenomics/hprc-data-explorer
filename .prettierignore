@@ -8,6 +8,7 @@ coverage
 # next.js
 .next
 out
+catalog
 
 # production
 build

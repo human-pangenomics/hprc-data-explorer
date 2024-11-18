@@ -116,5 +116,5 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
     enableTab: false,
   },
   route: "alignments",
-  staticLoadFile: "files/out/alignments.json",
+  staticLoadFile: "catalog/alignments.json",
 };
