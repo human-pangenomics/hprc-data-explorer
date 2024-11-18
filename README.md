@@ -27,6 +27,8 @@ Once the server is running, visit [localhost:3000](localhost:3000) to view the E
 
 ## Building the Catalog Files
 
+
+
 To rebuild the catalog files you will need the prerequisites installed
 
 1. pyenv

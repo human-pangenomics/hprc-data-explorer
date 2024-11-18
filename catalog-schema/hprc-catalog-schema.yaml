@@ -1,0 +1,43 @@
+# ---------------------------------------------------------
+# Notes:
+# 1. Prefer slots over attributes for better reusability.
+# 2. Snake case is preferred for naming slots.
+# 3. Uppper Camel Case for class names.
+# 4. Upper Snake Case for enum names.
+# 5. Defalut inline is false.
+# 6. Default range is string exctpt for identifiers.
+# ---------------------------------------------------------
+
+imports:
+  - linkml:types # this imports the linkml types schema
+default_range: string # if not specified, the default range is string
+
+id: https://humanpangenome.org/hprc-data-explorer
+name: HprcDataExplorer
+description: A LinkML model for the HPRC Data Explorer.
+prefixes:
+  ex: https://example.org/
+  linkml: https://w3id.org/linkml/
+
+classes:
+  SequencingFile:
+    description: A file containing sequencing data.
+    slots:
+      - file_id
+      - file_name
+      - file_size
+      - file_format
+
+slots:
+  file_id:
+    identifier: true
+    description: A unique identifier for the file.
+    range: string
+    inlined: true
+  file_format:
+    description: An indication of the format of an electronic file; include the full file extension including compression extensions. Usually aligns with file extension (e.g. bam, sam, text, csv, etc.)
+  file_size:
+    description: Size of file in megabytes.
+    range: integer
+  file_name:
+    description: The name of the file.
