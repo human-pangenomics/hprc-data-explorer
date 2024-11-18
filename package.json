@@ -11,7 +11,7 @@
     "prepare": "husky install .husky",
     "test": "jest --runInBand",
     "test:e2e": "playwright test --trace retain-on-failure",
-    "build-hprc-db": "esrun files/build-catalog.ts"
+    "build-hprc-db": "esrun catalog-build/build-catalog.ts"
   },
   "dependencies": {
     "@databiosphere/findable-ui": "15.0.0",
