@@ -8,7 +8,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Define paths relative to the script's directory
 STORAGE_FOLDER_PATH = os.path.join(BASE_DIR, "unprocessed_files/")
-OUTPUT_PATH = os.path.join(BASE_DIR, "source/raw-sequencing-data.csv")
+OUTPUT_PATH = os.path.join(BASE_DIR, "source/sequencing-data.csv")
 
 HIC_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/hprc-data-explorer-tables/HPRC_HiC.tsv"
 ONT_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/hprc-data-explorer-tables/HPRC_ONT.tsv"
