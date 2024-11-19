@@ -22,7 +22,7 @@ import {
 const CATALOG_DIR = "catalog";
 
 const SOURCE_PATH_RAW_SEQUENCING_DATA =
-  "catalog-build/source/raw-sequencing-data.csv";
+  "catalog-build/source/sequencing-data.csv";
 const SOURCE_PATH_ASSEMBLIES = "catalog-build/source/assemblies.csv";
 const SOURCE_PATH_ANNOTATIONS = "catalog-build/source/annotations.csv";
 const SOURCE_PATH_ALIGNMENTS = "catalog-build/source/alignments.csv";
