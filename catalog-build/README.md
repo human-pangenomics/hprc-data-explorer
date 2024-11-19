@@ -14,10 +14,17 @@ pip install -r catalog-build/requirements.txt
 
 Then run the scripts from this directory with:
 ```shell
-python3 build-sequencing-files.py
+python3 build-sequencing-data.py
 python3 build-assemblies.py
 python3 build-annotations.py
 ```
+
+
+This can also be accomplshed by running
+```shell
+npm run build-catalog-source
+```
+
 The environment can be deactivated by running `deactivate`, and re-activated by running `source ./venv/bin/activate`
 again.
 

@@ -36,8 +36,8 @@ async function buildCatalog(): Promise<void> {
   const annotations = await buildAnnotations();
   const alignments = await buildAlignments();
 
-  console.log("Raw sequencing data:", rawSequencingData.length);
-  await saveJson(`${CATALOG_DIR}/raw-sequencing-data.json`, rawSequencingData);
+  console.log("Sequencing data:", rawSequencingData.length);
+  await saveJson(`${CATALOG_DIR}/sequencing-data.json`, rawSequencingData);
 
   console.log("Assemblies:", assemblies.length);
   await saveJson(`${CATALOG_DIR}/assemblies.json`, assemblies);
