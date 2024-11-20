@@ -11,7 +11,8 @@
     "prepare": "husky install .husky",
     "test": "jest --runInBand",
     "test:e2e": "playwright test --trace retain-on-failure",
-    "build-hprc-db": "esrun files/build-catalog.ts"
+    "build-catalog": "esrun catalog-build/build-catalog.ts",
+    "build-catalog-source": "python3 catalog-build/build-sequencing-data.py && python3 catalog-build/build-assemblies.py && python3 catalog-build/build-annotations.py"
   },
   "dependencies": {
     "@databiosphere/findable-ui": "15.0.0",

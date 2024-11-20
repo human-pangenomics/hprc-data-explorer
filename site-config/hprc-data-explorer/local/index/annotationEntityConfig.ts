@@ -117,5 +117,5 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
       enableTab: false,
     },
     route: "annotations",
-    staticLoadFile: "files/out/annotations.json",
+    staticLoadFile: "catalog/annotations.json",
   };
