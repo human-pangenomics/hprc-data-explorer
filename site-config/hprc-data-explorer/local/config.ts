@@ -11,9 +11,11 @@ import { rawSequencingDataEntityConfig } from "./index/rawSequencingDataEntityCo
 const LOCALHOST = "http://localhost:3000";
 const APP_TITLE = "HPRC Data Explorer";
 const BROWSER_URL = LOCALHOST;
+const GIT_HUB_REPO_URL =
+  "https://github.com/human-pangenomics/hprc-data-explorer";
 const HOME_PAGE_PATH = ROUTE.RAW_SEQUENCING_DATA;
 
-export function makeConfig(browserUrl: string): SiteConfig {
+export function makeConfig(browserUrl: string, gitHubUrl: string): SiteConfig {
   return {
     appTitle: APP_TITLE,
     browserURL: browserUrl,
@@ -27,9 +29,11 @@ export function makeConfig(browserUrl: string): SiteConfig {
       alignmentEntityConfig,
     ],
     explorerTitle: APP_TITLE,
+    gitHubUrl,
     layout: {
       footer: {
         Branding: "",
+        versionInfo: true,
       },
       header: {
         logo: C.Logo({
@@ -70,6 +74,6 @@ export function makeConfig(browserUrl: string): SiteConfig {
   };
 }
 
-const config: SiteConfig = makeConfig(BROWSER_URL);
+const config: SiteConfig = makeConfig(BROWSER_URL, GIT_HUB_REPO_URL);
 
 export default config;
