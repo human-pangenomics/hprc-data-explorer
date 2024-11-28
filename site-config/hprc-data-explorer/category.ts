@@ -1,6 +1,7 @@
 export const HPRC_DATA_EXPLORER_CATEGORY_KEY = {
   ACCESSION: "accession",
   ALIGNMENT: "alignment",
+  ALIGNMENT_DOWNLOAD: "TODO",
   ANNOTATION_TYPE: "annotationType",
   ASAT_ANNOTATION_FILE: "asatAnnotationFile",
   ASSEMBLY: "assembly",
@@ -100,6 +101,7 @@ export const HPRC_DATA_EXPLORER_CATEGORY_KEY = {
 export const HPRC_DATA_EXPLORER_CATEGORY_LABEL = {
   ACCESSION: "Sample Accession",
   ALIGNMENT: "Alignment",
+  ALIGNMENT_DOWNLOAD: "",
   ANNOTATION_TYPE: "Annotation Type",
   ASAT_ANNOTATION_FILE: "ASat",
   ASSEMBLY: "Assembly",

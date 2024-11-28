@@ -35,6 +35,20 @@ export const buildAlignment = (
 };
 
 /**
+ * Build props for the alignment download cell.
+ * @param alignment - Alignment entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildAlignmentDownload = (
+  alignment: HPRCDataExplorerAlignment
+): React.ComponentProps<typeof C.FileDownload> => {
+  return {
+    fileName: alignment.filename,
+    fileUrl: getAlignmentDownloadUrl(alignment),
+  };
+};
+
+/**
  * Build props for the annotation type cell.
  * @param annotation - Annotation entity.
  * @returns Props to be used for the cell.
@@ -1130,4 +1144,16 @@ export const buildWhales = (
  */
 function formatPercentage(decimalFraction: number): string {
   return `${(decimalFraction * 100).toLocaleString()}%`;
+}
+
+/**
+ * Get the download URL for an alignment.
+ * @param alignment - Alignment entity.
+ * @returns download URL.
+ */
+function getAlignmentDownloadUrl(alignment: HPRCDataExplorerAlignment): string {
+  const s3UriMatch = /^s3:\/\/([^/]+)\/(.*)$/.exec(alignment.loc);
+  if (!s3UriMatch) return alignment.loc;
+  const [, bucketName, filePath] = s3UriMatch;
+  return `https://${bucketName}.s3.amazonaws.com/${filePath}`;
 }

@@ -65,6 +65,15 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
     columns: [
       {
         componentConfig: {
+          component: C.FileDownload,
+          viewBuilder: V.buildAlignmentDownload,
+        } as ComponentConfig<typeof C.FileDownload, HPRCDataExplorerAlignment>,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ALIGNMENT_DOWNLOAD,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ALIGNMENT_DOWNLOAD,
+        width: { max: "auto", min: "76px" },
+      },
+      {
+        componentConfig: {
           component: C.BasicCell,
           viewBuilder: V.buildAlignment,
         } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
