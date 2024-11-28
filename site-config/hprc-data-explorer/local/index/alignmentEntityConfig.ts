@@ -23,12 +23,16 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
       {
         categoryConfigs: [
           {
-            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.USE_CASE,
-            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.USE_CASE,
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.ALIGNMENT,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ALIGNMENT,
           },
           {
-            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
-            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILENAME,
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.VERSION,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.VERSION,
+          },
+          {
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.USE_CASE,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.USE_CASE,
           },
           {
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PIPELINE,
@@ -37,6 +41,10 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
           {
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.REFERENCE_COORDINATES,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.REFERENCE_COORDINATES,
+          },
+          {
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILENAME,
           },
         ],
       },
@@ -55,6 +63,25 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
   label: "Alignments",
   list: {
     columns: [
+      {
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildAlignment,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ALIGNMENT,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ALIGNMENT,
+        width: { max: "1fr", min: "112px" },
+      },
+      {
+        columnVisible: false,
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildVersion,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.VERSION,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.VERSION,
+        width: { max: "0.5fr", min: "112px" },
+      },
       {
         componentConfig: {
           component: C.BasicCell,

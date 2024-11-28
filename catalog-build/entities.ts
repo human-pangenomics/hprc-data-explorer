@@ -96,9 +96,11 @@ export interface SourceAnnotation {
 }
 
 export interface SourceAlignment {
+  alignment: string;
   file: string;
   loc: string;
   pipeline: string;
   reference_coordinates: string;
   use_case: string;
+  version: string;
 }

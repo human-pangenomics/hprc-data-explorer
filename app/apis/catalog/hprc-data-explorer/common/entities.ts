@@ -96,11 +96,13 @@ export interface HPRCDataExplorerAnnotation {
 }
 
 export interface HPRCDataExplorerAlignment {
+  alignment: string;
   filename: string;
   loc: string;
   pipeline: string;
   referenceCoordinates: string | null;
   useCase: string[];
+  version: string | null;
 }
 
 export enum LABEL {
