@@ -65,6 +65,15 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
     columns: [
       {
         componentConfig: {
+          component: C.FileDownload,
+          viewBuilder: V.buildAlignmentDownload,
+        } as ComponentConfig<typeof C.FileDownload, HPRCDataExplorerAlignment>,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ALIGNMENT_DOWNLOAD,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ALIGNMENT_DOWNLOAD,
+        width: { max: "auto", min: "76px" },
+      },
+      {
+        componentConfig: {
           component: C.BasicCell,
           viewBuilder: V.buildAlignment,
         } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
@@ -117,19 +126,6 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.USE_CASE,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.USE_CASE,
         width: { max: "1.2fr", min: "160px" },
-      },
-      {
-        columnVisible: false,
-        componentConfig: {
-          component: C.TypographyNoWrap,
-          viewBuilder: V.buildLoc,
-        } as ComponentConfig<
-          typeof C.TypographyNoWrap,
-          HPRCDataExplorerAlignment
-        >,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.LOC,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.LOC,
-        width: { max: "0.8fr", min: "112px" },
       },
     ],
     defaultSort: {

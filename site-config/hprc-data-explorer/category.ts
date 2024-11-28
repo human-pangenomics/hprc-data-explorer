@@ -1,6 +1,7 @@
 export const HPRC_DATA_EXPLORER_CATEGORY_KEY = {
   ACCESSION: "accession",
   ALIGNMENT: "alignment",
+  ALIGNMENT_DOWNLOAD: "loc",
   ANNOTATION_TYPE: "annotationType",
   ASAT_ANNOTATION_FILE: "asatAnnotationFile",
   ASSEMBLY: "assembly",
@@ -45,7 +46,6 @@ export const HPRC_DATA_EXPLORER_CATEGORY_KEY = {
   LIBRARY_SELECTION: "librarySelection",
   LIBRARY_SOURCE: "librarySource",
   LIBRARY_STRATEGY: "libraryStrategy",
-  LOC: "loc",
   MAX: "max",
   MEAN: "mean",
   METADATA_ACCESSION: "metadataAccession",
@@ -100,6 +100,7 @@ export const HPRC_DATA_EXPLORER_CATEGORY_KEY = {
 export const HPRC_DATA_EXPLORER_CATEGORY_LABEL = {
   ACCESSION: "Sample Accession",
   ALIGNMENT: "Alignment",
+  ALIGNMENT_DOWNLOAD: "",
   ANNOTATION_TYPE: "Annotation Type",
   ASAT_ANNOTATION_FILE: "ASat",
   ASSEMBLY: "Assembly",
@@ -144,7 +145,6 @@ export const HPRC_DATA_EXPLORER_CATEGORY_LABEL = {
   LIBRARY_SELECTION: "Library Selection",
   LIBRARY_SOURCE: "Library Source",
   LIBRARY_STRATEGY: "Library Strategy",
-  LOC: "Location",
   MAX: "Max",
   MEAN: "Mean",
   METADATA_ACCESSION: "File Accession",
