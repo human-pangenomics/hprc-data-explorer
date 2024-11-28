@@ -4,8 +4,10 @@
 # 2. Snake case is preferred for naming slots.
 # 3. Uppper Camel Case for class names.
 # 4. Upper Snake Case for enum names.
-# 5. Defalut inline is false.
+# 5. Defalut inlined is false.
 # 6. Default range is string exctpt for identifiers.
+# 7. Use types to specify simple validation on a a slot e.g. pattern, min, max, etc.
+# 8. Use types to specify the range of a slot
 # ---------------------------------------------------------
 
 imports:
@@ -16,19 +18,204 @@ id: https://humanpangenome.org/hprc-data-explorer
 name: HprcDataExplorer
 description: A LinkML model for the HPRC Data Explorer.
 prefixes:
-  ex: https://example.org/
+  ex: http://example.org/
   linkml: https://w3id.org/linkml/
 
 classes:
   SequencingFile:
     description: A file containing sequencing data.
     slots:
-      - file_id
-      - file_name
-      - file_size
-      - file_format
+      - 100kb+
+      - 1Mb+
+      - 200kb+
+      - 300kb+
+      - 400kb+
+      - 500kb+
+      - Accession
+      - DeepConsensus_version
+      - MM_tag
+      - N25
+      - N50
+      - N75
+      - Production Year
+      - Sample
+      - Subpopulation
+      - Superpopulation
+      - accession
+      - assembly
+      - basecaller
+      - basecaller_model
+      - basecaller_version
+      - bioproject_accession
+      - biosample_accession
+      - ccs_algorithm
+      - coverage
+      - data_type
+      - design_description
+      - familyID
+      - filename
+      - filetype
+      - generator_contact
+      - generator_facility
+      - instrument_model
+      - library_ID
+      - library_layout
+      - library_selection
+      - library_source
+      - library_strategy
+      - max
+      - mean
+      - min
+      - notes
+      - ntsm_result
+      - ntsm_score
+      - path
+      - platform
+      - polymerase_version
+      - quartile_25
+      - quartile_50
+      - quartile_75
+      - result
+      - sample_ID
+      - sample_id
+      - seq_kit
+      - seq_plate_chemistry_version
+      - shear_method
+      - size_selection
+      - study
+      - title
+      - total_Gbp
+      - total_bp
+      - total_reads
+      - whales
 
 slots:
+  100kb+:
+    description: TODO
+  1Mb+:
+    description: TODO
+  200kb+:
+    description: TODO
+  300kb+:
+    description: TODO
+  400kb+:
+    description: TODO
+  500kb+:
+    description: TODO
+  Accession:
+    description: TODO
+  DeepConsensus_version:
+    description: TODO
+  MM_tag:
+    description: TODO
+  N25:
+    description: TODO
+  N50:
+    description: TODO
+  N75:
+    description: TODO
+  Production Year:
+    description: TODO
+  Sample:
+    description: TODO
+  Subpopulation:
+    description: TODO
+  Superpopulation:
+    description: TODO
+  accession:
+    description: TODO
+  assembly:
+    description: TODO
+  basecaller:
+    description: TODO
+  basecaller_model:
+    description: TODO
+  basecaller_version:
+    description: TODO
+  bioproject_accession:
+    description: TODO
+  biosample_accession:
+    description: TODO
+  ccs_algorithm:
+    description: TODO
+  coverage:
+    description: TODO
+  data_type:
+    description: TODO
+  design_description:
+    description: TODO
+  familyID:
+    description: TODO
+  filename:
+    description: TODO
+  filetype:
+    description: TODO
+  generator_contact:
+    description: TODO
+  generator_facility:
+    description: TODO
+  instrument_model:
+    description: TODO
+  library_ID:
+    description: TODO
+  library_layout:
+    description: TODO
+  library_selection:
+    description: TODO
+  library_source:
+    description: TODO
+  library_strategy:
+    description: TODO
+  max:
+    description: TODO
+  mean:
+    description: TODO
+  min:
+    description: TODO
+  notes:
+    description: TODO
+  ntsm_result:
+    description: TODO
+  ntsm_score:
+    description: TODO
+  path:
+    description: TODO
+  platform:
+    description: TODO
+  polymerase_version:
+    description: TODO
+  quartile_25:
+    description: TODO
+  quartile_50:
+    description: TODO
+  quartile_75:
+    description: TODO
+  result:
+    description: TODO
+  sample_ID:
+    description: TODO
+  sample_id:
+    description: TODO
+  seq_kit:
+    description: TODO
+  seq_plate_chemistry_version:
+    description: TODO
+  shear_method:
+    description: TODO
+  size_selection:
+    description: TODO
+  study:
+    description: TODO
+  title:
+    description: TODO
+  total_Gbp:
+    description: TODO
+  total_bp:
+    description: TODO
+  total_reads:
+    description: TODO
+  whales:
+    description: TODO
   file_id:
     identifier: true
     description: A unique identifier for the file.
@@ -41,3 +228,15 @@ slots:
     range: integer
   file_name:
     description: The name of the file.
+  production_year:
+    description: The year the file was produced.
+    range: ProductionYearPattern
+
+types:
+  ProductionYearPattern:
+    description: Describes year a file was produced.
+    base: str
+    pattern: '^YR\d$'
+    examples:
+      - value: YR1
+      - value: YR2
