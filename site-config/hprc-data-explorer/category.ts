@@ -1,5 +1,6 @@
 export const HPRC_DATA_EXPLORER_CATEGORY_KEY = {
   ACCESSION: "accession",
+  ALIGNMENT: "alignment",
   ANNOTATION_TYPE: "annotationType",
   ASAT_ANNOTATION_FILE: "asatAnnotationFile",
   ASSEMBLY: "assembly",
@@ -92,11 +93,13 @@ export const HPRC_DATA_EXPLORER_CATEGORY_KEY = {
   TRF_ANNOTATION_FILE: "trfAnnotationFile",
   TWO_HUNDRED_KB_PLUS: "twoHundredkbPlus",
   USE_CASE: "useCase",
+  VERSION: "version",
   WHALES: "whales",
 };
 
 export const HPRC_DATA_EXPLORER_CATEGORY_LABEL = {
   ACCESSION: "Sample Accession",
+  ALIGNMENT: "Alignment",
   ANNOTATION_TYPE: "Annotation Type",
   ASAT_ANNOTATION_FILE: "ASat",
   ASSEMBLY: "Assembly",
@@ -189,5 +192,6 @@ export const HPRC_DATA_EXPLORER_CATEGORY_LABEL = {
   TRF_ANNOTATION_FILE: "TRF",
   TWO_HUNDRED_KB_PLUS: "200kb+",
   USE_CASE: "Use Case",
+  VERSION: "Version",
   WHALES: "Whales",
 };

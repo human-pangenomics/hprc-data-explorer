@@ -186,11 +186,13 @@ async function buildAlignments(): Promise<HPRCDataExplorerAlignment[]> {
   );
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerAlignment => ({
+      alignment: row.alignment,
       filename: row.file,
       loc: row.loc,
       pipeline: row.pipeline,
       referenceCoordinates: parseStringOrNull(row.reference_coordinates),
       useCase: parseStringArray(row.use_case),
+      version: parseStringOrNull(row.version),
     })
   );
   return mappedRows.sort((a, b) => a.loc.localeCompare(b.loc));

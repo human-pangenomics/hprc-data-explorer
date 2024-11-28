@@ -22,6 +22,19 @@ export const buildAccession = (
 };
 
 /**
+ * Build props for the alignment cell.
+ * @param alignment - Alignment entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildAlignment = (
+  alignment: HPRCDataExplorerAlignment
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: alignment.alignment,
+  };
+};
+
+/**
  * Build props for the annotation type cell.
  * @param annotation - Annotation entity.
  * @returns Props to be used for the cell.
@@ -1081,6 +1094,19 @@ export const buildUseCase = (
   return {
     label: getPluralizedMetadataLabel(METADATA_KEY.USE_CASE),
     values: alignment.useCase,
+  };
+};
+
+/**
+ * Build props for the version cell.
+ * @param alignment - Alignment entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildVersion = (
+  alignment: HPRCDataExplorerAlignment
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: alignment.version,
   };
 };
 
