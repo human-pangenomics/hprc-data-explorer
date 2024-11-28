@@ -1,4 +1,3 @@
 
 # Catalog input files
-unprocessed_files/*
-!unprocessed_files/.gitkeep
+unprocessed_files
