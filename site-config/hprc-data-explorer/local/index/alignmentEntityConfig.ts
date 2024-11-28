@@ -127,19 +127,6 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.USE_CASE,
         width: { max: "1.2fr", min: "160px" },
       },
-      {
-        columnVisible: false,
-        componentConfig: {
-          component: C.TypographyNoWrap,
-          viewBuilder: V.buildLoc,
-        } as ComponentConfig<
-          typeof C.TypographyNoWrap,
-          HPRCDataExplorerAlignment
-        >,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.LOC,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.LOC,
-        width: { max: "0.8fr", min: "112px" },
-      },
     ],
     defaultSort: {
       desc: SORT_DIRECTION.ASCENDING,

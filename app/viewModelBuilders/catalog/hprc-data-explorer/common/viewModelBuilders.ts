@@ -520,19 +520,6 @@ export const buildLibraryStrategy = (
 };
 
 /**
- * Build props for the loc cell.
- * @param alignment - Alignment entity.
- * @returns Props to be used for the cell.
- */
-export const buildLoc = (
-  alignment: HPRCDataExplorerAlignment
-): React.ComponentProps<typeof C.TypographyNoWrap> => {
-  return {
-    value: alignment.loc,
-  };
-};
-
-/**
  * Build props for the max cell.
  * @param rawSequencingData - Raw sequencing data entity.
  * @returns Props to be used for the cell.
