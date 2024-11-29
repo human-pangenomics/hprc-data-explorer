@@ -98,6 +98,7 @@ export interface SourceAnnotation {
 export interface SourceAlignment {
   alignment: string;
   file: string;
+  file_size: string;
   loc: string;
   pipeline: string;
   reference_coordinates: string;

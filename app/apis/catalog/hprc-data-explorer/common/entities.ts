@@ -98,6 +98,7 @@ export interface HPRCDataExplorerAnnotation {
 export interface HPRCDataExplorerAlignment {
   alignment: string;
   filename: string;
+  fileSize: number;
   loc: string;
   pipeline: string;
   referenceCoordinates: string | null;

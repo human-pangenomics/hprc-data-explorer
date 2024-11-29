@@ -103,6 +103,15 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
       {
         componentConfig: {
           component: C.BasicCell,
+          viewBuilder: V.buildFileSize,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILE_SIZE,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILE_SIZE,
+        width: { max: "0.5fr", min: "112px" },
+      },
+      {
+        componentConfig: {
+          component: C.BasicCell,
           viewBuilder: V.buildPipeline,
         } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PIPELINE,
