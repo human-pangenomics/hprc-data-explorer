@@ -138,8 +138,8 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
       },
     ],
     defaultSort: {
-      desc: SORT_DIRECTION.ASCENDING,
-      id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
+      desc: SORT_DIRECTION.DESCENDING,
+      id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ALIGNMENT,
     },
   } as ListConfig<HPRCDataExplorerAlignment>,
   listView: {
