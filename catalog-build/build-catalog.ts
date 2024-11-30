@@ -187,6 +187,7 @@ async function buildAlignments(): Promise<HPRCDataExplorerAlignment[]> {
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerAlignment => ({
       alignment: row.alignment,
+      fileSize: parseNumber(row.file_size),
       filename: row.file,
       loc: row.loc,
       pipeline: row.pipeline,
@@ -216,6 +217,13 @@ async function saveJson(filePath: string, data: unknown): Promise<void> {
 
 function parseStringOrNull(value: string): string | null {
   return value.trim() || null;
+}
+
+function parseNumber(value: string): number {
+  const n = parseNumberOrNull(value);
+  if (n === null)
+    throw new Error(`Invalid number value: ${JSON.stringify(value)}`);
+  return n;
 }
 
 function parseNumberOrNull(value: string): number | null {

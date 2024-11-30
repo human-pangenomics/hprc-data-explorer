@@ -1,3 +1,4 @@
+import { formatFileSize } from "@databiosphere/findable-ui/lib/utils/formatFileSize";
 import {
   HPRCDataExplorerAlignment,
   HPRCDataExplorerAnnotation,
@@ -266,6 +267,19 @@ export const buildFilename = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: entity.filename,
+  };
+};
+
+/**
+ * Build props for the file size cell.
+ * @param alignment - Alignment entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildFileSize = (
+  alignment: HPRCDataExplorerAlignment
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: formatFileSize(alignment.fileSize),
   };
 };
 
