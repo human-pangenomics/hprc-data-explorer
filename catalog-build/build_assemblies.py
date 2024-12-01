@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 import numpy as np
-from build_help import download_file
+from build_help import download_file, get_file_sizes_from_uris
 
 ASSEMBLY_URL = "https://raw.githubusercontent.com/human-pangenomics/HPP_Year1_Assemblies/main/assembly_index/Year1_assemblies_v2_genbank.index"
 QC_URL = "https://raw.githubusercontent.com/human-pangenomics/HPP_Year1_Assemblies/main/automated_qc_results/Y1_assemblies_v2_genbank_QC.csv"
@@ -95,11 +95,12 @@ if __name__ == "__main__":
     ))
     # Add the QC DataFrame
     qc_df_joined_with_haplotype = process_qc_df(qc_df)
-    output_df = combined_df.merge(
+    combined_df_with_qc = combined_df.merge(
         qc_df_joined_with_haplotype,
         on=["sample", "haplotype"],
         how="left",
         validate="one_to_one"
     )
+    output_df = combined_df_with_qc.assign(file_size=get_file_sizes_from_uris(combined_df_with_qc["aws_fasta"], "assembly"))
     output_df.to_csv(OUTPUT_FILE_PATH, index=False)
-    print("Done!")
+    print("\nAssembly processing complete!\n")

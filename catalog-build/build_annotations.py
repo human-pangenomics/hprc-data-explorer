@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 import numpy as np
-from build_help import download_file
+from build_help import download_file, get_file_sizes_from_uris
 
 CAT_URL = "https://raw.githubusercontent.com/human-pangenomics/HPP_Year1_Assemblies/main/annotation_index/Year1_assemblies_v2_genbank_CAT_genes.index"
 FLAGGER_URL = "https://raw.githubusercontent.com/human-pangenomics/HPP_Year1_Assemblies/main/annotation_index/Year1_assemblies_v2_genbank_Flagger.index"
@@ -57,9 +57,10 @@ if __name__ == "__main__":
     annotation_dfs[CAT_ANNOTATION_TYPES[HG38]] = cat_df[cat_df["reference"] == HG38]
 
     # Concatenate the annotation files
-    output_df = pd.concat([
+    combined_annotations_df = pd.concat([
         *[get_type_df(df, type, "file_location") for type, df in annotation_dfs.items()],
         *get_type_dfs(flagger_df, FLAGGER_ANNOTATION_TYPES)
     ]).fillna({"reference": "N/A"})
+    output_df = combined_annotations_df.assign(file_size=get_file_sizes_from_uris(combined_annotations_df["file_location"], "annotation"))
     output_df.to_csv(OUTPUT_FILE_PATH, index=False)
-    print("Done!")
+    print("\nAnnotation processing complete!\n")

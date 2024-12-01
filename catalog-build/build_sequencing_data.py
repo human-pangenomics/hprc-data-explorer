@@ -68,4 +68,4 @@ if __name__ == "__main__":
     )[0]
     joined = join_samples(metadata_files, biosamples_table_file)
     joined.to_csv(OUTPUT_PATH, index=False)
-    print("\nSequencing data processing complete!")
+    print("\nSequencing data processing complete!\n")
