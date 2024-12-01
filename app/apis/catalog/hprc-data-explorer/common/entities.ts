@@ -1,3 +1,9 @@
+export type HPRCDataExplorerEntity =
+  | HPRCDataExplorerAlignment
+  | HPRCDataExplorerAnnotation
+  | HPRCDataExplorerAssembly
+  | HPRCDataExplorerRawSequencingData;
+
 export interface HPRCDataExplorerRawSequencingData {
   accession: string | null;
   assembly: string | null;
