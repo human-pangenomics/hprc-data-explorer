@@ -17,31 +17,31 @@ METADATA_URLS = [HIC_URL, ONT_URL, PACBIO_HIFI_URL]
 BIOSAMPLES_TABLE_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/production/hprc-production-biosample-table.tsv"
 
 
-def downloadSourceFiles(urls, outputFolderPath):
+def download_source_files(urls, output_folder_path):
     paths = []
     for url in urls:
         # Get the filename and the path where the output will be saved
-        paths.append(download_file(url, outputFolderPath))
+        paths.append(download_file(url, output_folder_path))
     return paths
 
 
-def joinSamples(metadataPaths, biosamplesTablePath):
+def join_samples(metadata_paths, biosamples_table_path):
     # Generate each column across all provided sheets
-    metadataList = [
+    metadata_list = [
         pd.read_csv(path, sep="\t", keep_default_na=False).drop_duplicates()
-        for path in metadataPaths
+        for path in metadata_paths
     ]
-    metadataColumns = np.unique([col for df in metadataList for col in df.columns])
+    metadata_columns = np.unique([col for df in metadata_list for col in df.columns])
     # Concatenate all the provided metadata sheets
-    allMetadata = (
-        pd.concat(metadataList, axis=0, ignore_index=True)
-        .reindex(columns=metadataColumns)
+    all_metadata = (
+        pd.concat(metadata_list, axis=0, ignore_index=True)
+        .reindex(columns=metadata_columns)
         .fillna("N/A")
     )
     # Join the concatenated sheets with the table
-    biosamplesTable = pd.read_csv(biosamplesTablePath, sep="\t")
-    joined = allMetadata.merge(
-        biosamplesTable,
+    biosamples_table = pd.read_csv(biosamples_table_path, sep="\t")
+    joined = all_metadata.merge(
+        biosamples_table,
         left_on="sample_ID",
         right_on="Sample",
         how="left",
@@ -50,7 +50,7 @@ def joinSamples(metadataPaths, biosamplesTablePath):
     print("\nThe following biosamples did not have corresponding metadata:")
     print(
         ", ".join(
-            allMetadata[~allMetadata["sample_ID"].isin(biosamplesTable["Sample"])][
+            all_metadata[~all_metadata["sample_ID"].isin(biosamples_table["Sample"])][
                 "sample_ID"
             ].unique()
         )
@@ -62,10 +62,10 @@ def joinSamples(metadataPaths, biosamplesTablePath):
 
 
 if __name__ == "__main__":
-    metadataFiles = downloadSourceFiles(METADATA_URLS, STORAGE_FOLDER_PATH)
-    biosamplesTableFile = downloadSourceFiles(
+    metadata_files = download_source_files(METADATA_URLS, STORAGE_FOLDER_PATH)
+    biosamples_table_file = download_source_files(
         [BIOSAMPLES_TABLE_URL], STORAGE_FOLDER_PATH
     )[0]
-    joined = joinSamples(metadataFiles, biosamplesTableFile)
+    joined = join_samples(metadata_files, biosamples_table_file)
     joined.to_csv(OUTPUT_PATH, index=False)
     print("\nSequencing data processing complete!")

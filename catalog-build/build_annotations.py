@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 import numpy as np
-from build_help import downloadFile
+from build_help import download_file
 
 CAT_URL = "https://raw.githubusercontent.com/human-pangenomics/HPP_Year1_Assemblies/main/annotation_index/Year1_assemblies_v2_genbank_CAT_genes.index"
 FLAGGER_URL = "https://raw.githubusercontent.com/human-pangenomics/HPP_Year1_Assemblies/main/annotation_index/Year1_assemblies_v2_genbank_Flagger.index"
@@ -31,35 +31,35 @@ FLAGGER_ANNOTATION_TYPES = {
     "all_file_location": "flagger_all_file_location"
 }
 
-def getTypeDf(sourceDf, type, locationColumn, allLocationColumns=[]):
-    otherLocationColumns = [c for c in allLocationColumns if c != locationColumn]
-    return sourceDf.drop(columns=otherLocationColumns).rename(columns={locationColumn: "file_location"}).assign(annotation_type=pd.Series(type, index=sourceDf.index))
+def get_type_df(source_df, type, location_column, all_location_columns=[]):
+    other_location_columns = [c for c in all_location_columns if c != location_column]
+    return source_df.drop(columns=other_location_columns).rename(columns={location_column: "file_location"}).assign(annotation_type=pd.Series(type, index=source_df.index))
 
-def getTypeDfs(sourceDf, typesByColumn):
-    return [getTypeDf(sourceDf, type, locationColumn, typesByColumn.keys()) for locationColumn, type in typesByColumn.items()]
+def get_type_dfs(source_df, types_by_column):
+    return [get_type_df(source_df, type, location_column, types_by_column.keys()) for location_column, type in types_by_column.items()]
 
 if __name__ == "__main__":
     # Download the files from Github
-    catPath = downloadFile(CAT_URL, DOWNLOADS_FOLDER_PATH)
-    flaggerPath = downloadFile(FLAGGER_URL, DOWNLOADS_FOLDER_PATH)
-    annotationPaths = {
-        type: downloadFile(ANNOTATION_URLS[type], DOWNLOADS_FOLDER_PATH) for type in ANNOTATION_URLS
+    cat_path = download_file(CAT_URL, DOWNLOADS_FOLDER_PATH)
+    flagger_path = download_file(FLAGGER_URL, DOWNLOADS_FOLDER_PATH)
+    annotation_paths = {
+        type: download_file(ANNOTATION_URLS[type], DOWNLOADS_FOLDER_PATH) for type in ANNOTATION_URLS
     }
 
     # Get DataFrames from downloaded files
-    catDf = pd.read_csv(catPath, sep="\t")
-    flaggerDf = pd.read_csv(flaggerPath, sep="\t")
-    annotationDfs = {
-        column: pd.read_csv(annotationPaths[column], sep="\t") for column in annotationPaths
+    cat_df = pd.read_csv(cat_path, sep="\t")
+    flagger_df = pd.read_csv(flagger_path, sep="\t")
+    annotation_dfs = {
+        column: pd.read_csv(annotation_paths[column], sep="\t") for column in annotation_paths
     }
 
-    annotationDfs[CAT_ANNOTATION_TYPES[CHM13]] = catDf[catDf["reference"] == CHM13]
-    annotationDfs[CAT_ANNOTATION_TYPES[HG38]] = catDf[catDf["reference"] == HG38]
+    annotation_dfs[CAT_ANNOTATION_TYPES[CHM13]] = cat_df[cat_df["reference"] == CHM13]
+    annotation_dfs[CAT_ANNOTATION_TYPES[HG38]] = cat_df[cat_df["reference"] == HG38]
 
     # Concatenate the annotation files
-    outputDf = pd.concat([
-        *[getTypeDf(df, type, "file_location") for type, df in annotationDfs.items()],
-        *getTypeDfs(flaggerDf, FLAGGER_ANNOTATION_TYPES)
+    output_df = pd.concat([
+        *[get_type_df(df, type, "file_location") for type, df in annotation_dfs.items()],
+        *get_type_dfs(flagger_df, FLAGGER_ANNOTATION_TYPES)
     ]).fillna({"reference": "N/A"})
-    outputDf.to_csv(OUTPUT_FILE_PATH, index=False)
+    output_df.to_csv(OUTPUT_FILE_PATH, index=False)
     print("Done!")
