@@ -19,6 +19,7 @@ export interface SourceRawSequencingData {
   DeepConsensus_version: string;
   design_description: string;
   familyID: string;
+  file_size: string;
   filename: string;
   filetype: string;
   Gb: string;
@@ -69,6 +70,7 @@ export interface SourceAssembly {
   aws_fasta: string;
   familyID: string;
   fasta_sha256: string;
+  file_size: string;
   frag: string;
   full_dup: string;
   full_sgl: string;
@@ -90,6 +92,7 @@ export interface SourceAssembly {
 export interface SourceAnnotation {
   annotation_type: string;
   file_location: string;
+  file_size: string;
   haplotype: string;
   reference: string;
   sample: string;
