@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 import numpy as np
-from buildHelp import download_file, get_file_sizes_from_uris
+from build_help import download_file, get_file_sizes_from_uris
 
 # Determine the base directory of the script
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))

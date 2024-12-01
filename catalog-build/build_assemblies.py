@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 import numpy as np
-from buildHelp import downloadFile
+from build_help import downloadFile
 
 ASSEMBLY_URL = "https://raw.githubusercontent.com/human-pangenomics/HPP_Year1_Assemblies/main/assembly_index/Year1_assemblies_v2_genbank.index"
 QC_URL = "https://raw.githubusercontent.com/human-pangenomics/HPP_Year1_Assemblies/main/automated_qc_results/Y1_assemblies_v2_genbank_QC.csv"

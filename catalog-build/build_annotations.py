@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 import numpy as np
-from buildHelp import downloadFile
+from build_help import downloadFile
 
 CAT_URL = "https://raw.githubusercontent.com/human-pangenomics/HPP_Year1_Assemblies/main/annotation_index/Year1_assemblies_v2_genbank_CAT_genes.index"
 FLAGGER_URL = "https://raw.githubusercontent.com/human-pangenomics/HPP_Year1_Assemblies/main/annotation_index/Year1_assemblies_v2_genbank_Flagger.index"
