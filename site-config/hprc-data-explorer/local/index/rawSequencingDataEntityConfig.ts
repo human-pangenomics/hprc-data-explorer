@@ -161,6 +161,18 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
         {
           componentConfig: {
             component: C.BasicCell,
+            viewBuilder: V.buildMetadataAccession,
+          } as ComponentConfig<
+            typeof C.BasicCell,
+            HPRCDataExplorerRawSequencingData
+          >,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.METADATA_ACCESSION,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.METADATA_ACCESSION,
+          width: { max: "1fr", min: "160px" },
+        },
+        {
+          componentConfig: {
+            component: C.BasicCell,
             viewBuilder: V.buildSampleId,
           } as ComponentConfig<
             typeof C.BasicCell,
@@ -219,19 +231,6 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           >,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ACCESSION,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ACCESSION,
-          width: { max: "1fr", min: "160px" },
-        },
-        {
-          columnVisible: false,
-          componentConfig: {
-            component: C.BasicCell,
-            viewBuilder: V.buildMetadataAccession,
-          } as ComponentConfig<
-            typeof C.BasicCell,
-            HPRCDataExplorerRawSequencingData
-          >,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.METADATA_ACCESSION,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.METADATA_ACCESSION,
           width: { max: "1fr", min: "160px" },
         },
         {
