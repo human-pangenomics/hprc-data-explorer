@@ -3,7 +3,9 @@ import {
   HPRCDataExplorerAlignment,
   HPRCDataExplorerAnnotation,
   HPRCDataExplorerAssembly,
+  HPRCDataExplorerEntity,
   HPRCDataExplorerRawSequencingData,
+  LABEL,
 } from "../../../../apis/catalog/hprc-data-explorer/common/entities";
 import * as C from "../../../../components/index";
 import { METADATA_KEY } from "./entities";
@@ -45,7 +47,21 @@ export const buildAlignmentDownload = (
 ): React.ComponentProps<typeof C.FileDownload> => {
   return {
     fileName: alignment.filename,
-    fileUrl: getAlignmentDownloadUrl(alignment),
+    fileUrl: getDownloadUrl(alignment.loc),
+  };
+};
+
+/**
+ * Build props for the annotation download cell.
+ * @param annotation - Annotation entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildAnnotationDownload = (
+  annotation: HPRCDataExplorerAnnotation
+): React.ComponentProps<typeof C.FileDownload> => {
+  return {
+    fileName: annotation.filename,
+    fileUrl: getDownloadUrl(annotation.fileLocation),
   };
 };
 
@@ -72,6 +88,20 @@ export const buildAssembly = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.assembly,
+  };
+};
+
+/**
+ * Build props for the assembly download cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildAssemblyDownload = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.FileDownload> => {
+  return {
+    fileName: assembly.filename,
+    fileUrl: assembly.awsFasta ? getDownloadUrl(assembly.awsFasta) : undefined,
   };
 };
 
@@ -259,11 +289,11 @@ export const buildFileLocation = (
 
 /**
  * Build props for the filename cell.
- * @param entity - Raw sequencing data or alignment entity.
+ * @param entity - Entity.
  * @returns Props to be used for the cell.
  */
 export const buildFilename = (
-  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAlignment
+  entity: HPRCDataExplorerEntity
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: entity.filename,
@@ -272,14 +302,14 @@ export const buildFilename = (
 
 /**
  * Build props for the file size cell.
- * @param alignment - Alignment entity.
+ * @param entity - Entity.
  * @returns Props to be used for the cell.
  */
 export const buildFileSize = (
-  alignment: HPRCDataExplorerAlignment
+  entity: HPRCDataExplorerEntity
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
-    value: formatFileSize(alignment.fileSize),
+    value: entity.fileSize === LABEL.NA ? LABEL.NA : formatFileSize(Number(entity.fileSize)),
   };
 };
 
@@ -901,6 +931,20 @@ export const buildSampleId = (
 };
 
 /**
+ * Build props for the sequencing data download cell.
+ * @param rawSequencingData - Raw sequencing data entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildSequencingDataDownload = (
+  rawSequencingData: HPRCDataExplorerRawSequencingData
+): React.ComponentProps<typeof C.FileDownload> => {
+  return {
+    fileName: rawSequencingData.filename,
+    fileUrl: getDownloadUrl(rawSequencingData.path),
+  };
+};
+
+/**
  * Build props for the seq kit cell.
  * @param rawSequencingData - Raw sequencing data entity.
  * @returns Props to be used for the cell.
@@ -1148,13 +1192,13 @@ function formatPercentage(decimalFraction: number): string {
 }
 
 /**
- * Get the download URL for an alignment.
- * @param alignment - Alignment entity.
+ * Get a download URL from a given URI, by converting it from an S3 URI or returning it as-is.
+ * @param uri - URI.
  * @returns download URL.
  */
-function getAlignmentDownloadUrl(alignment: HPRCDataExplorerAlignment): string {
-  const s3UriMatch = /^s3:\/\/([^/]+)\/(.*)$/.exec(alignment.loc);
-  if (!s3UriMatch) return alignment.loc;
+function getDownloadUrl(uri: string): string {
+  const s3UriMatch = /^s3:\/\/([^/]+)\/(.*)$/.exec(uri);
+  if (!s3UriMatch) return uri;
   const [, bucketName, filePath] = s3UriMatch;
   return `https://${bucketName}.s3.amazonaws.com/${filePath}`;
 }

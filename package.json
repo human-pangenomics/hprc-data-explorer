@@ -12,7 +12,7 @@
     "test": "jest --runInBand",
     "test:e2e": "playwright test --trace retain-on-failure",
     "build-catalog": "esrun catalog-build/build-catalog.ts",
-    "build-catalog-source": "python3 catalog-build/build-sequencing-data.py && python3 catalog-build/build-assemblies.py && python3 catalog-build/build-annotations.py"
+    "build-catalog-source": "python3 catalog-build/build_sequencing_data.py && python3 catalog-build/build_assemblies.py && python3 catalog-build/build_annotations.py"
   },
   "dependencies": {
     "@databiosphere/findable-ui": "15.0.2",

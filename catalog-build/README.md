@@ -14,9 +14,9 @@ pip install -r catalog-build/requirements.txt
 
 Then run the scripts from this directory with:
 ```shell
-python3 build-sequencing-data.py
-python3 build-assemblies.py
-python3 build-annotations.py
+python3 build_sequencing-data.py
+python3 build_assemblies.py
+python3 build_annotations.py
 ```
 
 

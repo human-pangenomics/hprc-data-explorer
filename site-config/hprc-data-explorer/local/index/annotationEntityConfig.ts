@@ -58,12 +58,42 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
       columns: [
         {
           componentConfig: {
+            component: C.FileDownload,
+            viewBuilder: V.buildAnnotationDownload,
+          } as ComponentConfig<
+            typeof C.FileDownload,
+            HPRCDataExplorerAnnotation
+          >,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.DOWNLOAD,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.DOWNLOAD,
+          width: { max: "auto", min: "76px" },
+        },
+        {
+          componentConfig: {
             component: C.BasicCell,
             viewBuilder: V.buildSampleId,
           } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SAMPLE_ID,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
           width: { max: "0.5fr", min: "160px" },
+        },
+        {
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildFilename,
+          } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILENAME,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
+          width: { max: "1fr", min: "160px" },
+        },
+        {
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildFileSize,
+          } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILE_SIZE,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILE_SIZE,
+          width: { max: "0.5fr", min: "112px" },
         },
         {
           componentConfig: {

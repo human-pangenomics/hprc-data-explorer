@@ -124,6 +124,18 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
       columns: [
         {
           componentConfig: {
+            component: C.FileDownload,
+            viewBuilder: V.buildSequencingDataDownload,
+          } as ComponentConfig<
+            typeof C.FileDownload,
+            HPRCDataExplorerRawSequencingData
+          >,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.DOWNLOAD,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.DOWNLOAD,
+          width: { max: "auto", min: "76px" },
+        },
+        {
+          componentConfig: {
             component: C.BasicCell,
             viewBuilder: V.buildFilename,
           } as ComponentConfig<
@@ -133,6 +145,18 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILENAME,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
           width: { max: "1.5fr", min: "212px" },
+        },
+        {
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildFileSize,
+          } as ComponentConfig<
+            typeof C.BasicCell,
+            HPRCDataExplorerRawSequencingData
+          >,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILE_SIZE,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILE_SIZE,
+          width: { max: "0.5fr", min: "112px" },
         },
         {
           componentConfig: {

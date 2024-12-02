@@ -1,482 +1,6 @@
 [
   {
     "alignment": "HPRC-v1.0-chm13-mc",
-    "fileSize": 18216897112,
-    "filename": "hprc-v1.0-mc-chm13.dist",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.dist",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "chm13",
-    "useCase": [
-      "giraffe"
-    ],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-chm13-mc",
-    "fileSize": 1710882432,
-    "filename": "hprc-v1.0-mc-chm13.gbwt",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.gbwt",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "chm13",
-    "useCase": [
-      "giraffe"
-    ],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-chm13-mc",
-    "fileSize": 12126629594,
-    "filename": "hprc-v1.0-mc-chm13.gfa.gz",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.gfa.gz",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "chm13",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-chm13-mc",
-    "fileSize": 8387525541,
-    "filename": "hprc-v1.0-mc-chm13.gg",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.gg",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "chm13",
-    "useCase": [
-      "giraffe"
-    ],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-chm13-mc",
-    "fileSize": 3498325118,
-    "filename": "hprc-v1.0-mc-chm13.grch38.vcf.gz",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.grch38.vcf.gz",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "chm13",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-chm13-mc",
-    "fileSize": 2038504,
-    "filename": "hprc-v1.0-mc-chm13.grch38.vcf.gz.tbi",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.grch38.vcf.gz.tbi",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "chm13",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-chm13-mc",
-    "fileSize": 99134488395,
-    "filename": "hprc-v1.0-mc-chm13.hal",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.hal",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "chm13",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-chm13-mc",
-    "fileSize": 142126,
-    "filename": "hprc-v1.0-mc-chm13.masking.tar.gz",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.masking.tar.gz",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "chm13",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-chm13-mc",
-    "fileSize": 39388428600,
-    "filename": "hprc-v1.0-mc-chm13.min",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.min",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "chm13",
-    "useCase": [
-      "giraffe"
-    ],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-chm13-mc",
-    "fileSize": 151245724,
-    "filename": "hprc-v1.0-mc-chm13.snarls",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.snarls",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "chm13",
-    "useCase": [
-      "vg-tools"
-    ],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-chm13-mc",
-    "fileSize": 680660667,
-    "filename": "hprc-v1.0-mc-chm13.trans.gz",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.trans.gz",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "chm13",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-chm13-mc",
-    "fileSize": 4128431776,
-    "filename": "hprc-v1.0-mc-chm13.vcf.gz",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.vcf.gz",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "chm13",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-chm13-mc",
-    "fileSize": 2055282,
-    "filename": "hprc-v1.0-mc-chm13.vcf.gz.tbi",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.vcf.gz.tbi",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "chm13",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-chm13-mc",
-    "fileSize": 5685546956,
-    "filename": "hprc-v1.0-mc-chm13.xg",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.xg",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "chm13",
-    "useCase": [
-      "giraffe",
-      "vg-tools"
-    ],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-grch38-mc",
-    "fileSize": 27786646120,
-    "filename": "hprc-v1.0-mc-grch38.dist",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.dist",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "grch38",
-    "useCase": [
-      "giraffe"
-    ],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-grch38-mc",
-    "fileSize": 1640415616,
-    "filename": "hprc-v1.0-mc-grch38.gbwt",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.gbwt",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "grch38",
-    "useCase": [
-      "giraffe"
-    ],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-grch38-mc",
-    "fileSize": 11947915887,
-    "filename": "hprc-v1.0-mc-grch38.gfa.gz",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.gfa.gz",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "grch38",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-grch38-mc",
-    "fileSize": 8235110918,
-    "filename": "hprc-v1.0-mc-grch38.gg",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.gg",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "grch38",
-    "useCase": [
-      "giraffe"
-    ],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-grch38-mc",
-    "fileSize": 98853670155,
-    "filename": "hprc-v1.0-mc-grch38.hal",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.hal",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "grch38",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-grch38-mc",
-    "fileSize": 156140,
-    "filename": "hprc-v1.0-mc-grch38.masking.tar.gz",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.masking.tar.gz",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "grch38",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-grch38-mc",
-    "fileSize": 38579849872,
-    "filename": "hprc-v1.0-mc-grch38.min",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.min",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "grch38",
-    "useCase": [
-      "giraffe"
-    ],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-grch38-mc",
-    "fileSize": 144039851,
-    "filename": "hprc-v1.0-mc-grch38.snarls",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.snarls",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "grch38",
-    "useCase": [
-      "vg-tools"
-    ],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-grch38-mc",
-    "fileSize": 651200073,
-    "filename": "hprc-v1.0-mc-grch38.trans.gz",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.trans.gz",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "grch38",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-grch38-mc",
-    "fileSize": 3938096932,
-    "filename": "hprc-v1.0-mc-grch38.vcf.gz",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.vcf.gz",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "grch38",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-grch38-mc",
-    "fileSize": 2017306,
-    "filename": "hprc-v1.0-mc-grch38.vcf.gz.tbi",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.vcf.gz.tbi",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "grch38",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-grch38-mc",
-    "fileSize": 5562394041,
-    "filename": "hprc-v1.0-mc-grch38.xg",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.xg",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "grch38",
-    "useCase": [
-      "giraffe",
-      "vg-tools"
-    ],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-chm13-minigraph",
-    "fileSize": 37743068,
-    "filename": "hprc-v1.0-minigraph-chm13.bb.bed.gz",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph/hprc-v1.0-minigraph-chm13.bb.bed.gz",
-    "pipeline": "minigraph",
-    "referenceCoordinates": "chm13",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-chm13-minigraph",
-    "fileSize": 629203,
-    "filename": "hprc-v1.0-minigraph-chm13.bb.bed.gz.tbi",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph/hprc-v1.0-minigraph-chm13.bb.bed.gz.tbi",
-    "pipeline": "minigraph",
-    "referenceCoordinates": "chm13",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-chm13-minigraph",
-    "fileSize": 870989055,
-    "filename": "hprc-v1.0-minigraph-chm13.gfa.gz",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph/hprc-v1.0-minigraph-chm13.gfa.gz",
-    "pipeline": "minigraph",
-    "referenceCoordinates": "chm13",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-grch38-minigraph",
-    "fileSize": 32186013,
-    "filename": "hprc-v1.0-minigraph-grch38.bb.bed.gz",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph/hprc-v1.0-minigraph-grch38.bb.bed.gz",
-    "pipeline": "minigraph",
-    "referenceCoordinates": "grch38",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-grch38-minigraph",
-    "fileSize": 600532,
-    "filename": "hprc-v1.0-minigraph-grch38.bb.bed.gz.tbi",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph/hprc-v1.0-minigraph-grch38.bb.bed.gz.tbi",
-    "pipeline": "minigraph",
-    "referenceCoordinates": "grch38",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-grch38-minigraph",
-    "fileSize": 848467761,
-    "filename": "hprc-v1.0-minigraph-grch38.gfa.gz",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/minigraph/hprc-v1.0-minigraph-grch38.gfa.gz",
-    "pipeline": "minigraph",
-    "referenceCoordinates": "grch38",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-pggb",
-    "fileSize": 15639532140,
-    "filename": "hprc-v1.0-pggb.gfa.gz",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/pggb/hprc-v1.0-pggb.gfa.gz",
-    "pipeline": "pggb",
-    "referenceCoordinates": null,
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-pggb",
-    "fileSize": 270242271,
-    "filename": "hprc-v1.0-pggb.all.vs.grch38.untangle-m10000-s0-j0.delta.gz",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/pggb/untangle/hprc-v1.0-pggb.all.vs.grch38.untangle-m10000-s0-j0.delta.gz",
-    "pipeline": "pggb",
-    "referenceCoordinates": null,
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-pggb",
-    "fileSize": 876920997,
-    "filename": "hprc-v1.0-pggb.all.vs.grch38.untangle-m10000-s0-j0.paf.gz",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/pggb/untangle/hprc-v1.0-pggb.all.vs.grch38.untangle-m10000-s0-j0.paf.gz",
-    "pipeline": "pggb",
-    "referenceCoordinates": null,
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-chm13-pggb",
-    "fileSize": 0,
-    "filename": "hprc-v1.0-pggb.chm13.1-22+X.vcf.gz",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.chm13.1-22+X.vcf.gz",
-    "pipeline": "pggb",
-    "referenceCoordinates": "chm13",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-chm13-pggb",
-    "fileSize": 0,
-    "filename": "hprc-v1.0-pggb.chm13.1-22+X.vcf.gz.tbi",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.chm13.1-22+X.vcf.gz.tbi",
-    "pipeline": "pggb",
-    "referenceCoordinates": "chm13",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-chm13-pggb",
-    "fileSize": 12024,
-    "filename": "hprc-v1.0-pggb.chm13.M.vcf.gz",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.chm13.M.vcf.gz",
-    "pipeline": "pggb",
-    "referenceCoordinates": "chm13",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-chm13-pggb",
-    "fileSize": 114,
-    "filename": "hprc-v1.0-pggb.chm13.M.vcf.gz.tbi",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.chm13.M.vcf.gz.tbi",
-    "pipeline": "pggb",
-    "referenceCoordinates": "chm13",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-grch38-pggb",
-    "fileSize": 0,
-    "filename": "hprc-v1.0-pggb.grch38.1-22+X.vcf.gz",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.1-22+X.vcf.gz",
-    "pipeline": "pggb",
-    "referenceCoordinates": "grch38",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-grch38-pggb",
-    "fileSize": 0,
-    "filename": "hprc-v1.0-pggb.grch38.1-22+X.vcf.gz.tbi",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.1-22+X.vcf.gz.tbi",
-    "pipeline": "pggb",
-    "referenceCoordinates": "grch38",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-grch38-pggb",
-    "fileSize": 13373,
-    "filename": "hprc-v1.0-pggb.grch38.M.vcf.gz",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.M.vcf.gz",
-    "pipeline": "pggb",
-    "referenceCoordinates": "grch38",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-grch38-pggb",
-    "fileSize": 131,
-    "filename": "hprc-v1.0-pggb.grch38.M.vcf.gz.tbi",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.M.vcf.gz.tbi",
-    "pipeline": "pggb",
-    "referenceCoordinates": "grch38",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-grch38-pggb",
-    "fileSize": 28429861,
-    "filename": "hprc-v1.0-pggb.grch38.Y.vcf.gz",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.Y.vcf.gz",
-    "pipeline": "pggb",
-    "referenceCoordinates": "grch38",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-grch38-pggb",
-    "fileSize": 10801,
-    "filename": "hprc-v1.0-pggb.grch38.Y.vcf.gz.tbi",
-    "loc": "https://human-pangenomics.s3.amazonaws.com/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.Y.vcf.gz.tbi",
-    "pipeline": "pggb",
-    "referenceCoordinates": "grch38",
-    "useCase": [],
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-chm13-mc",
     "fileSize": 2057430704,
     "filename": "hprc-v1.0-mc-chm13-minaf.0.1.dist",
     "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/filtered/hprc-v1.0-mc-chm13-minaf.0.1.dist",
@@ -860,5 +384,481 @@
       "pangenie-legacy"
     ],
     "version": null
+  },
+  {
+    "alignment": "HPRC-v1.0-chm13-mc",
+    "fileSize": 18216897112,
+    "filename": "hprc-v1.0-mc-chm13.dist",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.dist",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "chm13",
+    "useCase": [
+      "giraffe"
+    ],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-chm13-mc",
+    "fileSize": 1710882432,
+    "filename": "hprc-v1.0-mc-chm13.gbwt",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.gbwt",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "chm13",
+    "useCase": [
+      "giraffe"
+    ],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-chm13-mc",
+    "fileSize": 12126629594,
+    "filename": "hprc-v1.0-mc-chm13.gfa.gz",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.gfa.gz",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "chm13",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-chm13-mc",
+    "fileSize": 8387525541,
+    "filename": "hprc-v1.0-mc-chm13.gg",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.gg",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "chm13",
+    "useCase": [
+      "giraffe"
+    ],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-chm13-mc",
+    "fileSize": 3498325118,
+    "filename": "hprc-v1.0-mc-chm13.grch38.vcf.gz",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.grch38.vcf.gz",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "chm13",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-chm13-mc",
+    "fileSize": 2038504,
+    "filename": "hprc-v1.0-mc-chm13.grch38.vcf.gz.tbi",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.grch38.vcf.gz.tbi",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "chm13",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-chm13-mc",
+    "fileSize": 99134488395,
+    "filename": "hprc-v1.0-mc-chm13.hal",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.hal",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "chm13",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-chm13-mc",
+    "fileSize": 142126,
+    "filename": "hprc-v1.0-mc-chm13.masking.tar.gz",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.masking.tar.gz",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "chm13",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-chm13-mc",
+    "fileSize": 39388428600,
+    "filename": "hprc-v1.0-mc-chm13.min",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.min",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "chm13",
+    "useCase": [
+      "giraffe"
+    ],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-chm13-mc",
+    "fileSize": 151245724,
+    "filename": "hprc-v1.0-mc-chm13.snarls",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.snarls",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "chm13",
+    "useCase": [
+      "vg-tools"
+    ],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-chm13-mc",
+    "fileSize": 680660667,
+    "filename": "hprc-v1.0-mc-chm13.trans.gz",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.trans.gz",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "chm13",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-chm13-mc",
+    "fileSize": 4128431776,
+    "filename": "hprc-v1.0-mc-chm13.vcf.gz",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.vcf.gz",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "chm13",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-chm13-mc",
+    "fileSize": 2055282,
+    "filename": "hprc-v1.0-mc-chm13.vcf.gz.tbi",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.vcf.gz.tbi",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "chm13",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-chm13-mc",
+    "fileSize": 5685546956,
+    "filename": "hprc-v1.0-mc-chm13.xg",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.xg",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "chm13",
+    "useCase": [
+      "giraffe",
+      "vg-tools"
+    ],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-grch38-mc",
+    "fileSize": 27786646120,
+    "filename": "hprc-v1.0-mc-grch38.dist",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.dist",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "grch38",
+    "useCase": [
+      "giraffe"
+    ],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-grch38-mc",
+    "fileSize": 1640415616,
+    "filename": "hprc-v1.0-mc-grch38.gbwt",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.gbwt",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "grch38",
+    "useCase": [
+      "giraffe"
+    ],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-grch38-mc",
+    "fileSize": 11947915887,
+    "filename": "hprc-v1.0-mc-grch38.gfa.gz",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.gfa.gz",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "grch38",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-grch38-mc",
+    "fileSize": 8235110918,
+    "filename": "hprc-v1.0-mc-grch38.gg",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.gg",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "grch38",
+    "useCase": [
+      "giraffe"
+    ],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-grch38-mc",
+    "fileSize": 98853670155,
+    "filename": "hprc-v1.0-mc-grch38.hal",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.hal",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "grch38",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-grch38-mc",
+    "fileSize": 156140,
+    "filename": "hprc-v1.0-mc-grch38.masking.tar.gz",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.masking.tar.gz",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "grch38",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-grch38-mc",
+    "fileSize": 38579849872,
+    "filename": "hprc-v1.0-mc-grch38.min",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.min",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "grch38",
+    "useCase": [
+      "giraffe"
+    ],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-grch38-mc",
+    "fileSize": 144039851,
+    "filename": "hprc-v1.0-mc-grch38.snarls",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.snarls",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "grch38",
+    "useCase": [
+      "vg-tools"
+    ],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-grch38-mc",
+    "fileSize": 651200073,
+    "filename": "hprc-v1.0-mc-grch38.trans.gz",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.trans.gz",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "grch38",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-grch38-mc",
+    "fileSize": 3938096932,
+    "filename": "hprc-v1.0-mc-grch38.vcf.gz",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.vcf.gz",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "grch38",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-grch38-mc",
+    "fileSize": 2017306,
+    "filename": "hprc-v1.0-mc-grch38.vcf.gz.tbi",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.vcf.gz.tbi",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "grch38",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-grch38-mc",
+    "fileSize": 5562394041,
+    "filename": "hprc-v1.0-mc-grch38.xg",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-grch38.xg",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "grch38",
+    "useCase": [
+      "giraffe",
+      "vg-tools"
+    ],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-chm13-minigraph",
+    "fileSize": 37743068,
+    "filename": "hprc-v1.0-minigraph-chm13.bb.bed.gz",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph/hprc-v1.0-minigraph-chm13.bb.bed.gz",
+    "pipeline": "minigraph",
+    "referenceCoordinates": "chm13",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-chm13-minigraph",
+    "fileSize": 629203,
+    "filename": "hprc-v1.0-minigraph-chm13.bb.bed.gz.tbi",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph/hprc-v1.0-minigraph-chm13.bb.bed.gz.tbi",
+    "pipeline": "minigraph",
+    "referenceCoordinates": "chm13",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-chm13-minigraph",
+    "fileSize": 870989055,
+    "filename": "hprc-v1.0-minigraph-chm13.gfa.gz",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph/hprc-v1.0-minigraph-chm13.gfa.gz",
+    "pipeline": "minigraph",
+    "referenceCoordinates": "chm13",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-grch38-minigraph",
+    "fileSize": 32186013,
+    "filename": "hprc-v1.0-minigraph-grch38.bb.bed.gz",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph/hprc-v1.0-minigraph-grch38.bb.bed.gz",
+    "pipeline": "minigraph",
+    "referenceCoordinates": "grch38",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-grch38-minigraph",
+    "fileSize": 600532,
+    "filename": "hprc-v1.0-minigraph-grch38.bb.bed.gz.tbi",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph/hprc-v1.0-minigraph-grch38.bb.bed.gz.tbi",
+    "pipeline": "minigraph",
+    "referenceCoordinates": "grch38",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-grch38-minigraph",
+    "fileSize": 848467761,
+    "filename": "hprc-v1.0-minigraph-grch38.gfa.gz",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/minigraph/hprc-v1.0-minigraph-grch38.gfa.gz",
+    "pipeline": "minigraph",
+    "referenceCoordinates": "grch38",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-pggb",
+    "fileSize": 15639532140,
+    "filename": "hprc-v1.0-pggb.gfa.gz",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/hprc-v1.0-pggb.gfa.gz",
+    "pipeline": "pggb",
+    "referenceCoordinates": null,
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-pggb",
+    "fileSize": 270242271,
+    "filename": "hprc-v1.0-pggb.all.vs.grch38.untangle-m10000-s0-j0.delta.gz",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/untangle/hprc-v1.0-pggb.all.vs.grch38.untangle-m10000-s0-j0.delta.gz",
+    "pipeline": "pggb",
+    "referenceCoordinates": null,
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-pggb",
+    "fileSize": 876920997,
+    "filename": "hprc-v1.0-pggb.all.vs.grch38.untangle-m10000-s0-j0.paf.gz",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/untangle/hprc-v1.0-pggb.all.vs.grch38.untangle-m10000-s0-j0.paf.gz",
+    "pipeline": "pggb",
+    "referenceCoordinates": null,
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-chm13-pggb",
+    "fileSize": 0,
+    "filename": "hprc-v1.0-pggb.chm13.1-22+X.vcf.gz",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.chm13.1-22+X.vcf.gz",
+    "pipeline": "pggb",
+    "referenceCoordinates": "chm13",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-chm13-pggb",
+    "fileSize": 0,
+    "filename": "hprc-v1.0-pggb.chm13.1-22+X.vcf.gz.tbi",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.chm13.1-22+X.vcf.gz.tbi",
+    "pipeline": "pggb",
+    "referenceCoordinates": "chm13",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-chm13-pggb",
+    "fileSize": 12024,
+    "filename": "hprc-v1.0-pggb.chm13.M.vcf.gz",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.chm13.M.vcf.gz",
+    "pipeline": "pggb",
+    "referenceCoordinates": "chm13",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-chm13-pggb",
+    "fileSize": 114,
+    "filename": "hprc-v1.0-pggb.chm13.M.vcf.gz.tbi",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.chm13.M.vcf.gz.tbi",
+    "pipeline": "pggb",
+    "referenceCoordinates": "chm13",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-grch38-pggb",
+    "fileSize": 0,
+    "filename": "hprc-v1.0-pggb.grch38.1-22+X.vcf.gz",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.1-22+X.vcf.gz",
+    "pipeline": "pggb",
+    "referenceCoordinates": "grch38",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-grch38-pggb",
+    "fileSize": 0,
+    "filename": "hprc-v1.0-pggb.grch38.1-22+X.vcf.gz.tbi",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.1-22+X.vcf.gz.tbi",
+    "pipeline": "pggb",
+    "referenceCoordinates": "grch38",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-grch38-pggb",
+    "fileSize": 13373,
+    "filename": "hprc-v1.0-pggb.grch38.M.vcf.gz",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.M.vcf.gz",
+    "pipeline": "pggb",
+    "referenceCoordinates": "grch38",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-grch38-pggb",
+    "fileSize": 131,
+    "filename": "hprc-v1.0-pggb.grch38.M.vcf.gz.tbi",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.M.vcf.gz.tbi",
+    "pipeline": "pggb",
+    "referenceCoordinates": "grch38",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-grch38-pggb",
+    "fileSize": 28429861,
+    "filename": "hprc-v1.0-pggb.grch38.Y.vcf.gz",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.Y.vcf.gz",
+    "pipeline": "pggb",
+    "referenceCoordinates": "grch38",
+    "useCase": [],
+    "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v1.0-grch38-pggb",
+    "fileSize": 10801,
+    "filename": "hprc-v1.0-pggb.grch38.Y.vcf.gz.tbi",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.Y.vcf.gz.tbi",
+    "pipeline": "pggb",
+    "referenceCoordinates": "grch38",
+    "useCase": [],
+    "version": "v1.0"
   }
 ]

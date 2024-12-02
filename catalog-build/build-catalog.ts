@@ -73,6 +73,7 @@ async function buildRawSequencingData(): Promise<
       deepConsensusVersion: row.DeepConsensus_version,
       designDescription: row.design_description,
       familyId: parseStringOrNull(row.familyID),
+      fileSize: parseNumberOrNA(row.file_size).toString(),
       filename: row.filename,
       filetype: row.filetype,
       fiveHundredkbPlus: parseNumberOrNA(row["500kb+"]).toString(),
@@ -139,6 +140,8 @@ async function buildAssemblies(): Promise<HPRCDataExplorerAssembly[]> {
       awsFasta: parseStringOrNull(row.aws_fasta),
       familyId: parseStringOrNull(row.familyID),
       fastaSha256: parseStringOrNull(row.fasta_sha256),
+      fileSize: parseNumberOrNA(row.file_size).toString(),
+      filename: getFileNameFromPath(row.aws_fasta),
       frag: parseNumberOrNull(row.frag),
       fullDup: parseNumberOrNull(row.full_dup),
       fullSgl: parseNumberOrNull(row.full_sgl),
@@ -170,6 +173,8 @@ async function buildAnnotations(): Promise<HPRCDataExplorerAnnotation[]> {
     (row): HPRCDataExplorerAnnotation => ({
       annotationType: row.annotation_type,
       fileLocation: row.file_location,
+      fileSize: parseNumberOrNA(row.file_size).toString(),
+      filename: getFileNameFromPath(row.file_location),
       haplotype: parseStringOrNull(row.haplotype),
       reference: parseStringOrNull(row.reference),
       sampleId: row.sample,
@@ -213,6 +218,10 @@ async function readValuesFile<T>(
 
 async function saveJson(filePath: string, data: unknown): Promise<void> {
   await fsp.writeFile(filePath, JSON.stringify(data, undefined, 2));
+}
+
+function getFileNameFromPath(p: string): string {
+  return p.substring(p.lastIndexOf("/") + 1);
 }
 
 function parseStringOrNull(value: string): string | null {

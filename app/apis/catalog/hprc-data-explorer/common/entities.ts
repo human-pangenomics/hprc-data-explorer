@@ -1,3 +1,9 @@
+export type HPRCDataExplorerEntity =
+  | HPRCDataExplorerAlignment
+  | HPRCDataExplorerAnnotation
+  | HPRCDataExplorerAssembly
+  | HPRCDataExplorerRawSequencingData;
+
 export interface HPRCDataExplorerRawSequencingData {
   accession: string | null;
   assembly: string | null;
@@ -13,6 +19,7 @@ export interface HPRCDataExplorerRawSequencingData {
   designDescription: string;
   familyId: string | null;
   filename: string;
+  fileSize: string; // This and other fileSize fields should be `number | LABEL.NA` if that's ever restored
   filetype: string;
   fiveHundredkbPlus: string; //number | LABEL.NA;
   fourHundredkbPlus: string; //number | LABEL.NA;
@@ -69,6 +76,8 @@ export interface HPRCDataExplorerAssembly {
   awsFasta: string | null;
   familyId: string | null;
   fastaSha256: string | null;
+  filename: string;
+  fileSize: string;
   frag: number | null;
   fullDup: number | null;
   fullSgl: number | null;
@@ -90,6 +99,8 @@ export interface HPRCDataExplorerAssembly {
 export interface HPRCDataExplorerAnnotation {
   annotationType: string;
   fileLocation: string;
+  filename: string;
+  fileSize: string;
   haplotype: string | null;
   reference: string | null;
   sampleId: string;
