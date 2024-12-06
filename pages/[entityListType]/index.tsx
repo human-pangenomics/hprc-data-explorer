@@ -39,7 +39,7 @@ const seedDatabase = async function seedDatabase( // TODO get rid of this duplic
   let jsonText;
   try {
     jsonText = await fsp.readFile(staticLoadFile, "utf8");
-  } catch (e) {
+  } catch {
     throw new Error(`File ${staticLoadFile} not found for entity ${label}`);
   }
 
