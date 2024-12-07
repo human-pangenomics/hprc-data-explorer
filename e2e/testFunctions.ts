@@ -52,6 +52,9 @@ export async function testTableExists(
 export function escapeRegExp(string: string): string {
   return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
+
+const MAX_FILTER_LENTGH = "256";
+
 /**
  * Returns a regex that matches the sidebar filter buttons
  * This is useful for selecting a filter from the sidebar
@@ -61,7 +64,9 @@ export function escapeRegExp(string: string): string {
 export const filterRegex = (filterName: string): RegExp =>
   new RegExp("^(" + escapeRegExp(filterName) + ")" + "\\s+\\([0-9]+\\)\\s*");
 
-const allFilterRegex = /^(.+)\s+\([0-9]+\)\s*/;
+const allFilterRegex = new RegExp(
+  "^(.{0," + MAX_FILTER_LENTGH + "})\\s+\\(\\d+\\)\\s*"
+);
 /**
  * Get an array of all filter names on the current page
  * @param page - a Playwright Page object
@@ -69,9 +74,6 @@ const allFilterRegex = /^(.+)\s+\([0-9]+\)\s*/;
  */
 const getAllFilterNames = async (page: Page): Promise<string[]> => {
   await expect(page.getByText(allFilterRegex).first()).toBeVisible();
-  /*await expect(page.getByText(allFilterRegex).first()).toContainText(
-    /\(([0-9])+\)/
-  );*/
   const filterStrings = await page.getByText(allFilterRegex).allInnerTexts();
   return filterStrings.map(
     (x: string) => (x.match(allFilterRegex) ?? ["", ""])[1]
@@ -221,7 +223,7 @@ const verifyFilterCount = async (
   page: Page,
   expectedCount: number
 ): Promise<boolean> => {
-  const elementsPerPageRegex = /^Results 1 - ([0-9]+) of [0-9]+/;
+  const elementsPerPageRegex = /^Results 1 - (\d+) of \d+/;
   await expect(page.getByText(elementsPerPageRegex)).toBeVisible();
   const elementsPerPageText = ((
     await page.getByText(elementsPerPageRegex).innerText()
@@ -318,7 +320,7 @@ const getFirstNonEmptyFilterOptionNameAndIndex = async (
   let i = 0;
   while (filterToSelect === "" && i < MAX_FILTER_OPTIONS_TO_CHECK) {
     // Filter options display as "[text]\n[number]" , sometimes with extra whitespace, so we want the string before the newline
-    const filterOptionRegex = /^(.*)\n+([0-9]+)\s*$/;
+    const filterOptionRegex = /^(.*)\n+(\d+)\s*$/;
     filterOptionLocator = getNthFilterOptionLocator(page, i);
     filterToSelect = ((await filterOptionLocator.innerText())
       .trim()
