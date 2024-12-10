@@ -1,7 +1,7 @@
 export interface TabDescription {
-  preselectedColumns: columnDescription[];
+  preselectedColumns: ColumnDescription[];
   searchFiltersPlaceholderText: string;
-  selectableColumns: columnDescription[];
+  selectableColumns: ColumnDescription[];
   tabName: string;
   url: string;
 }
@@ -13,7 +13,7 @@ export interface HprcTabCollection {
   rawSequencingData: TabDescription;
 }
 
-export interface columnDescription {
+export interface ColumnDescription {
   name: string;
   sortable: boolean;
 }
