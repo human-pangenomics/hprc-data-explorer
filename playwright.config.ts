@@ -21,7 +21,7 @@ const config: PlaywrightTestConfig = {
     },
   ],
   testDir: "e2e",
-  testMatch: /.*\.spec\.ts/,
+  testMatch: /\.spec\.ts$/,
   timeout: 1.5 * 60 * 1000,
   use: {
     baseURL: "http://localhost:3000/",
