@@ -21,7 +21,6 @@ const config: PlaywrightTestConfig = {
     },
   ],
   testDir: "e2e",
-  // eslint-disable-next-line sonarjs/slow-regex -- input is just local filenames so trusted
   testMatch: /\.spec\.ts$/,
   timeout: 1.5 * 60 * 1000,
   use: {
