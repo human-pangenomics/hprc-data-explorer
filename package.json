@@ -15,7 +15,7 @@
     "build-catalog-source": "python3 catalog-build/build_sequencing_data.py && python3 catalog-build/build_assemblies.py && python3 catalog-build/build_annotations.py"
   },
   "dependencies": {
-    "@databiosphere/findable-ui": "15.0.2",
+    "@databiosphere/findable-ui": "^21.0.0",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
     "@mdx-js/loader": "^3.0.1",

@@ -136,9 +136,15 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
           width: { max: "1fr", min: "112px" },
         },
       ],
-      defaultSort: {
-        desc: SORT_DIRECTION.ASCENDING,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
+      tableOptions: {
+        initialState: {
+          sorting: [
+            {
+              desc: SORT_DIRECTION.ASCENDING,
+              id: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
+            },
+          ],
+        },
       },
     } as ListConfig<HPRCDataExplorerAnnotation>,
     listView: {

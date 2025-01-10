@@ -288,9 +288,15 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         width: { max: "0.5fr", min: "112px" },
       },
     ],
-    defaultSort: {
-      desc: SORT_DIRECTION.ASCENDING,
-      id: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
+    tableOptions: {
+      initialState: {
+        sorting: [
+          {
+            desc: SORT_DIRECTION.ASCENDING,
+            id: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
+          },
+        ],
+      },
     },
   } as ListConfig<HPRCDataExplorerAssembly>,
   listView: {
