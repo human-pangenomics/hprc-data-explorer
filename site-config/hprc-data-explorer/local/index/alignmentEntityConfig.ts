@@ -137,9 +137,15 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
         width: { max: "1.2fr", min: "160px" },
       },
     ],
-    defaultSort: {
-      desc: SORT_DIRECTION.DESCENDING,
-      id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ALIGNMENT,
+    tableOptions: {
+      initialState: {
+        sorting: [
+          {
+            desc: SORT_DIRECTION.DESCENDING,
+            id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ALIGNMENT,
+          },
+        ],
+      },
     },
   } as ListConfig<HPRCDataExplorerAlignment>,
   listView: {

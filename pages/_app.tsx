@@ -9,6 +9,7 @@ import { Footer } from "@databiosphere/findable-ui/lib/components/Layout/compone
 import { Header as DXHeader } from "@databiosphere/findable-ui/lib/components/Layout/components/Header/header";
 import { Main as DXMain } from "@databiosphere/findable-ui/lib/components/Layout/components/Main/main";
 import { ConfigProvider as DXConfigProvider } from "@databiosphere/findable-ui/lib/providers/config";
+import { GoogleSignInAuthenticationProvider } from "@databiosphere/findable-ui/lib/providers/googleSignInAuthentication/provider";
 import { ExploreStateProvider } from "@databiosphere/findable-ui/lib/providers/exploreState";
 import { LayoutStateProvider } from "@databiosphere/findable-ui/lib/providers/layoutState";
 import { SystemStatusProvider } from "@databiosphere/findable-ui/lib/providers/systemStatus";
@@ -48,35 +49,37 @@ function MyApp({ Component, pageProps }: AppPropsWithComponent): JSX.Element {
           <Head pageTitle={pageTitle} />
           <CssBaseline />
           <SystemStatusProvider>
-            <LayoutStateProvider>
-              <AppLayout>
-                <DXHeader {...header} />
-                <ExploreStateProvider entityListType={entityListType}>
-                  <Main>
-                    <ErrorBoundary
-                      fallbackRender={({
-                        error,
-                        reset,
-                      }: {
-                        error: DataExplorerError;
-                        reset: () => void;
-                      }): JSX.Element => (
-                        <Error
-                          errorMessage={error.message}
-                          requestUrlMessage={error.requestUrlMessage}
-                          rootPath={redirectRootToPath}
-                          onReset={reset}
-                        />
-                      )}
-                    >
-                      <Component {...pageProps} />
-                      <Floating {...floating} />
-                    </ErrorBoundary>
-                  </Main>
-                </ExploreStateProvider>
-                <Footer {...footer} />
-              </AppLayout>
-            </LayoutStateProvider>
+            <GoogleSignInAuthenticationProvider>
+              <LayoutStateProvider>
+                <AppLayout>
+                  <DXHeader {...header} />
+                  <ExploreStateProvider entityListType={entityListType}>
+                    <Main>
+                      <ErrorBoundary
+                        fallbackRender={({
+                          error,
+                          reset,
+                        }: {
+                          error: DataExplorerError;
+                          reset: () => void;
+                        }): JSX.Element => (
+                          <Error
+                            errorMessage={error.message}
+                            requestUrlMessage={error.requestUrlMessage}
+                            rootPath={redirectRootToPath}
+                            onReset={reset}
+                          />
+                        )}
+                      >
+                        <Component {...pageProps} />
+                        <Floating {...floating} />
+                      </ErrorBoundary>
+                    </Main>
+                  </ExploreStateProvider>
+                  <Footer {...footer} />
+                </AppLayout>
+              </LayoutStateProvider>
+            </GoogleSignInAuthenticationProvider>
           </SystemStatusProvider>
         </DXConfigProvider>
       </ThemeProvider>

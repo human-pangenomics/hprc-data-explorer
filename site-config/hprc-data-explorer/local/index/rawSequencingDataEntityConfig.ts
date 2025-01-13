@@ -959,9 +959,15 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           width: { max: "0.5fr", min: "112px" },
         },
       ],
-      defaultSort: {
-        desc: SORT_DIRECTION.ASCENDING,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
+      tableOptions: {
+        initialState: {
+          sorting: [
+            {
+              desc: SORT_DIRECTION.ASCENDING,
+              id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
+            },
+          ],
+        },
       },
     } as ListConfig<HPRCDataExplorerRawSequencingData>,
     listView: {
