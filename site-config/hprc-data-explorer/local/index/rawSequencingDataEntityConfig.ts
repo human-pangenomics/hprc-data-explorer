@@ -142,6 +142,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILENAME,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
           width: { max: "1.5fr", min: "212px" },
@@ -154,6 +155,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILE_SIZE,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILE_SIZE,
           width: { max: "0.5fr", min: "112px" },
@@ -166,6 +168,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.METADATA_ACCESSION,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.METADATA_ACCESSION,
           width: { max: "1fr", min: "160px" },
@@ -178,6 +181,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SAMPLE_ID,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
           width: { max: "0.5fr", min: "112px" },
@@ -191,6 +195,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
           width: { max: "0.5fr", min: "112px" },
@@ -204,6 +209,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SUPERPOPULATION,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.SUPERPOPULATION,
           width: { max: "0.5fr", min: "112px" },
@@ -217,6 +223,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SUBPOPULATION,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.SUBPOPULATION,
           width: { max: "0.5fr", min: "112px" },
@@ -229,6 +236,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ACCESSION,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ACCESSION,
           width: { max: "1fr", min: "160px" },
@@ -241,6 +249,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PLATFORM,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.PLATFORM,
           width: { max: "1fr", min: "160px" },
@@ -253,6 +262,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.INSTRUMENT_MODEL,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.INSTRUMENT_MODEL,
           width: { max: "1fr", min: "160px" },
@@ -266,6 +276,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ASSEMBLY,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ASSEMBLY,
           width: { max: "0.5fr", min: "112px" },
@@ -279,6 +290,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BASECALLER,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.BASECALLER,
           width: { max: "0.5fr", min: "112px" },
@@ -292,6 +304,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BASECALLER_MODEL,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.BASECALLER_MODEL,
           width: { max: "1fr", min: "160px" },
@@ -305,6 +318,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BASECALLER_VERSION,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.BASECALLER_VERSION,
           width: { max: "0.5fr", min: "112px" },
@@ -318,6 +332,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOPROJECT_ACCESSION,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOPROJECT_ACCESSION,
           width: { max: "0.5fr", min: "112px" },
@@ -331,6 +346,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
           width: { max: "0.5fr", min: "112px" },
@@ -344,6 +360,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.CCS_ALGORITHM,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.CCS_ALGORITHM,
           width: { max: "1fr", min: "160px" },
@@ -357,6 +374,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.COVERAGE,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.COVERAGE,
           width: { max: "0.5fr", min: "112px" },
@@ -369,6 +387,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.DATA_TYPE,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.DATA_TYPE,
           width: { max: "0.5fr", min: "112px" },
@@ -382,6 +401,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.DEEPCONSENSUS_VERSION,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.DEEPCONSENSUS_VERSION,
           width: { max: "0.5fr", min: "112px" },
@@ -395,6 +415,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.DESIGN_DESCRIPTION,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.DESIGN_DESCRIPTION,
           width: { max: "1fr", min: "160px" },
@@ -408,6 +429,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILETYPE,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILETYPE,
           width: { max: "0.5fr", min: "112px" },
@@ -421,6 +443,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FIVE_HUNDRED_KB_PLUS,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FIVE_HUNDRED_KB_PLUS,
           width: { max: "0.5fr", min: "112px" },
@@ -434,6 +457,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FOUR_HUNDRED_KB_PLUS,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FOUR_HUNDRED_KB_PLUS,
           width: { max: "0.5fr", min: "112px" },
@@ -447,6 +471,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.GB,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.GB,
           width: { max: "0.5fr", min: "112px" },
@@ -460,6 +485,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.GENERATOR_CONTACT,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.GENERATOR_CONTACT,
           width: { max: "1fr", min: "160px" },
@@ -473,6 +499,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.GENERATOR_FACILITY,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.GENERATOR_FACILITY,
           width: { max: "1fr", min: "160px" },
@@ -486,6 +513,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.LIBRARY_ID,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.LIBRARY_ID,
           width: { max: "1fr", min: "160px" },
@@ -499,6 +527,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.LIBRARY_LAYOUT,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.LIBRARY_LAYOUT,
           width: { max: "0.5fr", min: "112px" },
@@ -512,6 +541,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.LIBRARY_SELECTION,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.LIBRARY_SELECTION,
           width: { max: "1fr", min: "160px" },
@@ -525,6 +555,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.LIBRARY_SOURCE,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.LIBRARY_SOURCE,
           width: { max: "0.5fr", min: "112px" },
@@ -538,6 +569,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.LIBRARY_STRATEGY,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.LIBRARY_STRATEGY,
           width: { max: "0.5fr", min: "112px" },
@@ -551,6 +583,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.MAX,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.MAX,
           width: { max: "0.5fr", min: "112px" },
@@ -564,6 +597,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.MEAN,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.MEAN,
           width: { max: "0.5fr", min: "112px" },
@@ -577,6 +611,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.MIN,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.MIN,
           width: { max: "0.5fr", min: "112px" },
@@ -590,6 +625,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.MM_TAG,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.MM_TAG,
           width: { max: "0.5fr", min: "112px" },
@@ -603,6 +639,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.N25,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.N25,
           width: { max: "0.5fr", min: "112px" },
@@ -616,6 +653,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.N50,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.N50,
           width: { max: "0.5fr", min: "112px" },
@@ -629,6 +667,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.N75,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.N75,
           width: { max: "0.5fr", min: "112px" },
@@ -642,6 +681,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.NOTES,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.NOTES,
           width: { max: "1fr", min: "160px" },
@@ -655,6 +695,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.NTSM_RESULT,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.NTSM_RESULT,
           width: { max: "0.5fr", min: "112px" },
@@ -668,6 +709,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.NTSM_SCORE,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.NTSM_SCORE,
           width: { max: "0.5fr", min: "112px" },
@@ -681,6 +723,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ONE_HUNDRED_KB_PLUS,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ONE_HUNDRED_KB_PLUS,
           width: { max: "0.5fr", min: "112px" },
@@ -694,6 +737,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ONE_MB_PLUS,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ONE_MB_PLUS,
           width: { max: "0.5fr", min: "112px" },
@@ -707,6 +751,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.TypographyNoWrap,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PATH,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.PATH,
           width: { max: "1fr", min: "112px" },
@@ -720,6 +765,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POLYMERASE_VERSION,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.POLYMERASE_VERSION,
           width: { max: "0.5fr", min: "112px" },
@@ -732,6 +778,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PRODUCTION_YEAR,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.PRODUCTION_YEAR,
           width: { max: "0.5fr", min: "112px" },
@@ -746,6 +793,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.QUARTILE_25,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.QUARTILE_25,
           width: { max: "0.5fr", min: "112px" },
@@ -759,6 +807,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.QUARTILE_50,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.QUARTILE_50,
           width: { max: "0.5fr", min: "112px" },
@@ -772,6 +821,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.QUARTILE_75,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.QUARTILE_75,
           width: { max: "0.5fr", min: "112px" },
@@ -785,6 +835,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.READ_N50,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.READ_N50,
           width: { max: "0.5fr", min: "112px" },
@@ -798,6 +849,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.RESULT,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.RESULT,
           width: { max: "0.5fr", min: "112px" },
@@ -811,6 +863,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SEQ_KIT,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.SEQ_KIT,
           width: { max: "0.5fr", min: "112px" },
@@ -824,6 +877,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SEQ_PLATE_CHEMISTRY_VERSION,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.SEQ_PLATE_CHEMISTRY_VERSION,
           width: { max: "0.5fr", min: "112px" },
@@ -837,6 +891,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SHEAR_METHOD,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.SHEAR_METHOD,
           width: { max: "0.5fr", min: "160px" },
@@ -850,6 +905,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SIZE_SELECTION,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.SIZE_SELECTION,
           width: { max: "0.5fr", min: "112px" },
@@ -863,6 +919,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.STUDY,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.STUDY,
           width: { max: "0.5fr", min: "120px" },
@@ -876,6 +933,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.THREE_HUNDRED_KB_PLUS,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.THREE_HUNDRED_KB_PLUS,
           width: { max: "0.5fr", min: "112px" },
@@ -889,6 +947,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TITLE,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.TITLE,
           width: { max: "1fr", min: "160px" },
@@ -902,6 +961,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TOTAL_BP,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.TOTAL_BP,
           width: { max: "0.5fr", min: "144px" },
@@ -915,6 +975,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TOTAL_GBP,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.TOTAL_GBP,
           width: { max: "0.5fr", min: "144px" },
@@ -928,6 +989,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TOTAL_READS,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.TOTAL_READS,
           width: { max: "0.5fr", min: "112px" },
@@ -941,6 +1003,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TWO_HUNDRED_KB_PLUS,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.TWO_HUNDRED_KB_PLUS,
           width: { max: "0.5fr", min: "112px" },
@@ -954,13 +1017,17 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.WHALES,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.WHALES,
           width: { max: "0.5fr", min: "112px" },
         },
       ],
       tableOptions: {
+        enableExpanding: true,
+        enableGrouping: true,
         initialState: {
+          expanded: true,
           sorting: [
             {
               desc: SORT_DIRECTION.ASCENDING,
