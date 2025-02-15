@@ -315,14 +315,14 @@ export const buildFileSize = (
 
 /**
  * Build props for the filetype cell.
- * @param rawSequencingData - Raw sequencing data entity.
+ * @param entity - Raw sequencing data or alignment entity.
  * @returns Props to be used for the cell.
  */
 export const buildFiletype = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
+  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAlignment
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
-    value: rawSequencingData.filetype,
+    value: entity.filetype,
   };
 };
 

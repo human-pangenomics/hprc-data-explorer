@@ -42,6 +42,10 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILENAME,
           },
+          {
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILETYPE,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILETYPE,
+          },
         ],
       },
     ],
@@ -99,6 +103,15 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
       {
         componentConfig: {
           component: C.BasicCell,
+          viewBuilder: V.buildFiletype,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILETYPE,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILETYPE,
+        width: { max: "0.5fr", min: "112px" },
+      },
+      {
+        componentConfig: {
+          component: C.BasicCell,
           viewBuilder: V.buildFileSize,
         } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILE_SIZE,
@@ -126,6 +139,9 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
     ],
     tableOptions: {
       initialState: {
+        columnVisibility: {
+          [HPRC_DATA_EXPLORER_CATEGORY_KEY.FILETYPE]: false,
+        },
         sorting: [
           {
             desc: SORT_DIRECTION.DESCENDING,

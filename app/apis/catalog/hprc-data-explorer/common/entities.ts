@@ -110,6 +110,7 @@ export interface HPRCDataExplorerAlignment {
   alignment: string;
   filename: string;
   fileSize: number;
+  filetype: string;
   loc: string;
   pipeline: string;
   referenceCoordinates: string | null;
