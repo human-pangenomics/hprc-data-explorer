@@ -31,10 +31,6 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.VERSION,
           },
           {
-            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.USE_CASE,
-            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.USE_CASE,
-          },
-          {
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PIPELINE,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PIPELINE,
           },
@@ -126,15 +122,6 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.REFERENCE_COORDINATES,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.REFERENCE_COORDINATES,
         width: { max: "1fr", min: "112px" },
-      },
-      {
-        componentConfig: {
-          component: C.NTagCell,
-          viewBuilder: V.buildUseCase,
-        } as ComponentConfig<typeof C.NTagCell, HPRCDataExplorerAlignment>,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.USE_CASE,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.USE_CASE,
-        width: { max: "1.2fr", min: "160px" },
       },
     ],
     tableOptions: {
