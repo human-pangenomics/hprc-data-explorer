@@ -194,6 +194,7 @@ async function buildAlignments(): Promise<HPRCDataExplorerAlignment[]> {
       alignment: row.alignment,
       fileSize: parseNumber(row.file_size),
       filename: row.file,
+      filetype: getTypeFromFilename(row.file),
       loc: row.loc,
       pipeline: row.pipeline,
       referenceCoordinates: parseStringOrNull(row.reference_coordinates),
@@ -202,6 +203,10 @@ async function buildAlignments(): Promise<HPRCDataExplorerAlignment[]> {
     })
   );
   return mappedRows.sort((a, b) => a.loc.localeCompare(b.loc));
+}
+
+function getTypeFromFilename(name: string): string {
+  return /\.([^.]*)(?:$|\.gz$)/.exec(name)?.[1].toLowerCase() || "N/A";
 }
 
 async function readValuesFile<T>(
