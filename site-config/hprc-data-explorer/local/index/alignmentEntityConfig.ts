@@ -153,6 +153,7 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
           [HPRC_DATA_EXPLORER_CATEGORY_KEY.FILETYPE]: false,
         },
         expanded: true,
+        grouping: [HPRC_DATA_EXPLORER_CATEGORY_KEY.ALIGNMENT],
         sorting: [
           {
             desc: SORT_DIRECTION.DESCENDING,
