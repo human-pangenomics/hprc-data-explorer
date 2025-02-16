@@ -64,6 +64,7 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
             typeof C.FileDownload,
             HPRCDataExplorerAnnotation
           >,
+          enableGrouping: false,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.DOWNLOAD,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.DOWNLOAD,
           width: { max: "auto", min: "76px" },
@@ -73,6 +74,7 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
             component: C.BasicCell,
             viewBuilder: V.buildSampleId,
           } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SAMPLE_ID,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
           width: { max: "0.5fr", min: "160px" },
@@ -82,6 +84,7 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
             component: C.BasicCell,
             viewBuilder: V.buildFilename,
           } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
+          enableGrouping: false,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILENAME,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
           width: { max: "1fr", min: "160px" },
@@ -91,6 +94,7 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
             component: C.BasicCell,
             viewBuilder: V.buildFileSize,
           } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
+          enableGrouping: false,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILE_SIZE,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILE_SIZE,
           width: { max: "0.5fr", min: "112px" },
@@ -100,6 +104,7 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
             component: C.BasicCell,
             viewBuilder: V.buildHaplotype,
           } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.HAPLOTYPE,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.HAPLOTYPE,
           width: { max: "0.5fr", min: "112px" },
@@ -109,6 +114,7 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
             component: C.BasicCell,
             viewBuilder: V.buildReference,
           } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.REFERENCE,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.REFERENCE,
           width: { max: "0.5fr", min: "112px" },
@@ -118,6 +124,7 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
             component: C.BasicCell,
             viewBuilder: V.buildAnnotationType,
           } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ANNOTATION_TYPE,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ANNOTATION_TYPE,
           width: { max: "1fr", min: "160px" },
@@ -131,13 +138,17 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
             typeof C.TypographyNoWrap,
             HPRCDataExplorerAnnotation
           >,
+          enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILE_LOCATION,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILE_LOCATION,
           width: { max: "1fr", min: "112px" },
         },
       ],
       tableOptions: {
+        enableExpanding: true,
+        enableGrouping: true,
         initialState: {
+          expanded: true,
           sorting: [
             {
               desc: SORT_DIRECTION.ASCENDING,
