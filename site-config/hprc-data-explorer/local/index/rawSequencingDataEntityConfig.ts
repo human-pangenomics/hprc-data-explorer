@@ -130,6 +130,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.FileDownload,
             HPRCDataExplorerRawSequencingData
           >,
+          enableGrouping: false,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.DOWNLOAD,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.DOWNLOAD,
           width: { max: "auto", min: "76px" },
@@ -142,7 +143,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
-          enableGrouping: true,
+          enableGrouping: false,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILENAME,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
           width: { max: "1.5fr", min: "212px" },
@@ -155,7 +156,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
-          enableGrouping: true,
+          enableGrouping: false,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILE_SIZE,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILE_SIZE,
           width: { max: "0.5fr", min: "112px" },
@@ -751,7 +752,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             typeof C.TypographyNoWrap,
             HPRCDataExplorerRawSequencingData
           >,
-          enableGrouping: true,
+          enableGrouping: false,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PATH,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.PATH,
           width: { max: "1fr", min: "112px" },
