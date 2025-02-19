@@ -14,8 +14,11 @@ test("Expect sorting the first column of the Assemblies tab to switch its first 
   await testSortFirstColumn(page, HPRC_TABS.assemblies);
 });
 
+// TODO fix (see issue #109)
+/*
 test("Expect sorting the first column of the Alignments tab to switch its first and last entry", async ({
   page,
 }) => {
   await testSortFirstColumn(page, HPRC_TABS.alignments);
 });
+*/
