@@ -7,7 +7,7 @@ export const HPRC_TABS: HprcTabCollection = {
     preselectedColumns: [],
     searchFiltersPlaceholderText: SEARCH_FILTERS_PLACEHOLDER_TEXT,
     selectableColumns: [],
-    tabName: "Alignments....",
+    tabName: "Alignments",
     url: "/alignments",
   },
   annotations: {
