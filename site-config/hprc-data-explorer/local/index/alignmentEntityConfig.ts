@@ -84,6 +84,16 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
         width: { max: "1.5fr", min: "212px" },
       },
       {
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildFileSize,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
+        enableGrouping: false,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILE_SIZE,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILE_SIZE,
+        width: { max: "0.5fr", min: "112px" },
+      },
+      {
         columnVisible: false,
         componentConfig: {
           component: C.BasicCell,
@@ -112,16 +122,6 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
         enableGrouping: true,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILETYPE,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILETYPE,
-        width: { max: "0.5fr", min: "112px" },
-      },
-      {
-        componentConfig: {
-          component: C.BasicCell,
-          viewBuilder: V.buildFileSize,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
-        enableGrouping: false,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILE_SIZE,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILE_SIZE,
         width: { max: "0.5fr", min: "112px" },
       },
       {
