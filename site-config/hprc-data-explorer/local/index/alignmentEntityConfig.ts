@@ -27,8 +27,8 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ALIGNMENT,
           },
           {
-            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.VERSION,
-            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.VERSION,
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.HPRC_VERSION,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.HPRC_VERSION,
           },
           {
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PIPELINE,
@@ -76,12 +76,12 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
       {
         componentConfig: {
           component: C.BasicCell,
-          viewBuilder: V.buildAlignment,
+          viewBuilder: V.buildFilename,
         } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
-        enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ALIGNMENT,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ALIGNMENT,
-        width: { max: "1fr", min: "112px" },
+        enableGrouping: false,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILENAME,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
+        width: { max: "1.5fr", min: "212px" },
       },
       {
         columnVisible: false,
@@ -90,19 +90,19 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
           viewBuilder: V.buildVersion,
         } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
         enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.VERSION,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.VERSION,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.HPRC_VERSION,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.HPRC_VERSION,
         width: { max: "0.5fr", min: "112px" },
       },
       {
         componentConfig: {
           component: C.BasicCell,
-          viewBuilder: V.buildFilename,
+          viewBuilder: V.buildAlignment,
         } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
-        enableGrouping: false,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILENAME,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
-        width: { max: "1.5fr", min: "212px" },
+        enableGrouping: true,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ALIGNMENT,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ALIGNMENT,
+        width: { max: "1fr", min: "112px" },
       },
       {
         componentConfig: {

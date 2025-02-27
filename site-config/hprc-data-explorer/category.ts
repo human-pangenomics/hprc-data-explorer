@@ -40,6 +40,7 @@ export const HPRC_DATA_EXPLORER_CATEGORY_KEY = {
   GENERATOR_FACILITY: "generatorFacility",
   HAMMING_ERR_RATE: "hammingErrRate",
   HAPLOTYPE: "haplotype",
+  HPRC_VERSION: "version",
   HSAT_ANNOTATION_FILE: "hsatAnnotationFile",
   INSTRUMENT_MODEL: "instrumentModel",
   L50: "l50",
@@ -95,7 +96,6 @@ export const HPRC_DATA_EXPLORER_CATEGORY_KEY = {
   TRF_ANNOTATION_FILE: "trfAnnotationFile",
   TWO_HUNDRED_KB_PLUS: "twoHundredkbPlus",
   USE_CASE: "useCase",
-  VERSION: "version",
   WHALES: "whales",
 };
 
@@ -141,6 +141,7 @@ export const HPRC_DATA_EXPLORER_CATEGORY_LABEL = {
   GENERATOR_FACILITY: "Generator Facility",
   HAMMING_ERR_RATE: "Hamming Err Rate",
   HAPLOTYPE: "Haplotype",
+  HPRC_VERSION: "HPRC Version",
   HSAT_ANNOTATION_FILE: "HSat",
   INSTRUMENT_MODEL: "Instrument Model",
   L50: "L50",
@@ -196,6 +197,5 @@ export const HPRC_DATA_EXPLORER_CATEGORY_LABEL = {
   TRF_ANNOTATION_FILE: "TRF",
   TWO_HUNDRED_KB_PLUS: "200kb+",
   USE_CASE: "Use Case",
-  VERSION: "Version",
   WHALES: "Whales",
 };
