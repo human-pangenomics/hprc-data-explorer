@@ -15,7 +15,7 @@
     "build-catalog-source": "python3 catalog-build/build_sequencing_data.py && python3 catalog-build/build_assemblies.py && python3 catalog-build/build_annotations.py"
   },
   "dependencies": {
-    "@databiosphere/findable-ui": "^21.0.0",
+    "@databiosphere/findable-ui": "^22.0.0",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
     "@mdx-js/loader": "^3.0.1",
@@ -24,14 +24,14 @@
     "@mui/material": "^6.1.5",
     "@next/mdx": "^14.1.0",
     "@tanstack/react-table": "^8.19.2",
-    "isomorphic-dompurify": "0.24.0",
+    "isomorphic-dompurify": "^2.22.0",
     "next": "^14.1.0",
     "next-compose-plugins": "^2.2.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-window": "1.8.9",
     "uuid": "8.3.2",
-    "validate.js": "^0.13.1"
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",
