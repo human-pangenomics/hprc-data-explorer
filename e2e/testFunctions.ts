@@ -17,12 +17,12 @@ export async function testUrl(
   // Currently, there is no non-flaky way to use Playwright to determine if a tab is selected,
   // so this test just checks for visibility.
   await expect(
-    page.getByRole("button").getByText(tab.tabName, { exact: true })
+    page.getByRole("link").getByText(tab.tabName, { exact: true })
   ).toBeVisible();
   for (const otherTab of otherTabs) {
     if (otherTab.tabName !== tab.tabName) {
       await expect(
-        page.getByRole("button").getByText(otherTab.tabName)
+        page.getByRole("link").getByText(otherTab.tabName)
       ).toBeVisible();
     }
   }
@@ -132,7 +132,7 @@ export async function testFilterPresence(
 ): Promise<void> {
   // Goto the selected tab
   await page.goto(tab.url);
-  await expect(page.getByRole("button").getByText(tab.tabName)).toBeVisible();
+  await expect(page.getByRole("link").getByText(tab.tabName)).toBeVisible();
   for (const filterName of filterNames) {
     // Check that each filter is visible and clickable
     await expect(page.getByText(filterRegex(filterName))).toBeVisible();
