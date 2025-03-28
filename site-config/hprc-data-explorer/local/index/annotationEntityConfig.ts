@@ -32,10 +32,6 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.HAPLOTYPE,
             },
             {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.REFERENCE,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.REFERENCE,
-            },
-            {
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.ANNOTATION_TYPE,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ANNOTATION_TYPE,
             },
@@ -107,16 +103,6 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
           enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.HAPLOTYPE,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.HAPLOTYPE,
-          width: { max: "0.5fr", min: "112px" },
-        },
-        {
-          componentConfig: {
-            component: C.BasicCell,
-            viewBuilder: V.buildReference,
-          } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
-          enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.REFERENCE,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.REFERENCE,
           width: { max: "0.5fr", min: "112px" },
         },
         {
