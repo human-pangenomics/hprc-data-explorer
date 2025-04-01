@@ -79,19 +79,6 @@ export const buildAnnotationType = (
 };
 
 /**
- * Build props for the assembly cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildAssembly = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.assembly,
-  };
-};
-
-/**
  * Build props for the assembly download cell.
  * @param assembly - Assembly entity.
  * @returns Props to be used for the cell.
@@ -245,19 +232,6 @@ export const buildDesignDescription = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.designDescription,
-  };
-};
-
-/**
- * Build props for the family ID cell.
- * @param entity - Raw sequencing data or assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildFamilyId = (
-  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: entity.familyId,
   };
 };
 
@@ -681,19 +655,6 @@ export const buildNotes = (
 };
 
 /**
- * Build props for the ntsm result cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildNtsmResult = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.ntsmResult,
-  };
-};
-
-/**
  * Build props for the ntsm score cell.
  * @param rawSequencingData - Raw sequencing data entity.
  * @returns Props to be used for the cell.
@@ -898,19 +859,6 @@ export const buildReferenceCoordinates = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: alignment.referenceCoordinates,
-  };
-};
-
-/**
- * Build props for the result cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildResult = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.result,
   };
 };
 

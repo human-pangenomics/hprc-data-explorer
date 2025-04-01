@@ -206,17 +206,6 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
       {
         columnVisible: false,
         componentConfig: {
-          component: C.BasicCell,
-          viewBuilder: V.buildFamilyId,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
-        enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
-        width: { max: "0.5fr", min: "112px" },
-      },
-      {
-        columnVisible: false,
-        componentConfig: {
           component: C.TypographyNoWrap,
           viewBuilder: V.buildFastaSha256,
         } as ComponentConfig<

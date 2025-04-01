@@ -6,7 +6,6 @@ export type HPRCDataExplorerEntity =
 
 export interface HPRCDataExplorerRawSequencingData {
   accession: string | null;
-  assembly: string | null;
   basecaller: string;
   basecallerModel: string;
   basecallerVersion: string;
@@ -17,7 +16,6 @@ export interface HPRCDataExplorerRawSequencingData {
   dataType: string;
   deepConsensusVersion: string;
   designDescription: string;
-  familyId: string | null;
   filename: string;
   fileSize: string; // This and other fileSize fields should be `number | LABEL.NA` if that's ever restored
   filetype: string;
@@ -41,7 +39,6 @@ export interface HPRCDataExplorerRawSequencingData {
   n50: string; //number | LABEL.NA;
   n75: string; //number | LABEL.NA;
   notes: string;
-  ntsmResult: string;
   ntsmScore: string; //number | LABEL.NA;
   oneHundredkbPlus: string; //number | LABEL.NA;
   oneMbPlus: string; //number | LABEL.NA;
@@ -53,7 +50,6 @@ export interface HPRCDataExplorerRawSequencingData {
   quartile50: string; //number | LABEL.NA;
   quartile75: string; //number | LABEL.NA;
   readN50: string; //number | LABEL.NA;
-  result: string;
   sampleId: string;
   seqKit: string;
   seqPlateChemistryVersion: string;
