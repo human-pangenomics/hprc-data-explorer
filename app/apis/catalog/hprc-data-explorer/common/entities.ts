@@ -35,12 +35,12 @@ export interface HPRCDataExplorerRawSequencingData {
   mean: string; //number | LABEL.NA;
   metadataAccession: string;
   min: string; //number | LABEL.NA;
-  mmTag: boolean | LABEL.NA;
+  mmTag: boolean | LABEL.NA | null;
   n25: string; //number | LABEL.NA;
   n50: string; //number | LABEL.NA;
   n75: string; //number | LABEL.NA;
   notes: string;
-  ntsmScore: string; //number | LABEL.NA;
+  ntsmScore: string | null; //number | LABEL.NA;
   oneHundredkbPlus: string; //number | LABEL.NA;
   oneMbPlus: string; //number | LABEL.NA;
   path: string;

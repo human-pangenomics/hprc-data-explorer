@@ -90,12 +90,12 @@ async function buildRawSequencingData(): Promise<
       mean: parseNumberOrNA(row.mean).toString(),
       metadataAccession: row.accession,
       min: parseNumberOrNA(row.min).toString(),
-      mmTag: parseBooleanOrNa(row.MM_tag, true),
+      mmTag: parseBooleanOrNaOrNull(row.MM_tag),
       n25: parseNumberOrNA(row.N25).toString(),
       n50: parseNumberOrNA(row.N50).toString(),
       n75: parseNumberOrNA(row.N75).toString(),
       notes: row.notes,
-      ntsmScore: parseNumberOrNA(row.ntsm_score, true).toString(),
+      ntsmScore: parseNumberOrNAOrNull(row.ntsm_score)?.toString() ?? null,
       oneHundredkbPlus: parseNumberOrNA(row["100kb+"]).toString(),
       oneMbPlus: parseNumberOrNA(row["1Mb+"]).toString(),
       path: row.path,
@@ -259,12 +259,14 @@ function parseNumberOrNull(value: string): number | null {
   return n;
 }
 
-function parseNumberOrNA(
-  value: string,
-  includeEmpty = false
-): number | LABEL.NA {
+function parseNumberOrNAOrNull(value: string): number | LABEL.NA | null {
   value = value.trim();
-  if (includeEmpty && !value) return LABEL.NA;
+  if (!value) return null;
+  return parseNumberOrNA(value);
+}
+
+function parseNumberOrNA(value: string): number | LABEL.NA {
+  value = value.trim();
   if (value === LABEL.NA) return value;
   const n = Number(value);
   if (!value || isNaN(n))
@@ -298,14 +300,17 @@ function parseStringArray(value: string): string[] {
   return items;
 }
 
-function parseBooleanOrNa(
-  value: string,
-  includeEmpty = false
-): boolean | LABEL.NA {
+function parseBooleanOrNaOrNull(value: string): boolean | LABEL.NA | null {
   value = value.trim();
-  if (value === LABEL.NA || (includeEmpty && !value)) return LABEL.NA;
+  if (!value) return null;
+  return parseBooleanOrNa(value);
+}
+
+function parseBooleanOrNa(value: string): boolean | LABEL.NA {
+  value = value.trim();
+  if (value === LABEL.NA) return LABEL.NA;
   if (value === "True") return true;
   if (value === "False") return false;
-  if (parseFloat(value) === 0) return false;
+  if (parseFloat(value) === 0) return false; // TODO remove this if the zeros are removed from DeepConsensus
   throw new Error(`Invalid boolean value: ${JSON.stringify(value)}`);
 }
