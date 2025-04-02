@@ -8,6 +8,7 @@ import {
   LABEL,
 } from "../app/apis/catalog/hprc-data-explorer/common/entities";
 import {
+  getAlignmentId,
   getAnnotationId,
   getAssemblyId,
   getRawSequencingDataId,
@@ -35,6 +36,15 @@ async function buildCatalog(): Promise<void> {
   const assemblies = await buildAssemblies();
   const annotations = await buildAnnotations();
   const alignments = await buildAlignments();
+
+  verifyUniqueIds(
+    "raw sequencing data",
+    rawSequencingData,
+    getRawSequencingDataId
+  );
+  verifyUniqueIds("assembly", assemblies, getAssemblyId);
+  verifyUniqueIds("annotation", annotations, getAnnotationId);
+  verifyUniqueIds("alignment", alignments, getAlignmentId);
 
   console.log("Sequencing data:", rawSequencingData.length);
   await saveJson(`${CATALOG_DIR}/sequencing-data.json`, rawSequencingData);
@@ -203,6 +213,33 @@ async function buildAlignments(): Promise<HPRCDataExplorerAlignment[]> {
     })
   );
   return mappedRows.sort((a, b) => a.loc.localeCompare(b.loc));
+}
+
+/**
+ * Take a list of entities and check for duplicate IDs, as calculated by the given function, and throw an error if there are any.
+ * @param entityName - Name of the entity type, to use in the error message.
+ * @param entities - Array of entities.
+ * @param getId - Function to get an entity's ID.
+ */
+function verifyUniqueIds<T>(
+  entityName: string,
+  entities: T[],
+  getId: (entity: T) => string
+): void {
+  const idCounts = new Map<string, number>();
+  for (const entity of entities) {
+    const id = getId(entity);
+    idCounts.set(id, (idCounts.get(id) ?? 0) + 1);
+  }
+  const duplicateIdEntries = Array.from(idCounts.entries()).filter(
+    ([, count]) => count > 1
+  );
+  if (duplicateIdEntries.length > 0) {
+    const duplicateIds = duplicateIdEntries.map(([id]) => id);
+    throw new Error(
+      `Duplicate ${entityName} IDs found: ${duplicateIds.join(", ")}`
+    );
+  }
 }
 
 function getTypeFromFilename(name: string): string {
