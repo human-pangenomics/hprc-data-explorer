@@ -16,6 +16,7 @@ export interface HPRCDataExplorerRawSequencingData {
   dataType: string;
   deepConsensusVersion: string;
   designDescription: string;
+  familyId: string | null;
   filename: string;
   fileSize: string; // This and other fileSize fields should be `number | LABEL.NA` if that's ever restored
   filetype: string;

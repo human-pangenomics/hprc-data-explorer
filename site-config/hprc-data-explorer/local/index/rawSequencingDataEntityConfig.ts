@@ -187,6 +187,20 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           columnVisible: false,
           componentConfig: {
             component: C.BasicCell,
+            viewBuilder: V.buildFamilyId,
+          } as ComponentConfig<
+            typeof C.BasicCell,
+            HPRCDataExplorerRawSequencingData
+          >,
+          enableGrouping: true,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
+          width: { max: "0.5fr", min: "112px" },
+        },
+        {
+          columnVisible: false,
+          componentConfig: {
+            component: C.BasicCell,
             viewBuilder: V.buildSuperpopulation,
           } as ComponentConfig<
             typeof C.BasicCell,

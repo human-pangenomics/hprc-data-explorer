@@ -236,6 +236,19 @@ export const buildDesignDescription = (
 };
 
 /**
+ * Build props for the family ID cell.
+ * @param entity - Raw sequencing data or assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildFamilyId = (
+  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: entity.familyId,
+  };
+};
+
+/**
  * Build props for the FASTA SHA-256 cell.
  * @param assembly - Assembly entity.
  * @returns Props to be used for the cell.

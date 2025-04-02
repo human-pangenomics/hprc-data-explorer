@@ -72,6 +72,7 @@ async function buildRawSequencingData(): Promise<
       dataType: row.data_type,
       deepConsensusVersion: row.DeepConsensus_version,
       designDescription: row.design_description,
+      familyId: parseStringOrNull(row.family_id),
       fileSize: parseNumberOrNA(row.file_size).toString(),
       filename: row.filename,
       filetype: row.filetype,
