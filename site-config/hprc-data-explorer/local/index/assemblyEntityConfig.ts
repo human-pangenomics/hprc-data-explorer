@@ -23,10 +23,6 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
       {
         categoryConfigs: [
           {
-            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PRODUCTION_YEAR,
-            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PRODUCTION_YEAR,
-          },
-          {
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SAMPLE_ID,
           },
@@ -265,18 +261,6 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.NUM_CONTIGS,
         width: { max: "1fr", min: "160px" },
       },
-      {
-        columnVisible: false,
-        componentConfig: {
-          component: C.BasicCell,
-          viewBuilder: V.buildProductionYear,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
-        enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PRODUCTION_YEAR,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.PRODUCTION_YEAR,
-        width: { max: "0.5fr", min: "112px" },
-      },
-
       {
         columnVisible: false,
         componentConfig: {

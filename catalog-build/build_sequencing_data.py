@@ -14,9 +14,10 @@ HIC_URL = "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate
 ONT_URL = "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sequencing_data/data_ont_pre_release.index.csv"
 DEEPCONSENSUS_URL = "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sequencing_data/data_deepconsensus_pre_release.index.csv"
 PACBIO_HIFI_URL = "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sequencing_data/data_hifi_pre_release.index.csv"
+ILLUMINA_URL = "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sequencing_data/data_illumina_pre_release.index.csv"
 KINNEX_URL = "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sequencing_data/data_kinnex_pre_release.index.csv"
-METADATA_URLS = [HIC_URL, ONT_URL, DEEPCONSENSUS_URL, PACBIO_HIFI_URL]
-BIOSAMPLES_TABLE_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/refs/heads/main/data/sequencing-production/hprc-sequence-production.tsv"
+METADATA_URLS = [HIC_URL, ONT_URL, DEEPCONSENSUS_URL, PACBIO_HIFI_URL, ILLUMINA_URL, KINNEX_URL]
+BIOSAMPLES_TABLE_URL = "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sample/hprc_release2_sample_metadata.csv"
 
 
 def download_source_files(urls, output_folder_path):
@@ -27,13 +28,12 @@ def download_source_files(urls, output_folder_path):
     return paths
 
 
-def join_samples(metadata_paths, kinnex_path, biosamples_table_path):
+def join_samples(metadata_paths, biosamples_table_path):
     # Generate each column across all provided sheets
     metadata_list = [
         pd.read_csv(path, sep=",", keep_default_na=False).drop_duplicates()
         for path in metadata_paths
     ]
-    metadata_list.append(pd.read_csv(kinnex_path, sep=",", keep_default_na=False).drop_duplicates().rename(columns={"sample_id": "sample_ID", "library_id": "library_ID"}))
     metadata_columns = np.unique([col for df in metadata_list for col in df.columns])
     # Concatenate all the provided metadata sheets
     all_metadata = (
@@ -42,18 +42,18 @@ def join_samples(metadata_paths, kinnex_path, biosamples_table_path):
         .fillna("N/A")
     )
     # Join the concatenated sheets with the table
-    biosamples_table = pd.read_csv(biosamples_table_path, sep="\t")
+    biosamples_table = pd.read_csv(biosamples_table_path, sep=",").drop(columns=["notes"])
     joined = all_metadata.merge(
         biosamples_table,
         left_on="sample_ID",
-        right_on="ChildID",
+        right_on="sample_id",
         how="left",
         validate="many_to_one",
     )
     print("\nThe following biosamples did not have corresponding metadata:")
     print(
         ", ".join(
-            all_metadata[~all_metadata["sample_ID"].isin(biosamples_table["ChildID"])][
+            all_metadata[~all_metadata["sample_ID"].isin(biosamples_table["sample_id"])][
                 "sample_ID"
             ].unique()
         )
@@ -66,12 +66,9 @@ def join_samples(metadata_paths, kinnex_path, biosamples_table_path):
 
 if __name__ == "__main__":
     metadata_files = download_source_files(METADATA_URLS, STORAGE_FOLDER_PATH)
-    kinnex_file = download_source_files(
-        [KINNEX_URL], STORAGE_FOLDER_PATH
-    )[0]
     biosamples_table_file = download_source_files(
         [BIOSAMPLES_TABLE_URL], STORAGE_FOLDER_PATH
     )[0]
-    joined = join_samples(metadata_files, kinnex_file, biosamples_table_file)
+    joined = join_samples(metadata_files, biosamples_table_file)
     joined.to_csv(OUTPUT_PATH, index=False)
     print("\nSequencing data processing complete!\n")

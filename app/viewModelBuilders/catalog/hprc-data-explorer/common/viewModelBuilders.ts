@@ -759,19 +759,6 @@ export const buildPolymeraseVersion = (
 };
 
 /**
- * Build props for the production year cell.
- * @param entity - Raw sequencing data or assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildProductionYear = (
-  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: entity.productionYear,
-  };
-};
-
-/**
  * Build props for the quartile 25 cell.
  * @param rawSequencingData - Raw sequencing data entity.
  * @returns Props to be used for the cell.

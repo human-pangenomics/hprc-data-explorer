@@ -89,18 +89,17 @@ async function buildRawSequencingData(): Promise<
       mean: parseNumberOrNA(row.mean).toString(),
       metadataAccession: row.accession,
       min: parseNumberOrNA(row.min).toString(),
-      mmTag: parseBooleanOrNa(row.MM_tag),
+      mmTag: parseBooleanOrNa(row.MM_tag, true),
       n25: parseNumberOrNA(row.N25).toString(),
       n50: parseNumberOrNA(row.N50).toString(),
       n75: parseNumberOrNA(row.N75).toString(),
       notes: row.notes,
-      ntsmScore: parseNumberOrNA(row.ntsm_score).toString(),
+      ntsmScore: parseNumberOrNA(row.ntsm_score, true).toString(),
       oneHundredkbPlus: parseNumberOrNA(row["100kb+"]).toString(),
       oneMbPlus: parseNumberOrNA(row["1Mb+"]).toString(),
       path: row.path,
       platform: row.platform,
       polymeraseVersion: row.polymerase_version,
-      productionYear: parseStringOrNull(row["Production Year"]),
       quartile25: parseNumberOrNA(row.quartile_25).toString(),
       quartile50: parseNumberOrNA(row.quartile_50).toString(),
       quartile75: parseNumberOrNA(row.quartile_75).toString(),
@@ -111,8 +110,8 @@ async function buildRawSequencingData(): Promise<
       shearMethod: row.shear_method,
       sizeSelection: row.size_selection,
       study: row.study,
-      subpopulation: parseStringOrNull(row.Subpopulation),
-      superpopulation: parseStringOrNull(row.Superpopulation),
+      subpopulation: parseStringOrNull(row.subpopulation),
+      superpopulation: parseStringOrNull(row.superpopulation),
       threeHundredkbPlus: parseNumberOrNA(row["300kb+"]).toString(),
       title: row.title,
       totalBp: parseNumberOrNA(row.total_bp).toString(),
@@ -259,8 +258,12 @@ function parseNumberOrNull(value: string): number | null {
   return n;
 }
 
-function parseNumberOrNA(value: string): number | LABEL.NA {
+function parseNumberOrNA(
+  value: string,
+  includeEmpty = false
+): number | LABEL.NA {
   value = value.trim();
+  if (includeEmpty && !value) return LABEL.NA;
   if (value === LABEL.NA) return value;
   const n = Number(value);
   if (!value || isNaN(n))
@@ -294,9 +297,14 @@ function parseStringArray(value: string): string[] {
   return items;
 }
 
-function parseBooleanOrNa(value: string): boolean | LABEL.NA {
-  if (value === LABEL.NA) return LABEL.NA;
+function parseBooleanOrNa(
+  value: string,
+  includeEmpty = false
+): boolean | LABEL.NA {
+  value = value.trim();
+  if (value === LABEL.NA || (includeEmpty && !value)) return LABEL.NA;
   if (value === "True") return true;
   if (value === "False") return false;
+  if (parseFloat(value) === 0) return false;
   throw new Error(`Invalid boolean value: ${JSON.stringify(value)}`);
 }

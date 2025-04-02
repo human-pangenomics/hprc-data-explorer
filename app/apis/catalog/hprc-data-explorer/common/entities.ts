@@ -45,7 +45,6 @@ export interface HPRCDataExplorerRawSequencingData {
   path: string;
   platform: string;
   polymeraseVersion: string;
-  productionYear: string | null;
   quartile25: string; //number | LABEL.NA;
   quartile50: string; //number | LABEL.NA;
   quartile75: string; //number | LABEL.NA;
