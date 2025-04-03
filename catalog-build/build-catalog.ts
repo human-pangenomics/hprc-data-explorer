@@ -348,6 +348,5 @@ function parseBooleanOrNa(value: string): boolean | LABEL.NA {
   if (value === LABEL.NA) return LABEL.NA;
   if (value === "True") return true;
   if (value === "False") return false;
-  if (parseFloat(value) === 0) return false; // TODO remove this if the zeros are removed from DeepConsensus
   throw new Error(`Invalid boolean value: ${JSON.stringify(value)}`);
 }
