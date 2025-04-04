@@ -74,22 +74,11 @@ export interface HPRCDataExplorerAssembly {
   fastaSha256: string | null;
   filename: string;
   fileSize: string;
-  frag: number | null;
-  fullDup: number | null;
-  fullSgl: number | null;
   gcpFasta: string | null;
-  hammingErrRate: number | null;
   haplotype: string;
-  l50: number | null;
-  n50: number | null;
-  numContigs: number | null;
-  productionYear: string | null;
-  qv: number | string | null;
   sampleId: string;
   subpopulation: string | null;
   superpopulation: string | null;
-  switchErrRate: number | null;
-  totalLen: number | null;
 }
 
 export interface HPRCDataExplorerAnnotation {

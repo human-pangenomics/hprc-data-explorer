@@ -340,45 +340,6 @@ export const buildFourHundredkbPlus = (
 };
 
 /**
- * Build props for the frag cell.
- * @param assembly - Assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildFrag = (
-  assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: assembly.frag?.toLocaleString(),
-  };
-};
-
-/**
- * Build props for the full dup cell.
- * @param assembly - Assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildFullDup = (
-  assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: assembly.fullDup?.toLocaleString(),
-  };
-};
-
-/**
- * Build props for the full SGL cell.
- * @param assembly - Assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildFullSgl = (
-  assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: assembly.fullSgl?.toLocaleString(),
-  };
-};
-
-/**
  * Build props for the Gb cell.
  * @param rawSequencingData - Raw sequencing data entity.
  * @returns Props to be used for the cell.
@@ -431,22 +392,6 @@ export const buildGeneratorFacility = (
 };
 
 /**
- * Build props for the Hamming err rate cell.
- * @param assembly - Assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildHammingErrRate = (
-  assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value:
-      assembly.hammingErrRate === null
-        ? undefined
-        : formatPercentage(assembly.hammingErrRate),
-  };
-};
-
-/**
  * Build props for the haplotype cell.
  * @param entity - Assembly or annotation entity.
  * @returns Props to be used for the cell.
@@ -469,19 +414,6 @@ export const buildInstrumentModel = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.instrumentModel,
-  };
-};
-
-/**
- * Build props for the L50 cell.
- * @param assembly - Assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildL50 = (
-  assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: assembly.l50?.toLocaleString(),
   };
 };
 
@@ -634,7 +566,7 @@ export const buildN25 = (
  * @returns Props to be used for the cell.
  */
 export const buildN50 = (
-  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
+  entity: HPRCDataExplorerRawSequencingData
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: entity.n50?.toLocaleString(),
@@ -677,19 +609,6 @@ export const buildNtsmScore = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.ntsmScore?.toLocaleString(),
-  };
-};
-
-/**
- * Build props for the num configs cell.
- * @param assembly - Assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildNumContigs = (
-  assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: assembly.numContigs?.toLocaleString(),
   };
 };
 
@@ -807,19 +726,6 @@ export const buildQuartile75 = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.quartile75?.toLocaleString(),
-  };
-};
-
-/**
- * Build props for the QV cell.
- * @param assembly - Assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildQv = (
-  assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: assembly.qv?.toLocaleString(),
   };
 };
 
@@ -984,22 +890,6 @@ export const buildSuperpopulation = (
 };
 
 /**
- * Build props for the switch err rate cell.
- * @param assembly - Assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildSwitchErrRate = (
-  assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value:
-      assembly.switchErrRate === null
-        ? undefined
-        : formatPercentage(assembly.switchErrRate),
-  };
-};
-
-/**
  * Build props for the 300kb+ cell.
  * @param rawSequencingData - Raw sequencing data entity.
  * @returns Props to be used for the cell.
@@ -1048,19 +938,6 @@ export const buildTotalGbp = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.totalGbp?.toLocaleString(),
-  };
-};
-
-/**
- * Build props for the total len cell.
- * @param assembly - Assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildTotalLen = (
-  assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: assembly.totalLen?.toLocaleString(),
   };
 };
 
@@ -1129,15 +1006,6 @@ export const buildWhales = (
     value: rawSequencingData.whales?.toLocaleString(),
   };
 };
-
-/**
- * Format a decimal value as a fraction.
- * @param decimalFraction - Value to format.
- * @returns Percentage string.
- */
-function formatPercentage(decimalFraction: number): string {
-  return `${(decimalFraction * 100).toLocaleString()}%`;
-}
 
 /**
  * Get a download URL from a given URI, by converting it from an S3 URI or returning it as-is.
