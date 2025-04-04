@@ -10,11 +10,14 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STORAGE_FOLDER_PATH = os.path.join(BASE_DIR, "unprocessed_files/")
 OUTPUT_PATH = os.path.join(BASE_DIR, "source/sequencing-data.csv")
 
-HIC_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/hprc-data-explorer-tables/HPRC_HiC.tsv"
-ONT_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/hprc-data-explorer-tables/HPRC_ONT.tsv"
-PACBIO_HIFI_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/hprc-data-explorer-tables/HPRC_PacBio_HiFi.tsv"
-METADATA_URLS = [HIC_URL, ONT_URL, PACBIO_HIFI_URL]
-BIOSAMPLES_TABLE_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/production/hprc-production-biosample-table.tsv"
+HIC_URL = "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sequencing_data/data_hic_pre_release.index.csv"
+ONT_URL = "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sequencing_data/data_ont_pre_release.index.csv"
+DEEPCONSENSUS_URL = "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sequencing_data/data_deepconsensus_pre_release.index.csv"
+PACBIO_HIFI_URL = "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sequencing_data/data_hifi_pre_release.index.csv"
+ILLUMINA_URL = "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sequencing_data/data_illumina_pre_release.index.csv"
+KINNEX_URL = "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sequencing_data/data_kinnex_pre_release.index.csv"
+METADATA_URLS = [HIC_URL, ONT_URL, DEEPCONSENSUS_URL, PACBIO_HIFI_URL, ILLUMINA_URL, KINNEX_URL]
+BIOSAMPLES_TABLE_URL = "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sample/hprc_release2_sample_metadata.csv"
 
 
 def download_source_files(urls, output_folder_path):
@@ -28,7 +31,7 @@ def download_source_files(urls, output_folder_path):
 def join_samples(metadata_paths, biosamples_table_path):
     # Generate each column across all provided sheets
     metadata_list = [
-        pd.read_csv(path, sep="\t", keep_default_na=False).drop_duplicates()
+        pd.read_csv(path, sep=",", keep_default_na=False).drop_duplicates()
         for path in metadata_paths
     ]
     metadata_columns = np.unique([col for df in metadata_list for col in df.columns])
@@ -39,18 +42,18 @@ def join_samples(metadata_paths, biosamples_table_path):
         .fillna("N/A")
     )
     # Join the concatenated sheets with the table
-    biosamples_table = pd.read_csv(biosamples_table_path, sep="\t")
+    biosamples_table = pd.read_csv(biosamples_table_path, sep=",").drop(columns=["notes"])
     joined = all_metadata.merge(
         biosamples_table,
         left_on="sample_ID",
-        right_on="Sample",
+        right_on="sample_id",
         how="left",
         validate="many_to_one",
     )
     print("\nThe following biosamples did not have corresponding metadata:")
     print(
         ", ".join(
-            all_metadata[~all_metadata["sample_ID"].isin(biosamples_table["Sample"])][
+            all_metadata[~all_metadata["sample_ID"].isin(biosamples_table["sample_id"])][
                 "sample_ID"
             ].unique()
         )

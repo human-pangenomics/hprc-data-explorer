@@ -40,10 +40,6 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SAMPLE_ID,
             },
-            {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PRODUCTION_YEAR,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PRODUCTION_YEAR,
-            },
           ],
           label: "Sample",
         },
@@ -267,20 +263,6 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.INSTRUMENT_MODEL,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.INSTRUMENT_MODEL,
           width: { max: "1fr", min: "160px" },
-        },
-        {
-          columnVisible: false,
-          componentConfig: {
-            component: C.BasicCell,
-            viewBuilder: V.buildAssembly,
-          } as ComponentConfig<
-            typeof C.BasicCell,
-            HPRCDataExplorerRawSequencingData
-          >,
-          enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ASSEMBLY,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ASSEMBLY,
-          width: { max: "0.5fr", min: "112px" },
         },
         {
           columnVisible: false,
@@ -691,20 +673,6 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           columnVisible: false,
           componentConfig: {
             component: C.BasicCell,
-            viewBuilder: V.buildNtsmResult,
-          } as ComponentConfig<
-            typeof C.BasicCell,
-            HPRCDataExplorerRawSequencingData
-          >,
-          enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.NTSM_RESULT,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.NTSM_RESULT,
-          width: { max: "0.5fr", min: "112px" },
-        },
-        {
-          columnVisible: false,
-          componentConfig: {
-            component: C.BasicCell,
             viewBuilder: V.buildNtsmScore,
           } as ComponentConfig<
             typeof C.BasicCell,
@@ -772,19 +740,6 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           width: { max: "0.5fr", min: "112px" },
         },
         {
-          componentConfig: {
-            component: C.BasicCell,
-            viewBuilder: V.buildProductionYear,
-          } as ComponentConfig<
-            typeof C.BasicCell,
-            HPRCDataExplorerRawSequencingData
-          >,
-          enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PRODUCTION_YEAR,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.PRODUCTION_YEAR,
-          width: { max: "0.5fr", min: "112px" },
-        },
-        {
           columnVisible: false,
           componentConfig: {
             columnVisible: false,
@@ -839,20 +794,6 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.READ_N50,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.READ_N50,
-          width: { max: "0.5fr", min: "112px" },
-        },
-        {
-          columnVisible: false,
-          componentConfig: {
-            component: C.BasicCell,
-            viewBuilder: V.buildResult,
-          } as ComponentConfig<
-            typeof C.BasicCell,
-            HPRCDataExplorerRawSequencingData
-          >,
-          enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.RESULT,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.RESULT,
           width: { max: "0.5fr", min: "112px" },
         },
         {
