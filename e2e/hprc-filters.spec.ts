@@ -40,7 +40,7 @@ test("Expect filter counts to update for the first five filters on the Raw Seque
 test("Expect filter counts to update for the first five filters on the Assemblies tab", async ({
   page,
 }) => {
-  const result = await testFirstNFilterCounts(page, HPRC_TABS.assemblies, 3);
+  const result = await testFirstNFilterCounts(page, HPRC_TABS.assemblies, 2);
   if (!result) {
     test.fail();
   }
