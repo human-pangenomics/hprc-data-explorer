@@ -123,83 +123,6 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         width: { max: "1fr", min: "160px" },
       },
       {
-        columnVisible: true,
-        componentConfig: {
-          component: C.BasicCell,
-          viewBuilder: V.buildTotalLen,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
-        enableGrouping: false,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TOTAL_LEN,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.TOTAL_LEN,
-        width: { max: "1fr", min: "160px" },
-      },
-      {
-        columnVisible: true,
-        componentConfig: {
-          component: C.BasicCell,
-          viewBuilder: V.buildN50,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
-        enableGrouping: false,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.N50,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.N50,
-        width: { max: "1fr", min: "160px" },
-      },
-      {
-        columnVisible: true,
-        componentConfig: {
-          component: C.BasicCell,
-          viewBuilder: V.buildFullSgl,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
-        enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FULL_SGL,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FULL_SGL,
-        width: { max: "1fr", min: "160px" },
-      },
-      {
-        columnVisible: true,
-        componentConfig: {
-          component: C.BasicCell,
-          viewBuilder: V.buildFullDup,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
-        enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FULL_DUP,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FULL_DUP,
-        width: { max: "1fr", min: "160px" },
-      },
-      {
-        columnVisible: true,
-        componentConfig: {
-          component: C.BasicCell,
-          viewBuilder: V.buildQv,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
-        enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.QV,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.QV,
-        width: { max: "1fr", min: "160px" },
-      },
-      {
-        columnVisible: true,
-        componentConfig: {
-          component: C.BasicCell,
-          viewBuilder: V.buildSwitchErrRate,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
-        enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SWITCH_ERR_RATE,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.SWITCH_ERR_RATE,
-        width: { max: "1fr", min: "160px" },
-      },
-      {
-        columnVisible: true,
-        componentConfig: {
-          component: C.BasicCell,
-          viewBuilder: V.buildHammingErrRate,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
-        enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.HAMMING_ERR_RATE,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.HAMMING_ERR_RATE,
-        width: { max: "1fr", min: "160px" },
-      },
-      {
         columnVisible: false,
         componentConfig: {
           component: C.BasicCell,
@@ -227,17 +150,6 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
       {
         columnVisible: false,
         componentConfig: {
-          component: C.BasicCell,
-          viewBuilder: V.buildFrag,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
-        enableGrouping: false,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FRAG,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FRAG,
-        width: { max: "1fr", min: "160px" },
-      },
-      {
-        columnVisible: false,
-        componentConfig: {
           component: C.TypographyNoWrap,
           viewBuilder: V.buildGcpFasta,
         } as ComponentConfig<
@@ -248,29 +160,6 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.GCP_FASTA,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.GCP_FASTA,
         width: { max: "1fr", min: "112px" },
-      },
-      {
-        columnVisible: false,
-        componentConfig: {
-          component: C.BasicCell,
-          viewBuilder: V.buildL50,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
-        enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.L50,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.L50,
-        width: { max: "1fr", min: "160px" },
-      },
-
-      {
-        columnVisible: false,
-        componentConfig: {
-          component: C.BasicCell,
-          viewBuilder: V.buildNumContigs,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
-        enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.NUM_CONTIGS,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.NUM_CONTIGS,
-        width: { max: "1fr", min: "160px" },
       },
       {
         columnVisible: false,

@@ -4,8 +4,7 @@ import numpy as np
 from build_help import download_file, get_file_sizes_from_uris
 
 ASSEMBLY_URL = "https://raw.githubusercontent.com/human-pangenomics/HPP_Year1_Assemblies/main/assembly_index/Year1_assemblies_v2_genbank.index"
-QC_URL = "https://raw.githubusercontent.com/human-pangenomics/HPP_Year1_Assemblies/main/automated_qc_results/Y1_assemblies_v2_genbank_QC.csv"
-BIOSAMPLE_TABLE_URL = "https://raw.githubusercontent.com/human-pangenomics/HPRC_metadata/main/data/production/hprc-production-biosample-table.tsv"
+BIOSAMPLE_TABLE_URL = "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sample/hprc_release2_sample_metadata.csv"
 EXCLUDED_SAMPLE_IDS = ["CHM13_v1.1", "GRCh38_no_alt_analysis_set"]
 
 
@@ -60,47 +59,26 @@ def format_assemblies_df(data):
     ).drop_duplicates(subset=["sample", "haplotype"], keep="first")
     return outputData
 
-def process_qc_df(qcDf):
-    # Split the qcDf into two based on maternal / paternal
-    mat_qc_df = qcDf.filter(regex="^genbank_qc_sample_id_id|(^mat_)").copy()
-    pat_qc_df = qcDf.filter(regex="^genbank_qc_sample_id_id|(^pat_)").copy()
-    mat_qc_df["haplotype"] = HAPLOTYPES[MATERNAL_HAPLOTYPE_ID]
-    pat_qc_df["haplotype"] = HAPLOTYPES[PATERNAL_HAPLOTYPE_ID]
-    pat_qc_df.columns = pat_qc_df.columns.str.replace('^pat_', '', regex=True)
-    mat_qc_df.columns = mat_qc_df.columns.str.replace('^mat_', '', regex=True)
-    # Concatenate the two DFs so that each entry corresponds to a different sample and haplotype
-    return pd.concat([mat_qc_df, pat_qc_df]).rename(columns={"genbank_qc_sample_id_id": "sample"})
-
 if __name__ == "__main__":
     # Download the files from Github
     assembly_path = download_file(ASSEMBLY_URL, DOWNLOADS_FOLDER_PATH)
     biosample_path = download_file(BIOSAMPLE_TABLE_URL, DOWNLOADS_FOLDER_PATH)
-    qc_path = download_file(QC_URL, DOWNLOADS_FOLDER_PATH)
 
     # Get DataFrames from downloaded files
     assembly_df = pd.read_csv(assembly_path, sep="\t")
-    biosample_df = pd.read_csv(biosample_path, sep="\t")
-    qc_df = pd.read_csv(qc_path)
+    biosample_df = pd.read_csv(biosample_path, sep=",")
 
     # Add haplotypes and merge all DataFrames
     assembly_df_with_haplotypes = format_assemblies_df(assembly_df)
     combined_df = assembly_df_with_haplotypes.merge(
-        biosample_df, left_on="sample", right_on="Sample", how="left", validate="many_to_one"
+        biosample_df, left_on="sample", right_on="sample_id", how="left", validate="many_to_one"
     ).drop(
-        columns=["Sample"]
+        columns=["sample_id"]
     )
     print("The following sample IDs did not correspond to a value in the Biosample sheet, so NA values were entered:")
     print(", ".join(
-        assembly_df_with_haplotypes.loc[~assembly_df_with_haplotypes["sample"].isin(biosample_df["Sample"]), "sample"]
+        assembly_df_with_haplotypes.loc[~assembly_df_with_haplotypes["sample"].isin(biosample_df["sample_id"]), "sample"]
     ))
-    # Add the QC DataFrame
-    qc_df_joined_with_haplotype = process_qc_df(qc_df)
-    combined_df_with_qc = combined_df.merge(
-        qc_df_joined_with_haplotype,
-        on=["sample", "haplotype"],
-        how="left",
-        validate="one_to_one"
-    )
-    output_df = combined_df_with_qc.assign(file_size=get_file_sizes_from_uris(combined_df_with_qc["aws_fasta"], "assembly"))
+    output_df = combined_df.assign(file_size=get_file_sizes_from_uris(combined_df["aws_fasta"], "assembly"))
     output_df.to_csv(OUTPUT_FILE_PATH, index=False)
     print("\nAssembly processing complete!\n")

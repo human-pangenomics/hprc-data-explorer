@@ -146,28 +146,17 @@ async function buildAssemblies(): Promise<HPRCDataExplorerAssembly[]> {
   );
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerAssembly => ({
-      accession: parseStringOrNull(row.Accession),
+      accession: parseStringOrNull(row.biosample_id),
       awsFasta: parseStringOrNull(row.aws_fasta),
-      familyId: parseStringOrNull(row.familyID),
+      familyId: parseStringOrNull(row.family_id),
       fastaSha256: parseStringOrNull(row.fasta_sha256),
       fileSize: parseNumberOrNA(row.file_size).toString(),
       filename: getFileNameFromPath(row.aws_fasta),
-      frag: parseNumberOrNull(row.frag),
-      fullDup: parseNumberOrNull(row.full_dup),
-      fullSgl: parseNumberOrNull(row.full_sgl),
       gcpFasta: parseStringOrNull(row.gcp_fasta),
-      hammingErrRate: parsePercentageOrNull(row.hamming_err_rate),
       haplotype: row.haplotype,
-      l50: parseNumberOrNull(row.L50),
-      n50: parseNumberOrNull(row.N50),
-      numContigs: parseNumberOrNull(row.num_contigs),
-      productionYear: parseStringOrNull(row["Production Year"]),
-      qv: parseNumberOrStringOrNull(row.qv),
       sampleId: row.sample,
-      subpopulation: parseStringOrNull(row.Subpopulation),
-      superpopulation: parseStringOrNull(row.Superpopulation),
-      switchErrRate: parsePercentageOrNull(row.switch_err_rate),
-      totalLen: parseNumberOrNull(row.total_len),
+      subpopulation: parseStringOrNull(row.subpopulation),
+      superpopulation: parseStringOrNull(row.superpopulation),
     })
   );
   return mappedRows.sort((a, b) =>
@@ -311,23 +300,6 @@ function parseNumberOrNA(value: string): number | LABEL.NA {
   if (!value || isNaN(n))
     throw new Error(`Invalid number value: ${JSON.stringify(value)}`);
   return n;
-}
-
-function parseNumberOrStringOrNull(value: string): number | string | null {
-  value = value.trim();
-  if (!value) return null;
-  const n = Number(value);
-  if (isNaN(n)) return value;
-  return n;
-}
-
-function parsePercentageOrNull(value: string): number | null {
-  value = value.trim();
-  if (!value) return null;
-  const match = /^(\d+|\d*\.\d+)%$/.exec(value);
-  if (!match)
-    throw new Error(`Invalid percentage value: ${JSON.stringify(value)}`);
-  return Number(match[1]) / 100;
 }
 
 function parseStringArray(value: string): string[] {
