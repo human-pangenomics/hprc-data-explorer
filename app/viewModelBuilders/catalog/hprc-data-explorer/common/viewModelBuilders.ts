@@ -249,6 +249,19 @@ export const buildFamilyId = (
 };
 
 /**
+ * Build props for the FASTA MD5 cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildFastaMd5 = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.TypographyNoWrap> => {
+  return {
+    value: assembly.fastaMd5,
+  };
+};
+
+/**
  * Build props for the FASTA SHA-256 cell.
  * @param assembly - Assembly entity.
  * @returns Props to be used for the cell.
@@ -349,19 +362,6 @@ export const buildGb = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.Gb?.toLocaleString(),
-  };
-};
-
-/**
- * Build props for the GCP FASTA cell.
- * @param assembly - Assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildGcpFasta = (
-  assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.TypographyNoWrap> => {
-  return {
-    value: assembly.gcpFasta,
   };
 };
 
@@ -791,6 +791,19 @@ export const buildReferenceCoordinates = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: alignment.referenceCoordinates,
+  };
+};
+
+/**
+ * Build props for the release cell.
+ * @param entity - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildRelease = (
+  entity: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: entity.release,
   };
 };
 

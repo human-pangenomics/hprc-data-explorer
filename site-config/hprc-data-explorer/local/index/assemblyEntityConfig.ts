@@ -134,6 +134,20 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         width: { max: "0.5fr", min: "112px" },
       },
       {
+        columnVisible: true,
+        componentConfig: {
+          component: C.TypographyNoWrap,
+          viewBuilder: V.buildFastaMd5,
+        } as ComponentConfig<
+          typeof C.TypographyNoWrap,
+          HPRCDataExplorerAssembly
+        >,
+        enableGrouping: false,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FASTA_MD5,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FASTA_MD5,
+        width: { max: "1fr", min: "112px" },
+      },
+      {
         columnVisible: false,
         componentConfig: {
           component: C.TypographyNoWrap,
@@ -145,20 +159,6 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         enableGrouping: false,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FASTA_SHA256,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FASTA_SHA256,
-        width: { max: "1fr", min: "112px" },
-      },
-      {
-        columnVisible: false,
-        componentConfig: {
-          component: C.TypographyNoWrap,
-          viewBuilder: V.buildGcpFasta,
-        } as ComponentConfig<
-          typeof C.TypographyNoWrap,
-          HPRCDataExplorerAssembly
-        >,
-        enableGrouping: false,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.GCP_FASTA,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.GCP_FASTA,
         width: { max: "1fr", min: "112px" },
       },
       {
@@ -182,6 +182,16 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_DESCRIPTOR,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_DESCRIPTOR,
         width: { max: "1fr", min: "160px" },
+      },
+      {
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildRelease,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
+        enableGrouping: true,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.RELEASE,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.RELEASE,
+        width: { max: "0.5fr", min: "80px" },
       },
     ],
     tableOptions: {

@@ -14,6 +14,7 @@ import {
   getRawSequencingDataId,
 } from "../app/apis/catalog/hprc-data-explorer/common/utils";
 import {
+  HAPLOTYPE_BY_ID,
   SOURCE_ALIGNMENT_KEYS,
   SOURCE_ANNOTATION_KEYS,
   SOURCE_ASSEMBLY_KEYS,
@@ -147,16 +148,17 @@ async function buildAssemblies(): Promise<HPRCDataExplorerAssembly[]> {
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerAssembly => ({
       accession: parseStringOrNull(row.biosample_id),
-      awsFasta: parseStringOrNull(row.aws_fasta),
+      awsFasta: parseStringOrNull(row.assembly),
       familyId: parseStringOrNull(row.family_id),
+      fastaMd5: row.assembly_md5,
       fastaSha256: parseStringOrNull(row.fasta_sha256),
       fileSize: parseNumberOrNA(row.file_size).toString(),
-      filename: getFileNameFromPath(row.aws_fasta),
-      gcpFasta: parseStringOrNull(row.gcp_fasta),
-      haplotype: row.haplotype,
+      filename: getFileNameFromPath(row.assembly),
+      haplotype: HAPLOTYPE_BY_ID[row.haplotype] ?? row.haplotype,
       populationAbbreviation: parseStringOrNull(row.population_abbreviation),
       populationDescriptor: parseStringOrNull(row.population_descriptor),
-      sampleId: row.sample,
+      release: row.release,
+      sampleId: row.sample_id,
     })
   );
   return mappedRows.sort((a, b) =>
