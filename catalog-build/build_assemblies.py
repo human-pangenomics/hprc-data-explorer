@@ -1,9 +1,33 @@
 import os
 import pandas as pd
 import numpy as np
-from build_help import download_file, get_file_sizes_from_uris
+from build_help import download_file, download_files_for_releases, load_joined_files_for_releases, get_file_sizes_from_uris
 
-ASSEMBLY_URL = "https://raw.githubusercontent.com/human-pangenomics/HPP_Year1_Assemblies/main/assembly_index/Year1_assemblies_v2_genbank.index"
+RELEASE_SPECIFIC_FILES = [
+    {
+        "release": 1,
+        "ASSEMBLIES": {
+            "url": "https://raw.githubusercontent.com/human-pangenomics/HPP_Year1_Assemblies/main/assembly_index/Year1_assemblies_v2_genbank.index",
+            "sep": "\t",
+            "input_formatter": lambda df: format_release_1_assemblies_df(df),
+            "mapper": lambda df: df.assign(haplotype=df["haplotype"].map(lambda h: RELEASE_1_HAPLOTYPES_TO_IDS.get(h, h))),
+            "columns": {
+                "sample": "sample_id",
+                "haplotype": "haplotype",
+                "aws_fasta": "assembly",
+                "fasta_sha256": "fasta_sha256"
+            }
+        }
+    },
+    {
+        "release": 2,
+        "ASSEMBLIES": {
+            "url": "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/assemblies_pre_release_v0.6.1.index.csv",
+            "sep": ","
+        }
+    }
+]
+
 BIOSAMPLE_TABLE_URL = "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sample/hprc_release2_sample_metadata.csv"
 EXCLUDED_SAMPLE_IDS = ["CHM13_v1.1", "GRCh38_no_alt_analysis_set"]
 
@@ -13,12 +37,13 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DOWNLOADS_FOLDER_PATH = os.path.join(BASE_DIR, "unprocessed_files")
 OUTPUT_FILE_PATH = os.path.join(BASE_DIR, "source/assemblies.csv")
 
-HAPLOTYPES = ["maternal", "paternal"]
-MATERNAL_HAPLOTYPE_ID = 0
-PATERNAL_HAPLOTYPE_ID = 1
-NA_HAPLOTYPE = "-"
+RELEASE_1_HAPLOTYPES_TO_IDS = {
+    "maternal": 2,
+    "paternal": 1
+}
+RELEASE_1_NA_HAPLOTYPE = "-"
 
-def format_assemblies_df(data):
+def format_release_1_assemblies_df(data):
     # Check for duplicate keys
     if data["sample"].duplicated().any():
         raise RuntimeError("Duplicate keys are present in the annotation data.")
@@ -33,9 +58,7 @@ def format_assemblies_df(data):
     combined_data = combined_data[~combined_data["sample"].isin(EXCLUDED_SAMPLE_IDS)]
     # Add haplotypes to the data
     def determine_haplotype(filename):
-        if type(filename) is float and np.isnan(filename):
-            return np.nan
-        for haplotype in HAPLOTYPES:
+        for haplotype in RELEASE_1_HAPLOTYPES_TO_IDS:
             if haplotype in filename:
                 return haplotype
         print(f"WARN: no haplotype found for {filename}")
@@ -50,7 +73,7 @@ def format_assemblies_df(data):
         raise RuntimeError(
             f"Haplotypes disagree between AWS and GCP filenames for the following entries. Are the files for these sample IDs correct? {','.join(disagreement_filenames)}"
         )
-    combined_data["haplotype"] = aws_haplotype.fillna(NA_HAPLOTYPE)
+    combined_data["haplotype"] = aws_haplotype.fillna(RELEASE_1_NA_HAPLOTYPE)
     # Output the sorted data
     outputData = combined_data.sort_values(
         ["sample", "haplotype"]
@@ -61,24 +84,21 @@ def format_assemblies_df(data):
 
 if __name__ == "__main__":
     # Download the files from Github
-    assembly_path = download_file(ASSEMBLY_URL, DOWNLOADS_FOLDER_PATH)
+    assembly_files_info = download_files_for_releases(RELEASE_SPECIFIC_FILES, "ASSEMBLIES", DOWNLOADS_FOLDER_PATH)
     biosample_path = download_file(BIOSAMPLE_TABLE_URL, DOWNLOADS_FOLDER_PATH)
 
     # Get DataFrames from downloaded files
-    assembly_df = pd.read_csv(assembly_path, sep="\t")
+    assembly_df = load_joined_files_for_releases(assembly_files_info)
     biosample_df = pd.read_csv(biosample_path, sep=",")
 
-    # Add haplotypes and merge all DataFrames
-    assembly_df_with_haplotypes = format_assemblies_df(assembly_df)
-    combined_df = assembly_df_with_haplotypes.merge(
-        biosample_df, left_on="sample", right_on="sample_id", how="left", validate="many_to_one"
-    ).drop(
-        columns=["sample_id"]
+    # Merge all DataFrames
+    combined_df = assembly_df.merge(
+        biosample_df, on="sample_id", how="left", validate="many_to_one"
     )
     print("The following sample IDs did not correspond to a value in the Biosample sheet, so NA values were entered:")
     print(", ".join(
-        assembly_df_with_haplotypes.loc[~assembly_df_with_haplotypes["sample"].isin(biosample_df["sample_id"]), "sample"]
+        assembly_df.loc[~assembly_df["sample_id"].isin(biosample_df["sample_id"]), "sample_id"]
     ))
-    output_df = combined_df.assign(file_size=get_file_sizes_from_uris(combined_df["aws_fasta"], "assembly"))
+    output_df = combined_df.assign(file_size=get_file_sizes_from_uris(combined_df["assembly"], "assembly"))
     output_df.to_csv(OUTPUT_FILE_PATH, index=False)
     print("\nAssembly processing complete!\n")
