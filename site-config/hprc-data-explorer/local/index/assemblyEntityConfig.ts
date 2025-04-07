@@ -23,6 +23,10 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
       {
         categoryConfigs: [
           {
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.RELEASE,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.RELEASE,
+          },
+          {
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SAMPLE_ID,
           },
@@ -86,6 +90,16 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILE_SIZE,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILE_SIZE,
         width: { max: "0.5fr", min: "112px" },
+      },
+      {
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildRelease,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
+        enableGrouping: true,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.RELEASE,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.RELEASE,
+        width: { max: "0.5fr", min: "80px" },
       },
       {
         componentConfig: {
@@ -182,16 +196,6 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_DESCRIPTOR,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_DESCRIPTOR,
         width: { max: "1fr", min: "160px" },
-      },
-      {
-        componentConfig: {
-          component: C.BasicCell,
-          viewBuilder: V.buildRelease,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
-        enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.RELEASE,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.RELEASE,
-        width: { max: "0.5fr", min: "80px" },
       },
     ],
     tableOptions: {
