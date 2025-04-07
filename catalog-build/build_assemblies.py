@@ -5,7 +5,7 @@ from build_help import download_file, download_files_for_releases, load_joined_f
 
 RELEASE_SPECIFIC_FILES = [
     {
-        "release": 1,
+        "release": "1",
         "ASSEMBLIES": {
             "url": "https://raw.githubusercontent.com/human-pangenomics/HPP_Year1_Assemblies/main/assembly_index/Year1_assemblies_v2_genbank.index",
             "sep": "\t",
@@ -20,7 +20,7 @@ RELEASE_SPECIFIC_FILES = [
         }
     },
     {
-        "release": 2,
+        "release": "2",
         "ASSEMBLIES": {
             "url": "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/assemblies_pre_release_v0.6.1.index.csv",
             "sep": ","
