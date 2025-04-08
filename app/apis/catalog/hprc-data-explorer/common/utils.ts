@@ -12,7 +12,7 @@ export function getRawSequencingDataId(
 }
 
 export function getAssemblyId(assembly: HPRCDataExplorerAssembly): string {
-  return `${assembly.sampleId}_${assembly.haplotype}`;
+  return `${assembly.sampleId}_${assembly.haplotype}_${assembly.release}`;
 }
 
 export function getAnnotationId(

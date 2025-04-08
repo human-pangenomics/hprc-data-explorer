@@ -105,11 +105,21 @@ export const SOURCE_RAW_SEQUENCING_DATA_KEYS = [
 ] as const;
 
 export const SOURCE_ASSEMBLY_KEYS = [
-  "sample",
+  "sample_id",
   "haplotype",
-  "aws_fasta",
-  "gcp_fasta",
+  "assembly",
   "fasta_sha256",
+  "release",
+  "phasing",
+  "assembly_method",
+  "assembly_method_version",
+  "assembly_date",
+  "assembly_name",
+  "source",
+  "genbank_accession",
+  "assembly_md5",
+  "assembly_fai",
+  "assembly_gzi",
   "biosample_id",
   "population_descriptor",
   "population_abbreviation",
@@ -144,3 +154,8 @@ export const SOURCE_ALIGNMENT_KEYS = [
   "use_case",
   "version",
 ] as const;
+
+export const HAPLOTYPE_BY_ID: Record<string, string> = {
+  1: "paternal",
+  2: "maternal",
+};

@@ -1,6 +1,7 @@
 from pathlib import Path
 from urllib.parse import urlparse
 import requests
+import pandas as pd
 
 def download_file(url, output_folder_path):
     filename = Path(urlparse(url).path).name
@@ -12,6 +13,35 @@ def download_file(url, output_folder_path):
         with open(output_path.resolve(), "w") as f:
             f.write(r.text)
     return output_path
+
+def download_files_for_releases(release_specific_files_info, file_key, output_folder_path):
+    return [
+        {
+            "release": release_info["release"],
+            "path": download_file(release_info[file_key]["url"], output_folder_path),
+            **release_info[file_key],
+        }
+        for release_info in release_specific_files_info
+    ]
+
+def load_joined_files_for_releases(files_info):
+    df = None
+    for info in files_info:
+        # Read file for current release, and apply formatter if specified
+        release_df = pd.read_csv(info["path"], sep=info["sep"])
+        if "input_formatter" in info:
+            release_df = info["input_formatter"](release_df)
+        release_df["release"] = info["release"]
+        # Join with previes DF
+        df = release_df if df is None else pd.concat([df, release_df], ignore_index=True).fillna("N/A")
+        # Update data to match format for next release
+        if "mapper" in info:
+            df = info["mapper"](df)
+        if "columns" in info:
+            df = df[[*info["columns"].keys(), "release"]].rename(columns=info["columns"])
+    if df is None:
+        raise Exception("No files specified")
+    return df
 
 
 def get_file_size(uri, total_files, current_index, entity_type_name):

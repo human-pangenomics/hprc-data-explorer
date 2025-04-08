@@ -71,13 +71,14 @@ export interface HPRCDataExplorerAssembly {
   accession: string | null;
   awsFasta: string | null;
   familyId: string | null;
+  fastaMd5: string;
   fastaSha256: string | null;
   filename: string;
   fileSize: string;
-  gcpFasta: string | null;
   haplotype: string;
   populationAbbreviation: string | null;
   populationDescriptor: string | null;
+  release: string;
   sampleId: string;
 }
 
