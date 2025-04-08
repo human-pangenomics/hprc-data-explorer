@@ -46,6 +46,8 @@ export interface HPRCDataExplorerRawSequencingData {
   path: string;
   platform: string | null;
   polymeraseVersion: string | null;
+  populationAbbreviation: string | null;
+  populationDescriptor: string | null;
   quartile25: string; //number | LABEL.NA;
   quartile50: string; //number | LABEL.NA;
   quartile75: string; //number | LABEL.NA;
@@ -56,8 +58,6 @@ export interface HPRCDataExplorerRawSequencingData {
   shearMethod: string | null;
   sizeSelection: string | null;
   study: string | null;
-  subpopulation: string | null;
-  superpopulation: string | null;
   threeHundredkbPlus: string; //number | LABEL.NA;
   title: string | null;
   totalBp: string; //number | LABEL.NA;
@@ -76,9 +76,9 @@ export interface HPRCDataExplorerAssembly {
   fileSize: string;
   gcpFasta: string | null;
   haplotype: string;
+  populationAbbreviation: string | null;
+  populationDescriptor: string | null;
   sampleId: string;
-  subpopulation: string | null;
-  superpopulation: string | null;
 }
 
 export interface HPRCDataExplorerAnnotation {
