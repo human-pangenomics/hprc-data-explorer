@@ -29,7 +29,8 @@ RELEASE_SPECIFIC_FILES = [
 ]
 
 BIOSAMPLE_TABLE_URL = "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sample/hprc_release2_sample_metadata.csv"
-EXCLUDED_SAMPLE_IDS = ["CHM13_v1.1", "GRCh38_no_alt_analysis_set"]
+
+EXCLUDED_SAMPLE_IDS = ["CHM13", "GRCh38"]
 
 
 # Determine the base directory of the script
@@ -37,6 +38,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DOWNLOADS_FOLDER_PATH = os.path.join(BASE_DIR, "unprocessed_files")
 OUTPUT_FILE_PATH = os.path.join(BASE_DIR, "source/assemblies.csv")
 
+
+RELEASE_1_EXCLUDED_SAMPLE_IDS = ["CHM13_v1.1", "GRCh38_no_alt_analysis_set"]
 RELEASE_1_HAPLOTYPES_TO_IDS = {
     "maternal": 2,
     "paternal": 1
@@ -55,7 +58,7 @@ def format_release_1_assemblies_df(data):
     hap2_data.columns = ["sample", "aws_fasta", "gcp_fasta", "fasta_sha256"]
     # Combine the two dataframes
     combined_data = pd.concat([hap1_data, hap2_data], ignore_index=True)
-    combined_data = combined_data[~combined_data["sample"].isin(EXCLUDED_SAMPLE_IDS)]
+    combined_data = combined_data[~combined_data["sample"].isin(RELEASE_1_EXCLUDED_SAMPLE_IDS)]
     # Add haplotypes to the data
     def determine_haplotype(filename):
         for haplotype in RELEASE_1_HAPLOTYPES_TO_IDS:
@@ -91,13 +94,15 @@ if __name__ == "__main__":
     assembly_df = load_joined_files_for_releases(assembly_files_info)
     biosample_df = pd.read_csv(biosample_path, sep=",")
 
+    filtered_assembly_df = assembly_df[~assembly_df["sample_id"].isin(EXCLUDED_SAMPLE_IDS)]
+
     # Merge all DataFrames
-    combined_df = assembly_df.merge(
+    combined_df = filtered_assembly_df.merge(
         biosample_df, on="sample_id", how="left", validate="many_to_one"
     )
     print("The following sample IDs did not correspond to a value in the Biosample sheet, so NA values were entered:")
     print(", ".join(
-        assembly_df.loc[~assembly_df["sample_id"].isin(biosample_df["sample_id"]), "sample_id"]
+        filtered_assembly_df.loc[~filtered_assembly_df["sample_id"].isin(biosample_df["sample_id"]), "sample_id"]
     ))
     output_df = combined_df.assign(file_size=get_file_sizes_from_uris(combined_df["assembly"], "assembly"))
     output_df.to_csv(OUTPUT_FILE_PATH, index=False)

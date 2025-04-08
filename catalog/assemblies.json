@@ -1,33 +1,5 @@
 [
   {
-    "accession": "SAMN03255769",
-    "awsFasta": "s3://human-pangenomics/working/HPRC_PLUS/CHM13/assemblies/analysis_set/pansn/chm13v2.0_maskedY_rCRS.fa.PanSN.fa.gz",
-    "familyId": null,
-    "fastaMd5": "s3://human-pangenomics/working/HPRC_PLUS/CHM13/assemblies/analysis_set/pansn/chm13v2.0_maskedY_rCRS.fa.PanSN.fa.gz.md5",
-    "fastaSha256": "N/A",
-    "fileSize": "979198270",
-    "filename": "chm13v2.0_maskedY_rCRS.fa.PanSN.fa.gz",
-    "haplotype": "0",
-    "populationAbbreviation": null,
-    "populationDescriptor": null,
-    "release": "2",
-    "sampleId": "CHM13"
-  },
-  {
-    "accession": "SAMN12121739",
-    "awsFasta": "s3://human-pangenomics/working/HPRC_PLUS/GRCh38/assemblies/pansn/GCA_000001405.15_GRCh38_no_alt_analysis_set.PanSN.fa.gz",
-    "familyId": null,
-    "fastaMd5": "s3://human-pangenomics/working/HPRC_PLUS/GRCh38/assemblies/pansn/GCA_000001405.15_GRCh38_no_alt_analysis_set.PanSN.fa.gz.md5",
-    "fastaSha256": "N/A",
-    "fileSize": "790387068",
-    "filename": "GCA_000001405.15_GRCh38_no_alt_analysis_set.PanSN.fa.gz",
-    "haplotype": "0",
-    "populationAbbreviation": null,
-    "populationDescriptor": null,
-    "release": "2",
-    "sampleId": "GRCh38"
-  },
-  {
     "accession": "SAMN41021660",
     "awsFasta": "s3://human-pangenomics/submissions/DC27718F-5F38-43B0-9A78-270F395F13E8--INT_ASM_PRODUCTION/HG00097/assemblies/freeze_2/HG00097_hap2_hprc_r2_v1.0.1.fa.gz",
     "familyId": null,
