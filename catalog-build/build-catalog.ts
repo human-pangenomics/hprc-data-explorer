@@ -111,6 +111,8 @@ async function buildRawSequencingData(): Promise<
       path: row.path,
       platform: parseStringOrNull(row.platform),
       polymeraseVersion: parseStringOrNull(row.polymerase_version),
+      populationAbbreviation: parseStringOrNull(row.population_abbreviation),
+      populationDescriptor: parseStringOrNull(row.population_descriptor),
       quartile25: parseNumberOrNA(row.quartile_25).toString(),
       quartile50: parseNumberOrNA(row.quartile_50).toString(),
       quartile75: parseNumberOrNA(row.quartile_75).toString(),
@@ -123,8 +125,6 @@ async function buildRawSequencingData(): Promise<
       shearMethod: parseStringOrNull(row.shear_method),
       sizeSelection: parseStringOrNull(row.size_selection),
       study: parseStringOrNull(row.study),
-      subpopulation: parseStringOrNull(row.subpopulation),
-      superpopulation: parseStringOrNull(row.superpopulation),
       threeHundredkbPlus: parseNumberOrNA(row["300kb+"]).toString(),
       title: parseStringOrNull(row.title),
       totalBp: parseNumberOrNA(row.total_bp).toString(),
@@ -154,9 +154,9 @@ async function buildAssemblies(): Promise<HPRCDataExplorerAssembly[]> {
       filename: getFileNameFromPath(row.aws_fasta),
       gcpFasta: parseStringOrNull(row.gcp_fasta),
       haplotype: row.haplotype,
+      populationAbbreviation: parseStringOrNull(row.population_abbreviation),
+      populationDescriptor: parseStringOrNull(row.population_descriptor),
       sampleId: row.sample,
-      subpopulation: parseStringOrNull(row.subpopulation),
-      superpopulation: parseStringOrNull(row.superpopulation),
     })
   );
   return mappedRows.sort((a, b) =>

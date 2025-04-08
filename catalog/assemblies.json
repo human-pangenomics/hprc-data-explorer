@@ -8,9 +8,9 @@
     "filename": "HG002.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG002/assemblies/year1_f1_assembly_v2_genbank/HG002.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG002",
-    "subpopulation": null,
-    "superpopulation": null
+    "populationAbbreviation": null,
+    "populationDescriptor": null,
+    "sampleId": "HG002"
   },
   {
     "accession": "SAMN03283347",
@@ -21,9 +21,9 @@
     "filename": "HG002.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG002/assemblies/year1_f1_assembly_v2_genbank/HG002.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG002",
-    "subpopulation": null,
-    "superpopulation": null
+    "populationAbbreviation": null,
+    "populationDescriptor": null,
+    "sampleId": "HG002"
   },
   {
     "accession": "SAMN17861652",
@@ -34,9 +34,9 @@
     "filename": "HG00438.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG00438/assemblies/year1_f1_assembly_v2_genbank/HG00438.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG00438",
-    "subpopulation": "CHS",
-    "superpopulation": "EAS"
+    "populationAbbreviation": "CHS",
+    "populationDescriptor": "Han Chinese South, China",
+    "sampleId": "HG00438"
   },
   {
     "accession": "SAMN17861652",
@@ -47,9 +47,9 @@
     "filename": "HG00438.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG00438/assemblies/year1_f1_assembly_v2_genbank/HG00438.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG00438",
-    "subpopulation": "CHS",
-    "superpopulation": "EAS"
+    "populationAbbreviation": "CHS",
+    "populationDescriptor": "Han Chinese South, China",
+    "sampleId": "HG00438"
   },
   {
     "accession": "SAMN03283350",
@@ -60,9 +60,9 @@
     "filename": "HG005.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG005/assemblies/year1_f1_assembly_v2_genbank/HG005.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG005",
-    "subpopulation": null,
-    "superpopulation": null
+    "populationAbbreviation": null,
+    "populationDescriptor": null,
+    "sampleId": "HG005"
   },
   {
     "accession": "SAMN03283350",
@@ -73,9 +73,9 @@
     "filename": "HG005.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG005/assemblies/year1_f1_assembly_v2_genbank/HG005.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG005",
-    "subpopulation": null,
-    "superpopulation": null
+    "populationAbbreviation": null,
+    "populationDescriptor": null,
+    "sampleId": "HG005"
   },
   {
     "accession": "SAMN17861653",
@@ -86,9 +86,9 @@
     "filename": "HG00621.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG00621/assemblies/year1_f1_assembly_v2_genbank/HG00621.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG00621",
-    "subpopulation": "CHS",
-    "superpopulation": "EAS"
+    "populationAbbreviation": "CHS",
+    "populationDescriptor": "Han Chinese South, China",
+    "sampleId": "HG00621"
   },
   {
     "accession": "SAMN17861653",
@@ -99,9 +99,9 @@
     "filename": "HG00621.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG00621/assemblies/year1_f1_assembly_v2_genbank/HG00621.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG00621",
-    "subpopulation": "CHS",
-    "superpopulation": "EAS"
+    "populationAbbreviation": "CHS",
+    "populationDescriptor": "Han Chinese South, China",
+    "sampleId": "HG00621"
   },
   {
     "accession": "SAMN17861654",
@@ -112,9 +112,9 @@
     "filename": "HG00673.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG00673/assemblies/year1_f1_assembly_v2_genbank/HG00673.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG00673",
-    "subpopulation": "CHS",
-    "superpopulation": "EAS"
+    "populationAbbreviation": "CHS",
+    "populationDescriptor": "Han Chinese South, China",
+    "sampleId": "HG00673"
   },
   {
     "accession": "SAMN17861654",
@@ -125,9 +125,9 @@
     "filename": "HG00673.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG00673/assemblies/year1_f1_assembly_v2_genbank/HG00673.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG00673",
-    "subpopulation": "CHS",
-    "superpopulation": "EAS"
+    "populationAbbreviation": "CHS",
+    "populationDescriptor": "Han Chinese South, China",
+    "sampleId": "HG00673"
   },
   {
     "accession": "SAMN00006581",
@@ -138,9 +138,9 @@
     "filename": "HG00733.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG00733/assemblies/year1_f1_assembly_v2_genbank/HG00733.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG00733",
-    "subpopulation": "PUR",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PUR",
+    "populationDescriptor": "Puerto Rican in Puerto Rico",
+    "sampleId": "HG00733"
   },
   {
     "accession": "SAMN00006581",
@@ -151,9 +151,9 @@
     "filename": "HG00733.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG00733/assemblies/year1_f1_assembly_v2_genbank/HG00733.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG00733",
-    "subpopulation": "PUR",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PUR",
+    "populationDescriptor": "Puerto Rican in Puerto Rico",
+    "sampleId": "HG00733"
   },
   {
     "accession": "SAMN17861655",
@@ -164,9 +164,9 @@
     "filename": "HG00735.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG00735/assemblies/year1_f1_assembly_v2_genbank/HG00735.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG00735",
-    "subpopulation": "PUR",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PUR",
+    "populationDescriptor": "Puerto Rican in Puerto Rico",
+    "sampleId": "HG00735"
   },
   {
     "accession": "SAMN17861655",
@@ -177,9 +177,9 @@
     "filename": "HG00735.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG00735/assemblies/year1_f1_assembly_v2_genbank/HG00735.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG00735",
-    "subpopulation": "PUR",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PUR",
+    "populationDescriptor": "Puerto Rican in Puerto Rico",
+    "sampleId": "HG00735"
   },
   {
     "accession": "SAMN17861656",
@@ -190,9 +190,9 @@
     "filename": "HG00741.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG00741/assemblies/year1_f1_assembly_v2_genbank/HG00741.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG00741",
-    "subpopulation": "PUR",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PUR",
+    "populationDescriptor": "Puerto Rican in Puerto Rico",
+    "sampleId": "HG00741"
   },
   {
     "accession": "SAMN17861656",
@@ -203,9 +203,9 @@
     "filename": "HG00741.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG00741/assemblies/year1_f1_assembly_v2_genbank/HG00741.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG00741",
-    "subpopulation": "PUR",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PUR",
+    "populationDescriptor": "Puerto Rican in Puerto Rico",
+    "sampleId": "HG00741"
   },
   {
     "accession": "SAMN17861657",
@@ -216,9 +216,9 @@
     "filename": "HG01071.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG01071/assemblies/year1_f1_assembly_v2_genbank/HG01071.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG01071",
-    "subpopulation": "PUR",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PUR",
+    "populationDescriptor": "Puerto Rican in Puerto Rico",
+    "sampleId": "HG01071"
   },
   {
     "accession": "SAMN17861657",
@@ -229,9 +229,9 @@
     "filename": "HG01071.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG01071/assemblies/year1_f1_assembly_v2_genbank/HG01071.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG01071",
-    "subpopulation": "PUR",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PUR",
+    "populationDescriptor": "Puerto Rican in Puerto Rico",
+    "sampleId": "HG01071"
   },
   {
     "accession": "SAMN17861658",
@@ -242,9 +242,9 @@
     "filename": "HG01106.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG01106/assemblies/year1_f1_assembly_v2_genbank/HG01106.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG01106",
-    "subpopulation": "PUR",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PUR",
+    "populationDescriptor": "Puerto Rican in Puerto Rico",
+    "sampleId": "HG01106"
   },
   {
     "accession": "SAMN17861658",
@@ -255,9 +255,9 @@
     "filename": "HG01106.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG01106/assemblies/year1_f1_assembly_v2_genbank/HG01106.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG01106",
-    "subpopulation": "PUR",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PUR",
+    "populationDescriptor": "Puerto Rican in Puerto Rico",
+    "sampleId": "HG01106"
   },
   {
     "accession": "SAMN12162846",
@@ -268,9 +268,9 @@
     "filename": "HG01109.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG01109/assemblies/year1_f1_assembly_v2_genbank/HG01109.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG01109",
-    "subpopulation": "PUR",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PUR",
+    "populationDescriptor": "Puerto Rican in Puerto Rico",
+    "sampleId": "HG01109"
   },
   {
     "accession": "SAMN12162846",
@@ -281,9 +281,9 @@
     "filename": "HG01109.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG01109/assemblies/year1_f1_assembly_v2_genbank/HG01109.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG01109",
-    "subpopulation": "PUR",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PUR",
+    "populationDescriptor": "Puerto Rican in Puerto Rico",
+    "sampleId": "HG01109"
   },
   {
     "accession": "SAMN17861232",
@@ -294,9 +294,9 @@
     "filename": "HG01123.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG01123/assemblies/year1_f1_assembly_v2_genbank/HG01123.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG01123",
-    "subpopulation": "CLM",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "CLM",
+    "populationDescriptor": "Colombian in Medellin, Colombia",
+    "sampleId": "HG01123"
   },
   {
     "accession": "SAMN17861232",
@@ -307,9 +307,9 @@
     "filename": "HG01123.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG01123/assemblies/year1_f1_assembly_v2_genbank/HG01123.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG01123",
-    "subpopulation": "CLM",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "CLM",
+    "populationDescriptor": "Colombian in Medellin, Colombia",
+    "sampleId": "HG01123"
   },
   {
     "accession": "SAMN17861659",
@@ -320,9 +320,9 @@
     "filename": "HG01175.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG01175/assemblies/year1_f1_assembly_v2_genbank/HG01175.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG01175",
-    "subpopulation": "PUR",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PUR",
+    "populationDescriptor": "Puerto Rican in Puerto Rico",
+    "sampleId": "HG01175"
   },
   {
     "accession": "SAMN17861659",
@@ -333,9 +333,9 @@
     "filename": "HG01175.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG01175/assemblies/year1_f1_assembly_v2_genbank/HG01175.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG01175",
-    "subpopulation": "PUR",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PUR",
+    "populationDescriptor": "Puerto Rican in Puerto Rico",
+    "sampleId": "HG01175"
   },
   {
     "accession": "SAMN13957917",
@@ -346,9 +346,9 @@
     "filename": "HG01243.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG01243/assemblies/year1_f1_assembly_v2_genbank/HG01243.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG01243",
-    "subpopulation": "PUR",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PUR",
+    "populationDescriptor": "Puerto Rican in Puerto Rico",
+    "sampleId": "HG01243"
   },
   {
     "accession": "SAMN13957917",
@@ -359,9 +359,9 @@
     "filename": "HG01243.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG01243/assemblies/year1_f1_assembly_v2_genbank/HG01243.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG01243",
-    "subpopulation": "PUR",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PUR",
+    "populationDescriptor": "Puerto Rican in Puerto Rico",
+    "sampleId": "HG01243"
   },
   {
     "accession": "SAMN17861233",
@@ -372,9 +372,9 @@
     "filename": "HG01258.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG01258/assemblies/year1_f1_assembly_v2_genbank/HG01258.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG01258",
-    "subpopulation": "CLM",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "CLM",
+    "populationDescriptor": "Colombian in Medellin, Colombia",
+    "sampleId": "HG01258"
   },
   {
     "accession": "SAMN17861233",
@@ -385,9 +385,9 @@
     "filename": "HG01258.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG01258/assemblies/year1_f1_assembly_v2_genbank/HG01258.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG01258",
-    "subpopulation": "CLM",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "CLM",
+    "populationDescriptor": "Colombian in Medellin, Colombia",
+    "sampleId": "HG01258"
   },
   {
     "accession": "SAMN17861234",
@@ -398,9 +398,9 @@
     "filename": "HG01358.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG01358/assemblies/year1_f1_assembly_v2_genbank/HG01358.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG01358",
-    "subpopulation": "CLM",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "CLM",
+    "populationDescriptor": "Colombian in Medellin, Colombia",
+    "sampleId": "HG01358"
   },
   {
     "accession": "SAMN17861234",
@@ -411,9 +411,9 @@
     "filename": "HG01358.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG01358/assemblies/year1_f1_assembly_v2_genbank/HG01358.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG01358",
-    "subpopulation": "CLM",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "CLM",
+    "populationDescriptor": "Colombian in Medellin, Colombia",
+    "sampleId": "HG01358"
   },
   {
     "accession": "SAMN17861235",
@@ -424,9 +424,9 @@
     "filename": "HG01361.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG01361/assemblies/year1_f1_assembly_v2_genbank/HG01361.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG01361",
-    "subpopulation": "CLM",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "CLM",
+    "populationDescriptor": "Colombian in Medellin, Colombia",
+    "sampleId": "HG01361"
   },
   {
     "accession": "SAMN17861235",
@@ -437,9 +437,9 @@
     "filename": "HG01361.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG01361/assemblies/year1_f1_assembly_v2_genbank/HG01361.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG01361",
-    "subpopulation": "CLM",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "CLM",
+    "populationDescriptor": "Colombian in Medellin, Colombia",
+    "sampleId": "HG01361"
   },
   {
     "accession": "SAMN17861236",
@@ -450,9 +450,9 @@
     "filename": "HG01891.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG01891/assemblies/year1_f1_assembly_v2_genbank/HG01891.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG01891",
-    "subpopulation": "ACB",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "ACB",
+    "populationDescriptor": "African Caribbean in Barbados",
+    "sampleId": "HG01891"
   },
   {
     "accession": "SAMN17861236",
@@ -463,9 +463,9 @@
     "filename": "HG01891.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG01891/assemblies/year1_f1_assembly_v2_genbank/HG01891.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG01891",
-    "subpopulation": "ACB",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "ACB",
+    "populationDescriptor": "African Caribbean in Barbados",
+    "sampleId": "HG01891"
   },
   {
     "accession": "SAMN17861660",
@@ -476,9 +476,9 @@
     "filename": "HG01928.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG01928/assemblies/year1_f1_assembly_v2_genbank/HG01928.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG01928",
-    "subpopulation": "PEL",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PEL",
+    "populationDescriptor": "Peruvian in Lima, Peru",
+    "sampleId": "HG01928"
   },
   {
     "accession": "SAMN17861660",
@@ -489,9 +489,9 @@
     "filename": "HG01928.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG01928/assemblies/year1_f1_assembly_v2_genbank/HG01928.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG01928",
-    "subpopulation": "PEL",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PEL",
+    "populationDescriptor": "Peruvian in Lima, Peru",
+    "sampleId": "HG01928"
   },
   {
     "accession": "SAMN17861661",
@@ -502,9 +502,9 @@
     "filename": "HG01952.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG01952/assemblies/year1_f1_assembly_v2_genbank/HG01952.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG01952",
-    "subpopulation": "PEL",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PEL",
+    "populationDescriptor": "Peruvian in Lima, Peru",
+    "sampleId": "HG01952"
   },
   {
     "accession": "SAMN17861661",
@@ -515,9 +515,9 @@
     "filename": "HG01952.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG01952/assemblies/year1_f1_assembly_v2_genbank/HG01952.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG01952",
-    "subpopulation": "PEL",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PEL",
+    "populationDescriptor": "Peruvian in Lima, Peru",
+    "sampleId": "HG01952"
   },
   {
     "accession": "SAMN17861662",
@@ -528,9 +528,9 @@
     "filename": "HG01978.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG01978/assemblies/year1_f1_assembly_v2_genbank/HG01978.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG01978",
-    "subpopulation": "PEL",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PEL",
+    "populationDescriptor": "Peruvian in Lima, Peru",
+    "sampleId": "HG01978"
   },
   {
     "accession": "SAMN17861662",
@@ -541,9 +541,9 @@
     "filename": "HG01978.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG01978/assemblies/year1_f1_assembly_v2_genbank/HG01978.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG01978",
-    "subpopulation": "PEL",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PEL",
+    "populationDescriptor": "Peruvian in Lima, Peru",
+    "sampleId": "HG01978"
   },
   {
     "accession": "SAMN12162856",
@@ -554,9 +554,9 @@
     "filename": "HG02055.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG02055/assemblies/year1_f1_assembly_v2_genbank/HG02055.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG02055",
-    "subpopulation": "ACB",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "ACB",
+    "populationDescriptor": "African Caribbean in Barbados",
+    "sampleId": "HG02055"
   },
   {
     "accession": "SAMN12162856",
@@ -567,9 +567,9 @@
     "filename": "HG02055.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG02055/assemblies/year1_f1_assembly_v2_genbank/HG02055.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG02055",
-    "subpopulation": "ACB",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "ACB",
+    "populationDescriptor": "African Caribbean in Barbados",
+    "sampleId": "HG02055"
   },
   {
     "accession": "SAMN13957942",
@@ -580,9 +580,9 @@
     "filename": "HG02080.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG02080/assemblies/year1_f1_assembly_v2_genbank/HG02080.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG02080",
-    "subpopulation": "KHV",
-    "superpopulation": "EAS"
+    "populationAbbreviation": "KHV",
+    "populationDescriptor": "Kinh in Ho Chi Minh City, Vietnam",
+    "sampleId": "HG02080"
   },
   {
     "accession": "SAMN13957942",
@@ -593,9 +593,9 @@
     "filename": "HG02080.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG02080/assemblies/year1_f1_assembly_v2_genbank/HG02080.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG02080",
-    "subpopulation": "KHV",
-    "superpopulation": "EAS"
+    "populationAbbreviation": "KHV",
+    "populationDescriptor": "Kinh in Ho Chi Minh City, Vietnam",
+    "sampleId": "HG02080"
   },
   {
     "accession": "SAMN13958415",
@@ -606,9 +606,9 @@
     "filename": "HG02109.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG02109/assemblies/year1_f1_assembly_v2_genbank/HG02109.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG02109",
-    "subpopulation": "ACB",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "ACB",
+    "populationDescriptor": "African Caribbean in Barbados",
+    "sampleId": "HG02109"
   },
   {
     "accession": "SAMN13958415",
@@ -619,9 +619,9 @@
     "filename": "HG02109.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG02109/assemblies/year1_f1_assembly_v2_genbank/HG02109.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG02109",
-    "subpopulation": "ACB",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "ACB",
+    "populationDescriptor": "African Caribbean in Barbados",
+    "sampleId": "HG02109"
   },
   {
     "accession": "SAMN13961514",
@@ -632,9 +632,9 @@
     "filename": "HG02145.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG02145/assemblies/year1_f1_assembly_v2_genbank/HG02145.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG02145",
-    "subpopulation": "ACB",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "ACB",
+    "populationDescriptor": "African Caribbean in Barbados",
+    "sampleId": "HG02145"
   },
   {
     "accession": "SAMN13961514",
@@ -645,9 +645,9 @@
     "filename": "HG02145.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG02145/assemblies/year1_f1_assembly_v2_genbank/HG02145.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG02145",
-    "subpopulation": "ACB",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "ACB",
+    "populationDescriptor": "African Caribbean in Barbados",
+    "sampleId": "HG02145"
   },
   {
     "accession": "SAMN17861663",
@@ -658,9 +658,9 @@
     "filename": "HG02148.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG02148/assemblies/year1_f1_assembly_v2_genbank/HG02148.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG02148",
-    "subpopulation": "PEL",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PEL",
+    "populationDescriptor": "Peruvian in Lima, Peru",
+    "sampleId": "HG02148"
   },
   {
     "accession": "SAMN17861663",
@@ -671,9 +671,9 @@
     "filename": "HG02148.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG02148/assemblies/year1_f1_assembly_v2_genbank/HG02148.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG02148",
-    "subpopulation": "PEL",
-    "superpopulation": "AMR"
+    "populationAbbreviation": "PEL",
+    "populationDescriptor": "Peruvian in Lima, Peru",
+    "sampleId": "HG02148"
   },
   {
     "accession": "SAMN17861237",
@@ -684,9 +684,9 @@
     "filename": "HG02257.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG02257/assemblies/year1_f1_assembly_v2_genbank/HG02257.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG02257",
-    "subpopulation": "ACB",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "ACB",
+    "populationDescriptor": "African Caribbean in Barbados",
+    "sampleId": "HG02257"
   },
   {
     "accession": "SAMN17861237",
@@ -697,9 +697,9 @@
     "filename": "HG02257.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG02257/assemblies/year1_f1_assembly_v2_genbank/HG02257.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG02257",
-    "subpopulation": "ACB",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "ACB",
+    "populationDescriptor": "African Caribbean in Barbados",
+    "sampleId": "HG02257"
   },
   {
     "accession": "SAMN17861238",
@@ -710,9 +710,9 @@
     "filename": "HG02486.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG02486/assemblies/year1_f1_assembly_v2_genbank/HG02486.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG02486",
-    "subpopulation": "ACB",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "ACB",
+    "populationDescriptor": "African Caribbean in Barbados",
+    "sampleId": "HG02486"
   },
   {
     "accession": "SAMN17861238",
@@ -723,9 +723,9 @@
     "filename": "HG02486.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG02486/assemblies/year1_f1_assembly_v2_genbank/HG02486.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG02486",
-    "subpopulation": "ACB",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "ACB",
+    "populationDescriptor": "African Caribbean in Barbados",
+    "sampleId": "HG02486"
   },
   {
     "accession": "SAMN17861239",
@@ -736,9 +736,9 @@
     "filename": "HG02559.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG02559/assemblies/year1_f1_assembly_v2_genbank/HG02559.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG02559",
-    "subpopulation": "ACB",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "ACB",
+    "populationDescriptor": "African Caribbean in Barbados",
+    "sampleId": "HG02559"
   },
   {
     "accession": "SAMN17861239",
@@ -749,9 +749,9 @@
     "filename": "HG02559.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG02559/assemblies/year1_f1_assembly_v2_genbank/HG02559.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG02559",
-    "subpopulation": "ACB",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "ACB",
+    "populationDescriptor": "African Caribbean in Barbados",
+    "sampleId": "HG02559"
   },
   {
     "accession": "SAMN17861240",
@@ -762,9 +762,9 @@
     "filename": "HG02572.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG02572/assemblies/year1_f1_assembly_v2_genbank/HG02572.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG02572",
-    "subpopulation": "GWD",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "GWD",
+    "populationDescriptor": "Gambian in Western Division Đ Mandinka",
+    "sampleId": "HG02572"
   },
   {
     "accession": "SAMN17861240",
@@ -775,9 +775,9 @@
     "filename": "HG02572.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG02572/assemblies/year1_f1_assembly_v2_genbank/HG02572.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG02572",
-    "subpopulation": "GWD",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "GWD",
+    "populationDescriptor": "Gambian in Western Division Đ Mandinka",
+    "sampleId": "HG02572"
   },
   {
     "accession": "SAMN17861664",
@@ -788,9 +788,9 @@
     "filename": "HG02622.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG02622/assemblies/year1_f1_assembly_v2_genbank/HG02622.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG02622",
-    "subpopulation": "GWD",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "GWD",
+    "populationDescriptor": "Gambian in Western Division Đ Mandinka",
+    "sampleId": "HG02622"
   },
   {
     "accession": "SAMN17861664",
@@ -801,9 +801,9 @@
     "filename": "HG02622.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG02622/assemblies/year1_f1_assembly_v2_genbank/HG02622.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG02622",
-    "subpopulation": "GWD",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "GWD",
+    "populationDescriptor": "Gambian in Western Division Đ Mandinka",
+    "sampleId": "HG02622"
   },
   {
     "accession": "SAMN17861665",
@@ -814,9 +814,9 @@
     "filename": "HG02630.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG02630/assemblies/year1_f1_assembly_v2_genbank/HG02630.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG02630",
-    "subpopulation": "GWD",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "GWD",
+    "populationDescriptor": "Gambian in Western Division Đ Mandinka",
+    "sampleId": "HG02630"
   },
   {
     "accession": "SAMN17861665",
@@ -827,9 +827,9 @@
     "filename": "HG02630.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG02630/assemblies/year1_f1_assembly_v2_genbank/HG02630.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG02630",
-    "subpopulation": "GWD",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "GWD",
+    "populationDescriptor": "Gambian in Western Division Đ Mandinka",
+    "sampleId": "HG02630"
   },
   {
     "accession": "SAMN17861666",
@@ -840,9 +840,9 @@
     "filename": "HG02717.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG02717/assemblies/year1_f1_assembly_v2_genbank/HG02717.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG02717",
-    "subpopulation": "GWD",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "GWD",
+    "populationDescriptor": "Gambian in Western Division Đ Mandinka",
+    "sampleId": "HG02717"
   },
   {
     "accession": "SAMN17861666",
@@ -853,9 +853,9 @@
     "filename": "HG02717.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG02717/assemblies/year1_f1_assembly_v2_genbank/HG02717.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG02717",
-    "subpopulation": "GWD",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "GWD",
+    "populationDescriptor": "Gambian in Western Division Đ Mandinka",
+    "sampleId": "HG02717"
   },
   {
     "accession": "SAMN13958364",
@@ -866,9 +866,9 @@
     "filename": "HG02723.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG02723/assemblies/year1_f1_assembly_v2_genbank/HG02723.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG02723",
-    "subpopulation": "GWD",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "GWD",
+    "populationDescriptor": "Gambian in Western Division Đ Mandinka",
+    "sampleId": "HG02723"
   },
   {
     "accession": "SAMN13958364",
@@ -879,9 +879,9 @@
     "filename": "HG02723.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG02723/assemblies/year1_f1_assembly_v2_genbank/HG02723.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG02723",
-    "subpopulation": "GWD",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "GWD",
+    "populationDescriptor": "Gambian in Western Division Đ Mandinka",
+    "sampleId": "HG02723"
   },
   {
     "accession": "SAMN05603745",
@@ -892,9 +892,9 @@
     "filename": "HG02818.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG02818/assemblies/year1_f1_assembly_v2_genbank/HG02818.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG02818",
-    "subpopulation": "GWD",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "GWD",
+    "populationDescriptor": "Gambian in Western Division Đ Mandinka",
+    "sampleId": "HG02818"
   },
   {
     "accession": "SAMN05603745",
@@ -905,9 +905,9 @@
     "filename": "HG02818.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG02818/assemblies/year1_f1_assembly_v2_genbank/HG02818.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG02818",
-    "subpopulation": "GWD",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "GWD",
+    "populationDescriptor": "Gambian in Western Division Đ Mandinka",
+    "sampleId": "HG02818"
   },
   {
     "accession": "SAMN17861667",
@@ -918,9 +918,9 @@
     "filename": "HG02886.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG02886/assemblies/year1_f1_assembly_v2_genbank/HG02886.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG02886",
-    "subpopulation": "GWD",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "GWD",
+    "populationDescriptor": "Gambian in Western Division Đ Mandinka",
+    "sampleId": "HG02886"
   },
   {
     "accession": "SAMN17861667",
@@ -931,9 +931,9 @@
     "filename": "HG02886.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG02886/assemblies/year1_f1_assembly_v2_genbank/HG02886.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG02886",
-    "subpopulation": "GWD",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "GWD",
+    "populationDescriptor": "Gambian in Western Division Đ Mandinka",
+    "sampleId": "HG02886"
   },
   {
     "accession": "SAMN13957944",
@@ -944,9 +944,9 @@
     "filename": "HG03098.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG03098/assemblies/year1_f1_assembly_v2_genbank/HG03098.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG03098",
-    "subpopulation": "MSL",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "MSL",
+    "populationDescriptor": "Mende in Sierra Leone",
+    "sampleId": "HG03098"
   },
   {
     "accession": "SAMN13957944",
@@ -957,9 +957,9 @@
     "filename": "HG03098.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG03098/assemblies/year1_f1_assembly_v2_genbank/HG03098.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG03098",
-    "subpopulation": "MSL",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "MSL",
+    "populationDescriptor": "Mende in Sierra Leone",
+    "sampleId": "HG03098"
   },
   {
     "accession": "SAMN17861668",
@@ -970,9 +970,9 @@
     "filename": "HG03453.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG03453/assemblies/year1_f1_assembly_v2_genbank/HG03453.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG03453",
-    "subpopulation": "MSL",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "MSL",
+    "populationDescriptor": "Mende in Sierra Leone",
+    "sampleId": "HG03453"
   },
   {
     "accession": "SAMN17861668",
@@ -983,9 +983,9 @@
     "filename": "HG03453.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG03453/assemblies/year1_f1_assembly_v2_genbank/HG03453.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG03453",
-    "subpopulation": "MSL",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "MSL",
+    "populationDescriptor": "Mende in Sierra Leone",
+    "sampleId": "HG03453"
   },
   {
     "accession": "SAMN08723473",
@@ -996,9 +996,9 @@
     "filename": "HG03486.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG03486/assemblies/year1_f1_assembly_v2_genbank/HG03486.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG03486",
-    "subpopulation": "MSL",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "MSL",
+    "populationDescriptor": "Mende in Sierra Leone",
+    "sampleId": "HG03486"
   },
   {
     "accession": "SAMN08723473",
@@ -1009,9 +1009,9 @@
     "filename": "HG03486.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG03486/assemblies/year1_f1_assembly_v2_genbank/HG03486.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG03486",
-    "subpopulation": "MSL",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "MSL",
+    "populationDescriptor": "Mende in Sierra Leone",
+    "sampleId": "HG03486"
   },
   {
     "accession": null,
@@ -1022,9 +1022,9 @@
     "filename": "HG03492.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG03492/assemblies/year1_f1_assembly_v2_genbank/HG03492.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG03492",
-    "subpopulation": null,
-    "superpopulation": null
+    "populationAbbreviation": null,
+    "populationDescriptor": null,
+    "sampleId": "HG03492"
   },
   {
     "accession": null,
@@ -1035,9 +1035,9 @@
     "filename": "HG03492.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/HG03492/assemblies/year1_f1_assembly_v2_genbank/HG03492.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG03492",
-    "subpopulation": null,
-    "superpopulation": null
+    "populationAbbreviation": null,
+    "populationDescriptor": null,
+    "sampleId": "HG03492"
   },
   {
     "accession": "SAMN17861241",
@@ -1048,9 +1048,9 @@
     "filename": "HG03516.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG03516/assemblies/year1_f1_assembly_v2_genbank/HG03516.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG03516",
-    "subpopulation": "ESN",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "ESN",
+    "populationDescriptor": "Esan in Nigeria",
+    "sampleId": "HG03516"
   },
   {
     "accession": "SAMN17861241",
@@ -1061,9 +1061,9 @@
     "filename": "HG03516.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG03516/assemblies/year1_f1_assembly_v2_genbank/HG03516.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG03516",
-    "subpopulation": "ESN",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "ESN",
+    "populationDescriptor": "Esan in Nigeria",
+    "sampleId": "HG03516"
   },
   {
     "accession": "SAMN17861670",
@@ -1074,9 +1074,9 @@
     "filename": "HG03540.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG03540/assemblies/year1_f1_assembly_v2_genbank/HG03540.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG03540",
-    "subpopulation": "GWD",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "GWD",
+    "populationDescriptor": "Gambian in Western Division Đ Mandinka",
+    "sampleId": "HG03540"
   },
   {
     "accession": "SAMN17861670",
@@ -1087,9 +1087,9 @@
     "filename": "HG03540.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG03540/assemblies/year1_f1_assembly_v2_genbank/HG03540.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG03540",
-    "subpopulation": "GWD",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "GWD",
+    "populationDescriptor": "Gambian in Western Division Đ Mandinka",
+    "sampleId": "HG03540"
   },
   {
     "accession": "SAMN17861671",
@@ -1100,9 +1100,9 @@
     "filename": "HG03579.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG03579/assemblies/year1_f1_assembly_v2_genbank/HG03579.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "HG03579",
-    "subpopulation": "MSL",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "MSL",
+    "populationDescriptor": "Mende in Sierra Leone",
+    "sampleId": "HG03579"
   },
   {
     "accession": "SAMN17861671",
@@ -1113,9 +1113,9 @@
     "filename": "HG03579.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC/HG03579/assemblies/year1_f1_assembly_v2_genbank/HG03579.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "HG03579",
-    "subpopulation": "MSL",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "MSL",
+    "populationDescriptor": "Mende in Sierra Leone",
+    "sampleId": "HG03579"
   },
   {
     "accession": "SAMN13957875",
@@ -1126,9 +1126,9 @@
     "filename": "NA18906.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/NA18906/assemblies/year1_f1_assembly_v2_genbank/NA18906.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "NA18906",
-    "subpopulation": "YRI",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "YRI",
+    "populationDescriptor": "Yoruba in Ibadan, Nigeria",
+    "sampleId": "NA18906"
   },
   {
     "accession": "SAMN13957875",
@@ -1139,9 +1139,9 @@
     "filename": "NA18906.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/NA18906/assemblies/year1_f1_assembly_v2_genbank/NA18906.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "NA18906",
-    "subpopulation": "YRI",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "YRI",
+    "populationDescriptor": "Yoruba in Ibadan, Nigeria",
+    "sampleId": "NA18906"
   },
   {
     "accession": "SAMN03838746",
@@ -1152,9 +1152,9 @@
     "filename": "NA19240.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/NA19240/assemblies/year1_f1_assembly_v2_genbank/NA19240.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "NA19240",
-    "subpopulation": "YRI",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "YRI",
+    "populationDescriptor": "Yoruba in Ibadan, Nigeria",
+    "sampleId": "NA19240"
   },
   {
     "accession": "SAMN03838746",
@@ -1165,9 +1165,9 @@
     "filename": "NA19240.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/NA19240/assemblies/year1_f1_assembly_v2_genbank/NA19240.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "NA19240",
-    "subpopulation": "YRI",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "YRI",
+    "populationDescriptor": "Yoruba in Ibadan, Nigeria",
+    "sampleId": "NA19240"
   },
   {
     "accession": "SAMN13207712",
@@ -1178,9 +1178,9 @@
     "filename": "NA20129.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/NA20129/assemblies/year1_f1_assembly_v2_genbank/NA20129.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "NA20129",
-    "subpopulation": "ASW",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "ASW",
+    "populationDescriptor": "African Ancestry in Southwest USA",
+    "sampleId": "NA20129"
   },
   {
     "accession": "SAMN13207712",
@@ -1191,9 +1191,9 @@
     "filename": "NA20129.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/NA20129/assemblies/year1_f1_assembly_v2_genbank/NA20129.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "NA20129",
-    "subpopulation": "ASW",
-    "superpopulation": "AFR"
+    "populationAbbreviation": "ASW",
+    "populationDescriptor": "African Ancestry in Southwest USA",
+    "sampleId": "NA20129"
   },
   {
     "accession": "SAMN11308573",
@@ -1204,9 +1204,9 @@
     "filename": "NA21309.maternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/NA21309/assemblies/year1_f1_assembly_v2_genbank/NA21309.maternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "maternal",
-    "sampleId": "NA21309",
-    "subpopulation": null,
-    "superpopulation": null
+    "populationAbbreviation": "MKK",
+    "populationDescriptor": "Maasai in Kinyawa, Kenya",
+    "sampleId": "NA21309"
   },
   {
     "accession": "SAMN11308573",
@@ -1217,8 +1217,8 @@
     "filename": "NA21309.paternal.f1_assembly_v2_genbank.fa.gz",
     "gcpFasta": "gs://fc-4310e737-a388-4a10-8c9e-babe06aaf0cf/working/HPRC_PLUS/NA21309/assemblies/year1_f1_assembly_v2_genbank/NA21309.paternal.f1_assembly_v2_genbank.fa.gz",
     "haplotype": "paternal",
-    "sampleId": "NA21309",
-    "subpopulation": null,
-    "superpopulation": null
+    "populationAbbreviation": "MKK",
+    "populationDescriptor": "Maasai in Kinyawa, Kenya",
+    "sampleId": "NA21309"
   }
 ]

@@ -691,6 +691,32 @@ export const buildPolymeraseVersion = (
 };
 
 /**
+ * Build props for the population abbreviation cell.
+ * @param entity - Raw sequencing data or assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildPopulationAbbreviation = (
+  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: entity.populationAbbreviation,
+  };
+};
+
+/**
+ * Build props for the population descriptor cell.
+ * @param entity - Raw sequencing data or assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildPopulationDescriptor = (
+  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: entity.populationDescriptor,
+  };
+};
+
+/**
  * Build props for the quartile 25 cell.
  * @param rawSequencingData - Raw sequencing data entity.
  * @returns Props to be used for the cell.
@@ -860,32 +886,6 @@ export const buildStudy = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.study,
-  };
-};
-
-/**
- * Build props for the subpopulation cell.
- * @param entity - Raw sequencing data or assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildSubpopulation = (
-  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: entity.subpopulation,
-  };
-};
-
-/**
- * Build props for the superpopulation cell.
- * @param entity - Raw sequencing data or assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildSuperpopulation = (
-  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: entity.superpopulation,
   };
 };
 
