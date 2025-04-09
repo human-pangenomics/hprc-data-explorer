@@ -12,19 +12,6 @@ import { METADATA_KEY } from "./entities";
 import { getPluralizedMetadataLabel } from "./utils";
 
 /**
- * Build props for the accession cell.
- * @param entity - Raw sequencing data or assembly entity.
- * @returns Props to be used for the cell.
- */
-export const buildAccession = (
-  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: entity.accession,
-  };
-};
-
-/**
  * Build props for the alignment cell.
  * @param alignment - Alignment entity.
  * @returns Props to be used for the cell.
@@ -159,14 +146,14 @@ export const buildBioprojectAccession = (
 
 /**
  * Build props for the biosample accession cell.
- * @param rawSequencingData - Raw sequencing data entity.
+ * @param entity - Raw sequencing data or assembly entity.
  * @returns Props to be used for the cell.
  */
 export const buildBiosampleAccession = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
+  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
-    value: rawSequencingData.biosampleAccession,
+    value: entity.biosampleAccession,
   };
 };
 

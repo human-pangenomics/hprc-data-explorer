@@ -72,12 +72,11 @@ async function buildRawSequencingData(): Promise<
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerRawSequencingData => ({
       Gb: LABEL.NA,
-      accession: parseStringOrNull(row.accession),
       basecaller: parseStringOrNull(row.basecaller),
       basecallerModel: parseStringOrNull(row.basecaller_model),
       basecallerVersion: parseStringOrNull(row.basecaller_version),
       bioprojectAccession: parseStringOrNull(row.bioproject_accession),
-      biosampleAccession: parseStringOrNull(row.biosample_accession),
+      biosampleAccession: parseStringOrNull(row.biosample_id),
       ccsAlgorithm: parseStringOrNull(row.ccs_algorithm),
       coverage: parseNumberOrNA(row.coverage).toString(),
       dataType: parseStringOrNull(row.data_type),
@@ -147,8 +146,8 @@ async function buildAssemblies(): Promise<HPRCDataExplorerAssembly[]> {
   );
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerAssembly => ({
-      accession: parseStringOrNull(row.biosample_id),
       awsFasta: parseStringOrNull(row.assembly),
+      biosampleAccession: parseStringOrNull(row.biosample_id),
       familyId: parseStringOrNull(row.family_id),
       fastaMd5: row.assembly_md5,
       fastaSha256: parseStringOrNull(row.fasta_sha256),
