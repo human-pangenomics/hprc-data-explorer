@@ -5,7 +5,6 @@ export type HPRCDataExplorerEntity =
   | HPRCDataExplorerRawSequencingData;
 
 export interface HPRCDataExplorerRawSequencingData {
-  accession: string | null;
   basecaller: string | null;
   basecallerModel: string | null;
   basecallerVersion: string | null;
@@ -68,8 +67,8 @@ export interface HPRCDataExplorerRawSequencingData {
 }
 
 export interface HPRCDataExplorerAssembly {
-  accession: string | null;
   awsFasta: string | null;
+  biosampleAccession: string | null;
   familyId: string | null;
   fastaMd5: string;
   fastaSha256: string | null;

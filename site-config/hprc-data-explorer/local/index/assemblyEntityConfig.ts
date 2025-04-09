@@ -31,8 +31,8 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SAMPLE_ID,
           },
           {
-            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.ACCESSION,
-            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ACCESSION,
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
           },
         ],
       },
@@ -129,11 +129,11 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         columnVisible: true,
         componentConfig: {
           component: C.BasicCell,
-          viewBuilder: V.buildAccession,
+          viewBuilder: V.buildBiosampleAccession,
         } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
         enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ACCESSION,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ACCESSION,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
         width: { max: "1fr", min: "160px" },
       },
       {
