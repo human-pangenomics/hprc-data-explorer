@@ -14,34 +14,53 @@ def download_file(url, output_folder_path):
             f.write(r.text)
     return output_path
 
-def download_files_for_releases(release_specific_files_info, file_key, output_folder_path):
-    return [
-        {
-            "release": release_info["release"],
-            "path": download_file(release_info[file_key]["url"], output_folder_path),
-            **release_info[file_key],
-        }
-        for release_info in release_specific_files_info
-    ]
+def load_dataframe_from_spec(spec, output_folder_path, post_load_processor=None):
+    if "url" in spec:
+        if "sep" not in spec:
+            raise Exception("Separator not specified for delimited values file URL")
+        sep = spec["sep"]
+        urls = [spec["url"]] if isinstance(spec["url"], str) else spec["url"]
+        paths = [download_file(url, output_folder_path) for url in urls]
+        df = pd.concat([pd.read_csv(path, sep=sep) for path in paths])
+    elif "source" in spec:
+        sources = [spec["source"]] if isinstance(spec["source"], dict) else spec["source"]
+        df = pd.concat([load_dataframe_from_spec(source, output_folder_path) for source in sources])
+    else:
+        raise Exception("No dataframe source specified")
+    
+    if "na" in spec:
+        df = df.fillna(spec["na"])
+    if "input_formatter" in spec:
+        df = spec["input_formatter"](df)
+    
+    if post_load_processor is not None:
+        df = post_load_processor(df)
 
-def load_joined_files_for_releases(files_info):
-    df = None
-    for info in files_info:
-        # Read file for current release, and apply formatter if specified
-        release_df = pd.read_csv(info["path"], sep=info["sep"])
-        if "input_formatter" in info:
-            release_df = info["input_formatter"](release_df)
-        release_df["release"] = info["release"]
-        # Join with previes DF
-        df = release_df if df is None else pd.concat([df, release_df], ignore_index=True).fillna("N/A")
-        # Update data to match format for next release
-        if "mapper" in info:
-            df = info["mapper"](df)
-        if "columns" in info:
-            df = df[[*info["columns"].keys(), "release"]].rename(columns=info["columns"])
-    if df is None:
-        raise Exception("No files specified")
+    if "mapper" in spec:
+        df = spec["mapper"](df)
+    if "columns" in spec:
+        df = df[[*spec["columns"].keys(), "release"]].rename(columns=spec["columns"])
+    
     return df
+
+def append_df_for_release(base_df, release_df, release):
+    release_df = release_df.copy()
+    release_df["release"] = release
+    return release_df if base_df is None else pd.concat([base_df, release_df], ignore_index=True).fillna("N/A")
+
+def load_data_for_releases(releases_info, output_folder_path):
+    dfs = {}
+    for info in releases_info:
+        dfs_info = {**info}
+        release = dfs_info.pop("release")
+        for key, spec in dfs_info.items():
+            prev_df = dfs.get(key)
+            dfs[key] = load_dataframe_from_spec(
+                spec,
+                output_folder_path,
+                lambda df: append_df_for_release(prev_df, df, release)
+            )
+    return dfs
 
 
 def get_file_size(uri, total_files, current_index, entity_type_name):
