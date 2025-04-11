@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 import numpy as np
-from build_help import download_file, load_data_for_releases, get_file_sizes_from_uris
+from build_help import columns_mapper, download_file, load_data_for_releases, get_file_sizes_from_uris
 
 RELEASE_SPECIFIC_DATA = [
     {
@@ -10,7 +10,7 @@ RELEASE_SPECIFIC_DATA = [
             "url": "https://raw.githubusercontent.com/human-pangenomics/HPP_Year1_Assemblies/main/assembly_index/Year1_assemblies_v2_genbank.index",
             "sep": "\t",
             "input_formatter": lambda df: format_release_1_assemblies_df(df),
-            "mapper": lambda df: df.assign(haplotype=df["haplotype"].map(lambda h: RELEASE_1_HAPLOTYPES_TO_IDS.get(h, h))),
+            "mapper": columns_mapper(haplotype=lambda h: RELEASE_1_HAPLOTYPES_TO_IDS.get(h, h)),
             "columns": {
                 "sample": "sample_id",
                 "haplotype": "haplotype",
