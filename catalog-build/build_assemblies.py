@@ -1,16 +1,16 @@
 import os
 import pandas as pd
 import numpy as np
-from build_help import download_file, download_files_for_releases, load_joined_files_for_releases, get_file_sizes_from_uris
+from build_help import columns_mapper, download_file, load_data_for_releases, get_file_sizes_from_uris
 
-RELEASE_SPECIFIC_FILES = [
+RELEASE_SPECIFIC_DATA = [
     {
         "release": "1",
         "ASSEMBLIES": {
             "url": "https://raw.githubusercontent.com/human-pangenomics/HPP_Year1_Assemblies/main/assembly_index/Year1_assemblies_v2_genbank.index",
             "sep": "\t",
             "input_formatter": lambda df: format_release_1_assemblies_df(df),
-            "mapper": lambda df: df.assign(haplotype=df["haplotype"].map(lambda h: RELEASE_1_HAPLOTYPES_TO_IDS.get(h, h))),
+            "mapper": columns_mapper(haplotype=lambda h: RELEASE_1_HAPLOTYPES_TO_IDS.get(h, h)),
             "columns": {
                 "sample": "sample_id",
                 "haplotype": "haplotype",
@@ -86,13 +86,10 @@ def format_release_1_assemblies_df(data):
     return outputData
 
 if __name__ == "__main__":
-    # Download the files from Github
-    assembly_files_info = download_files_for_releases(RELEASE_SPECIFIC_FILES, "ASSEMBLIES", DOWNLOADS_FOLDER_PATH)
+    # Download the files from Github and load them as dataframes
     biosample_path = download_file(BIOSAMPLE_TABLE_URL, DOWNLOADS_FOLDER_PATH)
-
-    # Get DataFrames from downloaded files
-    assembly_df = load_joined_files_for_releases(assembly_files_info)
     biosample_df = pd.read_csv(biosample_path, sep=",")
+    assembly_df = load_data_for_releases(RELEASE_SPECIFIC_DATA, DOWNLOADS_FOLDER_PATH)["ASSEMBLIES"]
 
     filtered_assembly_df = assembly_df[~assembly_df["sample_id"].isin(EXCLUDED_SAMPLE_IDS)]
 
