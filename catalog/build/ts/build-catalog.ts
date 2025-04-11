@@ -174,12 +174,12 @@ async function buildAnnotations(): Promise<HPRCDataExplorerAnnotation[]> {
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerAnnotation => ({
       annotationType: row.annotation_type,
-      fileLocation: row.file_location,
+      fileLocation: row.location,
       fileSize: parseNumberOrNA(row.file_size).toString(),
-      filename: getFileNameFromPath(row.file_location),
-      haplotype: parseStringOrNull(row.haplotype),
-      reference: parseStringOrNull(row.reference),
-      sampleId: row.sample,
+      filename: getFileNameFromPath(row.location),
+      haplotype: HAPLOTYPE_BY_ID[row.haplotype] ?? row.haplotype,
+      release: row.release,
+      sampleId: row.sample_id,
     })
   );
   return mappedRows.sort((a, b) =>
