@@ -88,7 +88,7 @@ export interface HPRCDataExplorerAnnotation {
   filename: string;
   fileSize: string;
   haplotype: string | null;
-  reference: string | null;
+  release: string;
   sampleId: string;
 }
 

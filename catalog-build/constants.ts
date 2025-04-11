@@ -136,12 +136,13 @@ export const SOURCE_ASSEMBLY_KEYS = [
 ] as const;
 
 export const SOURCE_ANNOTATION_KEYS = [
-  "annotation_type",
-  "file_location",
-  "file_size",
+  "sample_id",
   "haplotype",
-  "reference",
-  "sample",
+  "location",
+  "annotation_type",
+  "release",
+  "assembly_name",
+  "file_size",
 ] as const;
 
 export const SOURCE_ALIGNMENT_KEYS = [
