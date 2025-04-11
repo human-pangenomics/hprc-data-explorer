@@ -3,6 +3,14 @@ from urllib.parse import urlparse
 import requests
 import pandas as pd
 
+def map_columns(df, **mappers):
+    mapped_columns = {name: df[name].map(mapper) for name, mapper in mappers.items()}
+    return df.assign(**mapped_columns)
+
+def columns_mapper(**mappers):
+    return lambda df: map_columns(df, **mappers)
+
+
 def download_file(url, output_folder_path):
     filename = Path(urlparse(url).path).name
     output_path = Path(output_folder_path, filename)
@@ -14,17 +22,21 @@ def download_file(url, output_folder_path):
             f.write(r.text)
     return output_path
 
-def load_dataframe_from_spec(spec, output_folder_path, post_load_processor=None):
-    if "url" in spec:
+def load_dataframe_from_spec(spec, output_folder_path, post_load_processor=None, extra_columns_to_retain=[], parent_spec=None):
+    # Inherit "sep"
+    if parent_spec is not None and "sep" in parent_spec:
+        spec = {"sep": parent_spec["sep"], **spec}
+
+    if "url" in spec: # Get source dataframe from URL(s)
         if "sep" not in spec:
             raise Exception("Separator not specified for delimited values file URL")
         sep = spec["sep"]
         urls = [spec["url"]] if isinstance(spec["url"], str) else spec["url"]
         paths = [download_file(url, output_folder_path) for url in urls]
         df = pd.concat([pd.read_csv(path, sep=sep) for path in paths])
-    elif "source" in spec:
+    elif "source" in spec: # Get source dataframe from spec(s)
         sources = [spec["source"]] if isinstance(spec["source"], dict) else spec["source"]
-        df = pd.concat([load_dataframe_from_spec(source, output_folder_path) for source in sources])
+        df = pd.concat([load_dataframe_from_spec(source, output_folder_path, parent_spec=spec) for source in sources])
     else:
         raise Exception("No dataframe source specified")
     
@@ -39,7 +51,7 @@ def load_dataframe_from_spec(spec, output_folder_path, post_load_processor=None)
     if "mapper" in spec:
         df = spec["mapper"](df)
     if "columns" in spec:
-        df = df[[*spec["columns"].keys(), "release"]].rename(columns=spec["columns"])
+        df = df[[*spec["columns"].keys(), *extra_columns_to_retain]].rename(columns=spec["columns"])
     
     return df
 
@@ -58,7 +70,8 @@ def load_data_for_releases(releases_info, output_folder_path):
             dfs[key] = load_dataframe_from_spec(
                 spec,
                 output_folder_path,
-                lambda df: append_df_for_release(prev_df, df, release)
+                lambda df: append_df_for_release(prev_df, df, release),
+                ["release"]
             )
     return dfs
 
