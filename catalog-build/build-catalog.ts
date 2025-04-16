@@ -21,7 +21,7 @@ import {
   SOURCE_RAW_SEQUENCING_DATA_KEYS,
 } from "./constants";
 
-const CATALOG_DIR = "catalog";
+const CATALOG_DIR = "catalog/output";
 
 const SOURCE_PATH_RAW_SEQUENCING_DATA =
   "catalog-build/source/sequencing-data.csv";

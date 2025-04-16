@@ -218,5 +218,5 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
     enableTab: false,
   },
   route: "assemblies",
-  staticLoadFile: "catalog/assemblies.json",
+  staticLoadFile: "catalog/output/assemblies.json",
 };

@@ -985,5 +985,5 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
       enableTab: false,
     },
     route: "raw-sequencing-data",
-    staticLoadFile: "catalog/sequencing-data.json",
+    staticLoadFile: "catalog/output/sequencing-data.json",
   };
