@@ -6,13 +6,13 @@ import {
   HPRCDataExplorerAssembly,
   HPRCDataExplorerRawSequencingData,
   LABEL,
-} from "../app/apis/catalog/hprc-data-explorer/common/entities";
+} from "../../../app/apis/catalog/hprc-data-explorer/common/entities";
 import {
   getAlignmentId,
   getAnnotationId,
   getAssemblyId,
   getRawSequencingDataId,
-} from "../app/apis/catalog/hprc-data-explorer/common/utils";
+} from "../../../app/apis/catalog/hprc-data-explorer/common/utils";
 import {
   HAPLOTYPE_BY_ID,
   SOURCE_ALIGNMENT_KEYS,
