@@ -1,6 +1,6 @@
 
 
-## Building the catalog-build/source Files
+## Building the catalog/build/intermediate Files
 
 The raw sequencing, assemblies, and annotations source files are generated through Python scripts.
 
@@ -9,10 +9,10 @@ To create a virtual environment and install the required libraries, use the foll
 ```shell
 python3 -m venv ./venv
 source ./venv/bin/activate
-pip install -r catalog-build/requirements.txt
+pip install -r catalog/build/py/requirements.txt
 ```
 
-Then run the scripts from this directory with:
+Then run the scripts from the `catalog/build/py` directory with:
 ```shell
 python3 build_sequencing-data.py
 python3 build_assemblies.py
