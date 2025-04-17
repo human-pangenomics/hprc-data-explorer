@@ -1,0 +1,4 @@
+
+# Catalog input files
+temporary/*
+!temporary/.gitkeep

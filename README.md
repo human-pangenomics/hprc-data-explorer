@@ -35,4 +35,4 @@ To rebuild the catalog files you will need the prerequisites installed
 Run `setup_poetry_pyenv.sh` in the project root directory to setup the virtual environment.
 
 
-see [catalog-build/README.md](catalog-build/README.md)
+see [catalog/README.md](catalog/README.md)

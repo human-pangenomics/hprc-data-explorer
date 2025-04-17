@@ -18,8 +18,8 @@ ANNOTATION_URLS = {
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Define paths relative to the script's directory
-DOWNLOADS_FOLDER_PATH = os.path.join(BASE_DIR, "unprocessed_files")
-OUTPUT_FILE_PATH = os.path.join(BASE_DIR, "source/annotations.csv")
+DOWNLOADS_FOLDER_PATH = os.path.join(BASE_DIR, "../temporary")
+OUTPUT_FILE_PATH = os.path.join(BASE_DIR, "../intermediate/annotations.csv")
 
 
 CHM13 = "chm13"

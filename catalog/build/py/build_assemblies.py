@@ -35,8 +35,8 @@ EXCLUDED_SAMPLE_IDS = ["CHM13", "GRCh38"]
 
 # Determine the base directory of the script
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DOWNLOADS_FOLDER_PATH = os.path.join(BASE_DIR, "unprocessed_files")
-OUTPUT_FILE_PATH = os.path.join(BASE_DIR, "source/assemblies.csv")
+DOWNLOADS_FOLDER_PATH = os.path.join(BASE_DIR, "../temporary")
+OUTPUT_FILE_PATH = os.path.join(BASE_DIR, "../intermediate/assemblies.csv")
 
 
 RELEASE_1_EXCLUDED_SAMPLE_IDS = ["CHM13_v1.1", "GRCh38_no_alt_analysis_set"]

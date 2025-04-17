@@ -11,8 +11,8 @@
     "prepare": "husky",
     "test": "jest --runInBand",
     "test:e2e": "playwright test --trace retain-on-failure",
-    "build-catalog": "esrun catalog-build/build-catalog.ts",
-    "build-catalog-source": "python3 catalog-build/build_sequencing_data.py && python3 catalog-build/build_assemblies.py && python3 catalog-build/build_annotations.py"
+    "build-catalog": "esrun catalog/build/ts/build-catalog.ts",
+    "build-catalog-source": "python3 catalog/build/py/build_sequencing_data.py && python3 catalog/build/py/build_assemblies.py && python3 catalog/build/py/build_annotations.py"
   },
   "dependencies": {
     "@databiosphere/findable-ui": "^22.0.0",

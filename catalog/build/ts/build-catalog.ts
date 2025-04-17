@@ -6,13 +6,13 @@ import {
   HPRCDataExplorerAssembly,
   HPRCDataExplorerRawSequencingData,
   LABEL,
-} from "../app/apis/catalog/hprc-data-explorer/common/entities";
+} from "../../../app/apis/catalog/hprc-data-explorer/common/entities";
 import {
   getAlignmentId,
   getAnnotationId,
   getAssemblyId,
   getRawSequencingDataId,
-} from "../app/apis/catalog/hprc-data-explorer/common/utils";
+} from "../../../app/apis/catalog/hprc-data-explorer/common/utils";
 import {
   HAPLOTYPE_BY_ID,
   SOURCE_ALIGNMENT_KEYS,
@@ -21,13 +21,13 @@ import {
   SOURCE_RAW_SEQUENCING_DATA_KEYS,
 } from "./constants";
 
-const CATALOG_DIR = "catalog";
+const CATALOG_DIR = "catalog/output";
 
 const SOURCE_PATH_RAW_SEQUENCING_DATA =
-  "catalog-build/source/sequencing-data.csv";
-const SOURCE_PATH_ASSEMBLIES = "catalog-build/source/assemblies.csv";
-const SOURCE_PATH_ANNOTATIONS = "catalog-build/source/annotations.csv";
-const SOURCE_PATH_ALIGNMENTS = "catalog-build/source/alignments.csv";
+  "catalog/build/intermediate/sequencing-data.csv";
+const SOURCE_PATH_ASSEMBLIES = "catalog/build/intermediate/assemblies.csv";
+const SOURCE_PATH_ANNOTATIONS = "catalog/build/intermediate/annotations.csv";
+const SOURCE_PATH_ALIGNMENTS = "catalog/build/intermediate/alignments.csv";
 
 buildCatalog();
 

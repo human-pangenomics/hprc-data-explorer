@@ -7,8 +7,8 @@ from build_help import download_file, get_file_sizes_from_uris
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Define paths relative to the script's directory
-STORAGE_FOLDER_PATH = os.path.join(BASE_DIR, "unprocessed_files/")
-OUTPUT_PATH = os.path.join(BASE_DIR, "source/sequencing-data.csv")
+DOWNLOADS_FOLDER_PATH = os.path.join(BASE_DIR, "../temporary")
+OUTPUT_FILE_PATH = os.path.join(BASE_DIR, "../intermediate/sequencing-data.csv")
 
 HIC_URL = "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sequencing_data/data_hic_pre_release.index.csv"
 ONT_URL = "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sequencing_data/data_ont_pre_release.index.csv"
@@ -65,10 +65,10 @@ def join_samples(metadata_paths, biosamples_table_path):
 
 
 if __name__ == "__main__":
-    metadata_files = download_source_files(METADATA_URLS, STORAGE_FOLDER_PATH)
+    metadata_files = download_source_files(METADATA_URLS, DOWNLOADS_FOLDER_PATH)
     biosamples_table_file = download_source_files(
-        [BIOSAMPLES_TABLE_URL], STORAGE_FOLDER_PATH
+        [BIOSAMPLES_TABLE_URL], DOWNLOADS_FOLDER_PATH
     )[0]
     joined = join_samples(metadata_files, biosamples_table_file)
-    joined.to_csv(OUTPUT_PATH, index=False)
+    joined.to_csv(OUTPUT_FILE_PATH, index=False)
     print("\nSequencing data processing complete!\n")
