@@ -769,19 +769,6 @@ export const buildReadN50 = (
 };
 
 /**
- * Build props for the reference cell.
- * @param annotation - Annotation entity.
- * @returns Props to be used for the cell.
- */
-export const buildReference = (
-  annotation: HPRCDataExplorerAnnotation
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: annotation.reference,
-  };
-};
-
-/**
  * Build props for the reference coordinates cell.
  * @param alignment - Alignment entity.
  * @returns Props to be used for the cell.
@@ -796,11 +783,11 @@ export const buildReferenceCoordinates = (
 
 /**
  * Build props for the release cell.
- * @param entity - Assembly entity.
+ * @param entity - Assembly or annotation entity.
  * @returns Props to be used for the cell.
  */
 export const buildRelease = (
-  entity: HPRCDataExplorerAssembly
+  entity: HPRCDataExplorerAssembly | HPRCDataExplorerAnnotation
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: entity.release,

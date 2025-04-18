@@ -18,7 +18,7 @@ export function getAssemblyId(assembly: HPRCDataExplorerAssembly): string {
 export function getAnnotationId(
   annotation: HPRCDataExplorerAnnotation
 ): string {
-  return `${annotation.sampleId}_${annotation.haplotype}_${annotation.annotationType}`;
+  return `${annotation.sampleId}_${annotation.haplotype}_${annotation.annotationType}_${annotation.release}`;
 }
 
 export function getAlignmentId(alignment: HPRCDataExplorerAlignment): string {
