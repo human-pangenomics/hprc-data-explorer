@@ -24,8 +24,8 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
         {
           categoryConfigs: [
             {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.ACCESSION,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ACCESSION,
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
             },
             {
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.METADATA_ACCESSION,
@@ -226,17 +226,18 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           width: { max: "1fr", min: "160px" },
         },
         {
+          columnVisible: false,
           componentConfig: {
             component: C.BasicCell,
-            viewBuilder: V.buildAccession,
+            viewBuilder: V.buildBiosampleAccession,
           } as ComponentConfig<
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
           enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ACCESSION,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ACCESSION,
-          width: { max: "1fr", min: "160px" },
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
+          width: { max: "0.5fr", min: "112px" },
         },
         {
           componentConfig: {
@@ -318,20 +319,6 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOPROJECT_ACCESSION,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOPROJECT_ACCESSION,
-          width: { max: "0.5fr", min: "112px" },
-        },
-        {
-          columnVisible: false,
-          componentConfig: {
-            component: C.BasicCell,
-            viewBuilder: V.buildBiosampleAccession,
-          } as ComponentConfig<
-            typeof C.BasicCell,
-            HPRCDataExplorerRawSequencingData
-          >,
-          enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
           width: { max: "0.5fr", min: "112px" },
         },
         {
