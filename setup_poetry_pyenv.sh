@@ -30,7 +30,7 @@ PYTHON_VERSION=$(cat .python-version 2>/dev/null || echo "")
 if [ -z "$PYTHON_VERSION" ]; then
   echo
   echo "Error: No .python-version file found or it is empty."
-  echo "Please create a .python-version file with the desired Python version, e.g., '3.10.14'."
+  echo "Please create a .python-version file with the desired Python version, e.g., '3.12.4'."
   echo
   exit 1
 fi

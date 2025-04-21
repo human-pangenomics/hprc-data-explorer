@@ -4,19 +4,13 @@
 
 The raw sequencing, assemblies, and annotations source files are generated through Python scripts.
 
-To create a virtual environment and install the required libraries, use the following commands from the root project directory:
-
-```shell
-python3 -m venv ./venv
-source ./venv/bin/activate
-pip install -r catalog/build/py/requirements.txt
-```
+See [README.md](../README.md) in the repository root for instructions on setting up the Python environment.
 
 Then run the scripts from the `catalog/build/py` directory with:
 ```shell
-python3 build_sequencing-data.py
-python3 build_assemblies.py
-python3 build_annotations.py
+poetry run python build_sequencing-data.py
+poetry run python build_assemblies.py
+poetry run python build_annotations.py
 ```
 
 
