@@ -1,0 +1,620 @@
+id: https://github.com/human-pangenomics/hprc-data-explorer/blob/main/catalog/schema/sequencing_data.yaml#
+name: sequencing_data
+description: Schema for source sequencing data.
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+
+imports:
+  - linkml:types
+
+classes:
+  SequencingData:
+    description: A sequencing data file.
+    slots:
+      - filename
+      - filetype
+      - instrument_model
+      - library_layout
+      - library_strategy
+      - path
+      - sample_id
+  HiCSequencingData:
+    description: A HiC sequencing data file.
+    is_a: SequencingData
+    slots:
+      - accession
+      - bioproject_accession
+      - biosample_accession
+      - coverage
+      - data_type
+      - design_description
+      - filename
+      - filetype
+      - generator_contact
+      - generator_facility
+      - instrument_model
+      - library_ID
+      - library_layout
+      - library_selection
+      - library_source
+      - library_strategy
+      - ntsm_score
+      - path
+      - platform
+      - production
+      - sample_id
+      - shear_method
+      - study
+      - total_bp
+      - total_gbp
+  DeepConsensusSequencingData:
+    description: A DeepConsensus sequencing data file.
+    is_a: SequencingData
+    slots:
+      - accession
+      - bioproject_accession
+      - biosample_accession
+      - deepconsensus_version
+      - design_description
+      - filename
+      - filetype
+      - generator_contact
+      - generator_facility
+      - instrument_model
+      - library_ID
+      - library_layout
+      - library_selection
+      - library_source
+      - library_strategy
+      - max
+      - mean
+      - min
+      - n25
+      - n50
+      - n75
+      - path
+      - platform
+      - polymerase_version
+      - quartile_25
+      - quartile_50
+      - quartile_75
+      - sample_id
+      - seq_plate_chemistry_version
+      - shear_method
+      - size_selection
+      - study
+      - title
+      - total_bp
+      - total_gbp
+      - total_reads
+  HiFiSequencingData:
+    description: A HiFi sequencing data file.
+    is_a: SequencingData
+    slots:
+      - accession
+      - bioproject_accession
+      - biosample_accession
+      - ccs_algorithm
+      - coverage
+      - data_type
+      - deepconsensus_coverage
+      - deepconsensus_filename
+      - deepconsensus_path
+      - deepconsensus_version
+      - design_description
+      - filename
+      - filetype
+      - generator_contact
+      - generator_facility
+      - instrument_model
+      - library_ID
+      - library_layout
+      - library_selection
+      - library_source
+      - library_strategy
+      - lima_float_version
+      - lima_version
+      - max
+      - mean
+      - min
+      - mm_remove
+      - mm_review
+      - mm_tag
+      - n25
+      - n50
+      - n75
+      - notes
+      - ntsm_score
+      - path
+      - platform
+      - polymerase_version
+      - primrose_filename
+      - production
+      - quartile_25
+      - quartile_50
+      - quartile_75
+      - sample_id
+      - seq_plate_chemistry_version
+      - shear_method
+      - size_selection
+      - study
+      - title
+      - total_bp
+      - total_gbp
+      - total_reads
+  IlluminaSequencingData:
+    description: An Illumina sequencing data file.
+    is_a: SequencingData
+    slots:
+      - coverage
+      - family_id
+      - filename
+      - filetype
+      - gender
+      - instrument_model
+      - library_construction_protocol
+      - library_layout
+      - library_strategy
+      - maternal_id
+      - other_comments
+      - paternal_id
+      - path
+      - phasing
+      - phenotype
+      - population
+      - read_length
+      - relationship
+      - sample_id
+      - second_order
+      - siblings
+      - third_order
+      - total_bp
+      - total_gbp
+  KinnexSequencingData:
+    description: A Kinnex sequencing data file.
+    is_a: SequencingData
+    slots:
+      - accession
+      - barcode
+      - basecaller_version
+      - bioproject_accession
+      - biosample_accession
+      - ccs_algorithm
+      - cell_type
+      - check-flnc reads
+      - data_type
+      - design_description
+      - filename
+      - filetype
+      - generator_contact
+      - generator_facility
+      - instrument_model
+      - iso_filename
+      - iso_library_id
+      - jasmine_version
+      - library_ID
+      - library_layout
+      - library_selection
+      - library_source
+      - library_strategy
+      - lima_version
+      - ntsm_score
+      - path
+      - pbtrim_version
+      - platform
+      - platform_unit_1
+      - platform_unit_2
+      - polymerase_version
+      - pool
+      - production
+      - refine_version
+      - sample_id
+      - seq_plate_chemistry_version
+      - shear_method
+      - similarity
+      - size_selection
+      - study
+      - title
+      - total_reads
+  OntSequencingData:
+    description: An ONT sequencing data file.
+    is_a: SequencingData
+    slots:
+      - coverage_100kb_plus
+      - coverage_1Mb_plus
+      - coverage_200kb_plus
+      - coverage_300kb_plus
+      - coverage_400kb_plus
+      - coverage_500kb_plus
+      - accession
+      - basecaller
+      - basecaller_model
+      - basecaller_version
+      - bioproject_accession
+      - biosample_accession
+      - coverage
+      - data_type
+      - design_description
+      - filename
+      - filetype
+      - generator_contact
+      - generator_facility
+      - instrument_model
+      - library_ID
+      - library_layout
+      - library_selection
+      - library_source
+      - library_strategy
+      - n50
+      - ntsm_score
+      - path
+      - platform
+      - production
+      - sample_id
+      - seq_kit
+      - sequencing_chemistry
+      - shear_method
+      - size_selection
+      - study
+      - total_gbp
+      - whales
+
+slots:
+  coverage_100kb_plus:
+    description: Coverage from reads 100kb or longer.
+    required: true
+    range: float
+  coverage_1Mb_plus:
+    description: Coverage from reads 1 megabase or longer.
+    required: true
+    range: float
+  coverage_200kb_plus:
+    description: Coverage from reads 200kb or longer.
+    required: true
+    range: float
+  coverage_300kb_plus:
+    description: Coverage from reads 300kb or longer.
+    required: true
+    range: float
+  coverage_400kb_plus:
+    description: Coverage from reads 400kb or longer.
+    required: true
+    range: float
+  coverage_500kb_plus:
+    description: Coverage from reads 500kb or longer.
+    required: true
+    range: float
+  accession:
+    description: Database accession number of data entity (e.g. SRR or ERR identifier).
+    required: true
+    range: string
+  barcode:
+    description: Unique barcode identifier used for multiplexing samples.
+    required: true
+    range: string
+  basecaller:
+    description: Software used for basecalling ONT signal data.
+    required: true
+    range: string
+  basecaller_model:
+    description: Specific model used by the basecaller.
+    required: true
+    range: string
+  basecaller_version:
+    description: Version of the basecalling software used.
+    required: true
+    range: string
+  bioproject_accession:
+    description: NCBI BioProject accession.
+    required: true
+    range: string
+  biosample_accession:
+    description: NCBI BioSample accession.
+    required: true
+    range: string
+  ccs_algorithm:
+    description: Version of consensus sequence generation algorithm.
+    required: true
+    range: string
+  cell_type:
+    description: Type of cell used in the PacBio instrument.
+    required: true
+    range: string
+  check-flnc reads:
+    description: Count of full-length non-chimeric reads passing quality checks.
+    required: true
+    range: integer
+  coverage:
+    description: Estimated coverage depth of the genome.
+    required: true
+    range: float
+  data_type:
+    description: Content of data file.
+    required: true
+    range: string # TODO
+  deepconsensus_coverage:
+    description: Coverage depth after DeepConsensus processing.
+    required: true
+    range: float
+  deepconsensus_filename:
+    description: Filename of the DeepConsensus output file.
+    required: true
+    range: string
+  deepconsensus_path:
+    description: File path to the DeepConsensus output.
+    required: true
+    range: string
+  deepconsensus_version:
+    description: Version of DeepConsensus software used for rebasecalling HiFi data.
+    required: true
+    range: string
+  design_description:
+    description: Brief description of materials and methods.
+    required: true
+    range: string
+  family_id:
+    description: Identifier for the family group.
+    required: true
+    range: string
+  filename:
+    description: File the metadata refers to.
+    required: true
+    range: string # TODO
+  filetype:
+    description: Type of file uploading.
+    required: true
+    range: string # TODO
+  gender:
+    description: Gender/sex of the individual.
+    required: true
+    range: string
+  generator_contact:
+    description: Contact person for problems/inquiries about the data.
+    required: true
+    range: string
+  generator_facility:
+    description: Facility that created the sequencing reads.
+    required: true
+    range: string
+  instrument_model:
+    description: Model of instrument.
+    required: true
+    range: string # TODO
+  iso_filename:
+    description: Name of the file containing isoform data.
+    required: true
+    range: string
+  iso_library_id:
+    description: Identifier for the Iso-Seq library.
+    required: true
+    range: string
+  jasmine_version:
+    description: Version of the Jasmine software used for isoform analysis.
+    required: true
+    range: string
+  library_construction_protocol:
+    description: Protocol used to construct the sequencing library.
+    required: true
+    range: string
+  library_ID:
+    description: Short identifier for library ID.
+    required: true
+    range: string # TODO
+  library_layout:
+    description: Format of sequence reads.
+    required: true
+    range: string # TODO
+  library_selection:
+    description: Method of selection of library source material.
+    required: true
+    range: string # TODO
+  library_source:
+    description: Source of sequencing/library material.
+    required: true
+    range: string # TODO
+  library_strategy:
+    description: General approach to library preparation.
+    required: true
+    range: string # TODO
+  lima_float_version:
+    description: Detailed version number of the Lima adapter trimming software.
+    required: true
+    range: string
+  lima_version:
+    description: Version of the Lima adapter trimming software.
+    required: true
+    range: string
+  maternal_id:
+    description: Sample ID of the individual's mother.
+    required: true
+    range: string
+  max:
+    description: Maximum read length in the HiFi dataset after DeepConsensus processing.
+    required: true
+    range: float
+  mean:
+    description: Mean read length in the HiFi dataset after DeepConsensus processing.
+    required: true
+    range: float
+  min:
+    description: Minimum read length in the HiFi dataset after DeepConsensus processing.
+    required: true
+    range: float
+  mm_remove:
+    description: Whether methylation tags were removed from the data.
+    required: true
+    range: boolean
+  mm_review:
+    description: Status of methylation tag review/validation.
+    required: true
+    range: string
+  mm_tag:
+    description: Whether the data contains methylation (MM) tags.
+    required: true
+    range: boolean
+  n25:
+    description: Read length where 25% of bases in the HiFi dataset are in reads of this length or longer.
+    required: true
+    range: integer
+  n50:
+    description: Read length where 50% of bases in the HiFi dataset are in reads of this length or longer.
+    required: true
+    range: integer
+  n75:
+    description: Read length where 75% of bases in the HiFi dataset are in reads of this length or longer.
+    required: true
+    range: integer
+  notes:
+    description: Free text used to flag major issues.
+    required: true
+    range: string
+  ntsm_score:
+    description: Normalized Trans-Scaffold Mappability score.
+    required: true
+    range: float
+  other_comments:
+    description: Additional notes or comments about the sample.
+    required: true
+    range: string
+  paternal_id:
+    description: Sample ID of the individual's father.
+    required: true
+    range: string
+  path:
+    description: File path to the data in storage system.
+    required: true
+    range: string
+  pbtrim_version:
+    description: Version of the PacBio trimming software.
+    required: true
+    range: string
+  phasing:
+    description: Information about haplotype phasing status.
+    required: true
+    range: string
+  phenotype:
+    description: Observable characteristics or disease status.
+    required: true
+    range: string
+  platform:
+    description: Sequencing instrument manufacturer.
+    required: true
+    range: string # TODO
+  platform_unit_1:
+    description: First component of the platform identifier.
+    required: true
+    range: string
+  platform_unit_2:
+    description: Second component of the platform identifier.
+    required: true
+    range: string
+  polymerase_version:
+    description: Version of the polymerase used in HiFi sequencing.
+    required: true
+    range: string # TODO
+  pool:
+    description: Pool identifier for multiplexed samples.
+    required: true
+    range: string
+  population:
+    description: Population group the individual belongs to.
+    required: true
+    range: string
+  primrose_filename:
+    description: Filename of the Primrose basecalling output (if used).
+    required: true
+    range: string
+  production:
+    description: Name of original data submisson.
+    required: true
+    range: string
+  quartile_25:
+    description: 25th percentile of HiFi read lengths after DeepConsensus processing.
+    required: true
+    range: integer
+  quartile_50:
+    description: 50th percentile (median) of HiFi read lengths after DeepConsensus processing.
+    required: true
+    range: integer
+  quartile_75:
+    description: 75th percentile of HiFi read lengths after DeepConsensus processing.
+    required: true
+    range: integer
+  read_length:
+    description: Length of the sequencing reads in base pairs.
+    required: true
+    range: integer
+  refine_version:
+    description: Version of the PacBio Refine software.
+    required: true
+    range: string
+  relationship:
+    description: Relationship to other samples in the dataset.
+    required: true
+    range: string
+  sample_id:
+    description: Identifier from 1000G/HapMap (as found in Coriell for DNA).
+    required: true
+    range: string # TODO
+  second_order:
+    description: Second-order relatives in the dataset.
+    required: true
+    range: string
+  seq_kit:
+    description: Sequencing kit used for library preparation.
+    required: true
+    range: string
+  seq_plate_chemistry_version:
+    description: Version of PacBio sequencing plate chemistry used for HiFi data.
+    required: true
+    range: string # TODO
+  sequencing_chemistry:
+    description: Chemistry version used for ONT sequencing.
+    required: true
+    range: string
+  shear_method:
+    description: Approach to initial DNA fragmentation.
+    required: true
+    range: string # TODO
+  siblings:
+    description: Sample IDs of siblings.
+    required: true
+    range: string
+  similarity:
+    description: Similarity metric for sequence alignment or clustering.
+    required: true
+    range: float
+  size_selection:
+    description: Approach to final library size-selection.
+    required: true
+    range: string # TODO
+  study:
+    description: Name or identifier of the study that generated the data.
+    required: true
+    range: string
+  third_order:
+    description: Third-order relatives in the dataset.
+    required: true
+    range: string
+  title:
+    description: Title or name of the dataset.
+    required: true
+    range: string
+  total_bp:
+    description: Total number of base pairs in the file.
+    required: true
+    range: integer
+  total_gbp:
+    description: Total gigabase pairs (total_bp / 1000000000).
+    required: true
+    range: float
+  total_reads:
+    description: Total number of reads.
+    required: true
+    range: string # TODO
+  whales:
+    description: Count of exceptionally long reads (typically >1Mb).
+    required: true
+    range: integer
+
