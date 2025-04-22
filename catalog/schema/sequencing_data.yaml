@@ -119,7 +119,6 @@ classes:
       - mean
       - min
       - mm_remove
-      - mm_review
       - mm_tag
       - n25
       - n50
@@ -161,7 +160,6 @@ classes:
       - paternal_id
       - path
       - phasing
-      - phenotype
       - population
       - read_length
       - relationship
@@ -335,7 +333,7 @@ slots:
     range: string # TODO
   deepconsensus_coverage:
     description: Coverage depth after DeepConsensus processing.
-    required: true
+    required: false
     range: float
   deepconsensus_filename:
     description: Filename of the DeepConsensus output file.
@@ -445,10 +443,6 @@ slots:
     description: Whether methylation tags were removed from the data.
     required: true
     range: boolean
-  mm_review:
-    description: Status of methylation tag review/validation.
-    required: true
-    range: string
   mm_tag:
     description: Whether the data contains methylation (MM) tags.
     required: true
@@ -471,7 +465,7 @@ slots:
     range: string
   ntsm_score:
     description: Normalized Trans-Scaffold Mappability score.
-    required: true
+    required: false
     range: float
   other_comments:
     description: Additional notes or comments about the sample.
@@ -491,10 +485,6 @@ slots:
     range: string
   phasing:
     description: Information about haplotype phasing status.
-    required: true
-    range: string
-  phenotype:
-    description: Observable characteristics or disease status.
     required: true
     range: string
   platform:
@@ -607,12 +597,12 @@ slots:
     range: integer
   total_gbp:
     description: Total gigabase pairs (total_bp / 1000000000).
-    required: true
+    required: false # TODO check if this should actually be optional (also check other optionals maybe)
     range: float
   total_reads:
     description: Total number of reads.
     required: true
-    range: string # TODO
+    range: integer
   whales:
     description: Count of exceptionally long reads (typically >1Mb).
     required: true

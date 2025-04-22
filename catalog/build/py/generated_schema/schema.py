@@ -247,7 +247,7 @@ class HiCSequencingData(SequencingData):
                        'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    ntsm_score: float = Field(default=..., description="""Normalized Trans-Scaffold Mappability score.""", json_schema_extra = { "linkml_meta": {'alias': 'ntsm_score',
+    ntsm_score: Optional[float] = Field(default=None, description="""Normalized Trans-Scaffold Mappability score.""", json_schema_extra = { "linkml_meta": {'alias': 'ntsm_score',
          'domain_of': ['HiCSequencingData',
                        'HiFiSequencingData',
                        'KinnexSequencingData',
@@ -296,7 +296,7 @@ class HiCSequencingData(SequencingData):
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'IlluminaSequencingData']} })
-    total_gbp: float = Field(default=..., description="""Total gigabase pairs (total_bp / 1000000000).""", json_schema_extra = { "linkml_meta": {'alias': 'total_gbp',
+    total_gbp: Optional[float] = Field(default=None, description="""Total gigabase pairs (total_bp / 1000000000).""", json_schema_extra = { "linkml_meta": {'alias': 'total_gbp',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
@@ -482,13 +482,13 @@ class DeepConsensusSequencingData(SequencingData):
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'IlluminaSequencingData']} })
-    total_gbp: float = Field(default=..., description="""Total gigabase pairs (total_bp / 1000000000).""", json_schema_extra = { "linkml_meta": {'alias': 'total_gbp',
+    total_gbp: Optional[float] = Field(default=None, description="""Total gigabase pairs (total_bp / 1000000000).""", json_schema_extra = { "linkml_meta": {'alias': 'total_gbp',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'IlluminaSequencingData',
                        'OntSequencingData']} })
-    total_reads: str = Field(default=..., description="""Total number of reads.""", json_schema_extra = { "linkml_meta": {'alias': 'total_reads',
+    total_reads: int = Field(default=..., description="""Total number of reads.""", json_schema_extra = { "linkml_meta": {'alias': 'total_reads',
          'domain_of': ['DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'KinnexSequencingData']} })
@@ -530,7 +530,7 @@ class HiFiSequencingData(SequencingData):
                        'HiFiSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    deepconsensus_coverage: float = Field(default=..., description="""Coverage depth after DeepConsensus processing.""", json_schema_extra = { "linkml_meta": {'alias': 'deepconsensus_coverage', 'domain_of': ['HiFiSequencingData']} })
+    deepconsensus_coverage: Optional[float] = Field(default=None, description="""Coverage depth after DeepConsensus processing.""", json_schema_extra = { "linkml_meta": {'alias': 'deepconsensus_coverage', 'domain_of': ['HiFiSequencingData']} })
     deepconsensus_filename: str = Field(default=..., description="""Filename of the DeepConsensus output file.""", json_schema_extra = { "linkml_meta": {'alias': 'deepconsensus_filename', 'domain_of': ['HiFiSequencingData']} })
     deepconsensus_path: str = Field(default=..., description="""File path to the DeepConsensus output.""", json_schema_extra = { "linkml_meta": {'alias': 'deepconsensus_path', 'domain_of': ['HiFiSequencingData']} })
     deepconsensus_version: str = Field(default=..., description="""Version of DeepConsensus software used for rebasecalling HiFi data.""", json_schema_extra = { "linkml_meta": {'alias': 'deepconsensus_version',
@@ -621,7 +621,6 @@ class HiFiSequencingData(SequencingData):
     min: float = Field(default=..., description="""Minimum read length in the HiFi dataset after DeepConsensus processing.""", json_schema_extra = { "linkml_meta": {'alias': 'min',
          'domain_of': ['DeepConsensusSequencingData', 'HiFiSequencingData']} })
     mm_remove: bool = Field(default=..., description="""Whether methylation tags were removed from the data.""", json_schema_extra = { "linkml_meta": {'alias': 'mm_remove', 'domain_of': ['HiFiSequencingData']} })
-    mm_review: str = Field(default=..., description="""Status of methylation tag review/validation.""", json_schema_extra = { "linkml_meta": {'alias': 'mm_review', 'domain_of': ['HiFiSequencingData']} })
     mm_tag: bool = Field(default=..., description="""Whether the data contains methylation (MM) tags.""", json_schema_extra = { "linkml_meta": {'alias': 'mm_tag', 'domain_of': ['HiFiSequencingData']} })
     n25: int = Field(default=..., description="""Read length where 25% of bases in the HiFi dataset are in reads of this length or longer.""", json_schema_extra = { "linkml_meta": {'alias': 'n25',
          'domain_of': ['DeepConsensusSequencingData', 'HiFiSequencingData']} })
@@ -632,7 +631,7 @@ class HiFiSequencingData(SequencingData):
     n75: int = Field(default=..., description="""Read length where 75% of bases in the HiFi dataset are in reads of this length or longer.""", json_schema_extra = { "linkml_meta": {'alias': 'n75',
          'domain_of': ['DeepConsensusSequencingData', 'HiFiSequencingData']} })
     notes: str = Field(default=..., description="""Free text used to flag major issues.""", json_schema_extra = { "linkml_meta": {'alias': 'notes', 'domain_of': ['HiFiSequencingData']} })
-    ntsm_score: float = Field(default=..., description="""Normalized Trans-Scaffold Mappability score.""", json_schema_extra = { "linkml_meta": {'alias': 'ntsm_score',
+    ntsm_score: Optional[float] = Field(default=None, description="""Normalized Trans-Scaffold Mappability score.""", json_schema_extra = { "linkml_meta": {'alias': 'ntsm_score',
          'domain_of': ['HiCSequencingData',
                        'HiFiSequencingData',
                        'KinnexSequencingData',
@@ -705,13 +704,13 @@ class HiFiSequencingData(SequencingData):
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'IlluminaSequencingData']} })
-    total_gbp: float = Field(default=..., description="""Total gigabase pairs (total_bp / 1000000000).""", json_schema_extra = { "linkml_meta": {'alias': 'total_gbp',
+    total_gbp: Optional[float] = Field(default=None, description="""Total gigabase pairs (total_bp / 1000000000).""", json_schema_extra = { "linkml_meta": {'alias': 'total_gbp',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'IlluminaSequencingData',
                        'OntSequencingData']} })
-    total_reads: str = Field(default=..., description="""Total number of reads.""", json_schema_extra = { "linkml_meta": {'alias': 'total_reads',
+    total_reads: int = Field(default=..., description="""Total number of reads.""", json_schema_extra = { "linkml_meta": {'alias': 'total_reads',
          'domain_of': ['DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'KinnexSequencingData']} })
@@ -784,7 +783,6 @@ class IlluminaSequencingData(SequencingData):
                        'KinnexSequencingData',
                        'OntSequencingData']} })
     phasing: str = Field(default=..., description="""Information about haplotype phasing status.""", json_schema_extra = { "linkml_meta": {'alias': 'phasing', 'domain_of': ['IlluminaSequencingData']} })
-    phenotype: str = Field(default=..., description="""Observable characteristics or disease status.""", json_schema_extra = { "linkml_meta": {'alias': 'phenotype', 'domain_of': ['IlluminaSequencingData']} })
     population: str = Field(default=..., description="""Population group the individual belongs to.""", json_schema_extra = { "linkml_meta": {'alias': 'population', 'domain_of': ['IlluminaSequencingData']} })
     read_length: int = Field(default=..., description="""Length of the sequencing reads in base pairs.""", json_schema_extra = { "linkml_meta": {'alias': 'read_length', 'domain_of': ['IlluminaSequencingData']} })
     relationship: str = Field(default=..., description="""Relationship to other samples in the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'relationship', 'domain_of': ['IlluminaSequencingData']} })
@@ -804,7 +802,7 @@ class IlluminaSequencingData(SequencingData):
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'IlluminaSequencingData']} })
-    total_gbp: float = Field(default=..., description="""Total gigabase pairs (total_bp / 1000000000).""", json_schema_extra = { "linkml_meta": {'alias': 'total_gbp',
+    total_gbp: Optional[float] = Field(default=None, description="""Total gigabase pairs (total_bp / 1000000000).""", json_schema_extra = { "linkml_meta": {'alias': 'total_gbp',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
@@ -929,7 +927,7 @@ class KinnexSequencingData(SequencingData):
                        'OntSequencingData']} })
     lima_version: str = Field(default=..., description="""Version of the Lima adapter trimming software.""", json_schema_extra = { "linkml_meta": {'alias': 'lima_version',
          'domain_of': ['HiFiSequencingData', 'KinnexSequencingData']} })
-    ntsm_score: float = Field(default=..., description="""Normalized Trans-Scaffold Mappability score.""", json_schema_extra = { "linkml_meta": {'alias': 'ntsm_score',
+    ntsm_score: Optional[float] = Field(default=None, description="""Normalized Trans-Scaffold Mappability score.""", json_schema_extra = { "linkml_meta": {'alias': 'ntsm_score',
          'domain_of': ['HiCSequencingData',
                        'HiFiSequencingData',
                        'KinnexSequencingData',
@@ -996,7 +994,7 @@ class KinnexSequencingData(SequencingData):
          'domain_of': ['DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'KinnexSequencingData']} })
-    total_reads: str = Field(default=..., description="""Total number of reads.""", json_schema_extra = { "linkml_meta": {'alias': 'total_reads',
+    total_reads: int = Field(default=..., description="""Total number of reads.""", json_schema_extra = { "linkml_meta": {'alias': 'total_reads',
          'domain_of': ['DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'KinnexSequencingData']} })
@@ -1126,7 +1124,7 @@ class OntSequencingData(SequencingData):
          'domain_of': ['DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'OntSequencingData']} })
-    ntsm_score: float = Field(default=..., description="""Normalized Trans-Scaffold Mappability score.""", json_schema_extra = { "linkml_meta": {'alias': 'ntsm_score',
+    ntsm_score: Optional[float] = Field(default=None, description="""Normalized Trans-Scaffold Mappability score.""", json_schema_extra = { "linkml_meta": {'alias': 'ntsm_score',
          'domain_of': ['HiCSequencingData',
                        'HiFiSequencingData',
                        'KinnexSequencingData',
@@ -1177,7 +1175,7 @@ class OntSequencingData(SequencingData):
                        'HiFiSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    total_gbp: float = Field(default=..., description="""Total gigabase pairs (total_bp / 1000000000).""", json_schema_extra = { "linkml_meta": {'alias': 'total_gbp',
+    total_gbp: Optional[float] = Field(default=None, description="""Total gigabase pairs (total_bp / 1000000000).""", json_schema_extra = { "linkml_meta": {'alias': 'total_gbp',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
