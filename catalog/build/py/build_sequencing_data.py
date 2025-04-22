@@ -13,13 +13,13 @@ DOWNLOADS_FOLDER_PATH = os.path.join(BASE_DIR, "../temporary")
 OUTPUT_FILE_PATH = os.path.join(BASE_DIR, "../intermediate/sequencing-data.csv")
 
 METADA_SOURCES = [
-    {"model": schema.HiCSequencingData, "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sequencing_data/data_hic_pre_release.index.csv"},
-    {"model": schema.OntSequencingData, "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sequencing_data/data_ont_pre_release.index.csv"},
-    {"model": schema.DeepConsensusSequencingData, "drop": ["production", "data_type", "notes", "mm_tag", "coverage", "ntsm_score", "ccs_algorithm"], "url": "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sequencing_data/data_deepconsensus_pre_release.index.csv"},
-    {"model": schema.HiFiSequencingData, "drop": ["MM_review"], "url": "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sequencing_data/data_hifi_pre_release.index.csv"},
+    {"model": schema.HiCSequencingData, "drop": ["library_ID", "design_description", "data_type", "library_layout", "library_selection", "shear_method", "total_bp", "ntsm_score"], "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sequencing_data/data_hic_pre_release.index.csv"},
+    {"model": schema.OntSequencingData, "drop": ["library_ID", "library_selection", "library_layout", "design_description", "data_type", "shear_method", "size_selection", "seq_kit", "ntsm_score", "200kb+", "300kb+", "400kb+", "500kb+", "1Mb+"], "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sequencing_data/data_ont_pre_release.index.csv"},
+    {"model": schema.DeepConsensusSequencingData, "drop": ["production", "data_type", "notes", "mm_tag", "coverage", "ntsm_score", "ccs_algorithm", "library_ID", "title", "library_selection", "library_layout", "design_description", "shear_method", "size_selection", "polymerase_version", "seq_plate_chemistry_version", "total_bp", "min", "max", "mean", "quartile_25", "quartile_50", "quartile_75", "N25", "N75"], "url": "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sequencing_data/data_deepconsensus_pre_release.index.csv"},
+    {"model": schema.HiFiSequencingData, "drop": ["MM_review", "data_type", "title", "design_description", "notes", "library_ID", "library_selection", "library_layout", "shear_method", "size_selection", "seq_plate_chemistry_version", "polymerase_version", "total_bp", "mean", "min", "max", "N25", "N75", "quartile_25", "quartile_50", "quartile_75", "ntsm_score", "MM_remove", "lima_float_version"], "url": "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sequencing_data/data_hifi_pre_release.index.csv"},
     # TODO don't keep gender mapping in without checking it's correct
-    {"model": schema.IlluminaSequencingData, "map": {"gender": lambda v: "Male" if v == 1 else "Female" if v == 2 else "Other"}, "drop": ["Phenotype"], "add": {"total_gbp": np.nan}, "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sequencing_data/data_illumina_pre_release.index.csv"},
-    {"model": schema.KinnexSequencingData, "map": {"basecaller_version": str}, "url": "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sequencing_data/data_kinnex_pre_release.index.csv"},
+    {"model": schema.IlluminaSequencingData, "map": {"gender": lambda v: "Male" if v == 1 else "Female" if v == 2 else "Other"}, "drop": ["Phenotype", "total_bp", "library_construction_protocol", "library_layout", "read_length"], "add": {"total_gbp": np.nan}, "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sequencing_data/data_illumina_pre_release.index.csv"},
+    {"model": schema.KinnexSequencingData, "map": {"basecaller_version": str}, "drop": ["title", "library_ID", "data_type", "cell_type", "iso_library_id", "pbtrim_version", "jasmine_version", "refine_version", "library_selection", "library_layout", "shear_method", "size_selection", "design_description", "polymerase_version", "seq_plate_chemistry_version", "ntsm_score", "similarity", "check-flnc reads"], "url": "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sequencing_data/data_kinnex_pre_release.index.csv"},
 ]
 
 BIOSAMPLES_TABLE_URL = "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sample/hprc_release2_sample_metadata.csv"
@@ -48,17 +48,9 @@ def load_model_csv(path, model, schemaview, drop_columns, column_mappers, add_co
         "total_Gbp": "total_gbp",
         "read_N50": "n50",
         "100kb+": "coverage_100kb_plus",
-        "200kb+": "coverage_200kb_plus",
-        "300kb+": "coverage_300kb_plus",
-        "400kb+": "coverage_400kb_plus",
-        "500kb+": "coverage_500kb_plus",
-        "1Mb+": "coverage_1Mb_plus",
         "DeepConsensus_version": "deepconsensus_version",
-        "N25": "n25",
         "N50": "n50",
-        "N75": "n75",
         "MM_tag": "mm_tag",
-        "MM_remove": "mm_remove",
         "Family ID": "family_id",
         "Paternal ID": "paternal_id",
         "Maternal ID": "maternal_id",
@@ -69,7 +61,6 @@ def load_model_csv(path, model, schemaview, drop_columns, column_mappers, add_co
         "Second Order": "second_order",
         "Third Order": "third_order",
         "Other Comments": "other_comments",
-        "check-flnc reads": "check_flnc_reads",
     })
     if column_mappers: df = map_columns(df, **column_mappers)
     if drop_columns: df = df.drop(columns=drop_columns)
