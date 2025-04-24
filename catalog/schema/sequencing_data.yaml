@@ -179,7 +179,7 @@ slots:
     range: float
   accession:
     description: Database accession number of data entity (e.g. SRR or ERR identifier).
-    required: true
+    required: false
     range: string
   barcode:
     description: Unique barcode identifier used for multiplexing samples.
@@ -187,27 +187,27 @@ slots:
     range: string
   basecaller:
     description: Software used for basecalling ONT signal data.
-    required: true
+    required: false
     range: string
   basecaller_model:
     description: Specific model used by the basecaller.
-    required: true
+    required: false
     range: string
   basecaller_version:
     description: Version of the basecalling software used.
-    required: true
+    required: false
     range: string
   bioproject_accession:
     description: NCBI BioProject accession.
-    required: true
+    required: false
     range: string
   biosample_accession:
     description: NCBI BioSample accession.
-    required: true
+    required: false
     range: string
   ccs_algorithm:
     description: Version of consensus sequence generation algorithm.
-    required: true
+    required: false
     range: string
   coverage:
     description: Estimated coverage depth of the genome.
@@ -219,15 +219,15 @@ slots:
     range: float
   deepconsensus_filename:
     description: Filename of the DeepConsensus output file.
-    required: true
+    required: false
     range: string
   deepconsensus_path:
     description: File path to the DeepConsensus output.
-    required: true
+    required: false
     range: string
   deepconsensus_version:
     description: Version of DeepConsensus software used for rebasecalling HiFi data.
-    required: true
+    required: false
     range: string
   family_id:
     description: Identifier for the family group.
@@ -239,7 +239,7 @@ slots:
     range: string # TODO
   filetype:
     description: Type of file uploading.
-    required: true
+    required: false
     range: string # TODO
   gender:
     description: Gender/sex of the individual.
@@ -247,15 +247,15 @@ slots:
     range: string
   generator_contact:
     description: Contact person for problems/inquiries about the data.
-    required: true
+    required: false
     range: string
   generator_facility:
     description: Facility that created the sequencing reads.
-    required: true
+    required: false
     range: string
   instrument_model:
     description: Model of instrument.
-    required: true
+    required: false
     range: string # TODO
   iso_filename:
     description: Name of the file containing isoform data.
@@ -263,15 +263,15 @@ slots:
     range: string
   library_source:
     description: Source of sequencing/library material.
-    required: true
+    required: false
     range: string # TODO
   library_strategy:
     description: General approach to library preparation.
-    required: true
+    required: false
     range: string # TODO
   lima_version:
     description: Version of the Lima adapter trimming software.
-    required: true
+    required: false
     range: string
   maternal_id:
     description: Sample ID of the individual's mother.
@@ -303,7 +303,7 @@ slots:
     range: string
   platform:
     description: Sequencing instrument manufacturer.
-    required: true
+    required: false
     range: string # TODO
   platform_unit_1:
     description: First component of the platform identifier.
@@ -323,7 +323,7 @@ slots:
     range: string
   primrose_filename:
     description: Filename of the Primrose basecalling output (if used).
-    required: true
+    required: false
     range: string
   production:
     description: Name of original data submisson.
@@ -351,7 +351,7 @@ slots:
     range: string
   study:
     description: Name or identifier of the study that generated the data.
-    required: true
+    required: false
     range: string
   third_order:
     description: Third-order relatives in the dataset.

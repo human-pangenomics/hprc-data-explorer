@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import numpy as np
 from linkml_runtime.utils.schemaview import SchemaView
+from pydantic import ValidationError
 from build_help import map_columns, download_file, get_file_sizes_from_uris
 import generated_schema.schema as schema
 
@@ -18,11 +19,25 @@ METADA_SOURCES = [
     {"model": schema.DeepConsensusSequencingData, "drop": ["production", "data_type", "notes", "mm_tag", "coverage", "ntsm_score", "ccs_algorithm", "library_ID", "title", "library_selection", "library_layout", "design_description", "shear_method", "size_selection", "polymerase_version", "seq_plate_chemistry_version", "total_bp", "min", "max", "mean", "quartile_25", "quartile_50", "quartile_75", "N25", "N75"], "url": "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sequencing_data/data_deepconsensus_pre_release.index.csv"},
     {"model": schema.HiFiSequencingData, "drop": ["MM_review", "data_type", "title", "design_description", "notes", "library_ID", "library_selection", "library_layout", "shear_method", "size_selection", "seq_plate_chemistry_version", "polymerase_version", "total_bp", "mean", "min", "max", "N25", "N75", "quartile_25", "quartile_50", "quartile_75", "ntsm_score", "MM_remove", "lima_float_version"], "url": "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sequencing_data/data_hifi_pre_release.index.csv"},
     # TODO don't keep gender mapping in without checking it's correct
-    {"model": schema.IlluminaSequencingData, "map": {"gender": lambda v: "Male" if v == 1 else "Female" if v == 2 else "Other"}, "drop": ["Phenotype", "total_bp", "library_construction_protocol", "library_layout", "read_length"], "add": {"total_gbp": np.nan}, "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sequencing_data/data_illumina_pre_release.index.csv"},
-    {"model": schema.KinnexSequencingData, "map": {"basecaller_version": str}, "drop": ["title", "library_ID", "data_type", "cell_type", "iso_library_id", "pbtrim_version", "jasmine_version", "refine_version", "library_selection", "library_layout", "shear_method", "size_selection", "design_description", "polymerase_version", "seq_plate_chemistry_version", "ntsm_score", "similarity", "check-flnc reads"], "url": "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sequencing_data/data_kinnex_pre_release.index.csv"},
+    {"model": schema.IlluminaSequencingData, "map": {"gender": lambda v: "Male" if v == "1" else "Female" if v == "2" else "Other"}, "drop": ["Phenotype", "total_bp", "library_construction_protocol", "library_layout", "read_length"], "add": {"total_gbp": ""}, "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sequencing_data/data_illumina_pre_release.index.csv"},
+    {"model": schema.KinnexSequencingData, "drop": ["title", "library_ID", "data_type", "cell_type", "iso_library_id", "pbtrim_version", "jasmine_version", "refine_version", "library_selection", "library_layout", "shear_method", "size_selection", "design_description", "polymerase_version", "seq_plate_chemistry_version", "ntsm_score", "similarity", "check-flnc reads"], "url": "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sequencing_data/data_kinnex_pre_release.index.csv"},
 ]
 
 BIOSAMPLES_TABLE_URL = "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sample/hprc_release2_sample_metadata.csv"
+
+
+class HprcValidationError(Exception):
+    pass
+
+class HprcSourceFileValidationError(HprcValidationError):
+    def __init__(self, message, errors):
+        super().__init__(message)
+        self.errors = errors
+
+class HprcSourceFilesValidationError(HprcValidationError):
+    def __init__(self, message, errors):
+        super().__init__(message)
+        self.errors_by_file = errors
 
 
 def download_source_files(urls_source, output_folder_path, get_url=lambda v: v, get_result_info=lambda v, _: v):
@@ -40,8 +55,47 @@ def add_columns_to_df(df, columns):
     return df
 
 
-def load_model_csv(path, model, schemaview, drop_columns, column_mappers, add_columns):
-    df = pd.read_csv(path, sep=",", keep_default_na=False, na_values={"ntsm_score": [""], "deepconsensus_coverage": [""]}).drop_duplicates()
+def cast_bool(value):
+    if value == "True": return True
+    if value == "False": return False
+    raise ValueError(f"Invalid boolean value: {value}")
+
+def get_slot_type_mapper(slot):
+    match slot.range:
+        case "string":
+            return None
+        case "integer":
+            return int
+        case "float":
+            return float
+        case "boolean":
+            return cast_bool
+        case _:
+            raise Exception(f"Handling not implemented for range {slot.range}")
+
+def get_field_type_mappers(schemaview, model):
+    slot_names = model.__pydantic_fields__.keys()
+    return {name: mapper for name, mapper in ((name, get_slot_type_mapper(schemaview.induced_slot(name))) for name in slot_names) if mapper is not None}
+
+def cast_row(source_row_dict, field_type_mappers):
+    return {
+        k: None if v == "" else field_type_mappers[k](v) if k in field_type_mappers else v
+        for k, v in source_row_dict.items()
+    }
+
+def validate_row(source_row_dict, field_type_mappers, model):
+    try:
+        row_dict = cast_row(source_row_dict, field_type_mappers)
+    except ValueError as err:
+        return err
+    try:
+        model.model_validate(row_dict)
+        return None
+    except ValidationError as err:
+        return err
+
+def load_and_validate_csv(path, model, schemaview, drop_columns, column_mappers, add_columns):
+    df = pd.read_csv(path, sep=",", dtype=str, keep_default_na=False)
 
     df = df.rename(columns={
         "sample_ID": "sample_id",
@@ -65,17 +119,29 @@ def load_model_csv(path, model, schemaview, drop_columns, column_mappers, add_co
     if column_mappers: df = map_columns(df, **column_mappers)
     if drop_columns: df = df.drop(columns=drop_columns)
     if add_columns: df = add_columns_to_df(df, add_columns)
-    rows = df.to_dict(orient="records")
-    rows = [{k: None if pd.isna(v) and k in ["ntsm_score", "total_gbp", "deepconsensus_coverage"] else v for k, v in row.items()} for row in rows]
 
-    return [model(**row) for row in rows]
+    field_type_mappers = get_field_type_mappers(schemaview, model)
+    rows = df.to_dict(orient="records")
+    errors = [(i, result) for i, result in enumerate(validate_row(row, field_type_mappers, model) for row in rows) if result is not None]
+
+    if errors:
+        raise HprcSourceFileValidationError(f"{len(errors)} rows failed validation", errors)
+
+    return df
 
 
 def join_samples(metadata_paths, biosamples_table_path):
     schemaview = SchemaView(os.path.join(BASE_DIR, "../../schema/sequencing_data.yaml"))
     # Generate each column across all provided sheets
-    metadata_model_list = [load_model_csv(path, model, schemaview, drop_columns, column_mappers, add_columns) for path, model, drop_columns, column_mappers, add_columns in metadata_paths]
-    metadata_list = [pd.DataFrame([item.model_dump() for item in items]) for items in metadata_model_list]
+    metadata_list = []
+    errors_by_file = {}
+    for path, model, drop_columns, column_mappers, add_columns in metadata_paths:
+        try:
+            metadata_list.append(load_and_validate_csv(path, model, schemaview, drop_columns, column_mappers, add_columns))
+        except HprcSourceFileValidationError as err:
+            errors_by_file[path] = err.errors
+    if errors_by_file:
+        raise HprcSourceFilesValidationError(f"{len(errors_by_file)} source files failed validation", errors_by_file)
     metadata_columns = np.unique([col for df in metadata_list for col in df.columns])
     # Concatenate all the provided metadata sheets
     all_metadata = (
@@ -110,6 +176,10 @@ if __name__ == "__main__":
     biosamples_table_file = download_source_files(
         [BIOSAMPLES_TABLE_URL], DOWNLOADS_FOLDER_PATH
     )[0]
-    joined = join_samples(metadata_files, biosamples_table_file)
-    joined.to_csv(OUTPUT_FILE_PATH, index=False)
-    print("\nSequencing data processing complete!\n")
+    try:
+        joined = join_samples(metadata_files, biosamples_table_file)
+        joined.to_csv(OUTPUT_FILE_PATH, index=False)
+        print("\nSequencing data processing complete!\n")
+    except HprcSourceFilesValidationError as err:
+        for name, errors in err.errors_by_file.items():
+            print(f"\n{name}: {errors[0]}") # TODO figure out how to present all errors
