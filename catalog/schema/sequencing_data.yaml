@@ -10,6 +10,7 @@ imports:
 
 classes:
   SequencingData:
+    abstract: true
     description: A sequencing data file.
     slots:
       - filename
