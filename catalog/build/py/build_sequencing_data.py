@@ -12,6 +12,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # Define paths relative to the script's directory
 DOWNLOADS_FOLDER_PATH = os.path.join(BASE_DIR, "../temporary")
 OUTPUT_FILE_PATH = os.path.join(BASE_DIR, "../intermediate/sequencing-data.csv")
+SEQUENCING_DATA_SCHEMA_PATH = os.path.join(BASE_DIR, "../../schema/sequencing_data.yaml")
 
 METADA_SOURCES = [
     {"model": schema.HiCSequencingData, "drop": ["library_ID", "design_description", "data_type", "library_layout", "library_selection", "shear_method", "total_bp", "ntsm_score"], "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sequencing_data/data_hic_pre_release.index.csv"},
@@ -155,7 +156,7 @@ def load_and_validate_csv(path, model, schemaview, drop_columns, column_mappers,
 
 
 def join_samples(metadata_paths, biosamples_table_path):
-    schemaview = SchemaView(os.path.join(BASE_DIR, "../../schema/sequencing_data.yaml"))
+    schemaview = SchemaView(SEQUENCING_DATA_SCHEMA_PATH)
     # Generate each column across all provided sheets
     metadata_list = []
     errors = []
