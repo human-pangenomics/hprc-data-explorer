@@ -236,11 +236,12 @@ slots:
   filename:
     description: File the metadata refers to.
     required: true
-    range: string # TODO
+    range: string
+    pattern: "^\\S+$"
   filetype:
     description: Type of file uploading.
     required: false
-    range: string # TODO
+    range: FileType
   gender:
     description: Gender/sex of the individual.
     required: true
@@ -256,7 +257,7 @@ slots:
   instrument_model:
     description: Model of instrument.
     required: false
-    range: string # TODO
+    range: InstrumentModel
   iso_filename:
     description: Name of the file containing isoform data.
     required: true
@@ -264,11 +265,11 @@ slots:
   library_source:
     description: Source of sequencing/library material.
     required: false
-    range: string # TODO
+    range: LibrarySource
   library_strategy:
     description: General approach to library preparation.
     required: false
-    range: string # TODO
+    range: LibraryStrategy
   lima_version:
     description: Version of the Lima adapter trimming software.
     required: false
@@ -304,7 +305,7 @@ slots:
   platform:
     description: Sequencing instrument manufacturer.
     required: false
-    range: string # TODO
+    range: Platform
   platform_unit_1:
     description: First component of the platform identifier.
     required: true
@@ -336,7 +337,8 @@ slots:
   sample_id:
     description: Identifier from 1000G/HapMap (as found in Coriell for DNA).
     required: true
-    range: string # TODO
+    range: string
+    pattern: "^(?:NA|HG)\\d{5}$"
   second_order:
     description: Second-order relatives in the dataset.
     required: true
@@ -370,3 +372,30 @@ slots:
     required: true
     range: integer
 
+enums:
+  FileType:
+    permissible_values:
+      fastq:
+      fast5:
+      tar:
+      bam:
+      cram:
+  InstrumentModel:
+    permissible_values:
+      PacBio Sequel II:
+      PromethION:
+      NextSeq 500:
+      NextSeq 550:
+      Illumina NovaSeq 6000:
+  LibrarySource:
+    permissible_values:
+      GENOMIC:
+  LibraryStrategy:
+    permissible_values:
+      WGS:
+      OTHER:
+  Platform:
+    permissible_values:
+      ILLUMINA:
+      PACBIO_SMRT:
+      OXFORD_NANOPORE:

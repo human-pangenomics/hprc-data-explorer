@@ -82,7 +82,8 @@ def cast_bool(value, row, field):
     if value == "False": return False
     raise HprcFieldValidationError("Unable to parse value as boolean", row, field)
 
-def get_slot_type_mapper(slot):
+def get_slot_type_mapper(slot, enum_names):
+    if slot.range in enum_names: return None
     match slot.range:
         case "string":
             return None
@@ -97,7 +98,8 @@ def get_slot_type_mapper(slot):
 
 def get_field_type_mappers(schemaview, model):
     slot_names = model.__pydantic_fields__.keys()
-    return {name: mapper for name, mapper in ((name, get_slot_type_mapper(schemaview.induced_slot(name))) for name in slot_names) if mapper is not None}
+    enum_names = schemaview.all_enums().keys()
+    return {name: mapper for name, mapper in ((name, get_slot_type_mapper(schemaview.induced_slot(name), enum_names)) for name in slot_names) if mapper is not None}
 
 def cast_row(source_row_dict, row_index, field_type_mappers):
     return {
