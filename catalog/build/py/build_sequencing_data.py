@@ -29,15 +29,25 @@ BIOSAMPLES_TABLE_URL = "https://github.com/human-pangenomics/hprc_intermediate_a
 class HprcValidationError(Exception):
     pass
 
-class HprcSourceFileValidationError(HprcValidationError):
-    def __init__(self, message, errors):
+class HprcFieldValidationError(HprcValidationError):
+    def __init__(self, message, row, field):
         super().__init__(message)
+        self.message = message
+        self.row = row
+        self.field = field
+
+class HprcSourceFileValidationError(HprcValidationError):
+    def __init__(self, message, filename, errors):
+        super().__init__(message)
+        self.message = message
+        self.filename = filename
         self.errors = errors
 
 class HprcSourceFilesValidationError(HprcValidationError):
     def __init__(self, message, errors):
         super().__init__(message)
-        self.errors_by_file = errors
+        self.message = message
+        self.errors = errors
 
 
 def download_source_files(urls_source, output_folder_path, get_url=lambda v: v, get_result_info=lambda v, _: v):
@@ -55,19 +65,31 @@ def add_columns_to_df(df, columns):
     return df
 
 
-def cast_bool(value):
+def cast_int(value, row, field):
+    try:
+        return int(value)
+    except ValueError:
+        raise HprcFieldValidationError("Unable to parse value as integer", row, field)
+
+def cast_float(value, row, field):
+    try:
+        return float(value)
+    except ValueError:
+        raise HprcFieldValidationError("Unable to parse value as float", row, field)
+
+def cast_bool(value, row, field):
     if value == "True": return True
     if value == "False": return False
-    raise ValueError(f"Invalid boolean value: {value}")
+    raise HprcFieldValidationError("Unable to parse value as boolean", row, field)
 
 def get_slot_type_mapper(slot):
     match slot.range:
         case "string":
             return None
         case "integer":
-            return int
+            return cast_int
         case "float":
-            return float
+            return cast_float
         case "boolean":
             return cast_bool
         case _:
@@ -77,22 +99,22 @@ def get_field_type_mappers(schemaview, model):
     slot_names = model.__pydantic_fields__.keys()
     return {name: mapper for name, mapper in ((name, get_slot_type_mapper(schemaview.induced_slot(name))) for name in slot_names) if mapper is not None}
 
-def cast_row(source_row_dict, field_type_mappers):
+def cast_row(source_row_dict, row_index, field_type_mappers):
     return {
-        k: None if v == "" else field_type_mappers[k](v) if k in field_type_mappers else v
+        k: None if v == "" else field_type_mappers[k](v, row_index, k) if k in field_type_mappers else v
         for k, v in source_row_dict.items()
     }
 
-def validate_row(source_row_dict, field_type_mappers, model):
+def validate_row(source_row_dict, row_index, field_type_mappers, model):
     try:
-        row_dict = cast_row(source_row_dict, field_type_mappers)
-    except ValueError as err:
-        return err
+        row_dict = cast_row(source_row_dict, row_index, field_type_mappers)
+    except HprcFieldValidationError as err:
+        return [err]
     try:
         model.model_validate(row_dict)
         return None
     except ValidationError as err:
-        return err
+        return [HprcFieldValidationError(e["msg"], row_index, e["loc"][0]) for e in err.errors()]
 
 def load_and_validate_csv(path, model, schemaview, drop_columns, column_mappers, add_columns):
     df = pd.read_csv(path, sep=",", dtype=str, keep_default_na=False)
@@ -122,10 +144,10 @@ def load_and_validate_csv(path, model, schemaview, drop_columns, column_mappers,
 
     field_type_mappers = get_field_type_mappers(schemaview, model)
     rows = df.to_dict(orient="records")
-    errors = [(i, result) for i, result in enumerate(validate_row(row, field_type_mappers, model) for row in rows) if result is not None]
+    errors = [err for result in (validate_row(row, i + 2, field_type_mappers, model) for i, row in enumerate(rows)) if result is not None for err in result]
 
     if errors:
-        raise HprcSourceFileValidationError(f"{len(errors)} rows failed validation", errors)
+        raise HprcSourceFileValidationError(f"{len(errors)} errors found in file", path.name, errors)
 
     return df
 
@@ -134,14 +156,14 @@ def join_samples(metadata_paths, biosamples_table_path):
     schemaview = SchemaView(os.path.join(BASE_DIR, "../../schema/sequencing_data.yaml"))
     # Generate each column across all provided sheets
     metadata_list = []
-    errors_by_file = {}
+    errors = []
     for path, model, drop_columns, column_mappers, add_columns in metadata_paths:
         try:
             metadata_list.append(load_and_validate_csv(path, model, schemaview, drop_columns, column_mappers, add_columns))
         except HprcSourceFileValidationError as err:
-            errors_by_file[path] = err.errors
-    if errors_by_file:
-        raise HprcSourceFilesValidationError(f"{len(errors_by_file)} source files failed validation", errors_by_file)
+            errors.append(err)
+    if errors:
+        raise HprcSourceFilesValidationError(f"{len(errors)} source files failed validation", errors)
     metadata_columns = np.unique([col for df in metadata_list for col in df.columns])
     # Concatenate all the provided metadata sheets
     all_metadata = (
@@ -171,6 +193,41 @@ def join_samples(metadata_paths, biosamples_table_path):
     return joined_with_size
 
 
+def format_index_list(ordered_indices):
+    ranges = []
+    prev_index = None
+    for index in ordered_indices:
+        if prev_index == index - 1:
+            if isinstance(ranges[-1], list):
+                ranges[-1][1] = index
+            else:
+                ranges[-1] = [ranges[-1], index]
+        else:
+            ranges.append(index)
+        prev_index = index
+    range_strings = [str(r[0]) + "-" + str(r[1]) if isinstance(r, list) else str(r) for r in ranges]
+    if len(range_strings) > 2:
+        return ", ".join(range_strings[:-1]) + ", and " + range_strings[-1]
+    else:
+        return " and ".join(range_strings)
+
+def format_file_errors(errors):
+    rows_by_field_and_message = {}
+    for err in errors:
+        field_and_message = (err.field, err.message)
+        if field_and_message not in rows_by_field_and_message:
+            rows_by_field_and_message[field_and_message] = [err.row]
+        else:
+            rows_by_field_and_message[field_and_message].append(err.row)
+    return "\n".join(
+        f"{field_and_message[0]}: {field_and_message[1]} (source {"row" if len(rows) == 1 else "rows"} {format_index_list(rows)})"
+        for field_and_message, rows in rows_by_field_and_message.items()
+    )
+
+def format_errors(files_errors):
+    return "\n\n".join(f"{err.filename}:\n{format_file_errors(err.errors)}" for err in files_errors)
+
+
 if __name__ == "__main__":
     metadata_files = download_source_files(METADA_SOURCES, DOWNLOADS_FOLDER_PATH, lambda source: source["url"], lambda path, source: (path, source["model"], source.get("drop"), source.get("map"), source.get("add")))
     biosamples_table_file = download_source_files(
@@ -181,5 +238,4 @@ if __name__ == "__main__":
         joined.to_csv(OUTPUT_FILE_PATH, index=False)
         print("\nSequencing data processing complete!\n")
     except HprcSourceFilesValidationError as err:
-        for name, errors in err.errors_by_file.items():
-            print(f"\n{name}: {errors[0]}") # TODO figure out how to present all errors
+        print(f"\nFound errors in {len(err.errors)} source files:\n\n{format_errors(err.errors)}")
