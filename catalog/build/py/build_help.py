@@ -11,8 +11,9 @@ def columns_mapper(**mappers):
     return lambda df: map_columns(df, **mappers)
 
 
-def download_file(url, output_folder_path):
-    filename = Path(urlparse(url).path).name
+def download_file(url, output_folder_path, filename=None):
+    if filename is None:
+        filename = Path(urlparse(url).path).name
     output_path = Path(output_folder_path, filename)
     with requests.get(url) as r:
         if r.status_code != 200:

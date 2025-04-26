@@ -15,13 +15,12 @@ OUTPUT_FILE_PATH = os.path.join(BASE_DIR, "../intermediate/sequencing-data.csv")
 SEQUENCING_DATA_SCHEMA_PATH = os.path.join(BASE_DIR, "../../schema/sequencing_data.yaml")
 
 METADA_SOURCES = [
-    {"model": schema.HiCSequencingData, "drop": ["library_ID", "design_description", "data_type", "library_layout", "library_selection", "shear_method", "total_bp", "ntsm_score"], "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sequencing_data/data_hic_pre_release.index.csv"},
-    {"model": schema.OntSequencingData, "drop": ["library_ID", "library_selection", "library_layout", "design_description", "data_type", "shear_method", "size_selection", "seq_kit", "ntsm_score", "200kb+", "300kb+", "400kb+", "500kb+", "1Mb+"], "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sequencing_data/data_ont_pre_release.index.csv"},
-    {"model": schema.DeepConsensusSequencingData, "drop": ["production", "data_type", "notes", "mm_tag", "coverage", "ntsm_score", "ccs_algorithm", "library_ID", "title", "library_selection", "library_layout", "design_description", "shear_method", "size_selection", "polymerase_version", "seq_plate_chemistry_version", "total_bp", "min", "max", "mean", "quartile_25", "quartile_50", "quartile_75", "N25", "N75"], "url": "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sequencing_data/data_deepconsensus_pre_release.index.csv"},
-    {"model": schema.HiFiSequencingData, "drop": ["MM_review", "data_type", "title", "design_description", "notes", "library_ID", "library_selection", "library_layout", "shear_method", "size_selection", "seq_plate_chemistry_version", "polymerase_version", "total_bp", "mean", "min", "max", "N25", "N75", "quartile_25", "quartile_50", "quartile_75", "ntsm_score", "MM_remove", "lima_float_version"], "url": "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sequencing_data/data_hifi_pre_release.index.csv"},
-    # TODO don't keep gender mapping in without checking it's correct
-    {"model": schema.IlluminaSequencingData, "map": {"gender": lambda v: "Male" if v == "1" else "Female" if v == "2" else "Other"}, "drop": ["Phenotype", "total_bp", "library_construction_protocol", "library_layout", "read_length"], "add": {"total_gbp": ""}, "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sequencing_data/data_illumina_pre_release.index.csv"},
-    {"model": schema.KinnexSequencingData, "drop": ["title", "library_ID", "data_type", "cell_type", "iso_library_id", "pbtrim_version", "jasmine_version", "refine_version", "library_selection", "library_layout", "shear_method", "size_selection", "design_description", "polymerase_version", "seq_plate_chemistry_version", "ntsm_score", "similarity", "check-flnc reads"], "url": "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sequencing_data/data_kinnex_pre_release.index.csv"},
+    {"model": schema.HiCSequencingData, "filename": "hic_sheet.csv", "url": "https://docs.google.com/spreadsheets/d/1EuZNw2sdijKYpJLqgHUYBOF6F4ECry8EWKZzVPjAw4Y/gviz/tq?tqx=out:csv&sheet=hic"},
+    {"model": schema.OntSequencingData, "filename": "ont_sheet.csv", "url": "https://docs.google.com/spreadsheets/d/1EuZNw2sdijKYpJLqgHUYBOF6F4ECry8EWKZzVPjAw4Y/gviz/tq?tqx=out:csv&sheet=ont"},
+    {"model": schema.DeepConsensusSequencingData, "filename": "dc_sheet.csv", "url": "https://docs.google.com/spreadsheets/d/1EuZNw2sdijKYpJLqgHUYBOF6F4ECry8EWKZzVPjAw4Y/gviz/tq?tqx=out:csv&sheet=dc"},
+    {"model": schema.HiFiSequencingData, "filename": "hifi_sheet.csv", "url": "https://docs.google.com/spreadsheets/d/1EuZNw2sdijKYpJLqgHUYBOF6F4ECry8EWKZzVPjAw4Y/gviz/tq?tqx=out:csv&sheet=hifi"},
+    {"model": schema.IlluminaSequencingData, "filename": "ill_sheet.csv", "url": "https://docs.google.com/spreadsheets/d/1EuZNw2sdijKYpJLqgHUYBOF6F4ECry8EWKZzVPjAw4Y/gviz/tq?tqx=out:csv&sheet=ill"},
+    {"model": schema.KinnexSequencingData, "filename": "kinnex_sheet.csv", "url": "https://docs.google.com/spreadsheets/d/1EuZNw2sdijKYpJLqgHUYBOF6F4ECry8EWKZzVPjAw4Y/gviz/tq?tqx=out:csv&sheet=kinnex"},
 ]
 
 BIOSAMPLES_TABLE_URL = "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sample/hprc_release2_sample_metadata.csv"
@@ -51,19 +50,12 @@ class HprcSourceFilesValidationError(HprcValidationError):
         self.errors = errors
 
 
-def download_source_files(urls_source, output_folder_path, get_url=lambda v: v, get_result_info=lambda v, _: v):
+def download_source_files(urls_source, output_folder_path, get_filename=None, get_url=lambda v: v, get_result_info=lambda v, _: v):
     paths_info = []
     for source in urls_source:
         # Get the filename and the path where the output will be saved
-        paths_info.append(get_result_info(download_file(get_url(source), output_folder_path), source))
+        paths_info.append(get_result_info(download_file(get_url(source), output_folder_path, get_filename and get_filename(source)), source))
     return paths_info
-
-
-def add_columns_to_df(df, columns):
-    df = df.copy()
-    for name, value in columns.items():
-        df[name] = value
-    return df
 
 
 def cast_int(value, row, field):
@@ -79,8 +71,8 @@ def cast_float(value, row, field):
         raise HprcFieldValidationError("Unable to parse value as float", row, field)
 
 def cast_bool(value, row, field):
-    if value == "True": return True
-    if value == "False": return False
+    if value == "TRUE": return True
+    if value == "FALSE": return False
     raise HprcFieldValidationError("Unable to parse value as boolean", row, field)
 
 def get_slot_type_mapper(slot, enum_names):
@@ -119,31 +111,8 @@ def validate_row(source_row_dict, row_index, field_type_mappers, model):
     except ValidationError as err:
         return [HprcFieldValidationError(e["msg"], row_index, e["loc"][0]) for e in err.errors()]
 
-def load_and_validate_csv(path, model, schemaview, drop_columns, column_mappers, add_columns):
-    df = pd.read_csv(path, sep=",", dtype=str, keep_default_na=False)
-
-    df = df.rename(columns={
-        "sample_ID": "sample_id",
-        "total_Gbp": "total_gbp",
-        "read_N50": "n50",
-        "100kb+": "coverage_100kb_plus",
-        "DeepConsensus_version": "deepconsensus_version",
-        "N50": "n50",
-        "MM_tag": "mm_tag",
-        "Family ID": "family_id",
-        "Paternal ID": "paternal_id",
-        "Maternal ID": "maternal_id",
-        "Gender": "gender",
-        "Population": "population",
-        "Relationship": "relationship",
-        "Siblings": "siblings",
-        "Second Order": "second_order",
-        "Third Order": "third_order",
-        "Other Comments": "other_comments",
-    })
-    if column_mappers: df = map_columns(df, **column_mappers)
-    if drop_columns: df = df.drop(columns=drop_columns)
-    if add_columns: df = add_columns_to_df(df, add_columns)
+def load_and_validate_csv(path, model, schemaview):
+    df = pd.read_csv(path, sep=",", usecols=lambda name: not name.startswith("Unnamed:"), dtype=str, keep_default_na=False)
 
     field_type_mappers = get_field_type_mappers(schemaview, model)
     rows = df.to_dict(orient="records")
@@ -160,9 +129,9 @@ def join_samples(metadata_paths, biosamples_table_path):
     # Generate each column across all provided sheets
     metadata_list = []
     errors = []
-    for path, model, drop_columns, column_mappers, add_columns in metadata_paths:
+    for path, model in metadata_paths:
         try:
-            metadata_list.append(load_and_validate_csv(path, model, schemaview, drop_columns, column_mappers, add_columns))
+            metadata_list.append(load_and_validate_csv(path, model, schemaview))
         except HprcSourceFileValidationError as err:
             errors.append(err)
     if errors:
@@ -232,7 +201,7 @@ def format_errors(files_errors):
 
 
 if __name__ == "__main__":
-    metadata_files = download_source_files(METADA_SOURCES, DOWNLOADS_FOLDER_PATH, lambda source: source["url"], lambda path, source: (path, source["model"], source.get("drop"), source.get("map"), source.get("add")))
+    metadata_files = download_source_files(METADA_SOURCES, DOWNLOADS_FOLDER_PATH, lambda source: source.get("filename"), lambda source: source["url"], lambda path, source: (path, source["model"]))
     biosamples_table_file = download_source_files(
         [BIOSAMPLES_TABLE_URL], DOWNLOADS_FOLDER_PATH
     )[0]
