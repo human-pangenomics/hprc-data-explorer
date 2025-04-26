@@ -43,12 +43,6 @@ class HprcSourceFileValidationError(HprcValidationError):
         self.filename = filename
         self.errors = errors
 
-class HprcSourceFilesValidationError(HprcValidationError):
-    def __init__(self, message, errors):
-        super().__init__(message)
-        self.message = message
-        self.errors = errors
-
 
 def download_source_files(urls_source, output_folder_path, get_filename=None, get_url=lambda v: v, get_result_info=lambda v, _: v):
     paths_info = []
@@ -118,24 +112,18 @@ def load_and_validate_csv(path, model, schemaview):
     rows = df.to_dict(orient="records")
     errors = [err for result in (validate_row(row, i + 2, field_type_mappers, model) for i, row in enumerate(rows)) if result is not None for err in result]
 
-    if errors:
-        raise HprcSourceFileValidationError(f"{len(errors)} errors found in file", path.name, errors)
-
-    return df
+    return (df, errors)
 
 
 def join_samples(metadata_paths, biosamples_table_path):
     schemaview = SchemaView(SEQUENCING_DATA_SCHEMA_PATH)
     # Generate each column across all provided sheets
     metadata_list = []
-    errors = []
+    errors_by_file = {}
     for path, model in metadata_paths:
-        try:
-            metadata_list.append(load_and_validate_csv(path, model, schemaview))
-        except HprcSourceFileValidationError as err:
-            errors.append(err)
-    if errors:
-        raise HprcSourceFilesValidationError(f"{len(errors)} source files failed validation", errors)
+        file_df, file_errors = load_and_validate_csv(path, model, schemaview)
+        metadata_list.append(file_df)
+        if file_errors: errors_by_file[path.name] = file_errors
     metadata_columns = np.unique([col for df in metadata_list for col in df.columns])
     # Concatenate all the provided metadata sheets
     all_metadata = (
@@ -162,7 +150,7 @@ def join_samples(metadata_paths, biosamples_table_path):
 
     joined_with_size = joined.assign(file_size=get_file_sizes_from_uris(joined["path"], "sequencing data"))
 
-    return joined_with_size
+    return (joined_with_size, errors_by_file)
 
 
 def format_index_list(ordered_indices):
@@ -196,8 +184,8 @@ def format_file_errors(errors):
         for field_and_message, rows in rows_by_field_and_message.items()
     )
 
-def format_errors(files_errors):
-    return "\n\n".join(f"{err.filename}:\n{format_file_errors(err.errors)}" for err in files_errors)
+def format_errors(errors_by_file):
+    return "\n\n".join(f"{filename}:\n{format_file_errors(errors)}" for filename, errors in errors_by_file.items())
 
 
 if __name__ == "__main__":
@@ -205,9 +193,9 @@ if __name__ == "__main__":
     biosamples_table_file = download_source_files(
         [BIOSAMPLES_TABLE_URL], DOWNLOADS_FOLDER_PATH
     )[0]
-    try:
-        joined = join_samples(metadata_files, biosamples_table_file)
-        joined.to_csv(OUTPUT_FILE_PATH, index=False)
-        print("\nSequencing data processing complete!\n")
-    except HprcSourceFilesValidationError as err:
-        print(f"\nFound errors in {len(err.errors)} source files:\n\n{format_errors(err.errors)}")
+    joined, errors_by_file = join_samples(metadata_files, biosamples_table_file)
+    if errors_by_file:
+        print(f"\nValidation errors:\n\n{format_errors(errors_by_file)}")
+        print(f"\nFound errors in {len(errors_by_file)} source files")
+    joined.to_csv(OUTPUT_FILE_PATH, index=False)
+    print("\nSequencing data processing complete!\n")
