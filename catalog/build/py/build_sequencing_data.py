@@ -52,6 +52,9 @@ def download_source_files(urls_source, output_folder_path, get_filename=None, ge
     return paths_info
 
 
+def get_pydantic_field_names(model):
+    return model.__pydantic_fields__.keys()
+
 def cast_int(value, row, field):
     try:
         return int(value)
@@ -84,7 +87,7 @@ def get_slot_type_mapper(slot, enum_names):
             raise Exception(f"Handling not implemented for range {slot.range}")
 
 def get_field_type_mappers(schemaview, model):
-    slot_names = model.__pydantic_fields__.keys()
+    slot_names = get_pydantic_field_names(model)
     enum_names = schemaview.all_enums().keys()
     return {name: mapper for name, mapper in ((name, get_slot_type_mapper(schemaview.induced_slot(name), enum_names)) for name in slot_names) if mapper is not None}
 
@@ -112,7 +115,16 @@ def load_and_validate_csv(path, model, schemaview):
     rows = df.to_dict(orient="records")
     errors = [err for result in (validate_row(row, i + 2, field_type_mappers, model) for i, row in enumerate(rows)) if result is not None for err in result]
 
-    return (df, errors)
+    missing_columns = [name for name in get_pydantic_field_names(model) if name not in df]
+
+    if missing_columns:
+        df_with_schema_columns = df.copy()
+        for name in missing_columns:
+            df_with_schema_columns[name] = ""
+    else:
+        df_with_schema_columns = df
+
+    return (df_with_schema_columns, errors)
 
 
 def join_samples(metadata_paths, biosamples_table_path):
