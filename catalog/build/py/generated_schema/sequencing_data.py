@@ -70,7 +70,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'https://github.com/human-pangenomic
      'name': 'sequencing_data',
      'prefixes': {'linkml': {'prefix_prefix': 'linkml',
                              'prefix_reference': 'https://w3id.org/linkml/'}},
-     'source_file': 'catalog/schema/sequencing_data.yaml'} )
+     'source_file': './catalog/schema/sequencing_data.yaml'} )
 
 class FileType(str, Enum):
     fastq = "fastq"

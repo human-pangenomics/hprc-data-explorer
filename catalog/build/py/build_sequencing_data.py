@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from linkml_runtime.utils.schemaview import SchemaView
 from build_help import load_and_validate_csv, download_file, get_file_sizes_from_uris
-import generated_schema.schema as schema
+import generated_schema.sequencing_data as schema
 
 # Determine the base directory of the script
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
