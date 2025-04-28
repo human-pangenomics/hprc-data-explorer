@@ -2,8 +2,7 @@ import os
 import pandas as pd
 import numpy as np
 from linkml_runtime.utils.schemaview import SchemaView
-from pydantic import ValidationError
-from build_help import map_columns, download_file, get_file_sizes_from_uris
+from build_help import load_and_validate_csv, download_file, get_file_sizes_from_uris
 import generated_schema.schema as schema
 
 # Determine the base directory of the script
@@ -26,105 +25,12 @@ METADA_SOURCES = [
 BIOSAMPLES_TABLE_URL = "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sample/hprc_release2_sample_metadata.csv"
 
 
-class HprcValidationError(Exception):
-    pass
-
-class HprcFieldValidationError(HprcValidationError):
-    def __init__(self, message, row, field):
-        super().__init__(message)
-        self.message = message
-        self.row = row
-        self.field = field
-
-class HprcSourceFileValidationError(HprcValidationError):
-    def __init__(self, message, filename, errors):
-        super().__init__(message)
-        self.message = message
-        self.filename = filename
-        self.errors = errors
-
-
 def download_source_files(urls_source, output_folder_path, get_filename=None, get_url=lambda v: v, get_result_info=lambda v, _: v):
     paths_info = []
     for source in urls_source:
         # Get the filename and the path where the output will be saved
         paths_info.append(get_result_info(download_file(get_url(source), output_folder_path, get_filename and get_filename(source)), source))
     return paths_info
-
-
-def get_pydantic_field_names(model):
-    return model.__pydantic_fields__.keys()
-
-def cast_int(value, row, field):
-    try:
-        return int(value)
-    except ValueError:
-        raise HprcFieldValidationError("Unable to parse value as integer", row, field)
-
-def cast_float(value, row, field):
-    try:
-        return float(value)
-    except ValueError:
-        raise HprcFieldValidationError("Unable to parse value as float", row, field)
-
-def cast_bool(value, row, field):
-    if value == "TRUE": return True
-    if value == "FALSE": return False
-    raise HprcFieldValidationError("Unable to parse value as boolean", row, field)
-
-def get_slot_type_mapper(slot, enum_names):
-    if slot.range in enum_names: return None
-    match slot.range:
-        case "string":
-            return None
-        case "integer":
-            return cast_int
-        case "float":
-            return cast_float
-        case "boolean":
-            return cast_bool
-        case _:
-            raise Exception(f"Handling not implemented for range {slot.range}")
-
-def get_field_type_mappers(schemaview, model):
-    slot_names = get_pydantic_field_names(model)
-    enum_names = schemaview.all_enums().keys()
-    return {name: mapper for name, mapper in ((name, get_slot_type_mapper(schemaview.induced_slot(name), enum_names)) for name in slot_names) if mapper is not None}
-
-def cast_row(source_row_dict, row_index, field_type_mappers):
-    return {
-        k: None if v == "" else field_type_mappers[k](v, row_index, k) if k in field_type_mappers else v
-        for k, v in source_row_dict.items()
-    }
-
-def validate_row(source_row_dict, row_index, field_type_mappers, model):
-    try:
-        row_dict = cast_row(source_row_dict, row_index, field_type_mappers)
-    except HprcFieldValidationError as err:
-        return [err]
-    try:
-        model.model_validate(row_dict)
-        return None
-    except ValidationError as err:
-        return [HprcFieldValidationError(e["msg"], row_index, e["loc"][0]) for e in err.errors()]
-
-def load_and_validate_csv(path, model, schemaview):
-    df = pd.read_csv(path, sep=",", usecols=lambda name: not name.startswith("Unnamed:"), dtype=str, keep_default_na=False)
-
-    field_type_mappers = get_field_type_mappers(schemaview, model)
-    rows = df.to_dict(orient="records")
-    errors = [err for result in (validate_row(row, i + 2, field_type_mappers, model) for i, row in enumerate(rows)) if result is not None for err in result]
-
-    missing_columns = [name for name in get_pydantic_field_names(model) if name not in df]
-
-    if missing_columns:
-        df_with_schema_columns = df.copy()
-        for name in missing_columns:
-            df_with_schema_columns[name] = ""
-    else:
-        df_with_schema_columns = df
-
-    return (df_with_schema_columns, errors)
 
 
 def join_samples(metadata_paths, biosamples_table_path):
