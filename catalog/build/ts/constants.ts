@@ -1,5 +1,5 @@
 export const SOURCE_RAW_SEQUENCING_DATA_KEYS = [
-  "100kb+",
+  "coverage_100kb_plus",
   "1Mb+",
   "200kb+",
   "300kb+",

@@ -8,10 +8,12 @@ coverage
 # next.js
 .next
 out
-catalog
+
+# catalog
+/catalog/output
 
 # production
-build
+/build
 
 # dependencies
 node_modules

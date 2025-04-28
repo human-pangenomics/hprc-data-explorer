@@ -184,19 +184,6 @@ export const buildCoverage = (
 };
 
 /**
- * Build props for the data type cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildDataType = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.dataType,
-  };
-};
-
-/**
  * Build props for the DeepConsensus version cell.
  * @param rawSequencingData - Raw sequencing data entity.
  * @returns Props to be used for the cell.
@@ -206,19 +193,6 @@ export const buildDeepConsensusVersion = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.deepConsensusVersion,
-  };
-};
-
-/**
- * Build props for the design description cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildDesignDescription = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.designDescription,
   };
 };
 
@@ -293,10 +267,16 @@ export const buildFilename = (
  * @returns Props to be used for the cell.
  */
 export const buildFileSize = (
-  entity: HPRCDataExplorerEntity
+  entity:
+    | HPRCDataExplorerAlignment
+    | HPRCDataExplorerAnnotation
+    | HPRCDataExplorerAssembly
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
-    value: entity.fileSize === LABEL.NA ? LABEL.NA : formatFileSize(Number(entity.fileSize)),
+    value:
+      entity.fileSize === LABEL.NA
+        ? LABEL.NA
+        : formatFileSize(Number(entity.fileSize)),
   };
 };
 
@@ -310,45 +290,6 @@ export const buildFiletype = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: entity.filetype,
-  };
-};
-
-/**
- * Build props for the 500kb+ cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildFiveHundredkbPlus = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.fiveHundredkbPlus?.toLocaleString(),
-  };
-};
-
-/**
- * Build props for the 400kb+ cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildFourHundredkbPlus = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.fourHundredkbPlus?.toLocaleString(),
-  };
-};
-
-/**
- * Build props for the Gb cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildGb = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.Gb?.toLocaleString(),
   };
 };
 
@@ -405,45 +346,6 @@ export const buildInstrumentModel = (
 };
 
 /**
- * Build props for the library ID cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildLibraryId = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.libraryId,
-  };
-};
-
-/**
- * Build props for the library layout cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildLibraryLayout = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.libraryLayout,
-  };
-};
-
-/**
- * Build props for the library selection cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildLibrarySelection = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.librarySelection,
-  };
-};
-
-/**
  * Build props for the library source cell.
  * @param rawSequencingData - Raw sequencing data entity.
  * @returns Props to be used for the cell.
@@ -470,58 +372,6 @@ export const buildLibraryStrategy = (
 };
 
 /**
- * Build props for the max cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildMax = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.max?.toLocaleString(),
-  };
-};
-
-/**
- * Build props for the mean cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildMean = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.mean?.toLocaleString(),
-  };
-};
-
-/**
- * Build props for the metadata accession cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildMetadataAccession = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.metadataAccession,
-  };
-};
-
-/**
- * Build props for the min cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildMin = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.min?.toLocaleString(),
-  };
-};
-
-/**
  * Build props for the MM tag cell.
  * @param rawSequencingData - Raw sequencing data entity.
  * @returns Props to be used for the cell.
@@ -531,19 +381,6 @@ export const buildMmTag = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: String(rawSequencingData.mmTag),
-  };
-};
-
-/**
- * Build props for the N25 cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildN25 = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.n25?.toLocaleString(),
   };
 };
 
@@ -561,45 +398,6 @@ export const buildN50 = (
 };
 
 /**
- * Build props for the N75 cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildN75 = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.n75?.toLocaleString(),
-  };
-};
-
-/**
- * Build props for the notes cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildNotes = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.notes,
-  };
-};
-
-/**
- * Build props for the ntsm score cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildNtsmScore = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.ntsmScore?.toLocaleString(),
-  };
-};
-
-/**
  * Build props for the 100kb+ cell.
  * @param rawSequencingData - Raw sequencing data entity.
  * @returns Props to be used for the cell.
@@ -609,19 +407,6 @@ export const buildOneHundredkbPlus = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.oneHundredkbPlus?.toLocaleString(),
-  };
-};
-
-/**
- * Build props for the 1Mb+ cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildOneMbPlus = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.oneMbPlus?.toLocaleString(),
   };
 };
 
@@ -665,19 +450,6 @@ export const buildPlatform = (
 };
 
 /**
- * Build props for the polymerase version cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildPolymeraseVersion = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.polymeraseVersion,
-  };
-};
-
-/**
  * Build props for the population abbreviation cell.
  * @param entity - Raw sequencing data or assembly entity.
  * @returns Props to be used for the cell.
@@ -700,58 +472,6 @@ export const buildPopulationDescriptor = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: entity.populationDescriptor,
-  };
-};
-
-/**
- * Build props for the quartile 25 cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildQuartile25 = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.quartile25?.toLocaleString(),
-  };
-};
-
-/**
- * Build props for the quartile 50 cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildQuartile50 = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.quartile50?.toLocaleString(),
-  };
-};
-
-/**
- * Build props for the quartile 75 cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildQuartile75 = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.quartile75?.toLocaleString(),
-  };
-};
-
-/**
- * Build props for the read N50 cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildReadN50 = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.readN50?.toLocaleString(),
   };
 };
 
@@ -812,58 +532,6 @@ export const buildSequencingDataDownload = (
 };
 
 /**
- * Build props for the seq kit cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildSeqKit = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.seqKit,
-  };
-};
-
-/**
- * Build props for the seq plate chemistry version cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildSeqPlateChemistryVersion = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.seqPlateChemistryVersion,
-  };
-};
-
-/**
- * Build props for the shear method cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildShearMethod = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.shearMethod,
-  };
-};
-
-/**
- * Build props for the size selection cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildSizeSelection = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.sizeSelection,
-  };
-};
-
-/**
  * Build props for the study cell.
  * @param rawSequencingData - Raw sequencing data entity.
  * @returns Props to be used for the cell.
@@ -873,45 +541,6 @@ export const buildStudy = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.study,
-  };
-};
-
-/**
- * Build props for the 300kb+ cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildThreeHundredkbPlus = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.threeHundredkbPlus?.toLocaleString(),
-  };
-};
-
-/**
- * Build props for the title cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildTitle = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.title,
-  };
-};
-
-/**
- * Build props for the total bp cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildTotalBp = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.totalBp?.toLocaleString(),
   };
 };
 
@@ -938,19 +567,6 @@ export const buildTotalReads = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.totalReads?.toLocaleString(),
-  };
-};
-
-/**
- * Build props for the 200kb+ cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildTwoHundredkbPlus = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.twoHundredkbPlus?.toLocaleString(),
   };
 };
 

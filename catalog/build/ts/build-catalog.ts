@@ -18,8 +18,8 @@ import {
   SOURCE_ALIGNMENT_KEYS,
   SOURCE_ANNOTATION_KEYS,
   SOURCE_ASSEMBLY_KEYS,
-  SOURCE_RAW_SEQUENCING_DATA_KEYS,
 } from "./constants";
+import { SourceRawSequencingDataKey } from "./entities";
 
 const CATALOG_DIR = "catalog/output";
 
@@ -33,16 +33,15 @@ buildCatalog();
 
 async function buildCatalog(): Promise<void> {
   console.log("Building catalog...");
-  const rawSequencingData = await buildRawSequencingData();
+  const rawSequencingData = enforceUniqueIds(
+    "raw sequencing data",
+    await buildRawSequencingData(),
+    getRawSequencingDataId
+  );
   const assemblies = await buildAssemblies();
   const annotations = await buildAnnotations();
   const alignments = await buildAlignments();
 
-  verifyUniqueIds(
-    "raw sequencing data",
-    rawSequencingData,
-    getRawSequencingDataId
-  );
   verifyUniqueIds("assembly", assemblies, getAssemblyId);
   verifyUniqueIds("annotation", annotations, getAnnotationId);
   verifyUniqueIds("alignment", alignments, getAlignmentId);
@@ -65,73 +64,39 @@ async function buildCatalog(): Promise<void> {
 async function buildRawSequencingData(): Promise<
   HPRCDataExplorerRawSequencingData[]
 > {
-  const sourceRows = await readValuesFile(
-    SOURCE_PATH_RAW_SEQUENCING_DATA,
-    SOURCE_RAW_SEQUENCING_DATA_KEYS
+  const sourceRows = await readUnknownValuesFile<SourceRawSequencingDataKey>(
+    SOURCE_PATH_RAW_SEQUENCING_DATA
   );
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerRawSequencingData => ({
-      Gb: LABEL.NA,
-      basecaller: parseStringOrNull(row.basecaller),
-      basecallerModel: parseStringOrNull(row.basecaller_model),
-      basecallerVersion: parseStringOrNull(row.basecaller_version),
-      bioprojectAccession: parseStringOrNull(row.bioproject_accession),
-      biosampleAccession: parseStringOrNull(row.biosample_id),
-      ccsAlgorithm: parseStringOrNull(row.ccs_algorithm),
-      coverage: parseNumberOrNA(row.coverage).toString(),
-      dataType: parseStringOrNull(row.data_type),
-      deepConsensusVersion: parseStringOrNull(row.DeepConsensus_version),
-      designDescription: parseStringOrNull(row.design_description),
-      familyId: parseStringOrNull(row.family_id),
-      fileSize: parseNumberOrNA(row.file_size).toString(),
-      filename: row.filename,
-      filetype: parseStringOrNull(row.filetype),
-      fiveHundredkbPlus: parseNumberOrNA(row["500kb+"]).toString(),
-      fourHundredkbPlus: parseNumberOrNA(row["400kb+"]).toString(),
-      generatorContact: parseStringOrNull(row.generator_contact),
-      generatorFacility: parseStringOrNull(row.generator_facility),
-      instrumentModel: parseStringOrNull(row.instrument_model),
-      libraryId: parseStringOrNull(row.library_ID),
-      libraryLayout: parseStringOrNull(row.library_layout),
-      librarySelection: parseStringOrNull(row.library_selection),
-      librarySource: parseStringOrNull(row.library_source),
-      libraryStrategy: parseStringOrNull(row.library_strategy),
-      max: parseNumberOrNA(row.max).toString(),
-      mean: parseNumberOrNA(row.mean).toString(),
-      metadataAccession: parseStringOrNull(row.accession),
-      min: parseNumberOrNA(row.min).toString(),
-      mmTag: parseBooleanOrNaOrNull(row.MM_tag),
-      n25: parseNumberOrNA(row.N25).toString(),
-      n50: parseNumberOrNA(row.N50).toString(),
-      n75: parseNumberOrNA(row.N75).toString(),
-      notes: parseStringOrNull(row.notes),
-      ntsmScore: parseNumberOrNAOrNull(row.ntsm_score)?.toString() ?? null,
-      oneHundredkbPlus: parseNumberOrNA(row["100kb+"]).toString(),
-      oneMbPlus: parseNumberOrNA(row["1Mb+"]).toString(),
-      path: row.path,
-      platform: parseStringOrNull(row.platform),
-      polymeraseVersion: parseStringOrNull(row.polymerase_version),
-      populationAbbreviation: parseStringOrNull(row.population_abbreviation),
-      populationDescriptor: parseStringOrNull(row.population_descriptor),
-      quartile25: parseNumberOrNA(row.quartile_25).toString(),
-      quartile50: parseNumberOrNA(row.quartile_50).toString(),
-      quartile75: parseNumberOrNA(row.quartile_75).toString(),
-      readN50: LABEL.NA,
-      sampleId: row.sample_ID,
-      seqKit: parseStringOrNull(row.seq_kit),
-      seqPlateChemistryVersion: parseStringOrNull(
-        row.seq_plate_chemistry_version
-      ),
-      shearMethod: parseStringOrNull(row.shear_method),
-      sizeSelection: parseStringOrNull(row.size_selection),
-      study: parseStringOrNull(row.study),
-      threeHundredkbPlus: parseNumberOrNA(row["300kb+"]).toString(),
-      title: parseStringOrNull(row.title),
-      totalBp: parseNumberOrNA(row.total_bp).toString(),
-      totalGbp: parseNumberOrNA(row.total_Gbp).toString(),
-      totalReads: parseNumberOrNA(row.total_reads).toString(),
-      twoHundredkbPlus: parseNumberOrNA(row["200kb+"]).toString(),
-      whales: parseNumberOrNA(row.whales).toString(),
+      basecaller: parseStringOrAbsent(row.basecaller),
+      basecallerModel: parseStringOrAbsent(row.basecaller_model),
+      basecallerVersion: parseStringOrAbsent(row.basecaller_version),
+      bioprojectAccession: parseStringOrAbsent(row.bioproject_accession),
+      biosampleAccession: parseStringOrAbsent(row.biosample_id),
+      ccsAlgorithm: parseStringOrAbsent(row.ccs_algorithm),
+      coverage: parseNumberOrAbsent(row.coverage),
+      deepConsensusVersion: parseStringOrAbsent(row.DeepConsensus_version),
+      familyId: parseStringOrAbsent(row.family_id),
+      filename: parseStringOrAbsent(row.filename),
+      filetype: parseStringOrAbsent(row.filetype),
+      generatorContact: parseStringOrAbsent(row.generator_contact),
+      generatorFacility: parseStringOrAbsent(row.generator_facility),
+      instrumentModel: parseStringOrAbsent(row.instrument_model),
+      librarySource: parseStringOrAbsent(row.library_source),
+      libraryStrategy: parseStringOrAbsent(row.library_strategy),
+      mmTag: parseBooleanOrAbsent(row.MM_tag),
+      n50: parseNumberOrAbsent(row.N50),
+      oneHundredkbPlus: parseNumberOrAbsent(row.coverage_100kb_plus),
+      path: parseStringOrAbsent(row.path),
+      platform: parseStringOrAbsent(row.platform),
+      populationAbbreviation: parseStringOrAbsent(row.population_abbreviation),
+      populationDescriptor: parseStringOrAbsent(row.population_descriptor),
+      sampleId: parseStringOrAbsent(row.sample_ID),
+      study: parseStringOrAbsent(row.study),
+      totalGbp: parseNumberOrAbsent(row.total_Gbp),
+      totalReads: parseNumberOrAbsent(row.total_reads),
+      whales: parseNumberOrAbsent(row.whales),
     })
   );
   return mappedRows.sort((a, b) =>
@@ -207,6 +172,30 @@ async function buildAlignments(): Promise<HPRCDataExplorerAlignment[]> {
   return mappedRows.sort((a, b) => a.loc.localeCompare(b.loc));
 }
 
+function enforceUniqueIds<T>(
+  pluralEntityName: string,
+  entities: T[],
+  getId: (entity: T) => string
+): T[] {
+  const foundIds = new Set<string>();
+  const deduplicatedIds = new Set<string>();
+  const filteredEntities: T[] = [];
+  for (const entity of entities) {
+    const id = getId(entity);
+    if (foundIds.has(id)) {
+      deduplicatedIds.add(id);
+    } else {
+      filteredEntities.push(entity);
+      foundIds.add(id);
+    }
+  }
+  if (deduplicatedIds.size)
+    console.warn(
+      `Removed ${pluralEntityName} with duplicate IDs: ${Array.from(deduplicatedIds).join(", ")}`
+    );
+  return filteredEntities;
+}
+
 /**
  * Take a list of entities and check for duplicate IDs, as calculated by the given function, and throw an error if there are any.
  * @param entityName - Name of the entity type, to use in the error message.
@@ -238,6 +227,18 @@ function getTypeFromFilename(name: string): string {
   return /\.([^.]*)(?:$|\.gz$)/.exec(name)?.[1].toLowerCase() || "N/A";
 }
 
+async function readUnknownValuesFile<TAccessedKeys extends string>(
+  filePath: string,
+  delimiter = ","
+): Promise<Partial<Record<TAccessedKeys, string>>[]> {
+  const content = await fsp.readFile(filePath, "utf8");
+  return parseCsv(content, {
+    columns: true,
+    delimiter,
+    relax_quotes: true,
+  });
+}
+
 async function readValuesFile<T extends string>(
   filePath: string,
   columnNames: string extends T ? never : T[] | readonly T[], // Ensure that the type includes specific string values, rather than just being `string[]`, which would cause the return type to be the overly-broad `Record<string, string>[]`.
@@ -266,6 +267,52 @@ async function saveJson(filePath: string, data: unknown): Promise<void> {
 
 function getFileNameFromPath(p: string): string {
   return p.substring(p.lastIndexOf("/") + 1);
+}
+
+/**
+ * Parse a string value that may be unspecified or N/A.
+ * @param value - Potentially-undefined string value to parse.
+ * @returns string adjusted to label unspecified values.
+ */
+function parseStringOrAbsent(value: string | undefined): string {
+  return value?.trim() || LABEL.UNSPECIFIED;
+}
+
+/**
+ * Parse a number value that may be unspecified or N/A, treating invalid values as unspecified.
+ * @param value - Potentially-undefined string value to parse.
+ * @returns number, unspecified, or N/A.
+ */
+function parseNumberOrAbsent(
+  value: string | undefined
+): number | LABEL.NA | LABEL.UNSPECIFIED {
+  value = value?.trim();
+  if (!value) return LABEL.UNSPECIFIED;
+  if (value === LABEL.NA) return value;
+  const n = Number(value);
+  if (isNaN(n)) {
+    console.warn(`Invalid number value: ${JSON.stringify(value)}`);
+    return LABEL.UNSPECIFIED;
+  }
+  return n;
+}
+
+/**
+ * Parse a boolean value that may be unspecified or N/A, treating invalid values as unspecified.
+ * @param value - Potentially-undefined string value to parse.
+ * @returns boolean, unspecified, or N/A.
+ */
+function parseBooleanOrAbsent(
+  value: string | undefined
+): boolean | LABEL.NA | LABEL.UNSPECIFIED {
+  value = value?.trim();
+  if (!value) return LABEL.UNSPECIFIED;
+  if (value === LABEL.NA) return value;
+  const lower = value.toLowerCase();
+  if (lower === "true") return true;
+  if (lower === "false") return false;
+  console.warn(`Invalid boolean value: ${JSON.stringify(value)}`);
+  return LABEL.UNSPECIFIED;
 }
 
 function parseStringOrNull(value: string): string | null {
@@ -310,12 +357,6 @@ function parseStringArray(value: string): string[] {
     if (item) items.push(item);
   }
   return items;
-}
-
-function parseBooleanOrNaOrNull(value: string): boolean | LABEL.NA | null {
-  value = value.trim();
-  if (!value) return null;
-  return parseBooleanOrNa(value);
 }
 
 function parseBooleanOrNa(value: string): boolean | LABEL.NA {
