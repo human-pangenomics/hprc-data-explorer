@@ -362,7 +362,7 @@ slots:
     range: string
   total_gbp:
     description: Total gigabase pairs (total_bp / 1000000000).
-    required: true # TODO check if this should actually be optional (also check other optionals maybe)
+    required: true
     range: float
   total_reads:
     description: Total number of reads.
