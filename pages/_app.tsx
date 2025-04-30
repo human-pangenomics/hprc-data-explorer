@@ -41,7 +41,6 @@ function MyApp({ Component, pageProps }: AppPropsWithComponent): JSX.Element {
   const appTheme = createAppTheme(themeOptions);
   const { entityListType, pageTitle } = pageProps as PageProps;
   const Main = Component.Main || DXMain;
-  console.log(appTheme);
   return (
     <EmotionThemeProvider theme={appTheme}>
       <ThemeProvider theme={appTheme}>
