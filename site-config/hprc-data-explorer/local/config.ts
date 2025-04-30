@@ -22,6 +22,7 @@ export function makeConfig(browserUrl: string, gitHubUrl: string): SiteConfig {
     dataSource: {
       url: "",
     },
+    enableEntitiesView: true,
     entities: [
       rawSequencingDataEntityConfig,
       assemblyEntityConfig,
