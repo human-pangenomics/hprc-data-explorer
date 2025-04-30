@@ -16,7 +16,7 @@
     "gen-schema": "poetry run ./catalog/schema/scripts/gen-schema.sh"
   },
   "dependencies": {
-    "@databiosphere/findable-ui": "^28.0.0",
+    "@databiosphere/findable-ui": "^28.0.1",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
     "@mdx-js/loader": "^3.0.1",

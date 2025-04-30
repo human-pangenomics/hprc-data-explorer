@@ -24,14 +24,17 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
         {
           categoryConfigs: [
             {
+              enableChartView: false,
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.RELEASE,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.RELEASE,
             },
             {
+              enableChartView: false,
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SAMPLE_ID,
             },
             {
+              enableChartView: false,
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.HAPLOTYPE,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.HAPLOTYPE,
             },

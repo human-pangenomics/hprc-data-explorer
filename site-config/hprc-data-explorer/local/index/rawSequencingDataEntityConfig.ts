@@ -24,6 +24,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
         {
           categoryConfigs: [
             {
+              enableChartView: false,
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
             },
@@ -33,6 +34,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
         {
           categoryConfigs: [
             {
+              enableChartView: false,
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SAMPLE_ID,
             },
