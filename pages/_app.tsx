@@ -11,13 +11,12 @@ import { Main as DXMain } from "@databiosphere/findable-ui/lib/components/Layout
 import { ConfigProvider as DXConfigProvider } from "@databiosphere/findable-ui/lib/providers/config";
 import { GoogleSignInAuthenticationProvider } from "@databiosphere/findable-ui/lib/providers/googleSignInAuthentication/provider";
 import { ExploreStateProvider } from "@databiosphere/findable-ui/lib/providers/exploreState";
-import { LayoutStateProvider } from "@databiosphere/findable-ui/lib/providers/layoutState";
+import { LayoutDimensionsProvider } from "@databiosphere/findable-ui/lib/providers/layoutDimensions/provider";
 import { SystemStatusProvider } from "@databiosphere/findable-ui/lib/providers/systemStatus";
 import { createAppTheme } from "@databiosphere/findable-ui/lib/theme/theme";
 import { DataExplorerError } from "@databiosphere/findable-ui/lib/types/error";
 import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
-import { CssBaseline } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import { NextPage } from "next";
 import type { AppProps } from "next/app";
 import { config } from "../app/config/config";
@@ -50,7 +49,7 @@ function MyApp({ Component, pageProps }: AppPropsWithComponent): JSX.Element {
           <CssBaseline />
           <SystemStatusProvider>
             <GoogleSignInAuthenticationProvider>
-              <LayoutStateProvider>
+              <LayoutDimensionsProvider>
                 <AppLayout>
                   <DXHeader {...header} />
                   <ExploreStateProvider entityListType={entityListType}>
@@ -78,7 +77,7 @@ function MyApp({ Component, pageProps }: AppPropsWithComponent): JSX.Element {
                   </ExploreStateProvider>
                   <Footer {...footer} />
                 </AppLayout>
-              </LayoutStateProvider>
+              </LayoutDimensionsProvider>
             </GoogleSignInAuthenticationProvider>
           </SystemStatusProvider>
         </DXConfigProvider>
