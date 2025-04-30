@@ -16,8 +16,7 @@ import { SystemStatusProvider } from "@databiosphere/findable-ui/lib/providers/s
 import { createAppTheme } from "@databiosphere/findable-ui/lib/theme/theme";
 import { DataExplorerError } from "@databiosphere/findable-ui/lib/types/error";
 import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
-import { CssBaseline } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import { NextPage } from "next";
 import type { AppProps } from "next/app";
 import { config } from "../app/config/config";
@@ -42,6 +41,7 @@ function MyApp({ Component, pageProps }: AppPropsWithComponent): JSX.Element {
   const appTheme = createAppTheme(themeOptions);
   const { entityListType, pageTitle } = pageProps as PageProps;
   const Main = Component.Main || DXMain;
+  console.log(appTheme);
   return (
     <EmotionThemeProvider theme={appTheme}>
       <ThemeProvider theme={appTheme}>
