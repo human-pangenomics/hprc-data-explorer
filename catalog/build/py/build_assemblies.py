@@ -3,7 +3,7 @@ from linkml_runtime import SchemaView
 import pandas as pd
 import numpy as np
 from generated_schema.assemblies import Assembly, ReleaseOneAssembly
-from build_help import columns_mapper, format_errors_by_file, format_file_errors, validate_and_normalize_df, download_file, validation_input_formatter, load_data_for_releases, get_file_sizes_from_uris
+from build_help import columns_mapper, format_errors_by_file, download_file, validation_input_formatter, load_data_for_releases, get_file_sizes_from_uris
 
 # Determine the base directory of the script
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -46,8 +46,6 @@ RELEASE_SPECIFIC_DATA = [
 ]
 
 BIOSAMPLE_TABLE_URL = "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sample/hprc_release2_sample_metadata.csv"
-
-EXCLUDED_SAMPLE_IDS = ["CHM13", "GRCh38"]
 
 
 RELEASE_1_EXCLUDED_SAMPLE_IDS = ["CHM13_v1.1", "GRCh38_no_alt_analysis_set"]
@@ -108,15 +106,13 @@ if __name__ == "__main__":
         print(f"\nValidation errors:\n\n{format_errors_by_file(validation_errors)}")
         print(f"\nFound errors in source files\n")
 
-    filtered_assembly_df = assembly_df[~assembly_df["sample_id"].isin(EXCLUDED_SAMPLE_IDS)]
-
     # Merge all DataFrames
-    combined_df = filtered_assembly_df.merge(
+    combined_df = assembly_df.merge(
         biosample_df, on="sample_id", how="left", validate="many_to_one"
     )
     print("The following sample IDs did not correspond to a value in the Biosample sheet, so NA values were entered:")
     print(", ".join(
-        filtered_assembly_df.loc[~filtered_assembly_df["sample_id"].isin(biosample_df["sample_id"]), "sample_id"]
+        assembly_df.loc[~assembly_df["sample_id"].isin(biosample_df["sample_id"]), "sample_id"]
     ))
     output_df = combined_df.assign(file_size=get_file_sizes_from_uris(combined_df["assembly"], "assembly"))
     output_df.to_csv(OUTPUT_FILE_PATH, index=False)
