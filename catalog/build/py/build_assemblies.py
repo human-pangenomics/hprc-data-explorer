@@ -1,7 +1,9 @@
 import os
+from linkml_runtime import SchemaView
 import pandas as pd
 import numpy as np
-from build_help import columns_mapper, download_file, load_data_for_releases, get_file_sizes_from_uris
+from generated_schema.assemblies import Assembly
+from build_help import columns_mapper, format_file_errors, validate_and_normalize_df, download_file, load_data_for_releases, get_file_sizes_from_uris
 
 RELEASE_SPECIFIC_DATA = [
     {
@@ -37,6 +39,7 @@ EXCLUDED_SAMPLE_IDS = ["CHM13", "GRCh38"]
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DOWNLOADS_FOLDER_PATH = os.path.join(BASE_DIR, "../temporary")
 OUTPUT_FILE_PATH = os.path.join(BASE_DIR, "../intermediate/assemblies.csv")
+ASSEMBLIES_SCHEMA_PATH = os.path.join(BASE_DIR, "../../schema/assemblies.yaml")
 
 
 RELEASE_1_EXCLUDED_SAMPLE_IDS = ["CHM13_v1.1", "GRCh38_no_alt_analysis_set"]
@@ -90,6 +93,13 @@ if __name__ == "__main__":
     biosample_path = download_file(BIOSAMPLE_TABLE_URL, DOWNLOADS_FOLDER_PATH)
     biosample_df = pd.read_csv(biosample_path, sep=",")
     assembly_df = load_data_for_releases(RELEASE_SPECIFIC_DATA, DOWNLOADS_FOLDER_PATH)["ASSEMBLIES"]
+
+    schemaview = SchemaView(ASSEMBLIES_SCHEMA_PATH)
+    normalized_assembly_df, validation_errors = validate_and_normalize_df(assembly_df, Assembly, schemaview)
+
+    if validation_errors:
+        print(f"\nValidation errors:\n\n{format_file_errors(validation_errors)}")
+        print(f"\nFound {len(validation_errors)} errors")
 
     filtered_assembly_df = assembly_df[~assembly_df["sample_id"].isin(EXCLUDED_SAMPLE_IDS)]
 

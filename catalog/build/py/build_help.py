@@ -86,9 +86,7 @@ def validate_row(source_row_dict, row_index, field_type_mappers, model):
     except ValidationError as err:
         return [HprcFieldValidationError(e["msg"], row_index, e["loc"][0]) for e in err.errors()]
 
-def load_and_validate_csv(path, model, schemaview):
-    df = pd.read_csv(path, sep=",", usecols=lambda name: not name.startswith("Unnamed:"), dtype=str, keep_default_na=False)
-
+def validate_and_normalize_df(df, model, schemaview):
     field_type_mappers = get_field_type_mappers(schemaview, model)
     rows = df.to_dict(orient="records")
     errors = [err for result in (validate_row(row, i + 2, field_type_mappers, model) for i, row in enumerate(rows)) if result is not None for err in result]
@@ -101,8 +99,47 @@ def load_and_validate_csv(path, model, schemaview):
             df_with_schema_columns[name] = ""
     else:
         df_with_schema_columns = df
-
+    
     return (df_with_schema_columns, errors)
+
+def load_and_validate_csv(path, model, schemaview):
+    df = pd.read_csv(path, sep=",", usecols=lambda name: not name.startswith("Unnamed:"), dtype=str, keep_default_na=False)
+    return validate_and_normalize_df(df, model, schemaview)
+
+
+def format_index_list(ordered_indices):
+    ranges = []
+    prev_index = None
+    for index in ordered_indices:
+        if prev_index == index - 1:
+            if isinstance(ranges[-1], list):
+                ranges[-1][1] = index
+            else:
+                ranges[-1] = [ranges[-1], index]
+        else:
+            ranges.append(index)
+        prev_index = index
+    range_strings = [str(r[0]) + "-" + str(r[1]) if isinstance(r, list) else str(r) for r in ranges]
+    if len(range_strings) > 2:
+        return ", ".join(range_strings[:-1]) + ", and " + range_strings[-1]
+    else:
+        return " and ".join(range_strings)
+
+def format_file_errors(errors):
+    rows_by_field_and_message = {}
+    for err in errors:
+        field_and_message = (err.field, err.message)
+        if field_and_message not in rows_by_field_and_message:
+            rows_by_field_and_message[field_and_message] = [err.row]
+        else:
+            rows_by_field_and_message[field_and_message].append(err.row)
+    return "\n".join(
+        f"{field_and_message[0]}: {field_and_message[1]} (source {"row" if len(rows) == 1 else "rows"} {format_index_list(rows)})"
+        for field_and_message, rows in rows_by_field_and_message.items()
+    )
+
+def format_errors_by_file(errors_by_file):
+    return "\n\n".join(f"{filename}:\n{format_file_errors(errors)}" for filename, errors in errors_by_file.items())
 
 
 def download_file(url, output_folder_path, filename=None):

@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import numpy as np
 from linkml_runtime.utils.schemaview import SchemaView
-from build_help import load_and_validate_csv, download_file, get_file_sizes_from_uris
+from build_help import load_and_validate_csv, format_errors_by_file, download_file, get_file_sizes_from_uris
 import generated_schema.sequencing_data as schema
 
 # Determine the base directory of the script
@@ -71,41 +71,6 @@ def join_samples(metadata_paths, biosamples_table_path):
     return (joined_with_size, errors_by_file)
 
 
-def format_index_list(ordered_indices):
-    ranges = []
-    prev_index = None
-    for index in ordered_indices:
-        if prev_index == index - 1:
-            if isinstance(ranges[-1], list):
-                ranges[-1][1] = index
-            else:
-                ranges[-1] = [ranges[-1], index]
-        else:
-            ranges.append(index)
-        prev_index = index
-    range_strings = [str(r[0]) + "-" + str(r[1]) if isinstance(r, list) else str(r) for r in ranges]
-    if len(range_strings) > 2:
-        return ", ".join(range_strings[:-1]) + ", and " + range_strings[-1]
-    else:
-        return " and ".join(range_strings)
-
-def format_file_errors(errors):
-    rows_by_field_and_message = {}
-    for err in errors:
-        field_and_message = (err.field, err.message)
-        if field_and_message not in rows_by_field_and_message:
-            rows_by_field_and_message[field_and_message] = [err.row]
-        else:
-            rows_by_field_and_message[field_and_message].append(err.row)
-    return "\n".join(
-        f"{field_and_message[0]}: {field_and_message[1]} (source {"row" if len(rows) == 1 else "rows"} {format_index_list(rows)})"
-        for field_and_message, rows in rows_by_field_and_message.items()
-    )
-
-def format_errors(errors_by_file):
-    return "\n\n".join(f"{filename}:\n{format_file_errors(errors)}" for filename, errors in errors_by_file.items())
-
-
 if __name__ == "__main__":
     metadata_files = download_source_files(METADA_SOURCES, DOWNLOADS_FOLDER_PATH, lambda source: source.get("filename"), lambda source: source["url"], lambda path, source: (path, source["model"]))
     biosamples_table_file = download_source_files(
@@ -113,7 +78,7 @@ if __name__ == "__main__":
     )[0]
     joined, errors_by_file = join_samples(metadata_files, biosamples_table_file)
     if errors_by_file:
-        print(f"\nValidation errors:\n\n{format_errors(errors_by_file)}")
+        print(f"\nValidation errors:\n\n{format_errors_by_file(errors_by_file)}")
         print(f"\nFound errors in {len(errors_by_file)} source files")
     joined.to_csv(OUTPUT_FILE_PATH, index=False)
     print("\nSequencing data processing complete!\n")
