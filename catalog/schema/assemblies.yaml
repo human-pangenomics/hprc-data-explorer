@@ -24,8 +24,19 @@ classes:
       - assembly_fai
       - assembly_gzi
       - assembly
+  ReleaseOneAssembly:
+    description: An assembly using the legacy Release 1 fields.
+    slots:
+      - sample_id
+      - haplotype
+      - assembly
+      - fasta_sha256
 
 slots:
+  fasta_sha256:
+    description: FASTA SHA256.
+    required: true
+    range: string
   sample_id:
     description: Sample ID.
     required: true
