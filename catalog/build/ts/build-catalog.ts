@@ -17,9 +17,8 @@ import {
   HAPLOTYPE_BY_ID,
   SOURCE_ALIGNMENT_KEYS,
   SOURCE_ANNOTATION_KEYS,
-  SOURCE_ASSEMBLY_KEYS,
 } from "./constants";
-import { SourceRawSequencingDataKey } from "./entities";
+import { SourceAssemblyKey, SourceRawSequencingDataKey } from "./entities";
 
 const CATALOG_DIR = "catalog/output";
 
@@ -38,11 +37,14 @@ async function buildCatalog(): Promise<void> {
     await buildRawSequencingData(),
     getRawSequencingDataId
   );
-  const assemblies = await buildAssemblies();
+  const assemblies = enforceUniqueIds(
+    "assemblies",
+    await buildAssemblies(),
+    getAssemblyId
+  );
   const annotations = await buildAnnotations();
   const alignments = await buildAlignments();
 
-  verifyUniqueIds("assembly", assemblies, getAssemblyId);
   verifyUniqueIds("annotation", annotations, getAnnotationId);
   verifyUniqueIds("alignment", alignments, getAlignmentId);
 
@@ -105,24 +107,26 @@ async function buildRawSequencingData(): Promise<
 }
 
 async function buildAssemblies(): Promise<HPRCDataExplorerAssembly[]> {
-  const sourceRows = await readValuesFile(
-    SOURCE_PATH_ASSEMBLIES,
-    SOURCE_ASSEMBLY_KEYS
+  const sourceRows = await readUnknownValuesFile<SourceAssemblyKey>(
+    SOURCE_PATH_ASSEMBLIES
   );
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerAssembly => ({
-      awsFasta: parseStringOrNull(row.assembly),
-      biosampleAccession: parseStringOrNull(row.biosample_id),
-      familyId: parseStringOrNull(row.family_id),
-      fastaMd5: row.assembly_md5,
-      fastaSha256: parseStringOrNull(row.fasta_sha256),
-      fileSize: parseNumberOrNA(row.file_size).toString(),
-      filename: getFileNameFromPath(row.assembly),
-      haplotype: HAPLOTYPE_BY_ID[row.haplotype] ?? row.haplotype,
-      populationAbbreviation: parseStringOrNull(row.population_abbreviation),
-      populationDescriptor: parseStringOrNull(row.population_descriptor),
-      release: row.release,
-      sampleId: row.sample_id,
+      awsFasta: parseStringOrAbsent(row.assembly),
+      biosampleAccession: parseStringOrAbsent(row.biosample_id),
+      familyId: parseStringOrAbsent(row.family_id),
+      fastaMd5: parseStringOrAbsent(row.assembly_md5),
+      fastaSha256: parseStringOrAbsent(row.fasta_sha256),
+      fileSize: parseNumberOrAbsent(row.file_size),
+      filename: parseStringOrAbsent(row.assembly, getFileNameFromPath),
+      haplotype: parseStringOrAbsent(
+        row.haplotype,
+        (id) => HAPLOTYPE_BY_ID[id] ?? id
+      ),
+      populationAbbreviation: parseStringOrAbsent(row.population_abbreviation),
+      populationDescriptor: parseStringOrAbsent(row.population_descriptor),
+      release: parseStringOrAbsent(row.release),
+      sampleId: parseStringOrAbsent(row.sample_id),
     })
   );
   return mappedRows.sort((a, b) =>
@@ -272,10 +276,16 @@ function getFileNameFromPath(p: string): string {
 /**
  * Parse a string value that may be unspecified or N/A.
  * @param value - Potentially-undefined string value to parse.
+ * @param mapper - Function to apply to a non-absent value before returning.
  * @returns string adjusted to label unspecified values.
  */
-function parseStringOrAbsent(value: string | undefined): string {
-  return value?.trim() || LABEL.UNSPECIFIED;
+function parseStringOrAbsent(
+  value: string | undefined,
+  mapper?: (v: string) => string
+): string {
+  if (value === LABEL.NA) return value;
+  if (!value) return LABEL.UNSPECIFIED;
+  return mapper ? mapper(value) : value;
 }
 
 /**
@@ -333,12 +343,6 @@ function parseNumberOrNull(value: string): number | null {
   if (isNaN(n))
     throw new Error(`Invalid number value: ${JSON.stringify(value)}`);
   return n;
-}
-
-function parseNumberOrNAOrNull(value: string): number | LABEL.NA | null {
-  value = value.trim();
-  if (!value) return null;
-  return parseNumberOrNA(value);
 }
 
 function parseNumberOrNA(value: string): number | LABEL.NA {

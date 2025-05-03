@@ -42,20 +42,20 @@ export type HPRCDataExplorerRawSequencingData = WithAbsentValues<{
   whales: number;
 }>;
 
-export interface HPRCDataExplorerAssembly {
-  awsFasta: string | null;
-  biosampleAccession: string | null;
-  familyId: string | null;
+export type HPRCDataExplorerAssembly = WithAbsentValues<{
+  awsFasta: string;
+  biosampleAccession: string;
+  familyId: string;
   fastaMd5: string;
-  fastaSha256: string | null;
+  fastaSha256: string;
   filename: string;
-  fileSize: string;
+  fileSize: number;
   haplotype: string;
-  populationAbbreviation: string | null;
-  populationDescriptor: string | null;
+  populationAbbreviation: string;
+  populationDescriptor: string;
   release: string;
   sampleId: string;
-}
+}>;
 
 export interface HPRCDataExplorerAnnotation {
   annotationType: string;

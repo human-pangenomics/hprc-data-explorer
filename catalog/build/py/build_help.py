@@ -86,9 +86,7 @@ def validate_row(source_row_dict, row_index, field_type_mappers, model):
     except ValidationError as err:
         return [HprcFieldValidationError(e["msg"], row_index, e["loc"][0]) for e in err.errors()]
 
-def load_and_validate_csv(path, model, schemaview):
-    df = pd.read_csv(path, sep=",", usecols=lambda name: not name.startswith("Unnamed:"), dtype=str, keep_default_na=False)
-
+def validate_and_normalize_df(df, model, schemaview):
     field_type_mappers = get_field_type_mappers(schemaview, model)
     rows = df.to_dict(orient="records")
     errors = [err for result in (validate_row(row, i + 2, field_type_mappers, model) for i, row in enumerate(rows)) if result is not None for err in result]
@@ -101,8 +99,47 @@ def load_and_validate_csv(path, model, schemaview):
             df_with_schema_columns[name] = ""
     else:
         df_with_schema_columns = df
-
+    
     return (df_with_schema_columns, errors)
+
+def load_and_validate_csv(path, model, schemaview):
+    df = pd.read_csv(path, sep=",", usecols=lambda name: not name.startswith("Unnamed:"), dtype=str, keep_default_na=False)
+    return validate_and_normalize_df(df, model, schemaview)
+
+
+def format_index_list(ordered_indices):
+    ranges = []
+    prev_index = None
+    for index in ordered_indices:
+        if prev_index == index - 1:
+            if isinstance(ranges[-1], list):
+                ranges[-1][1] = index
+            else:
+                ranges[-1] = [ranges[-1], index]
+        else:
+            ranges.append(index)
+        prev_index = index
+    range_strings = [str(r[0]) + "-" + str(r[1]) if isinstance(r, list) else str(r) for r in ranges]
+    if len(range_strings) > 2:
+        return ", ".join(range_strings[:-1]) + ", and " + range_strings[-1]
+    else:
+        return " and ".join(range_strings)
+
+def format_file_errors(errors):
+    rows_by_field_and_message = {}
+    for err in errors:
+        field_and_message = (err.field, err.message)
+        if field_and_message not in rows_by_field_and_message:
+            rows_by_field_and_message[field_and_message] = [err.row]
+        else:
+            rows_by_field_and_message[field_and_message].append(err.row)
+    return "\n".join(
+        f"{field_and_message[0]}: {field_and_message[1]} (source {"row" if len(rows) == 1 else "rows"} {format_index_list(rows)})"
+        for field_and_message, rows in rows_by_field_and_message.items()
+    )
+
+def format_errors_by_file(errors_by_file):
+    return "\n\n".join(f"{filename}:\n{format_file_errors(errors)}" for filename, errors in errors_by_file.items())
 
 
 def download_file(url, output_folder_path, filename=None):
@@ -117,10 +154,35 @@ def download_file(url, output_folder_path, filename=None):
             f.write(r.text)
     return output_path
 
+def validation_input_formatter(model, schemaview):
+    def add_file_name_to_errors(df, errors, context):
+        return (df, (context["source_file_names"][0], errors))
+    return lambda df, meta, context: add_file_name_to_errors(*validate_and_normalize_df(df, model, schemaview), context)
+
+"""
+`spec` may contain:
+sep -- Separator to use when reading delimited values file. Inherited by sub-specs in "source".
+read_options -- Parameters to pass to the Pandas `read_csv` function. Inherited by sub-specs in "source".
+url -- URL or list of URLs to get source file(s) from. Multiple source files will be concatenated.
+source -- Spec or list of specs to use as source data. Multiple sources will be concatenated. If a list, metadata is aggregated into a list. All-None metadata is converted to a single None value.
+na -- Value to replace N/A values with after data is loaded.
+input_formatter -- Function to map loaded data.
+contextual_input_formatter -- Function to map loaded data, but is also passed metadata and contextual info. Should return a tuple of dataframe and metadata.
+mapper -- Function to map data after any non-spec processing done by `post_load_processor`.
+columns -- Mapping of column names, used to rename columns and to determine which columns to keep.
+Operations are applied in the order listed above.
+"""
 def load_dataframe_from_spec(spec, output_folder_path, post_load_processor=None, extra_columns_to_retain=[], parent_spec=None):
-    # Inherit "sep"
-    if parent_spec is not None and "sep" in parent_spec:
-        spec = {"sep": parent_spec["sep"], **spec}
+    metadata = None
+    source_file_names = []
+
+    if parent_spec is not None:
+        # Inherit "sep"
+        if "sep" in parent_spec:
+            spec = {"sep": parent_spec["sep"], **spec}
+        # Inherit "read_options"
+        if "read_options" in parent_spec:
+            spec = {**spec, "read_options": {**parent_spec["read_options"], **spec.get("read_options", {})}}
 
     if "url" in spec: # Get source dataframe from URL(s)
         if "sep" not in spec:
@@ -128,10 +190,16 @@ def load_dataframe_from_spec(spec, output_folder_path, post_load_processor=None,
         sep = spec["sep"]
         urls = [spec["url"]] if isinstance(spec["url"], str) else spec["url"]
         paths = [download_file(url, output_folder_path) for url in urls]
-        df = pd.concat([pd.read_csv(path, sep=sep) for path in paths])
+        source_file_names += [path.name for path in paths]
+        df = pd.concat([pd.read_csv(path, **spec.get("read_options", {}), sep=sep) for path in paths])
     elif "source" in spec: # Get source dataframe from spec(s)
-        sources = [spec["source"]] if isinstance(spec["source"], dict) else spec["source"]
-        df = pd.concat([load_dataframe_from_spec(source, output_folder_path, parent_spec=spec) for source in sources])
+        source_is_singular = isinstance(spec["source"], dict)
+        sources = [spec["source"]] if source_is_singular else spec["source"]
+        source_dfs, metadata, sub_source_file_names = zip(*(load_dataframe_from_spec(source, output_folder_path, parent_spec=spec) for source in sources))
+        df = pd.concat(source_dfs)
+        if source_is_singular: metadata = metadata[0]
+        elif all(m is None for m in metadata): metadata = None
+        source_file_names += sub_source_file_names
     else:
         raise Exception("No dataframe source specified")
     
@@ -139,6 +207,8 @@ def load_dataframe_from_spec(spec, output_folder_path, post_load_processor=None,
         df = df.fillna(spec["na"])
     if "input_formatter" in spec:
         df = spec["input_formatter"](df)
+    if "contextual_input_formatter" in spec:
+        df, metadata = spec["contextual_input_formatter"](df, metadata, {"source_file_names": source_file_names})
     
     if post_load_processor is not None:
         df = post_load_processor(df)
@@ -148,7 +218,7 @@ def load_dataframe_from_spec(spec, output_folder_path, post_load_processor=None,
     if "columns" in spec:
         df = df[[*spec["columns"].keys(), *extra_columns_to_retain]].rename(columns=spec["columns"])
     
-    return df
+    return (df, metadata, source_file_names)
 
 def append_df_for_release(base_df, release_df, release):
     release_df = release_df.copy()
@@ -157,18 +227,21 @@ def append_df_for_release(base_df, release_df, release):
 
 def load_data_for_releases(releases_info, output_folder_path):
     dfs = {}
+    metadata = {}
     for info in releases_info:
         dfs_info = {**info}
         release = dfs_info.pop("release")
         for key, spec in dfs_info.items():
             prev_df = dfs.get(key)
-            dfs[key] = load_dataframe_from_spec(
+            if key not in metadata: metadata[key] = {}
+            dfs[key], metadata[key][release] = load_dataframe_from_spec(
                 spec,
                 output_folder_path,
                 lambda df: append_df_for_release(prev_df, df, release),
                 ["release"]
-            )
-    return dfs
+            )[:2]
+    # For compatibility, only return metadata if it's all non-None
+    return dfs if all(m is None for type_metadata in metadata.values() for m in type_metadata.values()) else (dfs, metadata)
 
 
 def get_file_size(uri, total_files, current_index, entity_type_name):

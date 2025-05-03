@@ -1,42 +1,51 @@
 import os
+from linkml_runtime import SchemaView
 import pandas as pd
 import numpy as np
-from build_help import columns_mapper, download_file, load_data_for_releases, get_file_sizes_from_uris
+from generated_schema.assemblies import Assembly, ReleaseOneAssembly
+from build_help import columns_mapper, format_errors_by_file, download_file, validation_input_formatter, load_data_for_releases, get_file_sizes_from_uris
+
+# Determine the base directory of the script
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DOWNLOADS_FOLDER_PATH = os.path.join(BASE_DIR, "../temporary")
+OUTPUT_FILE_PATH = os.path.join(BASE_DIR, "../intermediate/assemblies.csv")
+ASSEMBLIES_SCHEMA_PATH = os.path.join(BASE_DIR, "../../schema/assemblies.yaml")
+
+ASSEMBLIES_SCHEMAVIEW = SchemaView(ASSEMBLIES_SCHEMA_PATH)
+
 
 RELEASE_SPECIFIC_DATA = [
     {
         "release": "1",
         "ASSEMBLIES": {
-            "url": "https://raw.githubusercontent.com/human-pangenomics/HPP_Year1_Assemblies/main/assembly_index/Year1_assemblies_v2_genbank.index",
-            "sep": "\t",
-            "input_formatter": lambda df: format_release_1_assemblies_df(df),
-            "mapper": columns_mapper(haplotype=lambda h: RELEASE_1_HAPLOTYPES_TO_IDS.get(h, h)),
-            "columns": {
-                "sample": "sample_id",
-                "haplotype": "haplotype",
-                "aws_fasta": "assembly",
-                "fasta_sha256": "fasta_sha256"
-            }
+            "source": {
+                "url": "https://raw.githubusercontent.com/human-pangenomics/HPP_Year1_Assemblies/main/assembly_index/Year1_assemblies_v2_genbank.index",
+                "sep": "\t",
+                "read_options": {"dtype": str, "keep_default_na": False},
+                "input_formatter": lambda df: format_release_1_assemblies_df(df),
+                "mapper": columns_mapper(haplotype=lambda h: RELEASE_1_HAPLOTYPES_TO_IDS.get(h, h)),
+                "columns": {
+                    "sample": "sample_id",
+                    "haplotype": "haplotype",
+                    "aws_fasta": "assembly",
+                    "fasta_sha256": "fasta_sha256"
+                }
+            },
+            "contextual_input_formatter": validation_input_formatter(ReleaseOneAssembly, ASSEMBLIES_SCHEMAVIEW)
         }
     },
     {
         "release": "2",
         "ASSEMBLIES": {
             "url": "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/assemblies_pre_release_v0.6.1.index.csv",
-            "sep": ","
+            "sep": ",",
+            "read_options": {"dtype": str, "keep_default_na": False},
+            "contextual_input_formatter": validation_input_formatter(Assembly, ASSEMBLIES_SCHEMAVIEW)
         }
     }
 ]
 
 BIOSAMPLE_TABLE_URL = "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sample/hprc_release2_sample_metadata.csv"
-
-EXCLUDED_SAMPLE_IDS = ["CHM13", "GRCh38"]
-
-
-# Determine the base directory of the script
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DOWNLOADS_FOLDER_PATH = os.path.join(BASE_DIR, "../temporary")
-OUTPUT_FILE_PATH = os.path.join(BASE_DIR, "../intermediate/assemblies.csv")
 
 
 RELEASE_1_EXCLUDED_SAMPLE_IDS = ["CHM13_v1.1", "GRCh38_no_alt_analysis_set"]
@@ -89,17 +98,21 @@ if __name__ == "__main__":
     # Download the files from Github and load them as dataframes
     biosample_path = download_file(BIOSAMPLE_TABLE_URL, DOWNLOADS_FOLDER_PATH)
     biosample_df = pd.read_csv(biosample_path, sep=",")
-    assembly_df = load_data_for_releases(RELEASE_SPECIFIC_DATA, DOWNLOADS_FOLDER_PATH)["ASSEMBLIES"]
+    loaded_dfs, load_metadata = load_data_for_releases(RELEASE_SPECIFIC_DATA, DOWNLOADS_FOLDER_PATH)
+    assembly_df = loaded_dfs["ASSEMBLIES"]
+    validation_errors = {file_name: errors for file_name, errors in load_metadata["ASSEMBLIES"].values() if errors}
 
-    filtered_assembly_df = assembly_df[~assembly_df["sample_id"].isin(EXCLUDED_SAMPLE_IDS)]
+    if validation_errors:
+        print(f"\nValidation errors:\n\n{format_errors_by_file(validation_errors)}")
+        print(f"\nFound errors in {len(validation_errors)} source files\n")
 
     # Merge all DataFrames
-    combined_df = filtered_assembly_df.merge(
+    combined_df = assembly_df.merge(
         biosample_df, on="sample_id", how="left", validate="many_to_one"
     )
     print("The following sample IDs did not correspond to a value in the Biosample sheet, so NA values were entered:")
     print(", ".join(
-        filtered_assembly_df.loc[~filtered_assembly_df["sample_id"].isin(biosample_df["sample_id"]), "sample_id"]
+        assembly_df.loc[~assembly_df["sample_id"].isin(biosample_df["sample_id"]), "sample_id"]
     ))
     output_df = combined_df.assign(file_size=get_file_sizes_from_uris(combined_df["assembly"], "assembly"))
     output_df.to_csv(OUTPUT_FILE_PATH, index=False)

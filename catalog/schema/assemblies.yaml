@@ -1,0 +1,96 @@
+id: https://github.com/human-pangenomics/hprc-data-explorer/blob/main/catalog/schema/assemblies.yaml#
+name: assemblies
+description: Schema for source assemblies.
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+
+imports:
+  - linkml:types
+
+classes:
+  Assembly:
+    description: An assembly.
+    slots:
+      - sample_id
+      - assembly_name
+      - haplotype
+      - phasing
+      - assembly_method
+      - assembly_method_version
+      - assembly_date
+      - genbank_accession
+      - assembly_md5
+      - assembly_fai
+      - assembly_gzi
+      - assembly
+  ReleaseOneAssembly:
+    description: An assembly using the legacy Release 1 fields.
+    slots:
+      - sample_id
+      - haplotype
+      - assembly
+      - fasta_sha256
+
+slots:
+  fasta_sha256:
+    description: FASTA SHA256.
+    required: true
+    range: string
+  sample_id:
+    description: Sample ID.
+    required: true
+    range: string
+  assembly_name:
+    description: Unique assembly name.
+    required: true
+    range: string
+  haplotype:
+    description: Haplotype.
+    required: true
+    range: integer
+    minimum_value: 0
+    maximum_value: 2
+  phasing:
+    description: Phasing approach used to separate assembled sequences into distinct haplotypes, with or without parent-of-origin assignment.
+    required: true
+    range: PhasingApproach
+  assembly_method:
+    description: Assembly method.
+    required: false
+    range: string
+  assembly_method_version:
+    description: Assembly method version.
+    required: false
+    range: string
+  assembly_date:
+    description: Date assembly was uploaded to Genbank (by convention).
+    required: false
+    range: string
+  genbank_accession:
+    description: Genbank accession.
+    required: false
+    range: string
+  assembly_md5:
+    description: S3 URI to assembly MD5.
+    required: false
+    range: string
+  assembly_fai:
+    description: S3 URL to assembly FAI.
+    required: false
+    range: string
+  assembly_gzi:
+    description: S3 URI to assembly GZI.
+    required: false
+    range: string
+  assembly:
+    description: S3 URI to assembly.
+    required: true
+    range: string
+
+enums:
+  PhasingApproach:
+    permissible_values:
+      trio:
+      hic:
+      strandseq:
