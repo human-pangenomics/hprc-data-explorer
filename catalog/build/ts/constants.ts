@@ -47,37 +47,6 @@ export const SOURCE_RAW_SEQUENCING_DATA_KEYS = [
   "maternal_id",
 ] as const;
 
-export const SOURCE_ASSEMBLY_KEYS = [
-  "sample_id",
-  "haplotype",
-  "assembly",
-  "fasta_sha256",
-  "release",
-  "phasing",
-  "assembly_method",
-  "assembly_method_version",
-  "assembly_date",
-  "assembly_name",
-  "source",
-  "genbank_accession",
-  "assembly_md5",
-  "assembly_fai",
-  "assembly_gzi",
-  "biosample_id",
-  "population_descriptor",
-  "population_abbreviation",
-  "trio_available",
-  "family_id",
-  "paternal_id",
-  "maternal_id",
-  "sex",
-  "tissue",
-  "collection",
-  "alternative_id",
-  "notes",
-  "file_size",
-] as const;
-
 export const SOURCE_ANNOTATION_KEYS = [
   "sample_id",
   "haplotype",
