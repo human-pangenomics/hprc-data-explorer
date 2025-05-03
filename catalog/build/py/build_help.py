@@ -155,7 +155,9 @@ def download_file(url, output_folder_path, filename=None):
     return output_path
 
 def validation_input_formatter(model, schemaview):
-    return lambda df: validate_and_normalize_df(df, model, schemaview)
+    def add_file_name_to_errors(df, errors, context):
+        return (df, (context["source_file_names"][0], errors))
+    return lambda df, meta, context: add_file_name_to_errors(*validate_and_normalize_df(df, model, schemaview), context)
 
 """
 `spec` may contain:
@@ -164,13 +166,15 @@ read_options -- Parameters to pass to the Pandas `read_csv` function. Inherited 
 url -- URL or list of URLs to get source file(s) from. Multiple source files will be concatenated.
 source -- Spec or list of specs to use as source data. Multiple sources will be concatenated. If a list, metadata is aggregated into a list. All-None metadata is converted to a single None value.
 na -- Value to replace N/A values with after data is loaded.
-input_formatter -- Function to map loaded data. If metadata is non-None, is passed metadata as well. May return dataframe or tuple of dataframe and metadata.
+input_formatter -- Function to map loaded data.
+contextual_input_formatter -- Function to map loaded data, but is also passed metadata and contextual info. Should return a tuple of dataframe and metadata.
 mapper -- Function to map data after any non-spec processing done by `post_load_processor`.
 columns -- Mapping of column names, used to rename columns and to determine which columns to keep.
 Operations are applied in the order listed above.
 """
 def load_dataframe_from_spec(spec, output_folder_path, post_load_processor=None, extra_columns_to_retain=[], parent_spec=None):
     metadata = None
+    source_file_names = []
 
     if parent_spec is not None:
         # Inherit "sep"
@@ -186,22 +190,25 @@ def load_dataframe_from_spec(spec, output_folder_path, post_load_processor=None,
         sep = spec["sep"]
         urls = [spec["url"]] if isinstance(spec["url"], str) else spec["url"]
         paths = [download_file(url, output_folder_path) for url in urls]
+        source_file_names += [path.name for path in paths]
         df = pd.concat([pd.read_csv(path, **spec.get("read_options", {}), sep=sep) for path in paths])
     elif "source" in spec: # Get source dataframe from spec(s)
         source_is_singular = isinstance(spec["source"], dict)
         sources = [spec["source"]] if source_is_singular else spec["source"]
-        source_dfs, metadata = zip(*(load_dataframe_from_spec(source, output_folder_path, parent_spec=spec) for source in sources))
+        source_dfs, metadata, sub_source_file_names = zip(*(load_dataframe_from_spec(source, output_folder_path, parent_spec=spec) for source in sources))
         df = pd.concat(source_dfs)
         if source_is_singular: metadata = metadata[0]
         elif all(m is None for m in metadata): metadata = None
+        source_file_names += sub_source_file_names
     else:
         raise Exception("No dataframe source specified")
     
     if "na" in spec:
         df = df.fillna(spec["na"])
     if "input_formatter" in spec:
-        input_formatter_result = spec["input_formatter"](df) if metadata is None else spec["input_formatter"](df, metadata)
-        df, metadata = input_formatter_result if isinstance(input_formatter_result, tuple) else (input_formatter_result, metadata)
+        df = spec["input_formatter"](df)
+    if "contextual_input_formatter" in spec:
+        df, metadata = spec["contextual_input_formatter"](df, metadata, {"source_file_names": source_file_names})
     
     if post_load_processor is not None:
         df = post_load_processor(df)
@@ -211,7 +218,7 @@ def load_dataframe_from_spec(spec, output_folder_path, post_load_processor=None,
     if "columns" in spec:
         df = df[[*spec["columns"].keys(), *extra_columns_to_retain]].rename(columns=spec["columns"])
     
-    return (df, metadata)
+    return (df, metadata, source_file_names)
 
 def append_df_for_release(base_df, release_df, release):
     release_df = release_df.copy()
@@ -232,9 +239,9 @@ def load_data_for_releases(releases_info, output_folder_path):
                 output_folder_path,
                 lambda df: append_df_for_release(prev_df, df, release),
                 ["release"]
-            )
+            )[:2]
     # For compatibility, only return metadata if it's all non-None
-    return dfs if all(m is None for m in metadata.values()) else (dfs, metadata)
+    return dfs if all(m is None for type_metadata in metadata.values() for m in type_metadata.values()) else (dfs, metadata)
 
 
 def get_file_size(uri, total_files, current_index, entity_type_name):

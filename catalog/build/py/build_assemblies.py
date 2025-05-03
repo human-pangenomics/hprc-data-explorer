@@ -31,7 +31,7 @@ RELEASE_SPECIFIC_DATA = [
                     "fasta_sha256": "fasta_sha256"
                 }
             },
-            "input_formatter": validation_input_formatter(ReleaseOneAssembly, ASSEMBLIES_SCHEMAVIEW)
+            "contextual_input_formatter": validation_input_formatter(ReleaseOneAssembly, ASSEMBLIES_SCHEMAVIEW)
         }
     },
     {
@@ -40,7 +40,7 @@ RELEASE_SPECIFIC_DATA = [
             "url": "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/assemblies_pre_release_v0.6.1.index.csv",
             "sep": ",",
             "read_options": {"dtype": str, "keep_default_na": False},
-            "input_formatter": validation_input_formatter(Assembly, ASSEMBLIES_SCHEMAVIEW)
+            "contextual_input_formatter": validation_input_formatter(Assembly, ASSEMBLIES_SCHEMAVIEW)
         }
     }
 ]
@@ -100,11 +100,11 @@ if __name__ == "__main__":
     biosample_df = pd.read_csv(biosample_path, sep=",")
     loaded_dfs, load_metadata = load_data_for_releases(RELEASE_SPECIFIC_DATA, DOWNLOADS_FOLDER_PATH)
     assembly_df = loaded_dfs["ASSEMBLIES"]
-    validation_errors = {f"Release {release}": errors for release, errors in load_metadata["ASSEMBLIES"].items() if errors}
+    validation_errors = {file_name: errors for file_name, errors in load_metadata["ASSEMBLIES"].values() if errors}
 
     if validation_errors:
         print(f"\nValidation errors:\n\n{format_errors_by_file(validation_errors)}")
-        print(f"\nFound errors in source files\n")
+        print(f"\nFound errors in {len(validation_errors)} source files\n")
 
     # Merge all DataFrames
     combined_df = assembly_df.merge(
