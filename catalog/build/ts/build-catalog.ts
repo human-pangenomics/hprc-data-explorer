@@ -108,7 +108,7 @@ async function buildRawSequencingData(): Promise<
 
 async function buildAssemblies(): Promise<HPRCDataExplorerAssembly[]> {
   const sourceRows = await readUnknownValuesFile<SourceAssemblyKey>(
-    SOURCE_PATH_ANNOTATIONS
+    SOURCE_PATH_ASSEMBLIES
   );
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerAssembly => ({
@@ -343,12 +343,6 @@ function parseNumberOrNull(value: string): number | null {
   if (isNaN(n))
     throw new Error(`Invalid number value: ${JSON.stringify(value)}`);
   return n;
-}
-
-function parseNumberOrNAOrNull(value: string): number | LABEL.NA | null {
-  value = value.trim();
-  if (!value) return null;
-  return parseNumberOrNA(value);
 }
 
 function parseNumberOrNA(value: string): number | LABEL.NA {
