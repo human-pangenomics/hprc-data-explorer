@@ -63,3 +63,9 @@ export type AssembliesSlotName =
   | "assembly_fai"
   | "assembly_gzi"
   | "assembly";
+
+export type AnnotationsSlotName =
+  | "sample_id"
+  | "haplotype"
+  | "assembly_name"
+  | "location";

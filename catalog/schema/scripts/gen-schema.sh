@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SCHEMA_NAMES=(sequencing_data assemblies)
+SCHEMA_NAMES=(sequencing_data assemblies annotations)
 
 # Generate Pydantic models
 for name in ${SCHEMA_NAMES[@]}

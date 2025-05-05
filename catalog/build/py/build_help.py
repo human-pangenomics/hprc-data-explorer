@@ -154,10 +154,10 @@ def download_file(url, output_folder_path, filename=None):
             f.write(r.text)
     return output_path
 
-def validation_input_formatter(model, schemaview):
-    def add_file_name_to_errors(df, errors, context):
-        return (df, (context["source_file_names"][0], errors))
-    return lambda df, meta, context: add_file_name_to_errors(*validate_and_normalize_df(df, model, schemaview), context)
+def validation_input_formatter(model, schemaview, composed_formatter=None):
+    def process_results(df, errors, context):
+        return (df if composed_formatter is None else composed_formatter(df), (context["source_file_names"][0], errors))
+    return lambda df, meta, context: process_results(*validate_and_normalize_df(df, model, schemaview), context)
 
 """
 `spec` may contain:
@@ -165,6 +165,8 @@ sep -- Separator to use when reading delimited values file. Inherited by sub-spe
 read_options -- Parameters to pass to the Pandas `read_csv` function. Inherited by sub-specs in "source".
 url -- URL or list of URLs to get source file(s) from. Multiple source files will be concatenated.
 source -- Spec or list of specs to use as source data. Multiple sources will be concatenated. If a list, metadata is aggregated into a list. All-None metadata is converted to a single None value.
+source_transformer -- Function that receives a tuple of dataframe, metdata, and context, or a list of such tuples, and returns a value of the same form.
+map_spec -- Spec to apply to source dataframes individually.
 na -- Value to replace N/A values with after data is loaded.
 input_formatter -- Function to map loaded data.
 contextual_input_formatter -- Function to map loaded data, but is also passed metadata and contextual info. Should return a tuple of dataframe and metadata.
@@ -172,9 +174,9 @@ mapper -- Function to map data after any non-spec processing done by `post_load_
 columns -- Mapping of column names, used to rename columns and to determine which columns to keep.
 Operations are applied in the order listed above.
 """
-def load_dataframe_from_spec(spec, output_folder_path, post_load_processor=None, extra_columns_to_retain=[], parent_spec=None):
+def load_dataframe_from_spec(spec, output_folder_path, post_load_processor=None, extra_columns_to_retain=[], parent_spec=None, preloaded_sources=None):
     metadata = None
-    source_file_names = []
+    context = {"source_file_names": []}
 
     if parent_spec is not None:
         # Inherit "sep"
@@ -184,31 +186,47 @@ def load_dataframe_from_spec(spec, output_folder_path, post_load_processor=None,
         if "read_options" in parent_spec:
             spec = {**spec, "read_options": {**parent_spec["read_options"], **spec.get("read_options", {})}}
 
-    if "url" in spec: # Get source dataframe from URL(s)
+    if preloaded_sources is not None:
+        source_is_singular = isinstance(preloaded_sources, tuple)
+        loaded_sources = [preloaded_sources] if source_is_singular else preloaded_sources
+    elif "url" in spec: # Get source dataframe from URL(s)
         if "sep" not in spec:
             raise Exception("Separator not specified for delimited values file URL")
         sep = spec["sep"]
-        urls = [spec["url"]] if isinstance(spec["url"], str) else spec["url"]
+        source_is_singular = isinstance(spec["url"], str)
+        urls = [spec["url"]] if source_is_singular else spec["url"]
         paths = [download_file(url, output_folder_path) for url in urls]
-        source_file_names += [path.name for path in paths]
-        df = pd.concat([pd.read_csv(path, **spec.get("read_options", {}), sep=sep) for path in paths])
+        loaded_sources = [(pd.read_csv(path, **spec.get("read_options", {}), sep=sep), None, {"source_file_names": [path.name]}) for path in paths]
     elif "source" in spec: # Get source dataframe from spec(s)
         source_is_singular = isinstance(spec["source"], dict)
         sources = [spec["source"]] if source_is_singular else spec["source"]
-        source_dfs, metadata, sub_source_file_names = zip(*(load_dataframe_from_spec(source, output_folder_path, parent_spec=spec) for source in sources))
-        df = pd.concat(source_dfs)
-        if source_is_singular: metadata = metadata[0]
-        elif all(m is None for m in metadata): metadata = None
-        source_file_names += sub_source_file_names
+        loaded_sources = [load_dataframe_from_spec(source, output_folder_path, parent_spec=spec) for source in sources]
     else:
         raise Exception("No dataframe source specified")
     
+    if "source_transformer" in spec:
+        loaded_sources = spec["source_transformer"](loaded_sources[0] if source_is_singular else loaded_sources)
+        source_is_singular = isinstance(loaded_sources, tuple)
+        if source_is_singular: loaded_sources = [loaded_sources]
+    
+    if "map_spec" in spec:
+        loaded_sources = [
+            load_dataframe_from_spec(spec["map_spec"], output_folder_path, parent_spec=spec, preloaded_sources=source)
+            for source in loaded_sources
+        ]
+
+    source_dfs, metadata, sub_contexts = [list(items) for items in zip(*loaded_sources)]
+    df = pd.concat(source_dfs)
+    if source_is_singular: metadata = metadata[0]
+    elif all(m is None for m in metadata): metadata = None
+    context["source_file_names"] += [name for context in sub_contexts for name in context["source_file_names"]]
+
     if "na" in spec:
         df = df.fillna(spec["na"])
     if "input_formatter" in spec:
         df = spec["input_formatter"](df)
     if "contextual_input_formatter" in spec:
-        df, metadata = spec["contextual_input_formatter"](df, metadata, {"source_file_names": source_file_names})
+        df, metadata = spec["contextual_input_formatter"](df, metadata, context)
     
     if post_load_processor is not None:
         df = post_load_processor(df)
@@ -218,7 +236,7 @@ def load_dataframe_from_spec(spec, output_folder_path, post_load_processor=None,
     if "columns" in spec:
         df = df[[*spec["columns"].keys(), *extra_columns_to_retain]].rename(columns=spec["columns"])
     
-    return (df, metadata, source_file_names)
+    return (df, metadata, context)
 
 def append_df_for_release(base_df, release_df, release):
     release_df = release_df.copy()
