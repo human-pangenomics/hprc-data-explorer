@@ -57,15 +57,15 @@ export type HPRCDataExplorerAssembly = WithAbsentValues<{
   sampleId: string;
 }>;
 
-export interface HPRCDataExplorerAnnotation {
+export type HPRCDataExplorerAnnotation = WithAbsentValues<{
   annotationType: string;
   fileLocation: string;
   filename: string;
-  fileSize: string;
-  haplotype: string | null;
+  fileSize: number;
+  haplotype: string;
   release: string;
   sampleId: string;
-}
+}>;
 
 export interface HPRCDataExplorerAlignment {
   alignment: string;

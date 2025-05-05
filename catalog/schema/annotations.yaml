@@ -1,0 +1,52 @@
+id: https://github.com/human-pangenomics/hprc-data-explorer/blob/main/catalog/schema/annotations.yaml#
+name: annotations
+description: Schema for source annotations.
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+
+imports:
+  - linkml:types
+
+classes:
+  Annotation:
+    description: An annotation.
+    slots:
+      - sample_id
+      - haplotype
+      - assembly_name
+      - location
+    slot_usage:
+      haplotype:
+        required: true
+  ReleaseOneAnnotation:
+    description: An annotation using the legacy Release 1 fields.
+    slots:
+      - sample_id
+      - haplotype
+      - location
+  ReleaseOneFlaggerAnnotation:
+    description: An annotation using the legacy Release 1 fields for Flagger.
+    slots:
+      - sample_id
+      - location
+
+slots:
+  sample_id:
+    description: Sample ID.
+    required: true
+    range: string
+  haplotype:
+    description: Haplotype.
+    required: false # To support Release 1 data
+    range: integer
+    minimum_value: 0
+    maximum_value: 2
+  assembly_name:
+    description: Unique assembly name.
+    required: true
+    range: string
+  location:
+    description: S3 URI to annotation.
+    required: true
+    range: string

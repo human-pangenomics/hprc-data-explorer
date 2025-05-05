@@ -13,12 +13,12 @@ import {
   getAssemblyId,
   getRawSequencingDataId,
 } from "../../../app/apis/catalog/hprc-data-explorer/common/utils";
+import { HAPLOTYPE_BY_ID, SOURCE_ALIGNMENT_KEYS } from "./constants";
 import {
-  HAPLOTYPE_BY_ID,
-  SOURCE_ALIGNMENT_KEYS,
-  SOURCE_ANNOTATION_KEYS,
-} from "./constants";
-import { SourceAssemblyKey, SourceRawSequencingDataKey } from "./entities";
+  SourceAnnotationKey,
+  SourceAssemblyKey,
+  SourceRawSequencingDataKey,
+} from "./entities";
 
 const CATALOG_DIR = "catalog/output";
 
@@ -42,10 +42,13 @@ async function buildCatalog(): Promise<void> {
     await buildAssemblies(),
     getAssemblyId
   );
-  const annotations = await buildAnnotations();
+  const annotations = enforceUniqueIds(
+    "annotations",
+    await buildAnnotations(),
+    getAnnotationId
+  );
   const alignments = await buildAlignments();
 
-  verifyUniqueIds("annotation", annotations, getAnnotationId);
   verifyUniqueIds("alignment", alignments, getAlignmentId);
 
   console.log("Sequencing data:", rawSequencingData.length);
@@ -135,19 +138,21 @@ async function buildAssemblies(): Promise<HPRCDataExplorerAssembly[]> {
 }
 
 async function buildAnnotations(): Promise<HPRCDataExplorerAnnotation[]> {
-  const sourceRows = await readValuesFile(
-    SOURCE_PATH_ANNOTATIONS,
-    SOURCE_ANNOTATION_KEYS
+  const sourceRows = await readUnknownValuesFile<SourceAnnotationKey>(
+    SOURCE_PATH_ANNOTATIONS
   );
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerAnnotation => ({
-      annotationType: row.annotation_type,
-      fileLocation: row.location,
-      fileSize: parseNumberOrNA(row.file_size).toString(),
-      filename: getFileNameFromPath(row.location),
-      haplotype: HAPLOTYPE_BY_ID[row.haplotype] ?? row.haplotype,
-      release: row.release,
-      sampleId: row.sample_id,
+      annotationType: parseStringOrAbsent(row.annotation_type),
+      fileLocation: parseStringOrAbsent(row.location),
+      fileSize: parseNumberOrAbsent(row.file_size),
+      filename: parseStringOrAbsent(row.location, getFileNameFromPath),
+      haplotype: parseStringOrAbsent(
+        row.haplotype,
+        (id) => HAPLOTYPE_BY_ID[id] ?? id
+      ),
+      release: parseStringOrAbsent(row.release),
+      sampleId: parseStringOrAbsent(row.sample_id),
     })
   );
   return mappedRows.sort((a, b) =>
