@@ -1,4 +1,5 @@
 import {
+  AnnotationsSlotName,
   AssembliesSlotName,
   SequencingDataSlotName,
 } from "catalog/schema/generated/schema";
@@ -18,6 +19,8 @@ type BiosampleKey =
   | "alternative_id"
   | "notes";
 
+type KeyAnnotationType = "annotation_type";
+
 type KeyFileSize = "file_size";
 
 type KeyRelease = "release";
@@ -30,5 +33,11 @@ export type SourceRawSequencingDataKey =
 export type SourceAssemblyKey =
   | AssembliesSlotName
   | BiosampleKey
+  | KeyFileSize
+  | KeyRelease;
+
+export type SourceAnnotationKey =
+  | AnnotationsSlotName
+  | KeyAnnotationType
   | KeyFileSize
   | KeyRelease;
