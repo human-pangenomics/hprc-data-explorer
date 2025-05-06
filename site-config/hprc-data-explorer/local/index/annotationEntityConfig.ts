@@ -13,6 +13,7 @@ import {
   HPRC_DATA_EXPLORER_CATEGORY_KEY,
   HPRC_DATA_EXPLORER_CATEGORY_LABEL,
 } from "../../category";
+import { annotationListHero } from "../listView/annotationListHero";
 
 /**
  * Entity config object responsible to config anything related to the /annotations route.
@@ -165,6 +166,7 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
       disablePagination: true,
       enableDownload: true,
       enableTab: false,
+      listHero: annotationListHero,
     },
     route: "annotations",
     staticLoadFile: "catalog/output/annotations.json",
