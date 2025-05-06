@@ -80,7 +80,7 @@ class Alignment(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://github.com/human-pangenomics/hprc-data-explorer/blob/main/catalog/schema/alignments.yaml#'})
 
     alignment: str = Field(default=..., description="""Alignment.""", json_schema_extra = { "linkml_meta": {'alias': 'alignment', 'domain_of': ['Alignment']} })
-    file_size: str = Field(default=..., description="""File size.""", json_schema_extra = { "linkml_meta": {'alias': 'file_size', 'domain_of': ['Alignment']} })
+    file_size: int = Field(default=..., description="""File size.""", json_schema_extra = { "linkml_meta": {'alias': 'file_size', 'domain_of': ['Alignment']} })
     file: str = Field(default=..., description="""File name.""", json_schema_extra = { "linkml_meta": {'alias': 'file', 'domain_of': ['Alignment']} })
     loc: str = Field(default=..., description="""S3 URI to file.""", json_schema_extra = { "linkml_meta": {'alias': 'loc', 'domain_of': ['Alignment']} })
     pipeline: str = Field(default=..., description="""Pipeline.""", json_schema_extra = { "linkml_meta": {'alias': 'pipeline', 'domain_of': ['Alignment']} })

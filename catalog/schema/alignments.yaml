@@ -28,7 +28,7 @@ slots:
   file_size:
     description: File size.
     required: true
-    range: string
+    range: integer
   file:
     description: File name.
     required: true
