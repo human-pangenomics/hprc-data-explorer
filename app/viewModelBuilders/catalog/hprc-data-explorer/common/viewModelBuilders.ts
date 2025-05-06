@@ -8,6 +8,9 @@ import {
   LABEL,
 } from "../../../../apis/catalog/hprc-data-explorer/common/entities";
 import * as C from "../../../../components/index";
+import { ViewContext } from "@databiosphere/findable-ui/lib/config/entities";
+import * as MDX from "../../../../components/common/MDXContent";
+import { ALERT_PROPS } from "@databiosphere/findable-ui/lib/components/common/Alert/constants";
 
 /**
  * Build props for the alignment cell.
@@ -47,6 +50,23 @@ export const buildAnnotationDownload = (
   return {
     fileName: annotation.filename,
     fileUrl: getDownloadUrl(annotation.fileLocation),
+  };
+};
+
+/**
+ * Build props for annotation list view info Alert component.
+ * @param _ - Unused.
+ * @param viewContext - View context.
+ * @returns model to be used as props for the Alert component.
+ */
+export const buildAnnotationListHero = (
+  _: unknown,
+  viewContext: ViewContext<unknown>
+): React.ComponentProps<typeof MDX.AlertAnnotationListHero> => {
+  return {
+    ...ALERT_PROPS.STANDARD_INFO,
+    component: C.FluidPaper,
+    entityName: viewContext.entityConfig.label,
   };
 };
 
