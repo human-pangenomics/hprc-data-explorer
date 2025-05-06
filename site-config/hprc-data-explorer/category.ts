@@ -51,7 +51,6 @@ export const HPRC_DATA_EXPLORER_CATEGORY_KEY = {
   TOTAL_GBP: "totalGbp",
   TOTAL_READS: "totalReads",
   TRF_ANNOTATION_FILE: "trfAnnotationFile",
-  USE_CASE: "useCase",
   WHALES: "whales",
 };
 
@@ -108,6 +107,5 @@ export const HPRC_DATA_EXPLORER_CATEGORY_LABEL = {
   TOTAL_GBP: "Total Gbp",
   TOTAL_READS: "Total Reads",
   TRF_ANNOTATION_FILE: "TRF",
-  USE_CASE: "Use Case",
   WHALES: "Whales",
 };

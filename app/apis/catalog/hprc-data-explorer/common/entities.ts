@@ -67,17 +67,16 @@ export type HPRCDataExplorerAnnotation = WithAbsentValues<{
   sampleId: string;
 }>;
 
-export interface HPRCDataExplorerAlignment {
+export type HPRCDataExplorerAlignment = WithAbsentValues<{
   alignment: string;
   filename: string;
   fileSize: number;
   filetype: string;
   loc: string;
   pipeline: string;
-  referenceCoordinates: string | null;
-  useCase: string[];
-  version: string | null;
-}
+  referenceCoordinates: string;
+  version: string;
+}>;
 
 export enum LABEL {
   NA = "N/A",

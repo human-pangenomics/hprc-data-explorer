@@ -13,8 +13,9 @@ import {
   getAssemblyId,
   getRawSequencingDataId,
 } from "../../../app/apis/catalog/hprc-data-explorer/common/utils";
-import { HAPLOTYPE_BY_ID, SOURCE_ALIGNMENT_KEYS } from "./constants";
+import { HAPLOTYPE_BY_ID } from "./constants";
 import {
+  SourceAlignmentKey,
   SourceAnnotationKey,
   SourceAssemblyKey,
   SourceRawSequencingDataKey,
@@ -47,9 +48,11 @@ async function buildCatalog(): Promise<void> {
     await buildAnnotations(),
     getAnnotationId
   );
-  const alignments = await buildAlignments();
-
-  verifyUniqueIds("alignment", alignments, getAlignmentId);
+  const alignments = enforceUniqueIds(
+    "alignments",
+    await buildAlignments(),
+    getAlignmentId
+  );
 
   console.log("Sequencing data:", rawSequencingData.length);
   await saveJson(`${CATALOG_DIR}/sequencing-data.json`, rawSequencingData);
@@ -161,21 +164,19 @@ async function buildAnnotations(): Promise<HPRCDataExplorerAnnotation[]> {
 }
 
 async function buildAlignments(): Promise<HPRCDataExplorerAlignment[]> {
-  const sourceRows = await readValuesFile(
-    SOURCE_PATH_ALIGNMENTS,
-    SOURCE_ALIGNMENT_KEYS
+  const sourceRows = await readUnknownValuesFile<SourceAlignmentKey>(
+    SOURCE_PATH_ALIGNMENTS
   );
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerAlignment => ({
-      alignment: row.alignment,
-      fileSize: parseNumber(row.file_size),
-      filename: row.file,
-      filetype: getTypeFromFilename(row.file),
-      loc: row.loc,
-      pipeline: row.pipeline,
-      referenceCoordinates: parseStringOrNull(row.reference_coordinates),
-      useCase: parseStringArray(row.use_case),
-      version: parseStringOrNull(row.version),
+      alignment: parseStringOrAbsent(row.alignment),
+      fileSize: parseNumberOrAbsent(row.file_size),
+      filename: parseStringOrAbsent(row.file),
+      filetype: parseStringOrAbsent(row.file, getTypeFromFilename),
+      loc: parseStringOrAbsent(row.loc),
+      pipeline: parseStringOrAbsent(row.pipeline),
+      referenceCoordinates: parseStringOrAbsent(row.reference_coordinates),
+      version: parseStringOrAbsent(row.version),
     })
   );
   return mappedRows.sort((a, b) => a.loc.localeCompare(b.loc));
@@ -248,28 +249,6 @@ async function readUnknownValuesFile<TAccessedKeys extends string>(
   });
 }
 
-async function readValuesFile<T extends string>(
-  filePath: string,
-  columnNames: string extends T ? never : T[] | readonly T[], // Ensure that the type includes specific string values, rather than just being `string[]`, which would cause the return type to be the overly-broad `Record<string, string>[]`.
-  delimiter = ","
-): Promise<Record<T, string>[]> {
-  const content = await fsp.readFile(filePath, "utf8");
-  const rows = parseCsv(content, {
-    columns: true,
-    delimiter,
-    relax_quotes: true,
-  });
-  if (rows.length > 0) {
-    for (const name of columnNames) {
-      if (!Object.hasOwn(rows[0], name))
-        throw new Error(
-          `Missing column ${JSON.stringify(name)} in ${filePath}`
-        );
-    }
-  }
-  return rows;
-}
-
 async function saveJson(filePath: string, data: unknown): Promise<void> {
   await fsp.writeFile(filePath, JSON.stringify(data, undefined, 2));
 }
@@ -328,50 +307,4 @@ function parseBooleanOrAbsent(
   if (lower === "false") return false;
   console.warn(`Invalid boolean value: ${JSON.stringify(value)}`);
   return LABEL.UNSPECIFIED;
-}
-
-function parseStringOrNull(value: string): string | null {
-  return value.trim() || null;
-}
-
-function parseNumber(value: string): number {
-  const n = parseNumberOrNull(value);
-  if (n === null)
-    throw new Error(`Invalid number value: ${JSON.stringify(value)}`);
-  return n;
-}
-
-function parseNumberOrNull(value: string): number | null {
-  value = value.trim();
-  if (!value) return null;
-  const n = Number(value);
-  if (isNaN(n))
-    throw new Error(`Invalid number value: ${JSON.stringify(value)}`);
-  return n;
-}
-
-function parseNumberOrNA(value: string): number | LABEL.NA {
-  value = value.trim();
-  if (value === LABEL.NA) return value;
-  const n = Number(value);
-  if (!value || isNaN(n))
-    throw new Error(`Invalid number value: ${JSON.stringify(value)}`);
-  return n;
-}
-
-function parseStringArray(value: string): string[] {
-  const items: string[] = [];
-  for (const sourceItem of value.split(",")) {
-    const item = sourceItem.trim();
-    if (item) items.push(item);
-  }
-  return items;
-}
-
-function parseBooleanOrNa(value: string): boolean | LABEL.NA {
-  value = value.trim();
-  if (value === LABEL.NA) return LABEL.NA;
-  if (value === "True") return true;
-  if (value === "False") return false;
-  throw new Error(`Invalid boolean value: ${JSON.stringify(value)}`);
 }

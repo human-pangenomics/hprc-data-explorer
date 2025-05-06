@@ -1,0 +1,51 @@
+id: https://github.com/human-pangenomics/hprc-data-explorer/blob/main/catalog/schema/alignments.yaml#
+name: alignments
+description: Schema for source alignments.
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+
+imports:
+  - linkml:types
+
+classes:
+  Alignment:
+    description: An alignment.
+    slots:
+      - alignment
+      - file_size
+      - file
+      - loc
+      - pipeline
+      - reference_coordinates
+      - version
+
+slots:
+  alignment:
+    description: Alignment.
+    required: true
+    range: string
+  file_size:
+    description: File size.
+    required: true
+    range: string
+  file:
+    description: File name.
+    required: true
+    range: string
+  loc:
+    description: S3 URI to file.
+    required: true
+    range: string
+  pipeline:
+    description: Pipeline.
+    required: true
+    range: string
+  reference_coordinates:
+    description: Reference coordinates.
+    required: false
+    range: string
+  version:
+    description: HPRC version.
+    required: false
+    range: string
