@@ -6,3 +6,4 @@ export { BasicCell } from "@databiosphere/findable-ui/lib/components/Table/compo
 export { NTagCell } from "@databiosphere/findable-ui/lib/components/Table/components/TableCell/components/NTagCell/nTagCell";
 export { FileDownload } from "./Index/components/FileDownload/fileDownload";
 export { TypographyNoWrap } from "./Table/components/TableCell/components/TypographyNoWrap/typographyNoWrap";
+export { LabelIconMenuItem } from "./Layout/components/Header/components/Content/components/Navigation/components/NavigationMenuItems/components/LabelIconMenuItem/labelIconMenuItem";

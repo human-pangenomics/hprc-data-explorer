@@ -14,6 +14,7 @@ const BROWSER_URL = LOCALHOST;
 const GIT_HUB_REPO_URL =
   "https://github.com/human-pangenomics/hprc-data-explorer";
 const HOME_PAGE_PATH = ROUTE.RAW_SEQUENCING_DATA;
+const PORTAL_URL = "https://humanpangenome.org";
 
 export function makeConfig(browserUrl: string, gitHubUrl: string): SiteConfig {
   return {
@@ -55,6 +56,11 @@ export function makeConfig(browserUrl: string, gitHubUrl: string): SiteConfig {
             { label: "Alignments", url: ROUTE.ALIGNMENTS },
           ],
           [
+            {
+              label: C.LabelIconMenuItem({ label: "HPRC Wesbsite" }),
+              target: ANCHOR_TARGET.BLANK,
+              url: PORTAL_URL,
+            },
             {
               label: "Help & Documentation",
               menuItems: [
