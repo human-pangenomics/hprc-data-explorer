@@ -57,7 +57,7 @@ export function makeConfig(browserUrl: string, gitHubUrl: string): SiteConfig {
           ],
           [
             {
-              label: C.LabelIconMenuItem({ label: "HPRC Wesbsite" }),
+              label: C.LabelIconMenuItem({ label: "HPRC Website" }),
               target: ANCHOR_TARGET.BLANK,
               url: PORTAL_URL,
             },
