@@ -8,8 +8,6 @@ import {
   LABEL,
 } from "../../../../apis/catalog/hprc-data-explorer/common/entities";
 import * as C from "../../../../components/index";
-import { METADATA_KEY } from "./entities";
-import { getPluralizedMetadataLabel } from "./utils";
 
 /**
  * Build props for the alignment cell.
@@ -567,20 +565,6 @@ export const buildTotalReads = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.totalReads?.toLocaleString(),
-  };
-};
-
-/**
- * Build props for the use case cell.
- * @param alignment - Alignment entity.
- * @returns Props to be used for the cell.
- */
-export const buildUseCase = (
-  alignment: HPRCDataExplorerAlignment
-): React.ComponentProps<typeof C.NTagCell> => {
-  return {
-    label: getPluralizedMetadataLabel(METADATA_KEY.USE_CASE),
-    values: alignment.useCase,
   };
 };
 

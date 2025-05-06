@@ -1,4 +1,5 @@
 import {
+  AlignmentsSlotName,
   AnnotationsSlotName,
   AssembliesSlotName,
   SequencingDataSlotName,
@@ -41,3 +42,5 @@ export type SourceAnnotationKey =
   | KeyAnnotationType
   | KeyFileSize
   | KeyRelease;
+
+export type SourceAlignmentKey = AlignmentsSlotName;

@@ -69,3 +69,12 @@ export type AnnotationsSlotName =
   | "haplotype"
   | "assembly_name"
   | "location";
+
+export type AlignmentsSlotName =
+  | "alignment"
+  | "file_size"
+  | "file"
+  | "loc"
+  | "pipeline"
+  | "reference_coordinates"
+  | "version";
