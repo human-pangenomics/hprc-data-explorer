@@ -1,5 +1,5 @@
 export type SequencingDataSlotName =
-  | "coverage_100kb_plus"
+  | "coverage_over_100kb"
   | "accession"
   | "barcode"
   | "basecaller"
