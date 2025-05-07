@@ -13,6 +13,7 @@ import {
   HPRC_DATA_EXPLORER_CATEGORY_KEY,
   HPRC_DATA_EXPLORER_CATEGORY_LABEL,
 } from "../../category";
+import { listHero } from "./alignment/listView/listHero";
 
 /**
  * Entity config object responsible to config anything related to the /alignments route.
@@ -169,6 +170,7 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
     disablePagination: true,
     enableDownload: true,
     enableTab: false,
+    listHero,
   },
   route: "alignments",
   staticLoadFile: "catalog/output/alignments.json",
