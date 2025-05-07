@@ -65,6 +65,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
         {
           categoryConfigs: [
             {
+              enableChartView: false,
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.DEEPCONSENSUS_VERSION,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.DEEPCONSENSUS_VERSION,
             },
