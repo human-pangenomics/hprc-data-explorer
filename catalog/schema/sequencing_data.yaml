@@ -109,6 +109,7 @@ classes:
       - paternal_id
       - path
       - phasing
+      - platform
       - population
       - relationship
       - sample_id
@@ -148,7 +149,7 @@ classes:
     description: An ONT sequencing data file.
     is_a: SequencingData
     slots:
-      - coverage_100kb_plus
+      - coverage_over_100kb
       - accession
       - basecaller
       - basecaller_model
@@ -174,7 +175,7 @@ classes:
       - whales
 
 slots:
-  coverage_100kb_plus:
+  coverage_over_100kb:
     description: Coverage from reads 100kb or longer.
     required: true
     range: float
@@ -388,6 +389,10 @@ enums:
       NextSeq 500:
       NextSeq 550:
       Illumina NovaSeq 6000:
+      GridION:
+      MinION:
+      Revio:
+      Sequel II:
   LibrarySource:
     permissible_values:
       GENOMIC:

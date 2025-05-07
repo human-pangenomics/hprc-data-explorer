@@ -86,6 +86,10 @@ class InstrumentModel(str, Enum):
     NextSeq_500 = "NextSeq 500"
     NextSeq_550 = "NextSeq 550"
     Illumina_NovaSeq_6000 = "Illumina NovaSeq 6000"
+    GridION = "GridION"
+    MinION = "MinION"
+    Revio = "Revio"
+    Sequel_II = "Sequel II"
 
 
 class LibrarySource(str, Enum):
@@ -276,6 +280,7 @@ class HiCSequencingData(SequencingData):
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
+                       'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
     production: str = Field(default=..., description="""Name of original data submisson.""", json_schema_extra = { "linkml_meta": {'alias': 'production',
@@ -421,6 +426,7 @@ class DeepConsensusSequencingData(SequencingData):
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
+                       'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
     sample_id: str = Field(default=..., description="""Identifier from 1000G/HapMap (as found in Coriell for DNA).""", json_schema_extra = { "linkml_meta": {'alias': 'sample_id',
@@ -578,6 +584,7 @@ class HiFiSequencingData(SequencingData):
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
+                       'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
     primrose_filename: str = Field(default=..., description="""Filename of the Primrose basecalling output (if used).""", json_schema_extra = { "linkml_meta": {'alias': 'primrose_filename', 'domain_of': ['HiFiSequencingData']} })
@@ -693,6 +700,13 @@ class IlluminaSequencingData(SequencingData):
                        'KinnexSequencingData',
                        'OntSequencingData']} })
     phasing: str = Field(default=..., description="""Information about haplotype phasing status.""", json_schema_extra = { "linkml_meta": {'alias': 'phasing', 'domain_of': ['IlluminaSequencingData']} })
+    platform: Platform = Field(default=..., description="""Sequencing instrument manufacturer.""", json_schema_extra = { "linkml_meta": {'alias': 'platform',
+         'domain_of': ['HiCSequencingData',
+                       'DeepConsensusSequencingData',
+                       'HiFiSequencingData',
+                       'IlluminaSequencingData',
+                       'KinnexSequencingData',
+                       'OntSequencingData']} })
     population: str = Field(default=..., description="""Population group the individual belongs to.""", json_schema_extra = { "linkml_meta": {'alias': 'population', 'domain_of': ['IlluminaSequencingData']} })
     relationship: str = Field(default=..., description="""Relationship to other samples in the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'relationship', 'domain_of': ['IlluminaSequencingData']} })
     sample_id: str = Field(default=..., description="""Identifier from 1000G/HapMap (as found in Coriell for DNA).""", json_schema_extra = { "linkml_meta": {'alias': 'sample_id',
@@ -832,6 +846,7 @@ class KinnexSequencingData(SequencingData):
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
+                       'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
     platform_unit_1: str = Field(default=..., description="""First component of the platform identifier.""", json_schema_extra = { "linkml_meta": {'alias': 'platform_unit_1', 'domain_of': ['KinnexSequencingData']} })
@@ -892,7 +907,7 @@ class OntSequencingData(SequencingData):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://github.com/human-pangenomics/hprc-data-explorer/blob/main/catalog/schema/sequencing_data.yaml#'})
 
-    coverage_100kb_plus: float = Field(default=..., description="""Coverage from reads 100kb or longer.""", json_schema_extra = { "linkml_meta": {'alias': 'coverage_100kb_plus', 'domain_of': ['OntSequencingData']} })
+    coverage_over_100kb: float = Field(default=..., description="""Coverage from reads 100kb or longer.""", json_schema_extra = { "linkml_meta": {'alias': 'coverage_over_100kb', 'domain_of': ['OntSequencingData']} })
     accession: Optional[str] = Field(default=None, description="""Database accession number of data entity (e.g. SRR or ERR identifier).""", json_schema_extra = { "linkml_meta": {'alias': 'accession',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
@@ -986,6 +1001,7 @@ class OntSequencingData(SequencingData):
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
+                       'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
     production: str = Field(default=..., description="""Name of original data submisson.""", json_schema_extra = { "linkml_meta": {'alias': 'production',

@@ -95,7 +95,7 @@ async function buildRawSequencingData(): Promise<
       libraryStrategy: parseStringOrAbsent(row.library_strategy),
       mmTag: parseBooleanOrAbsent(row.mm_tag),
       n50: parseNumberOrAbsent(row.n50),
-      oneHundredkbPlus: parseNumberOrAbsent(row.coverage_100kb_plus),
+      oneHundredkbPlus: parseNumberOrAbsent(row.coverage_over_100kb),
       path: parseStringOrAbsent(row.path),
       platform: parseStringOrAbsent(row.platform),
       populationAbbreviation: parseStringOrAbsent(row.population_abbreviation),
