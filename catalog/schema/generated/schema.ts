@@ -12,7 +12,6 @@ export type SequencingDataSlotName =
   | "deepconsensus_coverage"
   | "deepconsensus_filename"
   | "deepconsensus_path"
-  | "deepconsensus_version"
   | "family_id"
   | "filename"
   | "filetype"

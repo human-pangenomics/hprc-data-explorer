@@ -53,7 +53,7 @@ slots:
     maximum_value: 2
   phasing:
     description: Phasing approach used to separate assembled sequences into distinct haplotypes, with or without parent-of-origin assignment.
-    required: true
+    required: false
     range: PhasingApproach
   assembly_method:
     description: Assembly method.

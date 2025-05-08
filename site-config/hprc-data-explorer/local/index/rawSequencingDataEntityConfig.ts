@@ -59,21 +59,6 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILETYPE,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILETYPE,
             },
-          ],
-          label: "Sequencing",
-        },
-        {
-          categoryConfigs: [
-            {
-              enableChartView: false,
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.DEEPCONSENSUS_VERSION,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.DEEPCONSENSUS_VERSION,
-            },
-          ],
-          label: "Sequencing - PacBio HiFi",
-        },
-        {
-          categoryConfigs: [
             {
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.BASECALLER,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BASECALLER,
@@ -83,7 +68,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BASECALLER_VERSION,
             },
           ],
-          label: "Sequencing - ONT UL",
+          label: "Sequencing",
         },
       ],
       key: "raw-sequencing-data",
@@ -290,20 +275,6 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.CCS_ALGORITHM,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.CCS_ALGORITHM,
           width: { max: "1fr", min: "160px" },
-        },
-        {
-          columnVisible: false,
-          componentConfig: {
-            component: C.BasicCell,
-            viewBuilder: V.buildDeepConsensusVersion,
-          } as ComponentConfig<
-            typeof C.BasicCell,
-            HPRCDataExplorerRawSequencingData
-          >,
-          enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.DEEPCONSENSUS_VERSION,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.DEEPCONSENSUS_VERSION,
-          width: { max: "0.5fr", min: "112px" },
         },
         {
           columnVisible: false,

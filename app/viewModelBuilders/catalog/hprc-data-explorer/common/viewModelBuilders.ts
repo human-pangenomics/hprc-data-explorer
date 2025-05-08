@@ -202,19 +202,6 @@ export const buildCoverage = (
 };
 
 /**
- * Build props for the DeepConsensus version cell.
- * @param rawSequencingData - Raw sequencing data entity.
- * @returns Props to be used for the cell.
- */
-export const buildDeepConsensusVersion = (
-  rawSequencingData: HPRCDataExplorerRawSequencingData
-): React.ComponentProps<typeof C.BasicCell> => {
-  return {
-    value: rawSequencingData.deepConsensusVersion,
-  };
-};
-
-/**
  * Build props for the family ID cell.
  * @param entity - Raw sequencing data or assembly entity.
  * @returns Props to be used for the cell.
