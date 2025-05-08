@@ -47,7 +47,6 @@ classes:
       - accession
       - bioproject_accession
       - biosample_accession
-      - deepconsensus_version
       - filename
       - filetype
       - generator_contact
@@ -74,7 +73,6 @@ classes:
       - deepconsensus_coverage
       - deepconsensus_filename
       - deepconsensus_path
-      - deepconsensus_version
       - filename
       - filetype
       - generator_contact
@@ -217,18 +215,14 @@ slots:
     range: float
   deepconsensus_coverage:
     description: Coverage depth after DeepConsensus processing.
-    required: true
+    required: false
     range: float
   deepconsensus_filename:
     description: Filename of the DeepConsensus output file.
-    required: true
+    required: false
     range: string
   deepconsensus_path:
     description: File path to the DeepConsensus output.
-    required: true
-    range: string
-  deepconsensus_version:
-    description: Version of DeepConsensus software used for rebasecalling HiFi data.
     required: false
     range: string
   family_id:
@@ -258,7 +252,7 @@ slots:
     range: string
   instrument_model:
     description: Model of instrument.
-    required: false
+    required: true
     range: InstrumentModel
   iso_filename:
     description: Name of the file containing isoform data.
@@ -274,7 +268,7 @@ slots:
     range: LibraryStrategy
   lima_version:
     description: Version of the Lima adapter trimming software.
-    required: true
+    required: false
     range: string
   maternal_id:
     description: Sample ID of the individual's mother.
@@ -326,7 +320,7 @@ slots:
     range: string
   primrose_filename:
     description: Filename of the Primrose basecalling output (if used).
-    required: true
+    required: false
     range: string
   production:
     description: Name of original data submisson.
@@ -340,7 +334,7 @@ slots:
     description: Identifier from 1000G/HapMap (as found in Coriell for DNA).
     required: true
     range: string
-    pattern: "^(?:NA|HG)\\d{5}$"
+    pattern: "^(?:NA|HG)\\d{3}(?:\\d{2})?$"
   second_order:
     description: Second-order relatives in the dataset.
     required: false
@@ -396,8 +390,11 @@ enums:
   LibrarySource:
     permissible_values:
       GENOMIC:
+      transcriptomic:
   LibraryStrategy:
     permissible_values:
+      Hi-C:
+      isoseq:
       WGS:
       OTHER:
   Platform:

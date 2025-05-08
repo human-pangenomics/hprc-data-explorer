@@ -19,7 +19,6 @@ export type HPRCDataExplorerRawSequencingData = WithAbsentValues<{
   biosampleAccession: string;
   ccsAlgorithm: string;
   coverage: number;
-  deepConsensusVersion: string;
   familyId: string;
   filename: string;
   filetype: string;

@@ -94,9 +94,12 @@ class InstrumentModel(str, Enum):
 
 class LibrarySource(str, Enum):
     GENOMIC = "GENOMIC"
+    transcriptomic = "transcriptomic"
 
 
 class LibraryStrategy(str, Enum):
+    Hi_C = "Hi-C"
+    isoseq = "isoseq"
     WGS = "WGS"
     OTHER = "OTHER"
 
@@ -131,7 +134,7 @@ class SequencingData(ConfiguredBaseModel):
                        'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    instrument_model: Optional[InstrumentModel] = Field(default=None, description="""Model of instrument.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_model',
+    instrument_model: InstrumentModel = Field(default=..., description="""Model of instrument.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_model',
          'domain_of': ['SequencingData',
                        'HiCSequencingData',
                        'DeepConsensusSequencingData',
@@ -178,7 +181,7 @@ class SequencingData(ConfiguredBaseModel):
 
     @field_validator('sample_id')
     def pattern_sample_id(cls, v):
-        pattern=re.compile(r"^(?:NA|HG)\d{5}$")
+        pattern=re.compile(r"^(?:NA|HG)\d{3}(?:\d{2})?$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -246,7 +249,7 @@ class HiCSequencingData(SequencingData):
                        'HiFiSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    instrument_model: Optional[InstrumentModel] = Field(default=None, description="""Model of instrument.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_model',
+    instrument_model: InstrumentModel = Field(default=..., description="""Model of instrument.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_model',
          'domain_of': ['SequencingData',
                        'HiCSequencingData',
                        'DeepConsensusSequencingData',
@@ -323,7 +326,7 @@ class HiCSequencingData(SequencingData):
 
     @field_validator('sample_id')
     def pattern_sample_id(cls, v):
-        pattern=re.compile(r"^(?:NA|HG)\d{5}$")
+        pattern=re.compile(r"^(?:NA|HG)\d{3}(?:\d{2})?$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -358,8 +361,6 @@ class DeepConsensusSequencingData(SequencingData):
                        'HiFiSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    deepconsensus_version: Optional[str] = Field(default=None, description="""Version of DeepConsensus software used for rebasecalling HiFi data.""", json_schema_extra = { "linkml_meta": {'alias': 'deepconsensus_version',
-         'domain_of': ['DeepConsensusSequencingData', 'HiFiSequencingData']} })
     filename: str = Field(default=..., description="""File the metadata refers to.""", json_schema_extra = { "linkml_meta": {'alias': 'filename',
          'domain_of': ['SequencingData',
                        'HiCSequencingData',
@@ -388,7 +389,7 @@ class DeepConsensusSequencingData(SequencingData):
                        'HiFiSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    instrument_model: Optional[InstrumentModel] = Field(default=None, description="""Model of instrument.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_model',
+    instrument_model: InstrumentModel = Field(default=..., description="""Model of instrument.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_model',
          'domain_of': ['SequencingData',
                        'HiCSequencingData',
                        'DeepConsensusSequencingData',
@@ -468,7 +469,7 @@ class DeepConsensusSequencingData(SequencingData):
 
     @field_validator('sample_id')
     def pattern_sample_id(cls, v):
-        pattern=re.compile(r"^(?:NA|HG)\d{5}$")
+        pattern=re.compile(r"^(?:NA|HG)\d{3}(?:\d{2})?$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -510,11 +511,9 @@ class HiFiSequencingData(SequencingData):
                        'HiFiSequencingData',
                        'IlluminaSequencingData',
                        'OntSequencingData']} })
-    deepconsensus_coverage: float = Field(default=..., description="""Coverage depth after DeepConsensus processing.""", json_schema_extra = { "linkml_meta": {'alias': 'deepconsensus_coverage', 'domain_of': ['HiFiSequencingData']} })
-    deepconsensus_filename: str = Field(default=..., description="""Filename of the DeepConsensus output file.""", json_schema_extra = { "linkml_meta": {'alias': 'deepconsensus_filename', 'domain_of': ['HiFiSequencingData']} })
-    deepconsensus_path: str = Field(default=..., description="""File path to the DeepConsensus output.""", json_schema_extra = { "linkml_meta": {'alias': 'deepconsensus_path', 'domain_of': ['HiFiSequencingData']} })
-    deepconsensus_version: Optional[str] = Field(default=None, description="""Version of DeepConsensus software used for rebasecalling HiFi data.""", json_schema_extra = { "linkml_meta": {'alias': 'deepconsensus_version',
-         'domain_of': ['DeepConsensusSequencingData', 'HiFiSequencingData']} })
+    deepconsensus_coverage: Optional[float] = Field(default=None, description="""Coverage depth after DeepConsensus processing.""", json_schema_extra = { "linkml_meta": {'alias': 'deepconsensus_coverage', 'domain_of': ['HiFiSequencingData']} })
+    deepconsensus_filename: Optional[str] = Field(default=None, description="""Filename of the DeepConsensus output file.""", json_schema_extra = { "linkml_meta": {'alias': 'deepconsensus_filename', 'domain_of': ['HiFiSequencingData']} })
+    deepconsensus_path: Optional[str] = Field(default=None, description="""File path to the DeepConsensus output.""", json_schema_extra = { "linkml_meta": {'alias': 'deepconsensus_path', 'domain_of': ['HiFiSequencingData']} })
     filename: str = Field(default=..., description="""File the metadata refers to.""", json_schema_extra = { "linkml_meta": {'alias': 'filename',
          'domain_of': ['SequencingData',
                        'HiCSequencingData',
@@ -543,7 +542,7 @@ class HiFiSequencingData(SequencingData):
                        'HiFiSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    instrument_model: Optional[InstrumentModel] = Field(default=None, description="""Model of instrument.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_model',
+    instrument_model: InstrumentModel = Field(default=..., description="""Model of instrument.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_model',
          'domain_of': ['SequencingData',
                        'HiCSequencingData',
                        'DeepConsensusSequencingData',
@@ -565,7 +564,7 @@ class HiFiSequencingData(SequencingData):
                        'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    lima_version: str = Field(default=..., description="""Version of the Lima adapter trimming software.""", json_schema_extra = { "linkml_meta": {'alias': 'lima_version',
+    lima_version: Optional[str] = Field(default=None, description="""Version of the Lima adapter trimming software.""", json_schema_extra = { "linkml_meta": {'alias': 'lima_version',
          'domain_of': ['HiFiSequencingData', 'KinnexSequencingData']} })
     mm_tag: bool = Field(default=..., description="""Whether the data contains methylation (MM) tags.""", json_schema_extra = { "linkml_meta": {'alias': 'mm_tag', 'domain_of': ['HiFiSequencingData']} })
     n50: int = Field(default=..., description="""Read length where 50% of bases in the HiFi dataset are in reads of this length or longer.""", json_schema_extra = { "linkml_meta": {'alias': 'n50',
@@ -587,7 +586,7 @@ class HiFiSequencingData(SequencingData):
                        'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    primrose_filename: str = Field(default=..., description="""Filename of the Primrose basecalling output (if used).""", json_schema_extra = { "linkml_meta": {'alias': 'primrose_filename', 'domain_of': ['HiFiSequencingData']} })
+    primrose_filename: Optional[str] = Field(default=None, description="""Filename of the Primrose basecalling output (if used).""", json_schema_extra = { "linkml_meta": {'alias': 'primrose_filename', 'domain_of': ['HiFiSequencingData']} })
     production: str = Field(default=..., description="""Name of original data submisson.""", json_schema_extra = { "linkml_meta": {'alias': 'production',
          'domain_of': ['HiCSequencingData',
                        'HiFiSequencingData',
@@ -632,7 +631,7 @@ class HiFiSequencingData(SequencingData):
 
     @field_validator('sample_id')
     def pattern_sample_id(cls, v):
-        pattern=re.compile(r"^(?:NA|HG)\d{5}$")
+        pattern=re.compile(r"^(?:NA|HG)\d{3}(?:\d{2})?$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -672,7 +671,7 @@ class IlluminaSequencingData(SequencingData):
                        'KinnexSequencingData',
                        'OntSequencingData']} })
     gender: str = Field(default=..., description="""Gender/sex of the individual.""", json_schema_extra = { "linkml_meta": {'alias': 'gender', 'domain_of': ['IlluminaSequencingData']} })
-    instrument_model: Optional[InstrumentModel] = Field(default=None, description="""Model of instrument.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_model',
+    instrument_model: InstrumentModel = Field(default=..., description="""Model of instrument.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_model',
          'domain_of': ['SequencingData',
                        'HiCSequencingData',
                        'DeepConsensusSequencingData',
@@ -741,7 +740,7 @@ class IlluminaSequencingData(SequencingData):
 
     @field_validator('sample_id')
     def pattern_sample_id(cls, v):
-        pattern=re.compile(r"^(?:NA|HG)\d{5}$")
+        pattern=re.compile(r"^(?:NA|HG)\d{3}(?:\d{2})?$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -809,7 +808,7 @@ class KinnexSequencingData(SequencingData):
                        'HiFiSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    instrument_model: Optional[InstrumentModel] = Field(default=None, description="""Model of instrument.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_model',
+    instrument_model: InstrumentModel = Field(default=..., description="""Model of instrument.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_model',
          'domain_of': ['SequencingData',
                        'HiCSequencingData',
                        'DeepConsensusSequencingData',
@@ -832,7 +831,7 @@ class KinnexSequencingData(SequencingData):
                        'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    lima_version: str = Field(default=..., description="""Version of the Lima adapter trimming software.""", json_schema_extra = { "linkml_meta": {'alias': 'lima_version',
+    lima_version: Optional[str] = Field(default=None, description="""Version of the Lima adapter trimming software.""", json_schema_extra = { "linkml_meta": {'alias': 'lima_version',
          'domain_of': ['HiFiSequencingData', 'KinnexSequencingData']} })
     path: str = Field(default=..., description="""File path to the data in storage system.""", json_schema_extra = { "linkml_meta": {'alias': 'path',
          'domain_of': ['SequencingData',
@@ -890,7 +889,7 @@ class KinnexSequencingData(SequencingData):
 
     @field_validator('sample_id')
     def pattern_sample_id(cls, v):
-        pattern=re.compile(r"^(?:NA|HG)\d{5}$")
+        pattern=re.compile(r"^(?:NA|HG)\d{3}(?:\d{2})?$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -963,7 +962,7 @@ class OntSequencingData(SequencingData):
                        'HiFiSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    instrument_model: Optional[InstrumentModel] = Field(default=None, description="""Model of instrument.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_model',
+    instrument_model: InstrumentModel = Field(default=..., description="""Model of instrument.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_model',
          'domain_of': ['SequencingData',
                        'HiCSequencingData',
                        'DeepConsensusSequencingData',
@@ -1046,7 +1045,7 @@ class OntSequencingData(SequencingData):
 
     @field_validator('sample_id')
     def pattern_sample_id(cls, v):
-        pattern=re.compile(r"^(?:NA|HG)\d{5}$")
+        pattern=re.compile(r"^(?:NA|HG)\d{3}(?:\d{2})?$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):

@@ -84,7 +84,6 @@ async function buildRawSequencingData(): Promise<
       biosampleAccession: parseStringOrAbsent(row.biosample_id),
       ccsAlgorithm: parseStringOrAbsent(row.ccs_algorithm),
       coverage: parseNumberOrAbsent(row.coverage),
-      deepConsensusVersion: parseStringOrAbsent(row.deepconsensus_version),
       familyId: parseStringOrAbsent(row.family_id),
       filename: parseStringOrAbsent(row.filename),
       filetype: parseStringOrAbsent(row.filetype),
