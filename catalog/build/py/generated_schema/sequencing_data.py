@@ -706,7 +706,6 @@ class IlluminaSequencingData(SequencingData):
                        'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    population: str = Field(default=..., description="""Population group the individual belongs to.""", json_schema_extra = { "linkml_meta": {'alias': 'population', 'domain_of': ['IlluminaSequencingData']} })
     relationship: str = Field(default=..., description="""Relationship to other samples in the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'relationship', 'domain_of': ['IlluminaSequencingData']} })
     sample_id: str = Field(default=..., description="""Identifier from 1000G/HapMap (as found in Coriell for DNA).""", json_schema_extra = { "linkml_meta": {'alias': 'sample_id',
          'domain_of': ['SequencingData',

@@ -108,7 +108,6 @@ classes:
       - path
       - phasing
       - platform
-      - population
       - relationship
       - sample_id
       - second_order
@@ -312,10 +311,6 @@ slots:
     range: string
   pool:
     description: Pool identifier for multiplexed samples.
-    required: true
-    range: string
-  population:
-    description: Population group the individual belongs to.
     required: true
     range: string
   primrose_filename:

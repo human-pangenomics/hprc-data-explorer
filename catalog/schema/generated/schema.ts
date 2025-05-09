@@ -34,7 +34,6 @@ export type SequencingDataSlotName =
   | "platform_unit_1"
   | "platform_unit_2"
   | "pool"
-  | "population"
   | "primrose_filename"
   | "production"
   | "relationship"
