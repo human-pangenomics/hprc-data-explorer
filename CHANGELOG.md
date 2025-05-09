@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.2.0](https://github.com/human-pangenomics/hprc-data-explorer/compare/v0.1.0...v0.2.0) (2025-05-08)
+
+
+### Features
+
+* add alignment schema ([#144](https://github.com/human-pangenomics/hprc-data-explorer/issues/144)) ([#148](https://github.com/human-pangenomics/hprc-data-explorer/issues/148)) ([6a26fab](https://github.com/human-pangenomics/hprc-data-explorer/commit/6a26fab981ff22e9d873d31addfb0f97681a3180))
+* added annotation list hero [#150](https://github.com/human-pangenomics/hprc-data-explorer/issues/150) ([#153](https://github.com/human-pangenomics/hprc-data-explorer/issues/153)) ([d3c9e71](https://github.com/human-pangenomics/hprc-data-explorer/commit/d3c9e71e17776ad501b0716e061dc4f055ffd46f))
+* added link to HPRC [#149](https://github.com/human-pangenomics/hprc-data-explorer/issues/149) ([#152](https://github.com/human-pangenomics/hprc-data-explorer/issues/152)) ([51efc6e](https://github.com/human-pangenomics/hprc-data-explorer/commit/51efc6e7196b4f57a0753e9e284ba9b7666458dd))
+* allow extra fields when validating catalog source ([#155](https://github.com/human-pangenomics/hprc-data-explorer/issues/155)) ([#158](https://github.com/human-pangenomics/hprc-data-explorer/issues/158)) ([349ff9c](https://github.com/human-pangenomics/hprc-data-explorer/commit/349ff9cd99005785bac984f48f2767c767b1571c))
+* remove sequencing data by deepconsensus version chart ([#159](https://github.com/human-pangenomics/hprc-data-explorer/issues/159)) ([#160](https://github.com/human-pangenomics/hprc-data-explorer/issues/160)) ([b03d2c9](https://github.com/human-pangenomics/hprc-data-explorer/commit/b03d2c91ce92df5ff72ebee1217d614db921db79))
+* update schema and related catalog fields following review ([#163](https://github.com/human-pangenomics/hprc-data-explorer/issues/163)) ([#164](https://github.com/human-pangenomics/hprc-data-explorer/issues/164)) ([953e13f](https://github.com/human-pangenomics/hprc-data-explorer/commit/953e13fdc3f96ae83c8a6cc17fc64e966a7aad0a))
+* update sequencing data schema and rebuild ([#147](https://github.com/human-pangenomics/hprc-data-explorer/issues/147)) ([#154](https://github.com/human-pangenomics/hprc-data-explorer/issues/154)) ([4e7e935](https://github.com/human-pangenomics/hprc-data-explorer/commit/4e7e935714867ae22bc2eecfd00d256b52ea9371))
+* validate annotations via linkml schema ([#137](https://github.com/human-pangenomics/hprc-data-explorer/issues/137)) ([#145](https://github.com/human-pangenomics/hprc-data-explorer/issues/145)) ([233b9cb](https://github.com/human-pangenomics/hprc-data-explorer/commit/233b9cb42d1dd28787854aaec1e1861f7a3fa43b))
+
+
+### Bug Fixes
+
+* refactor resources banner from annotations to alignments ([#156](https://github.com/human-pangenomics/hprc-data-explorer/issues/156)) ([#157](https://github.com/human-pangenomics/hprc-data-explorer/issues/157)) ([a105fb1](https://github.com/human-pangenomics/hprc-data-explorer/commit/a105fb16624bda369698f069d8ecc5a63f5da2f2))
+
 ## [0.1.0](https://github.com/human-pangenomics/hprc-data-explorer/compare/v0.0.0...v0.1.0) (2025-05-03)
 
 
