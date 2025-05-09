@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/human-pangenomics/hprc-data-explorer/compare/v0.2.0...v0.2.1) (2025-05-09)
+
+
+### Bug Fixes
+
+* update catalog for 2025-05-09 changes ([#167](https://github.com/human-pangenomics/hprc-data-explorer/issues/167)) ([#168](https://github.com/human-pangenomics/hprc-data-explorer/issues/168)) ([ab75930](https://github.com/human-pangenomics/hprc-data-explorer/commit/ab75930d55f7009c1a33f14ce9fd5a36bc35bccb))
+
 ## [0.2.0](https://github.com/human-pangenomics/hprc-data-explorer/compare/v0.1.0...v0.2.0) (2025-05-08)
 
 
