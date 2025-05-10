@@ -652,7 +652,9 @@ class IlluminaSequencingData(SequencingData):
                                                'required': False}}})
 
     basecaller: Optional[str] = Field(default=None, description="""Software used for basecalling ONT signal data.""", json_schema_extra = { "linkml_meta": {'alias': 'basecaller',
-         'domain_of': ['IlluminaSequencingData', 'OntSequencingData']} })
+         'domain_of': ['IlluminaSequencingData',
+                       'KinnexSequencingData',
+                       'OntSequencingData']} })
     basecaller_version: Optional[str] = Field(default=None, description="""Version of the basecalling software used.""", json_schema_extra = { "linkml_meta": {'alias': 'basecaller_version',
          'domain_of': ['IlluminaSequencingData',
                        'KinnexSequencingData',
@@ -772,6 +774,10 @@ class KinnexSequencingData(SequencingData):
                        'KinnexSequencingData',
                        'OntSequencingData']} })
     barcode: str = Field(default=..., description="""Unique barcode identifier used for multiplexing samples.""", json_schema_extra = { "linkml_meta": {'alias': 'barcode', 'domain_of': ['KinnexSequencingData']} })
+    basecaller: str = Field(default=..., description="""Software used for basecalling ONT signal data.""", json_schema_extra = { "linkml_meta": {'alias': 'basecaller',
+         'domain_of': ['IlluminaSequencingData',
+                       'KinnexSequencingData',
+                       'OntSequencingData']} })
     basecaller_version: str = Field(default=..., description="""Version of the basecalling software used.""", json_schema_extra = { "linkml_meta": {'alias': 'basecaller_version',
          'domain_of': ['IlluminaSequencingData',
                        'KinnexSequencingData',
@@ -924,7 +930,9 @@ class OntSequencingData(SequencingData):
                        'KinnexSequencingData',
                        'OntSequencingData']} })
     basecaller: str = Field(default=..., description="""Software used for basecalling ONT signal data.""", json_schema_extra = { "linkml_meta": {'alias': 'basecaller',
-         'domain_of': ['IlluminaSequencingData', 'OntSequencingData']} })
+         'domain_of': ['IlluminaSequencingData',
+                       'KinnexSequencingData',
+                       'OntSequencingData']} })
     basecaller_model: str = Field(default=..., description="""Specific model used by the basecaller.""", json_schema_extra = { "linkml_meta": {'alias': 'basecaller_model', 'domain_of': ['OntSequencingData']} })
     basecaller_version: str = Field(default=..., description="""Version of the basecalling software used.""", json_schema_extra = { "linkml_meta": {'alias': 'basecaller_version',
          'domain_of': ['IlluminaSequencingData',

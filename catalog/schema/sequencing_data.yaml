@@ -127,6 +127,7 @@ classes:
     slots:
       - accession
       - barcode
+      - basecaller
       - basecaller_version
       - bioproject_accession
       - biosample_accession
