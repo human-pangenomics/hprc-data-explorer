@@ -95,6 +95,8 @@ classes:
     description: An Illumina sequencing data file.
     is_a: SequencingData
     slots:
+      - basecaller
+      - basecaller_version
       - coverage
       - family_id
       - filename
@@ -114,12 +116,18 @@ classes:
       - siblings
       - third_order
       - total_gbp
+    slot_usage:
+      basecaller:
+        required: false
+      basecaller_version:
+        required: false
   KinnexSequencingData:
     description: A Kinnex sequencing data file.
     is_a: SequencingData
     slots:
       - accession
       - barcode
+      - basecaller
       - basecaller_version
       - bioproject_accession
       - biosample_accession
