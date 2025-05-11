@@ -13,7 +13,6 @@ import {
   getAssemblyId,
   getRawSequencingDataId,
 } from "../../../app/apis/catalog/hprc-data-explorer/common/utils";
-import { HAPLOTYPE_BY_ID } from "./constants";
 import {
   SourceAlignmentKey,
   SourceAnnotationKey,
@@ -124,10 +123,7 @@ async function buildAssemblies(): Promise<HPRCDataExplorerAssembly[]> {
       fastaSha256: parseStringOrAbsent(row.fasta_sha256),
       fileSize: parseNumberOrAbsent(row.file_size),
       filename: parseStringOrAbsent(row.assembly, getFileNameFromPath),
-      haplotype: parseStringOrAbsent(
-        row.haplotype,
-        (id) => HAPLOTYPE_BY_ID[id] ?? id
-      ),
+      haplotype: parseStringOrAbsent(row.haplotype, getHaplotypeFromId),
       populationAbbreviation: parseStringOrAbsent(row.population_abbreviation),
       populationDescriptor: parseStringOrAbsent(row.population_descriptor),
       release: parseStringOrAbsent(row.release),
@@ -149,10 +145,7 @@ async function buildAnnotations(): Promise<HPRCDataExplorerAnnotation[]> {
       fileLocation: parseStringOrAbsent(row.location),
       fileSize: parseNumberOrAbsent(row.file_size),
       filename: parseStringOrAbsent(row.location, getFileNameFromPath),
-      haplotype: parseStringOrAbsent(
-        row.haplotype,
-        (id) => HAPLOTYPE_BY_ID[id] ?? id
-      ),
+      haplotype: parseStringOrAbsent(row.haplotype, getHaplotypeFromId),
       release: parseStringOrAbsent(row.release),
       sampleId: parseStringOrAbsent(row.sample_id),
     })
@@ -254,6 +247,19 @@ async function saveJson(filePath: string, data: unknown): Promise<void> {
 
 function getFileNameFromPath(p: string): string {
   return p.substring(p.lastIndexOf("/") + 1);
+}
+
+function getHaplotypeFromId(id: string): string | LABEL.NA {
+  switch (id) {
+    case "0":
+      return LABEL.NA;
+    case "1":
+      return "paternal";
+    case "2":
+      return "maternal";
+    default:
+      return id;
+  }
 }
 
 /**
