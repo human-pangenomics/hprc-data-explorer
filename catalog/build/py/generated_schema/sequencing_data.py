@@ -198,19 +198,19 @@ class HiCSequencingData(SequencingData):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://github.com/human-pangenomics/hprc-data-explorer/blob/main/catalog/schema/sequencing_data.yaml#'})
 
-    accession: Optional[str] = Field(default=None, description="""Database accession number of data entity (e.g. SRR or ERR identifier).""", json_schema_extra = { "linkml_meta": {'alias': 'accession',
+    accession: Optional[str] = Field(default=..., description="""Database accession number of data entity (e.g. SRR or ERR identifier).""", json_schema_extra = { "linkml_meta": {'alias': 'accession',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    bioproject_accession: Optional[str] = Field(default=None, description="""NCBI BioProject accession.""", json_schema_extra = { "linkml_meta": {'alias': 'bioproject_accession',
+    bioproject_accession: Optional[str] = Field(default=..., description="""NCBI BioProject accession.""", json_schema_extra = { "linkml_meta": {'alias': 'bioproject_accession',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    biosample_accession: Optional[str] = Field(default=None, description="""NCBI BioSample accession.""", json_schema_extra = { "linkml_meta": {'alias': 'biosample_accession',
+    biosample_accession: Optional[str] = Field(default=..., description="""NCBI BioSample accession.""", json_schema_extra = { "linkml_meta": {'alias': 'biosample_accession',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
@@ -237,13 +237,13 @@ class HiCSequencingData(SequencingData):
                        'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    generator_contact: Optional[str] = Field(default=None, description="""Contact person for problems/inquiries about the data.""", json_schema_extra = { "linkml_meta": {'alias': 'generator_contact',
+    generator_contact: Optional[str] = Field(default=..., description="""Contact person for problems/inquiries about the data.""", json_schema_extra = { "linkml_meta": {'alias': 'generator_contact',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    generator_facility: Optional[str] = Field(default=None, description="""Facility that created the sequencing reads.""", json_schema_extra = { "linkml_meta": {'alias': 'generator_facility',
+    generator_facility: Optional[str] = Field(default=..., description="""Facility that created the sequencing reads.""", json_schema_extra = { "linkml_meta": {'alias': 'generator_facility',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
@@ -299,7 +299,7 @@ class HiCSequencingData(SequencingData):
                        'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    study: Optional[str] = Field(default=None, description="""Name or identifier of the study that generated the data.""", json_schema_extra = { "linkml_meta": {'alias': 'study',
+    study: Optional[str] = Field(default=..., description="""Name or identifier of the study that generated the data.""", json_schema_extra = { "linkml_meta": {'alias': 'study',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
@@ -343,19 +343,19 @@ class DeepConsensusSequencingData(SequencingData):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://github.com/human-pangenomics/hprc-data-explorer/blob/main/catalog/schema/sequencing_data.yaml#'})
 
-    accession: Optional[str] = Field(default=None, description="""Database accession number of data entity (e.g. SRR or ERR identifier).""", json_schema_extra = { "linkml_meta": {'alias': 'accession',
+    accession: Optional[str] = Field(default=..., description="""Database accession number of data entity (e.g. SRR or ERR identifier).""", json_schema_extra = { "linkml_meta": {'alias': 'accession',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    bioproject_accession: Optional[str] = Field(default=None, description="""NCBI BioProject accession.""", json_schema_extra = { "linkml_meta": {'alias': 'bioproject_accession',
+    bioproject_accession: Optional[str] = Field(default=..., description="""NCBI BioProject accession.""", json_schema_extra = { "linkml_meta": {'alias': 'bioproject_accession',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    biosample_accession: Optional[str] = Field(default=None, description="""NCBI BioSample accession.""", json_schema_extra = { "linkml_meta": {'alias': 'biosample_accession',
+    biosample_accession: Optional[str] = Field(default=..., description="""NCBI BioSample accession.""", json_schema_extra = { "linkml_meta": {'alias': 'biosample_accession',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
@@ -377,13 +377,13 @@ class DeepConsensusSequencingData(SequencingData):
                        'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    generator_contact: Optional[str] = Field(default=None, description="""Contact person for problems/inquiries about the data.""", json_schema_extra = { "linkml_meta": {'alias': 'generator_contact',
+    generator_contact: Optional[str] = Field(default=..., description="""Contact person for problems/inquiries about the data.""", json_schema_extra = { "linkml_meta": {'alias': 'generator_contact',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    generator_facility: Optional[str] = Field(default=None, description="""Facility that created the sequencing reads.""", json_schema_extra = { "linkml_meta": {'alias': 'generator_facility',
+    generator_facility: Optional[str] = Field(default=..., description="""Facility that created the sequencing reads.""", json_schema_extra = { "linkml_meta": {'alias': 'generator_facility',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
@@ -438,7 +438,7 @@ class DeepConsensusSequencingData(SequencingData):
                        'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    study: Optional[str] = Field(default=None, description="""Name or identifier of the study that generated the data.""", json_schema_extra = { "linkml_meta": {'alias': 'study',
+    study: Optional[str] = Field(default=..., description="""Name or identifier of the study that generated the data.""", json_schema_extra = { "linkml_meta": {'alias': 'study',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
@@ -486,19 +486,19 @@ class HiFiSequencingData(SequencingData):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://github.com/human-pangenomics/hprc-data-explorer/blob/main/catalog/schema/sequencing_data.yaml#'})
 
-    accession: Optional[str] = Field(default=None, description="""Database accession number of data entity (e.g. SRR or ERR identifier).""", json_schema_extra = { "linkml_meta": {'alias': 'accession',
+    accession: Optional[str] = Field(default=..., description="""Database accession number of data entity (e.g. SRR or ERR identifier).""", json_schema_extra = { "linkml_meta": {'alias': 'accession',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    bioproject_accession: Optional[str] = Field(default=None, description="""NCBI BioProject accession.""", json_schema_extra = { "linkml_meta": {'alias': 'bioproject_accession',
+    bioproject_accession: Optional[str] = Field(default=..., description="""NCBI BioProject accession.""", json_schema_extra = { "linkml_meta": {'alias': 'bioproject_accession',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    biosample_accession: Optional[str] = Field(default=None, description="""NCBI BioSample accession.""", json_schema_extra = { "linkml_meta": {'alias': 'biosample_accession',
+    biosample_accession: Optional[str] = Field(default=..., description="""NCBI BioSample accession.""", json_schema_extra = { "linkml_meta": {'alias': 'biosample_accession',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
@@ -511,9 +511,9 @@ class HiFiSequencingData(SequencingData):
                        'HiFiSequencingData',
                        'IlluminaSequencingData',
                        'OntSequencingData']} })
-    deepconsensus_coverage: Optional[float] = Field(default=None, description="""Coverage depth after DeepConsensus processing.""", json_schema_extra = { "linkml_meta": {'alias': 'deepconsensus_coverage', 'domain_of': ['HiFiSequencingData']} })
-    deepconsensus_filename: Optional[str] = Field(default=None, description="""Filename of the DeepConsensus output file.""", json_schema_extra = { "linkml_meta": {'alias': 'deepconsensus_filename', 'domain_of': ['HiFiSequencingData']} })
-    deepconsensus_path: Optional[str] = Field(default=None, description="""File path to the DeepConsensus output.""", json_schema_extra = { "linkml_meta": {'alias': 'deepconsensus_path', 'domain_of': ['HiFiSequencingData']} })
+    deepconsensus_coverage: Optional[float] = Field(default=..., description="""Coverage depth after DeepConsensus processing.""", json_schema_extra = { "linkml_meta": {'alias': 'deepconsensus_coverage', 'domain_of': ['HiFiSequencingData']} })
+    deepconsensus_filename: Optional[str] = Field(default=..., description="""Filename of the DeepConsensus output file.""", json_schema_extra = { "linkml_meta": {'alias': 'deepconsensus_filename', 'domain_of': ['HiFiSequencingData']} })
+    deepconsensus_path: Optional[str] = Field(default=..., description="""File path to the DeepConsensus output.""", json_schema_extra = { "linkml_meta": {'alias': 'deepconsensus_path', 'domain_of': ['HiFiSequencingData']} })
     filename: str = Field(default=..., description="""File the metadata refers to.""", json_schema_extra = { "linkml_meta": {'alias': 'filename',
          'domain_of': ['SequencingData',
                        'HiCSequencingData',
@@ -530,13 +530,13 @@ class HiFiSequencingData(SequencingData):
                        'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    generator_contact: Optional[str] = Field(default=None, description="""Contact person for problems/inquiries about the data.""", json_schema_extra = { "linkml_meta": {'alias': 'generator_contact',
+    generator_contact: Optional[str] = Field(default=..., description="""Contact person for problems/inquiries about the data.""", json_schema_extra = { "linkml_meta": {'alias': 'generator_contact',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    generator_facility: Optional[str] = Field(default=None, description="""Facility that created the sequencing reads.""", json_schema_extra = { "linkml_meta": {'alias': 'generator_facility',
+    generator_facility: Optional[str] = Field(default=..., description="""Facility that created the sequencing reads.""", json_schema_extra = { "linkml_meta": {'alias': 'generator_facility',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
@@ -564,7 +564,7 @@ class HiFiSequencingData(SequencingData):
                        'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    lima_version: Optional[str] = Field(default=None, description="""Version of the Lima adapter trimming software.""", json_schema_extra = { "linkml_meta": {'alias': 'lima_version',
+    lima_version: Optional[str] = Field(default=..., description="""Version of the Lima adapter trimming software.""", json_schema_extra = { "linkml_meta": {'alias': 'lima_version',
          'domain_of': ['HiFiSequencingData', 'KinnexSequencingData']} })
     mm_tag: bool = Field(default=..., description="""Whether the data contains methylation (MM) tags.""", json_schema_extra = { "linkml_meta": {'alias': 'mm_tag', 'domain_of': ['HiFiSequencingData']} })
     n50: int = Field(default=..., description="""Read length where 50% of bases in the HiFi dataset are in reads of this length or longer.""", json_schema_extra = { "linkml_meta": {'alias': 'n50',
@@ -586,7 +586,7 @@ class HiFiSequencingData(SequencingData):
                        'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    primrose_filename: Optional[str] = Field(default=None, description="""Filename of the Primrose basecalling output (if used).""", json_schema_extra = { "linkml_meta": {'alias': 'primrose_filename', 'domain_of': ['HiFiSequencingData']} })
+    primrose_filename: Optional[str] = Field(default=..., description="""Filename of the Primrose basecalling output (if used).""", json_schema_extra = { "linkml_meta": {'alias': 'primrose_filename', 'domain_of': ['HiFiSequencingData']} })
     production: str = Field(default=..., description="""Name of original data submisson.""", json_schema_extra = { "linkml_meta": {'alias': 'production',
          'domain_of': ['HiCSequencingData',
                        'HiFiSequencingData',
@@ -600,7 +600,7 @@ class HiFiSequencingData(SequencingData):
                        'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    study: Optional[str] = Field(default=None, description="""Name or identifier of the study that generated the data.""", json_schema_extra = { "linkml_meta": {'alias': 'study',
+    study: Optional[str] = Field(default=..., description="""Name or identifier of the study that generated the data.""", json_schema_extra = { "linkml_meta": {'alias': 'study',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
@@ -651,11 +651,11 @@ class IlluminaSequencingData(SequencingData):
                         'basecaller_version': {'name': 'basecaller_version',
                                                'required': False}}})
 
-    basecaller: Optional[str] = Field(default=None, description="""Software used for basecalling ONT signal data.""", json_schema_extra = { "linkml_meta": {'alias': 'basecaller',
+    basecaller: Optional[str] = Field(default=..., description="""Software used for basecalling ONT signal data.""", json_schema_extra = { "linkml_meta": {'alias': 'basecaller',
          'domain_of': ['IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    basecaller_version: Optional[str] = Field(default=None, description="""Version of the basecalling software used.""", json_schema_extra = { "linkml_meta": {'alias': 'basecaller_version',
+    basecaller_version: Optional[str] = Field(default=..., description="""Version of the basecalling software used.""", json_schema_extra = { "linkml_meta": {'alias': 'basecaller_version',
          'domain_of': ['IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
@@ -698,9 +698,9 @@ class IlluminaSequencingData(SequencingData):
                        'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    maternal_id: Optional[str] = Field(default=None, description="""Sample ID of the individual's mother.""", json_schema_extra = { "linkml_meta": {'alias': 'maternal_id', 'domain_of': ['IlluminaSequencingData']} })
-    other_comments: Optional[str] = Field(default=None, description="""Additional notes or comments about the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'other_comments', 'domain_of': ['IlluminaSequencingData']} })
-    paternal_id: Optional[str] = Field(default=None, description="""Sample ID of the individual's father.""", json_schema_extra = { "linkml_meta": {'alias': 'paternal_id', 'domain_of': ['IlluminaSequencingData']} })
+    maternal_id: Optional[str] = Field(default=..., description="""Sample ID of the individual's mother.""", json_schema_extra = { "linkml_meta": {'alias': 'maternal_id', 'domain_of': ['IlluminaSequencingData']} })
+    other_comments: Optional[str] = Field(default=..., description="""Additional notes or comments about the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'other_comments', 'domain_of': ['IlluminaSequencingData']} })
+    paternal_id: Optional[str] = Field(default=..., description="""Sample ID of the individual's father.""", json_schema_extra = { "linkml_meta": {'alias': 'paternal_id', 'domain_of': ['IlluminaSequencingData']} })
     path: str = Field(default=..., description="""File path to the data in storage system.""", json_schema_extra = { "linkml_meta": {'alias': 'path',
          'domain_of': ['SequencingData',
                        'HiCSequencingData',
@@ -726,9 +726,9 @@ class IlluminaSequencingData(SequencingData):
                        'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    second_order: Optional[str] = Field(default=None, description="""Second-order relatives in the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'second_order', 'domain_of': ['IlluminaSequencingData']} })
-    siblings: Optional[str] = Field(default=None, description="""Sample IDs of siblings.""", json_schema_extra = { "linkml_meta": {'alias': 'siblings', 'domain_of': ['IlluminaSequencingData']} })
-    third_order: Optional[str] = Field(default=None, description="""Third-order relatives in the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'third_order', 'domain_of': ['IlluminaSequencingData']} })
+    second_order: Optional[str] = Field(default=..., description="""Second-order relatives in the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'second_order', 'domain_of': ['IlluminaSequencingData']} })
+    siblings: Optional[str] = Field(default=..., description="""Sample IDs of siblings.""", json_schema_extra = { "linkml_meta": {'alias': 'siblings', 'domain_of': ['IlluminaSequencingData']} })
+    third_order: Optional[str] = Field(default=..., description="""Third-order relatives in the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'third_order', 'domain_of': ['IlluminaSequencingData']} })
     total_gbp: float = Field(default=..., description="""Total gigabase pairs (total_bp / 1000000000).""", json_schema_extra = { "linkml_meta": {'alias': 'total_gbp',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
@@ -767,7 +767,7 @@ class KinnexSequencingData(SequencingData):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://github.com/human-pangenomics/hprc-data-explorer/blob/main/catalog/schema/sequencing_data.yaml#'})
 
-    accession: Optional[str] = Field(default=None, description="""Database accession number of data entity (e.g. SRR or ERR identifier).""", json_schema_extra = { "linkml_meta": {'alias': 'accession',
+    accession: Optional[str] = Field(default=..., description="""Database accession number of data entity (e.g. SRR or ERR identifier).""", json_schema_extra = { "linkml_meta": {'alias': 'accession',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
@@ -782,13 +782,13 @@ class KinnexSequencingData(SequencingData):
          'domain_of': ['IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    bioproject_accession: Optional[str] = Field(default=None, description="""NCBI BioProject accession.""", json_schema_extra = { "linkml_meta": {'alias': 'bioproject_accession',
+    bioproject_accession: Optional[str] = Field(default=..., description="""NCBI BioProject accession.""", json_schema_extra = { "linkml_meta": {'alias': 'bioproject_accession',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    biosample_accession: Optional[str] = Field(default=None, description="""NCBI BioSample accession.""", json_schema_extra = { "linkml_meta": {'alias': 'biosample_accession',
+    biosample_accession: Optional[str] = Field(default=..., description="""NCBI BioSample accession.""", json_schema_extra = { "linkml_meta": {'alias': 'biosample_accession',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
@@ -812,13 +812,13 @@ class KinnexSequencingData(SequencingData):
                        'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    generator_contact: Optional[str] = Field(default=None, description="""Contact person for problems/inquiries about the data.""", json_schema_extra = { "linkml_meta": {'alias': 'generator_contact',
+    generator_contact: Optional[str] = Field(default=..., description="""Contact person for problems/inquiries about the data.""", json_schema_extra = { "linkml_meta": {'alias': 'generator_contact',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    generator_facility: Optional[str] = Field(default=None, description="""Facility that created the sequencing reads.""", json_schema_extra = { "linkml_meta": {'alias': 'generator_facility',
+    generator_facility: Optional[str] = Field(default=..., description="""Facility that created the sequencing reads.""", json_schema_extra = { "linkml_meta": {'alias': 'generator_facility',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
@@ -847,7 +847,7 @@ class KinnexSequencingData(SequencingData):
                        'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    lima_version: Optional[str] = Field(default=None, description="""Version of the Lima adapter trimming software.""", json_schema_extra = { "linkml_meta": {'alias': 'lima_version',
+    lima_version: Optional[str] = Field(default=..., description="""Version of the Lima adapter trimming software.""", json_schema_extra = { "linkml_meta": {'alias': 'lima_version',
          'domain_of': ['HiFiSequencingData', 'KinnexSequencingData']} })
     path: str = Field(default=..., description="""File path to the data in storage system.""", json_schema_extra = { "linkml_meta": {'alias': 'path',
          'domain_of': ['SequencingData',
@@ -880,7 +880,7 @@ class KinnexSequencingData(SequencingData):
                        'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    study: Optional[str] = Field(default=None, description="""Name or identifier of the study that generated the data.""", json_schema_extra = { "linkml_meta": {'alias': 'study',
+    study: Optional[str] = Field(default=..., description="""Name or identifier of the study that generated the data.""", json_schema_extra = { "linkml_meta": {'alias': 'study',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
@@ -923,7 +923,7 @@ class OntSequencingData(SequencingData):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://github.com/human-pangenomics/hprc-data-explorer/blob/main/catalog/schema/sequencing_data.yaml#'})
 
     coverage_over_100kb: float = Field(default=..., description="""Coverage from reads 100kb or longer.""", json_schema_extra = { "linkml_meta": {'alias': 'coverage_over_100kb', 'domain_of': ['OntSequencingData']} })
-    accession: Optional[str] = Field(default=None, description="""Database accession number of data entity (e.g. SRR or ERR identifier).""", json_schema_extra = { "linkml_meta": {'alias': 'accession',
+    accession: Optional[str] = Field(default=..., description="""Database accession number of data entity (e.g. SRR or ERR identifier).""", json_schema_extra = { "linkml_meta": {'alias': 'accession',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
@@ -938,13 +938,13 @@ class OntSequencingData(SequencingData):
          'domain_of': ['IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    bioproject_accession: Optional[str] = Field(default=None, description="""NCBI BioProject accession.""", json_schema_extra = { "linkml_meta": {'alias': 'bioproject_accession',
+    bioproject_accession: Optional[str] = Field(default=..., description="""NCBI BioProject accession.""", json_schema_extra = { "linkml_meta": {'alias': 'bioproject_accession',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    biosample_accession: Optional[str] = Field(default=None, description="""NCBI BioSample accession.""", json_schema_extra = { "linkml_meta": {'alias': 'biosample_accession',
+    biosample_accession: Optional[str] = Field(default=..., description="""NCBI BioSample accession.""", json_schema_extra = { "linkml_meta": {'alias': 'biosample_accession',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
@@ -971,13 +971,13 @@ class OntSequencingData(SequencingData):
                        'IlluminaSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    generator_contact: Optional[str] = Field(default=None, description="""Contact person for problems/inquiries about the data.""", json_schema_extra = { "linkml_meta": {'alias': 'generator_contact',
+    generator_contact: Optional[str] = Field(default=..., description="""Contact person for problems/inquiries about the data.""", json_schema_extra = { "linkml_meta": {'alias': 'generator_contact',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
                        'KinnexSequencingData',
                        'OntSequencingData']} })
-    generator_facility: Optional[str] = Field(default=None, description="""Facility that created the sequencing reads.""", json_schema_extra = { "linkml_meta": {'alias': 'generator_facility',
+    generator_facility: Optional[str] = Field(default=..., description="""Facility that created the sequencing reads.""", json_schema_extra = { "linkml_meta": {'alias': 'generator_facility',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',
@@ -1038,7 +1038,7 @@ class OntSequencingData(SequencingData):
                        'KinnexSequencingData',
                        'OntSequencingData']} })
     sequencing_chemistry: str = Field(default=..., description="""Chemistry version used for ONT sequencing.""", json_schema_extra = { "linkml_meta": {'alias': 'sequencing_chemistry', 'domain_of': ['OntSequencingData']} })
-    study: Optional[str] = Field(default=None, description="""Name or identifier of the study that generated the data.""", json_schema_extra = { "linkml_meta": {'alias': 'study',
+    study: Optional[str] = Field(default=..., description="""Name or identifier of the study that generated the data.""", json_schema_extra = { "linkml_meta": {'alias': 'study',
          'domain_of': ['HiCSequencingData',
                        'DeepConsensusSequencingData',
                        'HiFiSequencingData',

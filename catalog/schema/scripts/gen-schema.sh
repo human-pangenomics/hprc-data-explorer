@@ -5,7 +5,7 @@ SCHEMA_NAMES=(sequencing_data assemblies annotations alignments)
 # Generate Pydantic models
 for name in ${SCHEMA_NAMES[@]}
 do
-  gen-pydantic --extra-fields ignore ./catalog/schema/$name.yaml > ./catalog/build/py/generated_schema/$name.py
+  python catalog/schema/scripts/gen-pydantic.py ./catalog/schema/$name.yaml > ./catalog/build/py/generated_schema/$name.py
 done
 
 # Generate TypeScript definitions
