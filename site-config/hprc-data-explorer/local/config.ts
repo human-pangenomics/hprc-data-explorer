@@ -65,6 +65,31 @@ export function makeConfig(browserUrl: string, gitHubUrl: string): SiteConfig {
               label: "Help & Documentation",
               menuItems: [
                 {
+                  label: "Data Use Agreement",
+                  target: ANCHOR_TARGET.BLANK,
+                  url: "https://humanpangenome.org/data-use/",
+                },
+                {
+                  label: "Samples",
+                  target: ANCHOR_TARGET.BLANK,
+                  url: "https://github.com/human-pangenomics/hprc_intermediate_assembly/blob/main/data_tables/sample/README.md",
+                },
+                {
+                  label: "Assemblies",
+                  target: ANCHOR_TARGET.BLANK,
+                  url: "https://github.com/human-pangenomics/hprc_intermediate_assembly/blob/main/data_tables/README.md",
+                },
+                {
+                  label: "Sequencing Data",
+                  target: ANCHOR_TARGET.BLANK,
+                  url: "https://github.com/human-pangenomics/hprc_intermediate_assembly/blob/main/data_tables/sequencing_data/README.md",
+                },
+                {
+                  label: "Annotations",
+                  target: ANCHOR_TARGET.BLANK,
+                  url: "https://github.com/human-pangenomics/hprc_intermediate_assembly/blob/main/data_tables/annotation/README.md",
+                },
+                {
                   icon: C.GitHubIcon({ fontSize: "small" }),
                   label: "GitHub",
                   target: ANCHOR_TARGET.BLANK,
