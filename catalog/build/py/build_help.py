@@ -14,12 +14,12 @@ class HprcFieldValidationError(HprcValidationError):
         self.row = row
         self.field = field
 
-class HprcSourceFileValidationError(HprcValidationError):
-    def __init__(self, message, filename, errors):
+class HprcMultiFieldValidationError(HprcValidationError):
+    def __init__(self, message, row, fields):
         super().__init__(message)
         self.message = message
-        self.filename = filename
-        self.errors = errors
+        self.row = row
+        self.fields = fields
 
 
 def map_columns(df, **mappers):
@@ -75,21 +75,38 @@ def cast_row(source_row_dict, row_index, field_type_mappers):
         for k, v in source_row_dict.items()
     }
 
-def validate_row(source_row_dict, row_index, field_type_mappers, model):
+def check_non_applicable_slots(source_row_dict, row_index, model, schemaview):
+    model_field_names = get_pydantic_field_names(model)
+    non_applicable_slots = [name for name in schemaview.all_slots().keys() if name in source_row_dict and name not in model_field_names]
+    if non_applicable_slots:
+        raise HprcMultiFieldValidationError("Specified slot in schema but not class", row_index, non_applicable_slots)
+
+def validate_row(source_row_dict, row_index, field_type_mappers, model, schemaview):
+    errors = []
+
+    try:
+        check_non_applicable_slots(source_row_dict, row_index, model, schemaview)
+    except HprcMultiFieldValidationError as err:
+        errors += [HprcFieldValidationError(err.message, err.row, field) for field in err.fields]
+    
     try:
         row_dict = cast_row(source_row_dict, row_index, field_type_mappers)
     except HprcFieldValidationError as err:
-        return [err]
-    try:
-        model.model_validate(row_dict)
-        return None
-    except ValidationError as err:
-        return [HprcFieldValidationError(e["msg"], row_index, e["loc"][0]) for e in err.errors()]
+        errors += [err]
+        row_dict = None
+    
+    if row_dict is not None:
+        try:
+            model.model_validate(row_dict)
+        except ValidationError as err:
+            errors += [HprcFieldValidationError(e["msg"], row_index, e["loc"][0]) for e in err.errors()]
+    
+    return errors or None
 
 def validate_and_normalize_df(df, model, schemaview):
     field_type_mappers = get_field_type_mappers(schemaview, model)
     rows = df.to_dict(orient="records")
-    errors = [err for result in (validate_row(row, i + 2, field_type_mappers, model) for i, row in enumerate(rows)) if result is not None for err in result]
+    errors = [err for result in (validate_row(row, i + 2, field_type_mappers, model, schemaview) for i, row in enumerate(rows)) if result is not None for err in result]
 
     missing_columns = [name for name in get_pydantic_field_names(model) if name not in df]
 
