@@ -102,7 +102,7 @@ class ReleaseOneAnnotation(ConfiguredBaseModel):
          'domain_of': ['Annotation',
                        'ReleaseOneAnnotation',
                        'ReleaseOneFlaggerAnnotation']} })
-    haplotype: Optional[int] = Field(default=None, description="""Haplotype.""", ge=0, le=2, json_schema_extra = { "linkml_meta": {'alias': 'haplotype', 'domain_of': ['Annotation', 'ReleaseOneAnnotation']} })
+    haplotype: Optional[int] = Field(default=..., description="""Haplotype.""", ge=0, le=2, json_schema_extra = { "linkml_meta": {'alias': 'haplotype', 'domain_of': ['Annotation', 'ReleaseOneAnnotation']} })
     location: str = Field(default=..., description="""S3 URI to annotation.""", json_schema_extra = { "linkml_meta": {'alias': 'location',
          'domain_of': ['Annotation',
                        'ReleaseOneAnnotation',

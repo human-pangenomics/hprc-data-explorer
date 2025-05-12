@@ -84,8 +84,8 @@ class Alignment(ConfiguredBaseModel):
     file: str = Field(default=..., description="""File name.""", json_schema_extra = { "linkml_meta": {'alias': 'file', 'domain_of': ['Alignment']} })
     loc: str = Field(default=..., description="""S3 URI to file.""", json_schema_extra = { "linkml_meta": {'alias': 'loc', 'domain_of': ['Alignment']} })
     pipeline: str = Field(default=..., description="""Pipeline.""", json_schema_extra = { "linkml_meta": {'alias': 'pipeline', 'domain_of': ['Alignment']} })
-    reference_coordinates: Optional[str] = Field(default=None, description="""Reference coordinates.""", json_schema_extra = { "linkml_meta": {'alias': 'reference_coordinates', 'domain_of': ['Alignment']} })
-    version: Optional[str] = Field(default=None, description="""HPRC version.""", json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['Alignment']} })
+    reference_coordinates: Optional[str] = Field(default=..., description="""Reference coordinates.""", json_schema_extra = { "linkml_meta": {'alias': 'reference_coordinates', 'domain_of': ['Alignment']} })
+    version: Optional[str] = Field(default=..., description="""HPRC version.""", json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['Alignment']} })
 
 
 # Model rebuild
