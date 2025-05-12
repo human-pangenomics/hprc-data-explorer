@@ -1,8 +1,10 @@
 import { setConfig } from "@databiosphere/findable-ui/lib/config/config";
 import { SiteConfig } from "@databiosphere/findable-ui/lib/config/entities";
 import hprcDataExplorerLocal from "../../site-config/hprc-data-explorer/local/config";
+import hprcDataExplorerProd from "../../site-config/hprc-data-explorer/prod/config";
 const CONFIGS: { [k: string]: SiteConfig } = {
   "hprc-data-explorer-local": hprcDataExplorerLocal,
+  "hprc-data-explorer-prod": hprcDataExplorerProd,
 };
 
 let appConfig: SiteConfig | null = null;
