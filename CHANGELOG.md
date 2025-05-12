@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.0](https://github.com/human-pangenomics/hprc-data-explorer/compare/v0.2.1...v0.3.0) (2025-05-12)
+
+
+### Features
+
+* map haplotype 0 to n/a ([#171](https://github.com/human-pangenomics/hprc-data-explorer/issues/171)) ([#176](https://github.com/human-pangenomics/hprc-data-explorer/issues/176)) ([a072da8](https://github.com/human-pangenomics/hprc-data-explorer/commit/a072da860d86cef5ad98409cd9de1e38e9e10d8d))
+* require that optional fields be explicitly present in source data ([#170](https://github.com/human-pangenomics/hprc-data-explorer/issues/170)) ([#175](https://github.com/human-pangenomics/hprc-data-explorer/issues/175)) ([b435bea](https://github.com/human-pangenomics/hprc-data-explorer/commit/b435beadcbba4b19288c6225a80dd4c44ed29260))
+* update schema and catalog following 2025-05-09 review ([#172](https://github.com/human-pangenomics/hprc-data-explorer/issues/172)) ([#173](https://github.com/human-pangenomics/hprc-data-explorer/issues/173)) ([b1b8538](https://github.com/human-pangenomics/hprc-data-explorer/commit/b1b85382249e66fc975403b205f49b627c51bd03))
+
 ## [0.2.1](https://github.com/human-pangenomics/hprc-data-explorer/compare/v0.2.0...v0.2.1) (2025-05-09)
 
 
