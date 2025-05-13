@@ -9,7 +9,7 @@ n 20.10.0
 npm ci
 
 # Build
-npm run build:local
+npm run build:prod
 
 export BUCKET=s3://hwi-data.humanpangenome.prod/
 export SRCDIR=out/
