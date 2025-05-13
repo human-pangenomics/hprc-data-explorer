@@ -20,6 +20,8 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { NextPage } from "next";
 import type { AppProps } from "next/app";
 import { config } from "../app/config/config";
+import { useEffect } from "react";
+import TagManager from "react-gtm-module";
 
 export interface PageProps extends AzulEntitiesStaticResponse {
   pageTitle?: string;
@@ -36,11 +38,20 @@ export type AppPropsWithComponent = AppProps & {
 function MyApp({ Component, pageProps }: AppPropsWithComponent): JSX.Element {
   // Set up the site configuration, layout and theme.
   const appConfig = config();
-  const { layout, redirectRootToPath, themeOptions } = appConfig;
+  const { analytics, layout, redirectRootToPath, themeOptions } = appConfig;
   const { floating, footer, header } = layout || {};
+  const { gtmAuth, gtmId, gtmPreview } = analytics || {};
   const appTheme = createAppTheme(themeOptions);
   const { entityListType, pageTitle } = pageProps as PageProps;
   const Main = Component.Main || DXMain;
+
+  // Initialize Google Tag Manager.
+  useEffect(() => {
+    if (gtmId) {
+      TagManager.initialize({ auth: gtmAuth, gtmId, preview: gtmPreview });
+    }
+  }, [gtmAuth, gtmId, gtmPreview]);
+
   return (
     <EmotionThemeProvider theme={appTheme}>
       <ThemeProvider theme={appTheme}>

@@ -18,6 +18,11 @@ const PORTAL_URL = "https://humanpangenome.org";
 
 export function makeConfig(browserUrl: string, gitHubUrl: string): SiteConfig {
   return {
+    analytics: {
+      gtmAuth: "X6cwUf6LJcVZ8EPsWjzNcw",
+      gtmId: "GTM-MMH75PR4",
+      gtmPreview: "env-3",
+    },
     appTitle: APP_TITLE,
     browserURL: browserUrl,
     dataSource: {
