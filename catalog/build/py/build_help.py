@@ -79,7 +79,7 @@ def check_non_applicable_slots(source_row_dict, row_index, model, schemaview):
     model_field_names = get_pydantic_field_names(model)
     non_applicable_slots = [name for name in schemaview.all_slots().keys() if name in source_row_dict and name not in model_field_names]
     if non_applicable_slots:
-        raise HprcMultiFieldValidationError("Specified slot in schema but not class", row_index, non_applicable_slots)
+        raise HprcMultiFieldValidationError("Specified slot is in the broader model but not the specific class", row_index, non_applicable_slots)
 
 def validate_row(source_row_dict, row_index, field_type_mappers, model, schemaview):
     errors = []
