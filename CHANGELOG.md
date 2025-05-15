@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.4.0](https://github.com/human-pangenomics/hprc-data-explorer/compare/v0.3.0...v0.4.0) (2025-05-15)
+
+
+### Features
+
+* add prod build script ([#179](https://github.com/human-pangenomics/hprc-data-explorer/issues/179)) ([#180](https://github.com/human-pangenomics/hprc-data-explorer/issues/180)) ([5508616](https://github.com/human-pangenomics/hprc-data-explorer/commit/550861650b246ff93278ef473fb7aa548dc3a2f8))
+* added prod config [#178](https://github.com/human-pangenomics/hprc-data-explorer/issues/178) ([#182](https://github.com/human-pangenomics/hprc-data-explorer/issues/182)) ([99b4b32](https://github.com/human-pangenomics/hprc-data-explorer/commit/99b4b32676063d5c1048ffb92b1f46d49c2bd4c3))
+* validate that source files don't contain slots used by the broader model but not the specific class ([#183](https://github.com/human-pangenomics/hprc-data-explorer/issues/183)) ([#184](https://github.com/human-pangenomics/hprc-data-explorer/issues/184)) ([a9cd1a8](https://github.com/human-pangenomics/hprc-data-explorer/commit/a9cd1a8952b080e95f2e14b4df929419c2f9b33e))
+
 ## [0.3.0](https://github.com/human-pangenomics/hprc-data-explorer/compare/v0.2.1...v0.3.0) (2025-05-12)
 
 
