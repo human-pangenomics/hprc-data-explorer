@@ -58,6 +58,7 @@ function MyApp({ Component, pageProps }: AppPropsWithComponent): JSX.Element {
       event: "gtm.js",
       "gtm.start": Date.now(),
     });
+    console.log(window.dataLayer);
     if (gtmId) {
       TagManager.initialize({ auth: gtmAuth, gtmId, preview: gtmPreview });
     }
