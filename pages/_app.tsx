@@ -47,6 +47,17 @@ function MyApp({ Component, pageProps }: AppPropsWithComponent): JSX.Element {
 
   // Initialize Google Tag Manager.
   useEffect(() => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      default_consent: {
+        ad_personalization: "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        analytics_storage: "denied",
+      },
+      event: "gtm.js",
+      "gtm.start": Date.now(),
+    });
     if (gtmId) {
       TagManager.initialize({ auth: gtmAuth, gtmId, preview: gtmPreview });
     }
