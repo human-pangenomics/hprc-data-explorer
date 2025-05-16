@@ -49,16 +49,12 @@ function MyApp({ Component, pageProps }: AppPropsWithComponent): JSX.Element {
   useEffect(() => {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
-      default_consent: {
-        ad_personalization: "denied",
-        ad_storage: "denied",
-        ad_user_data: "denied",
-        analytics_storage: "denied",
-      },
-      event: "gtm.js",
-      "gtm.start": Date.now(),
+      ad_personalization: "denied",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      analytics_storage: "denied",
+      event: "default_consent", // ⚠ must be this exact string
     });
-    console.log(window.dataLayer);
     if (gtmId) {
       TagManager.initialize({ auth: gtmAuth, gtmId, preview: gtmPreview });
     }
