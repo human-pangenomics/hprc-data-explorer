@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/human-pangenomics/hprc-data-explorer/compare/v0.4.0...v0.5.0) (2025-05-17)
+
+
+### Features
+
+* drop source columns that aren't in the file's linkml class ([#185](https://github.com/human-pangenomics/hprc-data-explorer/issues/185)) ([#186](https://github.com/human-pangenomics/hprc-data-explorer/issues/186)) ([0d7da8f](https://github.com/human-pangenomics/hprc-data-explorer/commit/0d7da8f6e60be58d73a82c28d4c26f8d408e96bf))
+
 ## [0.4.0](https://github.com/human-pangenomics/hprc-data-explorer/compare/v0.3.0...v0.4.0) (2025-05-15)
 
 
