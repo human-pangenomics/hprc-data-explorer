@@ -108,7 +108,9 @@ def validate_and_normalize_df(df, model, schemaview):
     rows = df.to_dict(orient="records")
     errors = [err for result in (validate_row(row, i + 2, field_type_mappers, model, schemaview) for i, row in enumerate(rows)) if result is not None for err in result]
 
-    missing_columns = [name for name in get_pydantic_field_names(model) if name not in df]
+    model_fields = get_pydantic_field_names(model)
+
+    missing_columns = [name for name in model_fields if name not in df]
 
     if missing_columns:
         df_with_schema_columns = df.copy()
@@ -116,6 +118,8 @@ def validate_and_normalize_df(df, model, schemaview):
             df_with_schema_columns[name] = ""
     else:
         df_with_schema_columns = df
+
+    df_with_schema_columns = df_with_schema_columns.drop(columns=[name for name in df if name not in model_fields])
     
     return (df_with_schema_columns, errors)
 
