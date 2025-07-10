@@ -48,7 +48,6 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
     top: [],
   },
   exploreMode: EXPLORE_MODE.CS_FETCH_CS_FILTERING,
-  explorerTitle: "Assemblies",
   getId: getAssemblyId,
   label: "Assemblies",
   list: {
@@ -59,6 +58,7 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
           viewBuilder: V.buildAssemblyDownload,
         } as ComponentConfig<typeof C.FileDownload, HPRCDataExplorerAssembly>,
         enableGrouping: false,
+        enableHiding: false,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.DOWNLOAD,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.DOWNLOAD,
         width: { max: "auto", min: "76px" },
@@ -71,6 +71,7 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         enableGrouping: true,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SAMPLE_ID,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
+        meta: { columnPinned: true },
         width: { max: "0.5fr", min: "160px" },
       },
       {
@@ -217,8 +218,8 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
   listView: {
     disablePagination: true,
     enableDownload: true,
-    enableTab: false,
   },
   route: "assemblies",
   staticLoadFile: "catalog/output/assemblies.json",
+  ui: { title: "Assemblies" },
 };

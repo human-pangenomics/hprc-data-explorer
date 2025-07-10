@@ -30,7 +30,6 @@ export function makeConfig(browserUrl: string, gitHubUrl: string): SiteConfig {
       annotationEntityConfig,
       alignmentEntityConfig,
     ],
-    explorerTitle: APP_TITLE,
     gitHubUrl,
     layout: {
       footer: {
