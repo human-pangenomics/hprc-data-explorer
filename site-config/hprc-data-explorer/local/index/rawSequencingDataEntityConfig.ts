@@ -80,7 +80,6 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
       top: [],
     },
     exploreMode: EXPLORE_MODE.CS_FETCH_CS_FILTERING,
-    explorerTitle: "Sequencing Data",
     getId: getRawSequencingDataId,
     label: "Sequencing Data",
     list: {
@@ -94,6 +93,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             HPRCDataExplorerRawSequencingData
           >,
           enableGrouping: false,
+          enableHiding: false,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.DOWNLOAD,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.DOWNLOAD,
           width: { max: "auto", min: "76px" },
@@ -109,6 +109,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           enableGrouping: false,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILENAME,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
+          meta: { columnPinned: true },
           width: { max: "1.5fr", min: "212px" },
         },
         {
@@ -476,8 +477,8 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
     listView: {
       disablePagination: true,
       enableDownload: true,
-      enableTab: false,
     },
     route: "raw-sequencing-data",
     staticLoadFile: "catalog/output/sequencing-data.json",
+    ui: { title: "Sequencing Data" },
   };

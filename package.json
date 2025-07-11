@@ -17,7 +17,7 @@
     "gen-schema": "poetry run ./catalog/schema/scripts/gen-schema.sh"
   },
   "dependencies": {
-    "@databiosphere/findable-ui": "^28.0.1",
+    "@databiosphere/findable-ui": "^38.2.0",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
     "@mdx-js/loader": "^3.0.1",
@@ -27,12 +27,20 @@
     "@next/mdx": "^14.2.28",
     "@observablehq/plot": "^0.6.17",
     "@tanstack/react-table": "^8.19.2",
+    "@tanstack/react-virtual": "^3.13.12",
     "isomorphic-dompurify": "^2.22.0",
     "next": "^14.2.28",
     "next-compose-plugins": "^2.2.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-window": "1.8.9",
+    "rehype-raw": "^7.0.0",
+    "rehype-react": "^7.2.0",
+    "rehype-sanitize": "^5.0.1",
+    "remark-gfm": "^3.0.1",
+    "remark-parse": "^10.0.2",
+    "remark-rehype": "^10.1.0",
+    "unified": "^10.1.2",
     "uuid": "8.3.2",
     "yup": "^1.6.1"
   },
@@ -73,7 +81,7 @@
     "prettier": "^3.4.2",
     "prettier-plugin-organize-imports": "^4.1.0",
     "serve": "^14.2.4",
-    "typescript": "^5.7.2"
+    "typescript": "^5.5.4"
   },
   "engines": {
     "node": "20.10.0"

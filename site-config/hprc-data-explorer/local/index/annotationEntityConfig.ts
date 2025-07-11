@@ -54,7 +54,6 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
       top: [],
     },
     exploreMode: EXPLORE_MODE.CS_FETCH_CS_FILTERING,
-    explorerTitle: "Annotations",
     getId: getAnnotationId,
     label: "Annotations",
     list: {
@@ -68,6 +67,7 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
             HPRCDataExplorerAnnotation
           >,
           enableGrouping: false,
+          enableHiding: false,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.DOWNLOAD,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.DOWNLOAD,
           width: { max: "auto", min: "76px" },
@@ -80,6 +80,7 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
           enableGrouping: true,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SAMPLE_ID,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
+          meta: { columnPinned: true },
           width: { max: "0.5fr", min: "160px" },
         },
         {
@@ -164,8 +165,8 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
     listView: {
       disablePagination: true,
       enableDownload: true,
-      enableTab: false,
     },
     route: "annotations",
     staticLoadFile: "catalog/output/annotations.json",
+    ui: { title: "Annotations" },
   };

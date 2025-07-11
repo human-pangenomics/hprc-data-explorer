@@ -5,7 +5,7 @@ import {
 import * as MDX from "../../../../../../app/components/common/MDXContent";
 import * as V from "../../../../../../app/viewModelBuilders/catalog/hprc-data-explorer/common/viewModelBuilders";
 
-export const listHero: ComponentsConfig = [
+export const entityListSlot: ComponentsConfig = [
   {
     component: MDX.AlertAnnotationListHero,
     viewBuilder: V.buildAnnotationListHero,

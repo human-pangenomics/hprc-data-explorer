@@ -13,7 +13,7 @@ import {
   HPRC_DATA_EXPLORER_CATEGORY_KEY,
   HPRC_DATA_EXPLORER_CATEGORY_LABEL,
 } from "../../category";
-import { listHero } from "./alignment/listView/listHero";
+import { entityListSlot } from "./alignment/ui/entityList";
 
 /**
  * Entity config object responsible to config anything related to the /alignments route.
@@ -61,7 +61,6 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
     top: [],
   },
   exploreMode: EXPLORE_MODE.CS_FETCH_CS_FILTERING,
-  explorerTitle: "Alignments",
   getId: getAlignmentId,
   label: "Alignments",
   list: {
@@ -72,6 +71,7 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
           viewBuilder: V.buildAlignmentDownload,
         } as ComponentConfig<typeof C.FileDownload, HPRCDataExplorerAlignment>,
         enableGrouping: false,
+        enableHiding: false,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ALIGNMENT_DOWNLOAD,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ALIGNMENT_DOWNLOAD,
         width: { max: "auto", min: "76px" },
@@ -84,6 +84,7 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
         enableGrouping: false,
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILENAME,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
+        meta: { columnPinned: true },
         width: { max: "1.5fr", min: "212px" },
       },
       {
@@ -169,9 +170,8 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
   listView: {
     disablePagination: true,
     enableDownload: true,
-    enableTab: false,
-    listHero,
   },
   route: "alignments",
   staticLoadFile: "catalog/output/alignments.json",
+  ui: { slots: { entityListSlot }, title: "Alignments" },
 };
