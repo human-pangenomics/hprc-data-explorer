@@ -12,6 +12,7 @@ export type HPRCDataExplorerEntity =
   | HPRCDataExplorerRawSequencingData;
 
 export type HPRCDataExplorerRawSequencingData = WithAbsentValues<{
+  accession: string;
   basecaller: string;
   basecallerModel: string;
   basecallerVersion: string;
