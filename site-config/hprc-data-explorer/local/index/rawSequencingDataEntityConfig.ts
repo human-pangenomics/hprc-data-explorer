@@ -128,7 +128,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           enableGrouping: false,
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ACCESSION,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ACCESSION,
-          width: { max: "1.5fr", min: "212px" },
+          width: { max: "1fr", min: "160px" },
         },
         {
           componentConfig: {
