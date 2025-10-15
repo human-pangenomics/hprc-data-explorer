@@ -76,6 +76,7 @@ async function buildRawSequencingData(): Promise<
   );
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerRawSequencingData => ({
+      accession: parseStringOrAbsent(row.accession),
       basecaller: parseStringOrAbsent(row.basecaller),
       basecallerModel: parseStringOrAbsent(row.basecaller_model),
       basecallerVersion: parseStringOrAbsent(row.basecaller_version),

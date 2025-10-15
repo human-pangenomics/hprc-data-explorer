@@ -25,6 +25,11 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           categoryConfigs: [
             {
               enableChartView: false,
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.ACCESSION,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ACCESSION,
+            },
+            {
+              enableChartView: false,
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
             },
@@ -111,6 +116,19 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
           meta: { columnPinned: true },
           width: { max: "1.5fr", min: "212px" },
+        },
+        {
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildAccession,
+          } as ComponentConfig<
+            typeof C.BasicCell,
+            HPRCDataExplorerRawSequencingData
+          >,
+          enableGrouping: false,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ACCESSION,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ACCESSION,
+          width: { max: "1fr", min: "160px" },
         },
         {
           componentConfig: {

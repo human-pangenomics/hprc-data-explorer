@@ -1,4 +1,5 @@
 export const HPRC_DATA_EXPLORER_CATEGORY_KEY = {
+  ACCESSION: "accession",
   ALIGNMENT: "alignment",
   ALIGNMENT_DOWNLOAD: "loc",
   ANNOTATION_TYPE: "annotationType",
@@ -54,6 +55,7 @@ export const HPRC_DATA_EXPLORER_CATEGORY_KEY = {
 };
 
 export const HPRC_DATA_EXPLORER_CATEGORY_LABEL = {
+  ACCESSION: "Accession",
   ALIGNMENT: "Alignment",
   ALIGNMENT_DOWNLOAD: "",
   ANNOTATION_TYPE: "Annotation Type",

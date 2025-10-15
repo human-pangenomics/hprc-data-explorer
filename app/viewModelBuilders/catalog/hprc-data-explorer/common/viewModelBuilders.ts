@@ -13,6 +13,19 @@ import * as MDX from "../../../../components/common/MDXContent";
 import { ALERT_PROPS } from "@databiosphere/findable-ui/lib/components/common/Alert/constants";
 
 /**
+ * Build props for the accession cell.
+ * @param rawSequencingData - Raw sequencing data entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildAccession = (
+  rawSequencingData: HPRCDataExplorerRawSequencingData
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: rawSequencingData.accession,
+  };
+};
+
+/**
  * Build props for the alignment cell.
  * @param alignment - Alignment entity.
  * @returns Props to be used for the cell.
