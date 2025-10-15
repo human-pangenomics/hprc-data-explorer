@@ -768,5 +768,125 @@
     "pipeline": "pggb",
     "referenceCoordinates": "grch38",
     "version": "v1.0"
+  },
+  {
+    "alignment": "HPRC-v2.0-chm13-mc",
+    "fileSize": 5748718968,
+    "filename": "hprc-v2.0-mc-chm13.gbz",
+    "filetype": "gbz",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-chm13.gbz",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "chm13",
+    "version": "v2.0"
+  },
+  {
+    "alignment": "HPRC-v2.0-chm13-mc",
+    "fileSize": 64416139750,
+    "filename": "hprc-v2.0-mc-chm13.gfa.gz",
+    "filetype": "gfa",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-chm13.gfa.gz",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "chm13",
+    "version": "v2.0"
+  },
+  {
+    "alignment": "HPRC-v2.0-chm13-mc",
+    "fileSize": 21587310376,
+    "filename": "hprc-v2.0-mc-chm13.hapl",
+    "filetype": "hapl",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-chm13.hapl",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "chm13",
+    "version": "v2.0"
+  },
+  {
+    "alignment": "HPRC-v2.0-chm13-minigraph",
+    "fileSize": 897012349,
+    "filename": "hprc-v2.0-mc-chm13.sv.gfa.gz",
+    "filetype": "gfa",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-chm13.sv.gfa.gz",
+    "pipeline": "minigraph",
+    "referenceCoordinates": "chm13",
+    "version": "v2.0"
+  },
+  {
+    "alignment": "HPRC-v2.0-chm13-mc",
+    "fileSize": 2365870221,
+    "filename": "hprc-v2.0-mc-chm13.wave.vcf.gz",
+    "filetype": "vcf",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-chm13.wave.vcf.gz",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "chm13",
+    "version": "v2.0"
+  },
+  {
+    "alignment": "HPRC-v2.0-chm13-mc",
+    "fileSize": 2257083,
+    "filename": "hprc-v2.0-mc-chm13.wave.vcf.gz.tbi",
+    "filetype": "tbi",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-chm13.wave.vcf.gz.tbi",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "chm13",
+    "version": "v2.0"
+  },
+  {
+    "alignment": "HPRC-v2.0-grch38-mc",
+    "fileSize": 5419804360,
+    "filename": "hprc-v2.0-mc-grch38.gbz",
+    "filetype": "gbz",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-grch38.gbz",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "grch38",
+    "version": "v2.0"
+  },
+  {
+    "alignment": "HPRC-v2.0-grch38-mc",
+    "fileSize": 63140268368,
+    "filename": "hprc-v2.0-mc-grch38.gfa.gz",
+    "filetype": "gfa",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-grch38.gfa.gz",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "grch38",
+    "version": "v2.0"
+  },
+  {
+    "alignment": "HPRC-v2.0-grch38-mc",
+    "fileSize": 21418951584,
+    "filename": "hprc-v2.0-mc-grch38.hapl",
+    "filetype": "hapl",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-grch38.hapl",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "grch38",
+    "version": "v2.0"
+  },
+  {
+    "alignment": "HPRC-v2.0-grch38-minigraph",
+    "fileSize": 841612966,
+    "filename": "hprc-v2.0-mc-grch38.sv.gfa.gz",
+    "filetype": "gfa",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-grch38.sv.gfa.gz",
+    "pipeline": "minigraph",
+    "referenceCoordinates": "grch38",
+    "version": "v2.0"
+  },
+  {
+    "alignment": "HPRC-v2.0-grch38-mc",
+    "fileSize": 2275985017,
+    "filename": "hprc-v2.0-mc-grch38.wave.vcf.gz",
+    "filetype": "vcf",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-grch38.wave.vcf.gz",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "grch38",
+    "version": "v2.0"
+  },
+  {
+    "alignment": "HPRC-v2.0-grch38-mc",
+    "fileSize": 2202055,
+    "filename": "hprc-v2.0-mc-grch38.wave.vcf.gz.tbi",
+    "filetype": "tbi",
+    "loc": "s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-grch38.wave.vcf.gz.tbi",
+    "pipeline": "minigraph-cactus",
+    "referenceCoordinates": "grch38",
+    "version": "v2.0"
   }
 ]
