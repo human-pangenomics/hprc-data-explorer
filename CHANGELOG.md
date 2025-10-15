@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/human-pangenomics/hprc-data-explorer/compare/v0.5.0...v0.6.0) (2025-10-15)
+
+
+### Features
+
+* add accession column and filter to raw sequencing data list ([#193](https://github.com/human-pangenomics/hprc-data-explorer/issues/193)) ([#195](https://github.com/human-pangenomics/hprc-data-explorer/issues/195)) ([12591a7](https://github.com/human-pangenomics/hprc-data-explorer/commit/12591a7402349e82da93012e9ae313ebc4a2c9c3))
+
 ## [0.5.0](https://github.com/human-pangenomics/hprc-data-explorer/compare/v0.4.0...v0.5.0) (2025-05-17)
 
 
