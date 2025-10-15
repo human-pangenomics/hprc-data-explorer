@@ -1,4 +1,16 @@
 pipeline,reference_coordinates,use_case,file,loc,version,alignment,file_size
+minigraph,chm13,,hprc-v2.0-mc-chm13.sv.gfa.gz,s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-chm13.sv.gfa.gz,v2.0,HPRC-v2.0-chm13-minigraph,897012349
+minigraph-cactus,chm13,,hprc-v2.0-mc-chm13.gfa.gz,s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-chm13.gfa.gz,v2.0,HPRC-v2.0-chm13-mc,64416139750
+minigraph-cactus,chm13,giraffe-with-haplotype-sampling(recommended),hprc-v2.0-mc-chm13.gbz,s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-chm13.gbz,v2.0,HPRC-v2.0-chm13-mc,5748718968
+minigraph-cactus,chm13,giraffe-with-haplotype-sampling(recommended),hprc-v2.0-mc-chm13.hapl,s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-chm13.hapl,v2.0,HPRC-v2.0-chm13-mc,21587310376
+minigraph-cactus,chm13,,hprc-v2.0-mc-chm13.wave.vcf.gz,s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-chm13.wave.vcf.gz,v2.0,HPRC-v2.0-chm13-mc,2365870221
+minigraph-cactus,chm13,,hprc-v2.0-mc-chm13.wave.vcf.gz.tbi,s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-chm13.wave.vcf.gz.tbi,v2.0,HPRC-v2.0-chm13-mc,2257083
+minigraph,grch38,,hprc-v2.0-mc-grch38.sv.gfa.gz,s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-grch38.sv.gfa.gz,v2.0,HPRC-v2.0-grch38-minigraph,841612966
+minigraph-cactus,grch38,,hprc-v2.0-mc-grch38.gfa.gz,s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-grch38.gfa.gz,v2.0,HPRC-v2.0-grch38-mc,63140268368
+minigraph-cactus,grch38,giraffe-with-haplotype-sampling(recommended),hprc-v2.0-mc-grch38.gbz,s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-grch38.gbz,v2.0,HPRC-v2.0-grch38-mc,5419804360
+minigraph-cactus,grch38,giraffe-with-haplotype-sampling(recommended),hprc-v2.0-mc-grch38.hapl,s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-grch38.hapl,v2.0,HPRC-v2.0-grch38-mc,21418951584
+minigraph-cactus,grch38,,hprc-v2.0-mc-grch38.wave.vcf.gz,s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-grch38.wave.vcf.gz,v2.0,HPRC-v2.0-grch38-mc,2275985017
+minigraph-cactus,grch38,,hprc-v2.0-mc-grch38.wave.vcf.gz.tbi,s3://human-pangenomics/pangenomes/freeze/release2/minigraph-cactus/hprc-v2.0-mc-grch38.wave.vcf.gz.tbi,v2.0,HPRC-v2.0-grch38-mc,2202055
 pggb,,,hprc-v1.0-pggb.gfa.gz,s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/hprc-v1.0-pggb.gfa.gz,v1.0,HPRC-v1.0-pggb,15639532140
 pggb,,,hprc-v1.0-pggb.all.vs.grch38.untangle-m10000-s0-j0.delta.gz,s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/untangle/hprc-v1.0-pggb.all.vs.grch38.untangle-m10000-s0-j0.delta.gz,v1.0,HPRC-v1.0-pggb,270242271
 pggb,,,hprc-v1.0-pggb.all.vs.grch38.untangle-m10000-s0-j0.paf.gz,s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/untangle/hprc-v1.0-pggb.all.vs.grch38.untangle-m10000-s0-j0.paf.gz,v1.0,HPRC-v1.0-pggb,876920997
