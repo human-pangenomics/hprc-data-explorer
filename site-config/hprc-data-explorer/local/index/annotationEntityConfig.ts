@@ -149,8 +149,10 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
         },
       ],
       tableOptions: {
+        downloadFilename: "annotations",
         enableExpanding: true,
         enableGrouping: true,
+        enableTableDownload: true,
         initialState: {
           expanded: true,
           sorting: [
@@ -164,7 +166,6 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
     } as ListConfig<HPRCDataExplorerAnnotation>,
     listView: {
       disablePagination: true,
-      enableDownload: true,
     },
     route: "annotations",
     staticLoadFile: "catalog/output/annotations.json",

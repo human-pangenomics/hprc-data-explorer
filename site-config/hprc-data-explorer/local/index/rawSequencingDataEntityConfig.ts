@@ -479,8 +479,10 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
         },
       ],
       tableOptions: {
+        downloadFilename: "raw-sequencing-data",
         enableExpanding: true,
         enableGrouping: true,
+        enableTableDownload: true,
         initialState: {
           expanded: true,
           sorting: [
@@ -494,7 +496,6 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
     } as ListConfig<HPRCDataExplorerRawSequencingData>,
     listView: {
       disablePagination: true,
-      enableDownload: true,
     },
     route: "raw-sequencing-data",
     staticLoadFile: "catalog/output/sequencing-data.json",

@@ -150,8 +150,10 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
       },
     ],
     tableOptions: {
+      downloadFilename: "alignments",
       enableExpanding: true,
       enableGrouping: true,
+      enableTableDownload: true,
       initialState: {
         columnVisibility: {
           [HPRC_DATA_EXPLORER_CATEGORY_KEY.FILETYPE]: false,
@@ -169,7 +171,6 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
   } as ListConfig<HPRCDataExplorerAlignment>,
   listView: {
     disablePagination: true,
-    enableDownload: true,
   },
   route: "alignments",
   staticLoadFile: "catalog/output/alignments.json",

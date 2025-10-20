@@ -202,8 +202,10 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
       },
     ],
     tableOptions: {
+      downloadFilename: "assemblies",
       enableExpanding: true,
       enableGrouping: true,
+      enableTableDownload: true,
       initialState: {
         expanded: true,
         sorting: [
@@ -217,7 +219,6 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
   } as ListConfig<HPRCDataExplorerAssembly>,
   listView: {
     disablePagination: true,
-    enableDownload: true,
   },
   route: "assemblies",
   staticLoadFile: "catalog/output/assemblies.json",
