@@ -98,13 +98,26 @@ RELEASE_SPECIFIC_DATA = [
         "release": "2",
         "ANNOTATIONS": {
             "sep": ",",
-            "source": [
-                { "contextual_input_formatter": type_formatter("liftoff"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/annotation/liftoff/liftoff_pre_release_v0.3.index.csv" },
-                { "contextual_input_formatter": type_formatter("ChromAlias"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/annotation/chrom_assignment/chrom_alias_pre_release_v0.1.index.csv" },
-                { "contextual_input_formatter": type_formatter("CenSat"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/annotation/censat/censat_pre_release_v0.3.index.csv" },
+            "source": [  
+                { "contextual_input_formatter": type_formatter("Reference Mappings CHM13"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/annotation/alignments_to_ref/alignments_to_ref_chm13_winnowmap_bai_hprc_r2_v1.1.index.csv" },
+                { "contextual_input_formatter": type_formatter("Reference Mappings CHM13"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/annotation/alignments_to_ref/alignments_to_ref_chm13_winnowmap_hprc_r2_v1.1.index.csv" },
+                { "contextual_input_formatter": type_formatter("Reference Mappings GRCh38"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/annotation/alignments_to_ref/alignments_to_ref_grch38_winnowmap_bai_hprc_r2_v1.1.index.csv" },
+                { "contextual_input_formatter": type_formatter("Reference Mappings GRCh38"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/annotation/alignments_to_ref/alignments_to_ref_grch38_winnowmap_hprc_r2_v1.1.index.csv" },
+                { "contextual_input_formatter": type_formatter("CAT Genes"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/annotation/cat/cat_genes_hprc_r2_v1.2.index.csv" },
+                { "contextual_input_formatter": type_formatter("CenSat"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/annotation/censat/censat_hprc_r2_v1.0.index.csv" },
+                { "contextual_input_formatter": type_formatter("chains CHM13"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/annotation/chains/chains_to_chm13_mc_hprc_r2_v1.0.index.csv" },
+                { "contextual_input_formatter": type_formatter("chains GRCh38"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/annotation/chains/chains_to_grch38_mc_hprc_r2_v1.0.index.csv" },
+                { "contextual_input_formatter": type_formatter("ChromAlias"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/annotation/chrom_assignment/chrom_alias_hprc_r2_v1.0.index.csv" },
+                { "contextual_input_formatter": type_formatter("ChromAlias Gaps"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/annotation/chrom_assignment/gaps_hprc_r2_v1.0.index.csv" },
+                { "contextual_input_formatter": type_formatter("ChromAlias T2T"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/annotation/chrom_assignment/t2t_sequences_hprc_r2_v1.0.index.csv" },
+                { "contextual_input_formatter": type_formatter("liftoff"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/annotation/liftoff/liftoff_genes_hprc_r2_v1.0.index.csv" },
+                { "contextual_input_formatter": type_formatter("methylation"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/annotation/methylation/ont_methylation_hprc_r2_v1.0.index.csv" },
+                { "contextual_input_formatter": type_formatter("Repeat_masker Bed"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/annotation/repeat_masker/repeat_masker_bed_hprc_r2_v1.0.index.csv" },
+                { "contextual_input_formatter": type_formatter("Repeat_masker Out"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/annotation/repeat_masker/repeat_masker_out_hprc_r2_v1.0.index.csv" },
+                { "contextual_input_formatter": type_formatter("Seg_Dups"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/annotation/segdups/segdups_hprc_r2_v1.1.index.csv" },
                 { "contextual_input_formatter": type_formatter("Flagger_HiFi"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/assembly_qc/flagger/flagger_hifi_v0.1.csv" },
-                { "contextual_input_formatter": type_formatter("Flagger_ONT"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/assembly_qc/flagger/flagger_ont_v0.1.csv" },
-                { "contextual_input_formatter": type_formatter("Repeat_masker"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/annotation/repeat_masker/repeat_masker_bed_pre_release_v0.2.index.csv" },
+                { "contextual_input_formatter": type_formatter("Flagger_ONT"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/assembly_qc/flagger/flagger_ont_v0.1.1.csv" },
+                { "contextual_input_formatter": type_formatter("NucFlag"), "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/assembly_qc/nucflag/nucflag_pre_release_v0.2.index.csv" },
             ]
         }
     }
