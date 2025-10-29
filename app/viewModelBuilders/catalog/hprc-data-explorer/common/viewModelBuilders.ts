@@ -623,7 +623,7 @@ function getDownloadUrl(uri: string): string {
   const s3UriMatch = /^s3:\/\/([^/]+)\/(.*)$/.exec(uri);
   if (!s3UriMatch) return uri;
   const [, bucketName, filePath] = s3UriMatch;
-  // Ensure that characters such as `+` are properly encoded, as `+` will be interpreted as space in the AWS URL
+  // Ensure that characters such as `+`, which may not already be URL-encoded, are encoded properly, as `+` will be interpreted as space in the AWS URL
   const encodedFilePath = filePath
     .split("/")
     .map((segment) => encodeURIComponent(decodeURIComponent(segment)))
