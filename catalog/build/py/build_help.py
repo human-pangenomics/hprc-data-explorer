@@ -1,5 +1,5 @@
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urlparse, quote as url_quote, unquote as url_unquote
 import requests
 import pandas as pd
 from pydantic import ValidationError
@@ -292,6 +292,8 @@ def get_file_size(uri, total_files, current_index, entity_type_name):
         # Convert S3 to HTTPS URL
         if uri.startswith("s3://"):
             bucket, *key_parts = uri[5:].split("/")  # Remove `s3://` and split to extract bucket and key
+            # Ensure that characters such as `+`, which may not already be URL-encoded, are encoded properly
+            key_parts = [url_quote(url_unquote(part), safe="") for part in key_parts]
             uri = f"https://{bucket}.s3.amazonaws.com/{"/".join(key_parts)}"
 
         # Make HEAD request to get file size
