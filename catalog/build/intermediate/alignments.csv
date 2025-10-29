@@ -14,12 +14,12 @@ minigraph-cactus,grch38,,hprc-v2.0-mc-grch38.wave.vcf.gz.tbi,s3://human-pangenom
 pggb,,,hprc-v1.0-pggb.gfa.gz,s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/hprc-v1.0-pggb.gfa.gz,v1.0,HPRC-v1.0-pggb,15639532140
 pggb,,,hprc-v1.0-pggb.all.vs.grch38.untangle-m10000-s0-j0.delta.gz,s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/untangle/hprc-v1.0-pggb.all.vs.grch38.untangle-m10000-s0-j0.delta.gz,v1.0,HPRC-v1.0-pggb,270242271
 pggb,,,hprc-v1.0-pggb.all.vs.grch38.untangle-m10000-s0-j0.paf.gz,s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/untangle/hprc-v1.0-pggb.all.vs.grch38.untangle-m10000-s0-j0.paf.gz,v1.0,HPRC-v1.0-pggb,876920997
-pggb,chm13,,hprc-v1.0-pggb.chm13.1-22+X.vcf.gz,s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.chm13.1-22+X.vcf.gz,v1.0,HPRC-v1.0-chm13-pggb,0
-pggb,chm13,,hprc-v1.0-pggb.chm13.1-22+X.vcf.gz.tbi,s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.chm13.1-22+X.vcf.gz.tbi,v1.0,HPRC-v1.0-chm13-pggb,0
+pggb,chm13,,hprc-v1.0-pggb.chm13.1-22+X.vcf.gz,s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.chm13.1-22+X.vcf.gz,v1.0,HPRC-v1.0-chm13-pggb,6581655264
+pggb,chm13,,hprc-v1.0-pggb.chm13.1-22+X.vcf.gz.tbi,s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.chm13.1-22+X.vcf.gz.tbi,v1.0,HPRC-v1.0-chm13-pggb,2095029
 pggb,chm13,,hprc-v1.0-pggb.chm13.M.vcf.gz,s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.chm13.M.vcf.gz,v1.0,HPRC-v1.0-chm13-pggb,12024
 pggb,chm13,,hprc-v1.0-pggb.chm13.M.vcf.gz.tbi,s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.chm13.M.vcf.gz.tbi,v1.0,HPRC-v1.0-chm13-pggb,114
-pggb,grch38,,hprc-v1.0-pggb.grch38.1-22+X.vcf.gz,s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.1-22+X.vcf.gz,v1.0,HPRC-v1.0-grch38-pggb,0
-pggb,grch38,,hprc-v1.0-pggb.grch38.1-22+X.vcf.gz.tbi,s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.1-22+X.vcf.gz.tbi,v1.0,HPRC-v1.0-grch38-pggb,0
+pggb,grch38,,hprc-v1.0-pggb.grch38.1-22+X.vcf.gz,s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.1-22+X.vcf.gz,v1.0,HPRC-v1.0-grch38-pggb,5699475467
+pggb,grch38,,hprc-v1.0-pggb.grch38.1-22+X.vcf.gz.tbi,s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.1-22+X.vcf.gz.tbi,v1.0,HPRC-v1.0-grch38-pggb,2023126
 pggb,grch38,,hprc-v1.0-pggb.grch38.M.vcf.gz,s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.M.vcf.gz,v1.0,HPRC-v1.0-grch38-pggb,13373
 pggb,grch38,,hprc-v1.0-pggb.grch38.M.vcf.gz.tbi,s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.M.vcf.gz.tbi,v1.0,HPRC-v1.0-grch38-pggb,131
 pggb,grch38,,hprc-v1.0-pggb.grch38.Y.vcf.gz,s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.Y.vcf.gz,v1.0,HPRC-v1.0-grch38-pggb,28429861
