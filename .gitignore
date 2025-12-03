@@ -57,3 +57,6 @@ _templates
 # python
 __pycache__
 venv
+
+# Playwright
+/playwright-report
