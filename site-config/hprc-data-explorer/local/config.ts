@@ -6,6 +6,7 @@ import { alignmentEntityConfig } from "./index/alignmentEntityConfig";
 import { annotationEntityConfig } from "./index/annotationEntityConfig";
 import { assemblyEntityConfig } from "./index/assemblyEntityConfig";
 import { rawSequencingDataEntityConfig } from "./index/rawSequencingDataEntityConfig";
+import { FILTER_SORT } from "@databiosphere/findable-ui/lib/common/filters/sort/config/types";
 
 // Template constants
 const LOCALHOST = "http://localhost:3000";
@@ -30,6 +31,7 @@ export function makeConfig(browserUrl: string, gitHubUrl: string): SiteConfig {
       annotationEntityConfig,
       alignmentEntityConfig,
     ],
+    filterSort: { sortBy: FILTER_SORT.COUNT },
     gitHubUrl,
     layout: {
       footer: {
