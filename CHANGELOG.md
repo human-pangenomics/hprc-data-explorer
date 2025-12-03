@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.1](https://github.com/human-pangenomics/hprc-data-explorer/compare/v0.6.0...v0.6.1) (2025-12-03)
+
+
+### Bug Fixes
+
+* use correct urls and sizes for files with `+` in their names ([#190](https://github.com/human-pangenomics/hprc-data-explorer/issues/190)) ([#202](https://github.com/human-pangenomics/hprc-data-explorer/issues/202)) ([6692c25](https://github.com/human-pangenomics/hprc-data-explorer/commit/6692c255f7d72dcc7afaa8e1d3d63782c0e67308))
+
 ## [0.6.0](https://github.com/human-pangenomics/hprc-data-explorer/compare/v0.5.0...v0.6.0) (2025-10-15)
 
 
