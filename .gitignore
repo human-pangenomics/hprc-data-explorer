@@ -60,3 +60,6 @@ venv
 
 # Playwright
 /playwright-report
+
+# Claude
+.claude/rules*
