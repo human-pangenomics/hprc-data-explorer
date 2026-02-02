@@ -1,6 +1,6 @@
 import { DownloadIcon } from "@databiosphere/findable-ui/lib/components/common/CustomIcon/components/DownloadIcon/downloadIcon";
 import { IconButton } from "@databiosphere/findable-ui/lib/components/common/IconButton/iconButton";
-import { useRef } from "react";
+import { JSX, useRef } from "react";
 
 export interface FileDownloadProps {
   fileName: string;
