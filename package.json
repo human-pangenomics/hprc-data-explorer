@@ -1,6 +1,6 @@
 {
   "name": "hprc-data-explorer",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "private": true,
   "scripts": {
     "dev": "./scripts/dev.sh hprc-data-explorer && ./scripts/set-version.sh dev && next dev",
