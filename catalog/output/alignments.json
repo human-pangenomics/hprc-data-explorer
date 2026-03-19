@@ -671,7 +671,7 @@
   },
   {
     "alignment": "HPRC-v1.0-chm13-pggb",
-    "fileSize": 0,
+    "fileSize": 6581655264,
     "filename": "hprc-v1.0-pggb.chm13.1-22+X.vcf.gz",
     "filetype": "vcf",
     "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.chm13.1-22+X.vcf.gz",
@@ -681,7 +681,7 @@
   },
   {
     "alignment": "HPRC-v1.0-chm13-pggb",
-    "fileSize": 0,
+    "fileSize": 2095029,
     "filename": "hprc-v1.0-pggb.chm13.1-22+X.vcf.gz.tbi",
     "filetype": "tbi",
     "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.chm13.1-22+X.vcf.gz.tbi",
@@ -711,7 +711,7 @@
   },
   {
     "alignment": "HPRC-v1.0-grch38-pggb",
-    "fileSize": 0,
+    "fileSize": 5699475467,
     "filename": "hprc-v1.0-pggb.grch38.1-22+X.vcf.gz",
     "filetype": "vcf",
     "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.1-22+X.vcf.gz",
@@ -721,7 +721,7 @@
   },
   {
     "alignment": "HPRC-v1.0-grch38-pggb",
-    "fileSize": 0,
+    "fileSize": 2023126,
     "filename": "hprc-v1.0-pggb.grch38.1-22+X.vcf.gz.tbi",
     "filetype": "tbi",
     "loc": "s3://human-pangenomics/pangenomes/freeze/freeze1/pggb/vcfs/hprc-v1.0-pggb.grch38.1-22+X.vcf.gz.tbi",
