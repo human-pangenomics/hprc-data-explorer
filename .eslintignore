@@ -5,3 +5,5 @@
 build
 
 venv
+
+next-env.d.ts
