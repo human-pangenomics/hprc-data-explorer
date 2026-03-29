@@ -14,6 +14,9 @@
     "test:e2e": "playwright test --trace retain-on-failure",
     "build-catalog": "esrun catalog/build/ts/build-catalog.ts",
     "build-catalog-source": "poetry run python catalog/build/py/build_sequencing_data.py && poetry run python catalog/build/py/build_assemblies.py && poetry run python catalog/build/py/build_annotations.py",
+    "build-sequencing-data-source": "poetry run python catalog/build/py/build_sequencing_data.py",
+    "build-assemblies-source": "poetry run python catalog/build/py/build_assemblies.py",
+    "build-annotations-source": "poetry run python catalog/build/py/build_annotations.py",
     "gen-schema": "poetry run ./catalog/schema/scripts/gen-schema.sh"
   },
   "dependencies": {
