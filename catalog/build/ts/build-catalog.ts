@@ -129,6 +129,7 @@ async function buildAssemblies(): Promise<HPRCDataExplorerAssembly[]> {
       populationDescriptor: parseStringOrAbsent(row.population_descriptor),
       release: parseStringOrAbsent(row.release),
       sampleId: parseStringOrAbsent(row.sample_id),
+      ucscBrowserUrl: parseStringOrAbsent(row.browser),
     })
   );
   return mappedRows.sort((a, b) =>
