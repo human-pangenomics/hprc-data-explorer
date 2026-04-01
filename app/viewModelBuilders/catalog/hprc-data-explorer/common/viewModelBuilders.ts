@@ -11,6 +11,7 @@ import * as C from "../../../../components/index";
 import { ViewContext } from "@databiosphere/findable-ui/lib/config/entities";
 import * as MDX from "../../../../components/common/MDXContent";
 import { ALERT_PROPS } from "@databiosphere/findable-ui/lib/components/common/Alert/constants";
+import { LinkProps } from "@mui/material";
 
 /**
  * Build props for the accession cell.
@@ -585,6 +586,27 @@ export const buildTotalReads = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.totalReads?.toLocaleString(),
+  };
+};
+
+/**
+ * Build props for the UCSC browser URL cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildUcscBrowserUrl = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.LinkCell> => {
+  return {
+    getValue(): LinkProps {
+      if (assembly.ucscBrowserUrl === LABEL.UNSPECIFIED) {
+        return { children: LABEL.UNSPECIFIED };
+      }
+      return {
+        children: "UCSC Browser",
+        href: assembly.ucscBrowserUrl,
+      };
+    },
   };
 };
 
