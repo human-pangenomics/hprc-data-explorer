@@ -37,7 +37,7 @@ RELEASE_SPECIFIC_DATA = [
     {
         "release": "2",
         "ASSEMBLIES": {
-            "url": "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/assemblies_pre_release_v0.6.1.index.csv",
+            "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/assemblies_release2_v1.0.index.csv",
             "sep": ",",
             "read_options": {"dtype": str, "keep_default_na": False},
             "contextual_input_formatter": validation_input_formatter(Assembly, ASSEMBLIES_SCHEMAVIEW)
