@@ -1,5 +1,9 @@
 # HPRC Data Explorer Catalog Files
 
+## Overview of Catalog-Building Process
+
+The HPRC Data Explorer catalog data is supplied via spreadsheets hosted on GitHub and Google Drive, and is transformed by manually-run scripts into JSON that can be used by the Data Explorer app to display catalog content. The scripts used to build the catalog are split into two steps: first, Python scripts are used to download the input files, process them, and combine them into one CSV file for each entity type (sequencing data, assemblies, and annotations); then, a TypeScript script is used to transform the CSVs in to JSON files for use by the app.
+
 ## Directory Structure
 
 - `catalog` - This directory, containing the data and scripts used to define the Data Explorer's content.
