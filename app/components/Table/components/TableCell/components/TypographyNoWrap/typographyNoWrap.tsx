@@ -9,10 +9,8 @@ import { JSX } from "react";
 import { LABEL } from "../../../../../../apis/common/entities";
 import { GRID_PROPS } from "./constants";
 
-export interface TypographyNoWrapProps extends Omit<
-  MTypographyProps,
-  "children"
-> {
+export interface TypographyNoWrapProps
+  extends Omit<MTypographyProps, "children"> {
   copyable?: boolean;
   label?: string;
   value: string | null;
