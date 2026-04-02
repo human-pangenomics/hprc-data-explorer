@@ -108,6 +108,6 @@ export const HPRC_DATA_EXPLORER_CATEGORY_LABEL = {
   TOTAL_GBP: "Total Gbp",
   TOTAL_READS: "Total Reads",
   TRF_ANNOTATION_FILE: "TRF",
-  UCSC_BROWSER_URL: "UCSC Browser",
+  UCSC_BROWSER_URL: "UCSC Genome Browser",
   WHALES: "Whales",
 };

@@ -603,7 +603,7 @@ export const buildUcscBrowserUrl = (
         return { children: LABEL.UNSPECIFIED };
       }
       return {
-        children: "UCSC Browser",
+        children: "UCSC Genome Browser",
         href: assembly.ucscBrowserUrl,
       };
     },
