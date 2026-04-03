@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/human-pangenomics/hprc-data-explorer/compare/v0.6.1...v0.7.0) (2026-04-03)
+
+
+### Features
+
+* add ucsc browser links to assemblies list ([#210](https://github.com/human-pangenomics/hprc-data-explorer/issues/210)) ([#214](https://github.com/human-pangenomics/hprc-data-explorer/issues/214)) ([b165e38](https://github.com/human-pangenomics/hprc-data-explorer/commit/b165e381dd1ecc11d016a8899322e6b659292817))
+
 ## [0.6.1](https://github.com/human-pangenomics/hprc-data-explorer/compare/v0.6.0...v0.6.1) (2026-03-19)
 
 
