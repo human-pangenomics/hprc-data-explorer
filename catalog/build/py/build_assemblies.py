@@ -37,7 +37,7 @@ RELEASE_SPECIFIC_DATA = [
     {
         "release": "2",
         "ASSEMBLIES": {
-            "url": "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/assemblies_pre_release_v0.6.1.index.csv",
+            "url": "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/assemblies_release2_v1.0.index.csv",
             "sep": ",",
             "read_options": {"dtype": str, "keep_default_na": False},
             "contextual_input_formatter": validation_input_formatter(Assembly, ASSEMBLIES_SCHEMAVIEW)
@@ -46,6 +46,7 @@ RELEASE_SPECIFIC_DATA = [
 ]
 
 BIOSAMPLE_TABLE_URL = "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sample/hprc_release2_sample_metadata.csv"
+UCSC_BROWSER_TABLE_URL = "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/browser/ucsc_browser_hprc_r2_v1.0.index.csv"
 
 
 RELEASE_1_EXCLUDED_SAMPLE_IDS = ["CHM13_v1.1", "GRCh38_no_alt_analysis_set"]
@@ -98,6 +99,8 @@ if __name__ == "__main__":
     # Download the files from Github and load them as dataframes
     biosample_path = download_file(BIOSAMPLE_TABLE_URL, DOWNLOADS_FOLDER_PATH)
     biosample_df = pd.read_csv(biosample_path, sep=",")
+    ucsc_browser_path = download_file(UCSC_BROWSER_TABLE_URL, DOWNLOADS_FOLDER_PATH)
+    ucsc_browser_df = pd.read_csv(ucsc_browser_path, sep=",")[["assembly_name", "browser"]]
     loaded_dfs, load_metadata = load_data_for_releases(RELEASE_SPECIFIC_DATA, DOWNLOADS_FOLDER_PATH)
     assembly_df = loaded_dfs["ASSEMBLIES"]
     validation_errors = {file_name: errors for file_name, errors in load_metadata["ASSEMBLIES"].values() if errors}
@@ -109,7 +112,10 @@ if __name__ == "__main__":
     # Merge all DataFrames
     combined_df = assembly_df.merge(
         biosample_df, on="sample_id", how="left", validate="many_to_one"
+    ).merge(
+        ucsc_browser_df, on="assembly_name", how="left", validate="many_to_one"
     )
+    combined_df["browser"] = combined_df["browser"].fillna("")
     print("The following sample IDs did not correspond to a value in the Biosample sheet, so NA values were entered:")
     print(", ".join(
         assembly_df.loc[~assembly_df["sample_id"].isin(biosample_df["sample_id"]), "sample_id"]

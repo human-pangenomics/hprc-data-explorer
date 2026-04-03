@@ -22,6 +22,8 @@ type BiosampleKey =
 
 type KeyAnnotationType = "annotation_type";
 
+type KeyBrowser = "browser";
+
 type KeyFileSize = "file_size";
 
 type KeyRelease = "release";
@@ -35,7 +37,8 @@ export type SourceAssemblyKey =
   | AssembliesSlotName
   | BiosampleKey
   | KeyFileSize
-  | KeyRelease;
+  | KeyRelease
+  | KeyBrowser;
 
 export type SourceAnnotationKey =
   | AnnotationsSlotName

@@ -55,6 +55,7 @@ export type HPRCDataExplorerAssembly = WithAbsentValues<{
   populationDescriptor: string;
   release: string;
   sampleId: string;
+  ucscBrowserUrl: string;
 }>;
 
 export type HPRCDataExplorerAnnotation = WithAbsentValues<{
