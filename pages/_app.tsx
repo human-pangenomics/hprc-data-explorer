@@ -1,6 +1,6 @@
 import "@databiosphere/findable-ui";
 import { AzulEntitiesStaticResponse } from "@databiosphere/findable-ui/lib/apis/azul/common/entities";
-import { JSX } from "react";
+import type { JSX } from "react";
 import { Error } from "@databiosphere/findable-ui/lib/components/Error/error";
 import { ErrorBoundary } from "@databiosphere/findable-ui/lib/components/ErrorBoundary";
 import { Head } from "@databiosphere/findable-ui/lib/components/Head/head";
