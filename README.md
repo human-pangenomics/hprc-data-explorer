@@ -1,6 +1,6 @@
 ## Getting Started
 
-This app requires Node `20.10.0`. If you do not have Node installed, download it from its
+This app requires Node `22.12.0`. If you do not have Node installed, download it from its
 [website](https://nodejs.org/en/download/package-manager) and use a version manager such as
 [n](https://www.npmjs.com/package/n/v/5.0.1) to select that version.
 
