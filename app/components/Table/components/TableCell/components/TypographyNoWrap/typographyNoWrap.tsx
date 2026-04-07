@@ -5,7 +5,7 @@ import {
   Typography as MTypography,
   TypographyProps as MTypographyProps,
 } from "@mui/material";
-import { JSX } from "react";
+import type { JSX } from "react";
 import { LABEL } from "../../../../../../apis/common/entities";
 import { GRID_PROPS } from "./constants";
 
