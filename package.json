@@ -13,7 +13,11 @@
     "test": "jest --runInBand",
     "test:e2e": "playwright test --trace retain-on-failure",
     "build-catalog": "esrun catalog/build/ts/build-catalog.ts",
-    "build-catalog-source": "poetry run python catalog/build/py/build_sequencing_data.py && poetry run python catalog/build/py/build_assemblies.py && poetry run python catalog/build/py/build_annotations.py",
+    "build-catalog-source": "npm run build-sequencing-data-source && npm run build-assemblies-source && npm run build-annotations-source && npm run validate-alignments",
+    "build-sequencing-data-source": "poetry run python catalog/build/py/build_sequencing_data.py",
+    "build-assemblies-source": "poetry run python catalog/build/py/build_assemblies.py",
+    "build-annotations-source": "poetry run python catalog/build/py/build_annotations.py",
+    "validate-alignments": "poetry run python catalog/build/py/validate_alignments.py",
     "gen-schema": "poetry run ./catalog/schema/scripts/gen-schema.sh"
   },
   "dependencies": {
