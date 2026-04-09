@@ -129,10 +129,10 @@ async function buildRawSequencingData(
         basecallerModel: parseStringOrAbsent(row.basecaller_model),
         basecallerVersion: parseStringOrAbsent(row.basecaller_version),
         bioprojectAccession: parseStringOrAbsent(row.bioproject_accession),
-        biosampleAccession: parseStringOrAbsent(sample.biosampleAccession),
+        biosampleAccession: sample.biosampleAccession,
         ccsAlgorithm: parseStringOrAbsent(row.ccs_algorithm),
         coverage: parseNumberOrAbsent(row.coverage),
-        familyId: parseStringOrAbsent(sample.familyId),
+        familyId: sample.familyId,
         filename: parseStringOrAbsent(row.filename),
         filetype: parseStringOrAbsent(row.filetype),
         generatorContact: parseStringOrAbsent(row.generator_contact),
@@ -145,10 +145,8 @@ async function buildRawSequencingData(
         oneHundredkbPlus: parseNumberOrAbsent(row.coverage_over_100kb),
         path: parseStringOrAbsent(row.path),
         platform: parseStringOrAbsent(row.platform),
-        populationAbbreviation: parseStringOrAbsent(
-          sample.populationAbbreviation
-        ),
-        populationDescriptor: parseStringOrAbsent(sample.populationDescriptor),
+        populationAbbreviation: sample.populationAbbreviation,
+        populationDescriptor: sample.populationDescriptor,
         sampleId: parseStringOrAbsent(row.sample_id),
         study: parseStringOrAbsent(row.study),
         totalGbp: parseNumberOrAbsent(row.total_gbp),
@@ -181,17 +179,15 @@ async function buildAssemblies(
     );
     return {
       awsFasta: parseStringOrAbsent(row.assembly),
-      biosampleAccession: parseStringOrAbsent(sample.biosampleAccession),
-      familyId: parseStringOrAbsent(sample.familyId),
+      biosampleAccession: sample.biosampleAccession,
+      familyId: sample.familyId,
       fastaMd5: parseStringOrAbsent(row.assembly_md5),
       fastaSha256: parseStringOrAbsent(row.fasta_sha256),
       fileSize: parseNumberOrAbsent(row.file_size),
       filename: parseStringOrAbsent(row.assembly, getFileNameFromPath),
       haplotype: parseStringOrAbsent(row.haplotype, getHaplotypeFromId),
-      populationAbbreviation: parseStringOrAbsent(
-        sample.populationAbbreviation
-      ),
-      populationDescriptor: parseStringOrAbsent(sample.populationDescriptor),
+      populationAbbreviation: sample.populationAbbreviation,
+      populationDescriptor: sample.populationDescriptor,
       release: parseStringOrAbsent(row.release),
       sampleId: parseStringOrAbsent(row.sample_id),
       ucscBrowserUrl: parseStringOrAbsent(row.browser),
