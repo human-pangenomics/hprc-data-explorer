@@ -6,21 +6,6 @@ import {
   SequencingDataSlotName,
 } from "catalog/schema/generated/schema";
 
-type BiosampleKey =
-  | "sample_id"
-  | "biosample_id"
-  | "population_descriptor"
-  | "population_abbreviation"
-  | "trio_available"
-  | "family_id"
-  | "paternal_id"
-  | "maternal_id"
-  | "sex"
-  | "tissue"
-  | "collection"
-  | "alternative_id"
-  | "notes";
-
 type KeyAnnotationType = "annotation_type";
 
 type KeyBrowser = "browser";
@@ -31,14 +16,10 @@ type KeyRelease = "release";
 
 export type SourceSampleKey = SamplesSlotName;
 
-export type SourceRawSequencingDataKey =
-  | SequencingDataSlotName
-  | BiosampleKey
-  | KeyFileSize;
+export type SourceRawSequencingDataKey = SequencingDataSlotName | KeyFileSize;
 
 export type SourceAssemblyKey =
   | AssembliesSlotName
-  | BiosampleKey
   | KeyFileSize
   | KeyRelease
   | KeyBrowser;
