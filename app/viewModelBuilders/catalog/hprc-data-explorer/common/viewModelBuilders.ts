@@ -204,6 +204,19 @@ export const buildCcsAlgorithm = (
 };
 
 /**
+ * Build props for the contributors cell.
+ * @param entity - Entity containing contributors.
+ * @returns Props to be used for the cell.
+ */
+export const buildContributors = (
+  entity: Exclude<HPRCDataExplorerEntity, HPRCDataExplorerAlignment>
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: entity.contributors,
+  };
+};
+
+/**
  * Build props for the coverage cell.
  * @param rawSequencingData - Raw sequencing data entity.
  * @returns Props to be used for the cell.
@@ -492,6 +505,19 @@ export const buildPopulationDescriptor = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: entity.populationDescriptor,
+  };
+};
+
+/**
+ * Build props for the project cell.
+ * @param entity - Entity containing project.
+ * @returns Props to be used for the cell.
+ */
+export const buildProject = (
+  entity: Exclude<HPRCDataExplorerEntity, HPRCDataExplorerAlignment>
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: entity.project,
   };
 };
 

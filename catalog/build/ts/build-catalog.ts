@@ -133,6 +133,7 @@ async function buildRawSequencingData(
         ccsAlgorithm: parseStringOrAbsent(row.ccs_algorithm),
         coverage: parseNumberOrAbsent(row.coverage),
         familyId: sample.familyId,
+        contributors: sample.contributors,
         filename: parseStringOrAbsent(row.filename),
         filetype: parseStringOrAbsent(row.filetype),
         generatorContact: parseStringOrAbsent(row.generator_contact),
@@ -147,6 +148,7 @@ async function buildRawSequencingData(
         platform: parseStringOrAbsent(row.platform),
         populationAbbreviation: sample.populationAbbreviation,
         populationDescriptor: sample.populationDescriptor,
+        project: sample.project,
         sampleId: parseStringOrAbsent(row.sample_id),
         study: parseStringOrAbsent(row.study),
         totalGbp: parseNumberOrAbsent(row.total_gbp),
@@ -180,6 +182,7 @@ async function buildAssemblies(
     return {
       awsFasta: parseStringOrAbsent(row.assembly),
       biosampleAccession: sample.biosampleAccession,
+      contributors: sample.contributors,
       familyId: sample.familyId,
       fastaMd5: parseStringOrAbsent(row.assembly_md5),
       fastaSha256: parseStringOrAbsent(row.fasta_sha256),
@@ -188,6 +191,7 @@ async function buildAssemblies(
       haplotype: parseStringOrAbsent(row.haplotype, getHaplotypeFromId),
       populationAbbreviation: sample.populationAbbreviation,
       populationDescriptor: sample.populationDescriptor,
+      project: sample.project,
       release: parseStringOrAbsent(row.release),
       sampleId: parseStringOrAbsent(row.sample_id),
       ucscBrowserUrl: parseStringOrAbsent(row.browser),
@@ -218,6 +222,7 @@ async function buildAnnotations(
     return {
       annotationType: parseStringOrAbsent(row.annotation_type),
       biosampleAccession: sample.biosampleAccession,
+      contributors: sample.contributors,
       familyId: sample.familyId,
       fileLocation: parseStringOrAbsent(row.location),
       fileSize: parseNumberOrAbsent(row.file_size),
@@ -225,6 +230,7 @@ async function buildAnnotations(
       haplotype: parseStringOrAbsent(row.haplotype, getHaplotypeFromId),
       populationAbbreviation: sample.populationAbbreviation,
       populationDescriptor: sample.populationDescriptor,
+      project: sample.project,
       release: parseStringOrAbsent(row.release),
       sampleId: parseStringOrAbsent(row.sample_id),
     };

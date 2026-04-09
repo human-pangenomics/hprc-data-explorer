@@ -37,6 +37,7 @@ export type HPRCDataExplorerRawSequencingData = WithAbsentValues<{
   bioprojectAccession: string;
   biosampleAccession: string;
   ccsAlgorithm: string;
+  contributors: string;
   coverage: number;
   familyId: string;
   filename: string;
@@ -53,6 +54,7 @@ export type HPRCDataExplorerRawSequencingData = WithAbsentValues<{
   platform: string;
   populationAbbreviation: string;
   populationDescriptor: string;
+  project: string;
   sampleId: string;
   study: string;
   totalGbp: number;
@@ -63,6 +65,7 @@ export type HPRCDataExplorerRawSequencingData = WithAbsentValues<{
 export type HPRCDataExplorerAssembly = WithAbsentValues<{
   awsFasta: string;
   biosampleAccession: string;
+  contributors: string;
   familyId: string;
   fastaMd5: string;
   fastaSha256: string;
@@ -71,6 +74,7 @@ export type HPRCDataExplorerAssembly = WithAbsentValues<{
   haplotype: string;
   populationAbbreviation: string;
   populationDescriptor: string;
+  project: string;
   release: string;
   sampleId: string;
   ucscBrowserUrl: string;
@@ -79,6 +83,7 @@ export type HPRCDataExplorerAssembly = WithAbsentValues<{
 export type HPRCDataExplorerAnnotation = WithAbsentValues<{
   annotationType: string;
   biosampleAccession: string;
+  contributors: string;
   familyId: string;
   fileLocation: string;
   filename: string;
@@ -86,6 +91,7 @@ export type HPRCDataExplorerAnnotation = WithAbsentValues<{
   haplotype: string;
   populationAbbreviation: string;
   populationDescriptor: string;
+  project: string;
   release: string;
   sampleId: string;
 }>;

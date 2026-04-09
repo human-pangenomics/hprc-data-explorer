@@ -43,6 +43,16 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SAMPLE_ID,
             },
+            {
+              enableChartView: false,
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PROJECT,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PROJECT,
+            },
+            {
+              enableChartView: false,
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.CONTRIBUTORS,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.CONTRIBUTORS,
+            },
           ],
           label: "Sample",
         },
@@ -198,6 +208,34 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
           width: { max: "0.5fr", min: "112px" },
+        },
+        {
+          columnVisible: false,
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildProject,
+          } as ComponentConfig<
+            typeof C.BasicCell,
+            HPRCDataExplorerRawSequencingData
+          >,
+          enableGrouping: true,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PROJECT,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.PROJECT,
+          width: { max: "1fr", min: "160px" },
+        },
+        {
+          columnVisible: false,
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildContributors,
+          } as ComponentConfig<
+            typeof C.BasicCell,
+            HPRCDataExplorerRawSequencingData
+          >,
+          enableGrouping: true,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.CONTRIBUTORS,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.CONTRIBUTORS,
+          width: { max: "1fr", min: "160px" },
         },
         {
           componentConfig: {
