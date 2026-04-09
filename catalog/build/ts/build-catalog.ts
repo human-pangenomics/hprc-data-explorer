@@ -5,6 +5,7 @@ import {
   HPRCDataExplorerAnnotation,
   HPRCDataExplorerAssembly,
   HPRCDataExplorerRawSequencingData,
+  HPRCDataExplorerSample,
   LABEL,
 } from "../../../app/apis/catalog/hprc-data-explorer/common/entities";
 import {
@@ -12,16 +13,19 @@ import {
   getAnnotationId,
   getAssemblyId,
   getRawSequencingDataId,
+  getSampleId,
 } from "../../../app/apis/catalog/hprc-data-explorer/common/utils";
 import {
   SourceAlignmentKey,
   SourceAnnotationKey,
   SourceAssemblyKey,
   SourceRawSequencingDataKey,
+  SourceSampleKey,
 } from "./entities";
 
 const CATALOG_DIR = "catalog/output";
 
+const SOURCE_PATH_SAMPLES = "catalog/build/intermediate/samples.csv";
 const SOURCE_PATH_RAW_SEQUENCING_DATA =
   "catalog/build/intermediate/sequencing-data.csv";
 const SOURCE_PATH_ASSEMBLIES = "catalog/build/intermediate/assemblies.csv";
@@ -32,6 +36,11 @@ buildCatalog();
 
 async function buildCatalog(): Promise<void> {
   console.log("Building catalog...");
+  const samples = enforceUniqueIds(
+    "samples",
+    await buildSamples(),
+    getSampleId
+  );
   const rawSequencingData = enforceUniqueIds(
     "raw sequencing data",
     await buildRawSequencingData(),
@@ -53,6 +62,9 @@ async function buildCatalog(): Promise<void> {
     getAlignmentId
   );
 
+  console.log("Samples:", samples.length);
+  await saveJson(`${CATALOG_DIR}/samples.json`, samples);
+
   console.log("Sequencing data:", rawSequencingData.length);
   await saveJson(`${CATALOG_DIR}/sequencing-data.json`, rawSequencingData);
 
@@ -66,6 +78,32 @@ async function buildCatalog(): Promise<void> {
   await saveJson(`${CATALOG_DIR}/alignments.json`, alignments);
 
   console.log("Done");
+}
+
+async function buildSamples(): Promise<HPRCDataExplorerSample[]> {
+  const sourceRows =
+    await readUnknownValuesFile<SourceSampleKey>(SOURCE_PATH_SAMPLES);
+  const mappedRows = sourceRows.map(
+    (row): HPRCDataExplorerSample => ({
+      alternativeId: parseStringOrAbsent(row.alternative_id),
+      biosampleId: parseStringOrAbsent(row.biosample_id),
+      collection: parseStringOrAbsent(row.collection),
+      contributors: parseStringOrAbsent(row.contributors),
+      familyId: parseStringOrAbsent(row.family_id),
+      maternalId: parseStringOrAbsent(row.maternal_id),
+      paternalId: parseStringOrAbsent(row.paternal_id),
+      populationAbbreviation: parseStringOrAbsent(row.population_abbreviation),
+      populationDescriptor: parseStringOrAbsent(row.population_descriptor),
+      project: parseStringOrAbsent(row.project),
+      sampleId: parseStringOrAbsent(row.sample_id),
+      sex: parseStringOrAbsent(row.sex),
+      tissue: parseStringOrAbsent(row.tissue),
+      trioAvailable: parseBooleanOrAbsent(row.trio_available),
+    })
+  );
+  return mappedRows.sort((a, b) =>
+    getSampleId(a).localeCompare(getSampleId(b))
+  );
 }
 
 async function buildRawSequencingData(): Promise<

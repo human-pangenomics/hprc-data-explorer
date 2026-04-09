@@ -2,6 +2,7 @@ import {
   AlignmentsSlotName,
   AnnotationsSlotName,
   AssembliesSlotName,
+  SamplesSlotName,
   SequencingDataSlotName,
 } from "catalog/schema/generated/schema";
 
@@ -27,6 +28,8 @@ type KeyBrowser = "browser";
 type KeyFileSize = "file_size";
 
 type KeyRelease = "release";
+
+export type SourceSampleKey = SamplesSlotName;
 
 export type SourceRawSequencingDataKey =
   | SequencingDataSlotName

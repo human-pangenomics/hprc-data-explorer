@@ -3,7 +3,12 @@ import {
   HPRCDataExplorerAnnotation,
   HPRCDataExplorerAssembly,
   HPRCDataExplorerRawSequencingData,
+  HPRCDataExplorerSample,
 } from "./entities";
+
+export function getSampleId(sample: HPRCDataExplorerSample): string {
+  return sample.sampleId;
+}
 
 export function getRawSequencingDataId(
   rawSequencingData: HPRCDataExplorerRawSequencingData

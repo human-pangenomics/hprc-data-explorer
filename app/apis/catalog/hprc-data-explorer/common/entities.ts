@@ -6,10 +6,28 @@ type WithAbsentValues<T> = {
 };
 
 export type HPRCDataExplorerEntity =
+  | HPRCDataExplorerSample
   | HPRCDataExplorerAlignment
   | HPRCDataExplorerAnnotation
   | HPRCDataExplorerAssembly
   | HPRCDataExplorerRawSequencingData;
+
+export type HPRCDataExplorerSample = WithAbsentValues<{
+  alternativeId: string;
+  biosampleId: string;
+  collection: string;
+  contributors: string;
+  familyId: string;
+  maternalId: string;
+  paternalId: string;
+  populationAbbreviation: string;
+  populationDescriptor: string;
+  project: string;
+  sampleId: string;
+  sex: string;
+  tissue: string;
+  trioAvailable: boolean;
+}>;
 
 export type HPRCDataExplorerRawSequencingData = WithAbsentValues<{
   accession: string;

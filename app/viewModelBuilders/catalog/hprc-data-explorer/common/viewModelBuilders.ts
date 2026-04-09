@@ -5,6 +5,7 @@ import {
   HPRCDataExplorerAssembly,
   HPRCDataExplorerEntity,
   HPRCDataExplorerRawSequencingData,
+  HPRCDataExplorerSample,
   LABEL,
 } from "../../../../apis/catalog/hprc-data-explorer/common/entities";
 import * as C from "../../../../components/index";
@@ -273,7 +274,7 @@ export const buildFileLocation = (
  * @returns Props to be used for the cell.
  */
 export const buildFilename = (
-  entity: HPRCDataExplorerEntity
+  entity: Exclude<HPRCDataExplorerEntity, HPRCDataExplorerSample>
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: entity.filename,
