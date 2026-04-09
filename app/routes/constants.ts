@@ -3,4 +3,5 @@ export const ROUTE = {
   ANNOTATIONS: "/annotations",
   ASSEMBLIES: "/assemblies",
   RAW_SEQUENCING_DATA: "/raw-sequencing-data",
+  SAMPLES: "/samples",
 };

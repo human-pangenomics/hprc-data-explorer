@@ -553,10 +553,7 @@ export const buildRelease = (
  * @returns Props to be used for the cell.
  */
 export const buildSampleId = (
-  entity:
-    | HPRCDataExplorerRawSequencingData
-    | HPRCDataExplorerAssembly
-    | HPRCDataExplorerAnnotation
+  entity: Exclude<HPRCDataExplorerEntity, HPRCDataExplorerAlignment>
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: entity.sampleId,

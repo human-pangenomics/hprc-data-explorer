@@ -7,6 +7,7 @@ import { annotationEntityConfig } from "./index/annotationEntityConfig";
 import { assemblyEntityConfig } from "./index/assemblyEntityConfig";
 import { rawSequencingDataEntityConfig } from "./index/rawSequencingDataEntityConfig";
 import { FILTER_SORT } from "@databiosphere/findable-ui/lib/common/filters/sort/config/types";
+import { sampleEntityConfig } from "./index/sampleEntityConfig";
 
 // Template constants
 const LOCALHOST = "http://localhost:3000";
@@ -26,6 +27,7 @@ export function makeConfig(browserUrl: string, gitHubUrl: string): SiteConfig {
     },
     enableEntitiesView: true,
     entities: [
+      sampleEntityConfig,
       rawSequencingDataEntityConfig,
       assemblyEntityConfig,
       annotationEntityConfig,
@@ -48,6 +50,10 @@ export function makeConfig(browserUrl: string, gitHubUrl: string): SiteConfig {
         navigation: [
           undefined,
           [
+            {
+              label: "Samples",
+              url: ROUTE.SAMPLES,
+            },
             {
               label: "Sequencing Data",
               url: ROUTE.RAW_SEQUENCING_DATA,
