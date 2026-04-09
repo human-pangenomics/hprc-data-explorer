@@ -132,7 +132,7 @@ async function buildRawSequencingData(
         biosampleAccession: parseStringOrAbsent(sample.biosampleId),
         ccsAlgorithm: parseStringOrAbsent(row.ccs_algorithm),
         coverage: parseNumberOrAbsent(row.coverage),
-        familyId: parseStringOrAbsent(row.family_id),
+        familyId: parseStringOrAbsent(sample.familyId),
         filename: parseStringOrAbsent(row.filename),
         filetype: parseStringOrAbsent(row.filetype),
         generatorContact: parseStringOrAbsent(row.generator_contact),
