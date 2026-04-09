@@ -115,7 +115,7 @@ async function buildRawSequencingData(
   const sourceRows = await readUnknownValuesFile<SourceRawSequencingDataKey>(
     SOURCE_PATH_RAW_SEQUENCING_DATA
   );
-  const missingSamples: string[] = [];
+  const missingSamples = new Set<string>();
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerRawSequencingData => {
       const sample = getSampleOrDefault(
@@ -157,10 +157,7 @@ async function buildRawSequencingData(
       };
     }
   );
-  if (missingSamples.length)
-    console.log(
-      `The following samples linked to sequencing data were not found in the samples list: ${missingSamples.join(", ")}`
-    );
+  reportMissingSamples(missingSamples, "sequencing data");
   return mappedRows.sort((a, b) =>
     getRawSequencingDataId(a).localeCompare(getRawSequencingDataId(b))
   );
@@ -172,7 +169,7 @@ async function buildAssemblies(
   const sourceRows = await readUnknownValuesFile<SourceAssemblyKey>(
     SOURCE_PATH_ASSEMBLIES
   );
-  const missingSamples: string[] = [];
+  const missingSamples = new Set<string>();
   const mappedRows = sourceRows.map((row): HPRCDataExplorerAssembly => {
     const sample = getSampleOrDefault(
       samplesById,
@@ -197,10 +194,7 @@ async function buildAssemblies(
       ucscBrowserUrl: parseStringOrAbsent(row.browser),
     };
   });
-  if (missingSamples.length)
-    console.log(
-      `The following samples linked to assemblies were not found in the samples list: ${missingSamples.join(", ")}`
-    );
+  reportMissingSamples(missingSamples, "assemblies");
   return mappedRows.sort((a, b) =>
     getAssemblyId(a).localeCompare(getAssemblyId(b))
   );
@@ -212,7 +206,7 @@ async function buildAnnotations(
   const sourceRows = await readUnknownValuesFile<SourceAnnotationKey>(
     SOURCE_PATH_ANNOTATIONS
   );
-  const missingSamples: string[] = [];
+  const missingSamples = new Set<string>();
   const mappedRows = sourceRows.map((row): HPRCDataExplorerAnnotation => {
     const sample = getSampleOrDefault(
       samplesById,
@@ -235,10 +229,7 @@ async function buildAnnotations(
       sampleId: parseStringOrAbsent(row.sample_id),
     };
   });
-  if (missingSamples.length)
-    console.log(
-      `The following samples linked to annotations were not found in the samples list: ${missingSamples.join(", ")}`
-    );
+  reportMissingSamples(missingSamples, "annotations");
   return mappedRows.sort((a, b) =>
     getAnnotationId(a).localeCompare(getAnnotationId(b))
   );
@@ -317,12 +308,12 @@ function verifyUniqueIds<T>(
 function getSampleOrDefault(
   samplesById: Map<string, HPRCDataExplorerSample>,
   id: string | undefined,
-  missingSamples: string[]
+  missingSamples: Set<string>
 ): HPRCDataExplorerSample {
   if (id !== undefined) {
     const sample = samplesById.get(id);
     if (sample === undefined) {
-      missingSamples.push(id);
+      missingSamples.add(id);
     } else {
       return sample;
     }
@@ -343,6 +334,18 @@ function getSampleOrDefault(
     tissue: LABEL.UNSPECIFIED,
     trioAvailable: LABEL.UNSPECIFIED,
   };
+}
+
+function reportMissingSamples(
+  missingSamples: Set<string>,
+  pluralEntityName: string
+): void {
+  if (missingSamples.size) {
+    const missingSamplesList = Array.from(missingSamples).sort();
+    console.log(
+      `The following samples linked to ${pluralEntityName} were not found in the samples list: ${missingSamplesList.join(", ")}`
+    );
+  }
 }
 
 function getTypeFromFilename(name: string): string {
