@@ -1,7 +1,7 @@
 [
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN03255769",
+    "biosampleAccession": "SAMN03255769",
     "collection": "N/A",
     "contributors": "T2T Consortium",
     "familyId": "Unspecified",
@@ -17,7 +17,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN12121739",
+    "biosampleAccession": "SAMN12121739",
     "collection": "N/A",
     "contributors": "Human Genome Project",
     "familyId": "Unspecified",
@@ -33,7 +33,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021660",
+    "biosampleAccession": "SAMN41021660",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -49,7 +49,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758778",
+    "biosampleAccession": "SAMN33758778",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -65,7 +65,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021637",
+    "biosampleAccession": "SAMN41021637",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -81,7 +81,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021641",
+    "biosampleAccession": "SAMN41021641",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -97,7 +97,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021638",
+    "biosampleAccession": "SAMN41021638",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -113,7 +113,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33621941",
+    "biosampleAccession": "SAMN33621941",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -129,7 +129,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021634",
+    "biosampleAccession": "SAMN41021634",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -145,7 +145,7 @@
   },
   {
     "alternativeId": "NA24385",
-    "biosampleId": "SAMN03283347",
+    "biosampleAccession": "SAMN03283347",
     "collection": "GIAB",
     "contributors": "NHGRI-NIST",
     "familyId": "Unspecified",
@@ -161,7 +161,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021635",
+    "biosampleAccession": "SAMN41021635",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -177,7 +177,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021667",
+    "biosampleAccession": "SAMN41021667",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -193,7 +193,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021666",
+    "biosampleAccession": "SAMN41021666",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -209,7 +209,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021659",
+    "biosampleAccession": "SAMN41021659",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -225,7 +225,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758779",
+    "biosampleAccession": "SAMN33758779",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -241,7 +241,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021639",
+    "biosampleAccession": "SAMN41021639",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -257,7 +257,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021632",
+    "biosampleAccession": "SAMN41021632",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -273,7 +273,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021636",
+    "biosampleAccession": "SAMN41021636",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -289,7 +289,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33621942",
+    "biosampleAccession": "SAMN33621942",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -305,7 +305,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021646",
+    "biosampleAccession": "SAMN41021646",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -321,7 +321,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021653",
+    "biosampleAccession": "SAMN41021653",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -337,7 +337,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021654",
+    "biosampleAccession": "SAMN41021654",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -353,7 +353,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33621943",
+    "biosampleAccession": "SAMN33621943",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "SH002",
@@ -369,7 +369,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237490",
+    "biosampleAccession": "SAMN26237490",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "SH007",
@@ -385,7 +385,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861652",
+    "biosampleAccession": "SAMN17861652",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "SH012",
@@ -401,7 +401,7 @@
   },
   {
     "alternativeId": "NA26107",
-    "biosampleId": "SAMN03283350",
+    "biosampleAccession": "SAMN03283350",
     "collection": "GIAB",
     "contributors": "NHGRI-NIST",
     "familyId": "Unspecified",
@@ -417,7 +417,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237491",
+    "biosampleAccession": "SAMN26237491",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "SH042",
@@ -433,7 +433,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758780",
+    "biosampleAccession": "SAMN33758780",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "SH045",
@@ -449,7 +449,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33621944",
+    "biosampleAccession": "SAMN33621944",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "SH058",
@@ -465,7 +465,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237492",
+    "biosampleAccession": "SAMN26237492",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "SH062",
@@ -481,7 +481,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861653",
+    "biosampleAccession": "SAMN17861653",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "SH066",
@@ -497,7 +497,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758781",
+    "biosampleAccession": "SAMN33758781",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PR03",
@@ -513,7 +513,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26267378",
+    "biosampleAccession": "SAMN26267378",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PR04",
@@ -529,7 +529,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37797096",
+    "biosampleAccession": "SAMN37797096",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "SH074",
@@ -545,7 +545,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861654",
+    "biosampleAccession": "SAMN17861654",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "SH079",
@@ -561,7 +561,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37706905",
+    "biosampleAccession": "SAMN37706905",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "SH090",
@@ -577,7 +577,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN00006581",
+    "biosampleAccession": "SAMN00006581",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -593,7 +593,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861655",
+    "biosampleAccession": "SAMN17861655",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PR06",
@@ -609,7 +609,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237493",
+    "biosampleAccession": "SAMN26237493",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PR07",
@@ -625,7 +625,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861656",
+    "biosampleAccession": "SAMN17861656",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PR09",
@@ -641,7 +641,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861657",
+    "biosampleAccession": "SAMN17861657",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PR17",
@@ -657,7 +657,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758782",
+    "biosampleAccession": "SAMN33758782",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PR18",
@@ -673,7 +673,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758783",
+    "biosampleAccession": "SAMN33758783",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PR21",
@@ -689,7 +689,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237494",
+    "biosampleAccession": "SAMN26237494",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PR31",
@@ -705,7 +705,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861658",
+    "biosampleAccession": "SAMN17861658",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PR25",
@@ -721,7 +721,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN12162846",
+    "biosampleAccession": "SAMN12162846",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -737,7 +737,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861232",
+    "biosampleAccession": "SAMN17861232",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "CLM02",
@@ -753,7 +753,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37797097",
+    "biosampleAccession": "SAMN37797097",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "CLM12",
@@ -769,7 +769,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021679",
+    "biosampleAccession": "SAMN41021679",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -785,7 +785,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861659",
+    "biosampleAccession": "SAMN17861659",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PR36",
@@ -801,7 +801,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33621945",
+    "biosampleAccession": "SAMN33621945",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PR40",
@@ -817,7 +817,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN13957917",
+    "biosampleAccession": "SAMN13957917",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -833,7 +833,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37797098",
+    "biosampleAccession": "SAMN37797098",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "CLM14",
@@ -849,7 +849,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237495",
+    "biosampleAccession": "SAMN26237495",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "CLM15",
@@ -865,7 +865,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861233",
+    "biosampleAccession": "SAMN17861233",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "CLM16",
@@ -881,7 +881,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33621946",
+    "biosampleAccession": "SAMN33621946",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "CLM17",
@@ -897,7 +897,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26267379",
+    "biosampleAccession": "SAMN26267379",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "CLM27",
@@ -913,7 +913,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861234",
+    "biosampleAccession": "SAMN17861234",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "CLM31",
@@ -929,7 +929,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861235",
+    "biosampleAccession": "SAMN17861235",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "CLM32",
@@ -945,7 +945,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237496",
+    "biosampleAccession": "SAMN26237496",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "CLM43",
@@ -961,7 +961,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237497",
+    "biosampleAccession": "SAMN26237497",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "CLM64",
@@ -977,7 +977,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37797099",
+    "biosampleAccession": "SAMN37797099",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -993,7 +993,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37797100",
+    "biosampleAccession": "SAMN37797100",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -1009,7 +1009,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021633",
+    "biosampleAccession": "SAMN41021633",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -1025,7 +1025,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26267393",
+    "biosampleAccession": "SAMN26267393",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "BB03",
@@ -1041,7 +1041,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861236",
+    "biosampleAccession": "SAMN17861236",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "BB05",
@@ -1057,7 +1057,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861660",
+    "biosampleAccession": "SAMN17861660",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PEL011",
@@ -1073,7 +1073,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237498",
+    "biosampleAccession": "SAMN26237498",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PEL013",
@@ -1089,7 +1089,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37797101",
+    "biosampleAccession": "SAMN37797101",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PEL015",
@@ -1105,7 +1105,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237499",
+    "biosampleAccession": "SAMN26237499",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PEL016",
@@ -1121,7 +1121,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861661",
+    "biosampleAccession": "SAMN17861661",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PEL019",
@@ -1137,7 +1137,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37797102",
+    "biosampleAccession": "SAMN37797102",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "BB11",
@@ -1153,7 +1153,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37797103",
+    "biosampleAccession": "SAMN37797103",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PEL023",
@@ -1169,7 +1169,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33621947",
+    "biosampleAccession": "SAMN33621947",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PEL25",
@@ -1185,7 +1185,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861662",
+    "biosampleAccession": "SAMN17861662",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PEL26",
@@ -1201,7 +1201,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237500",
+    "biosampleAccession": "SAMN26237500",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PEL27",
@@ -1217,7 +1217,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237501",
+    "biosampleAccession": "SAMN26237501",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PEL29",
@@ -1233,7 +1233,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237502",
+    "biosampleAccession": "SAMN26237502",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PEL33",
@@ -1249,7 +1249,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33621948",
+    "biosampleAccession": "SAMN33621948",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "VN046",
@@ -1265,7 +1265,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237503",
+    "biosampleAccession": "SAMN26237503",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "VN050",
@@ -1281,7 +1281,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758784",
+    "biosampleAccession": "SAMN33758784",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -1297,7 +1297,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN12162856",
+    "biosampleAccession": "SAMN12162856",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -1313,7 +1313,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33621949",
+    "biosampleAccession": "SAMN33621949",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "VN060",
@@ -1329,7 +1329,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26267380",
+    "biosampleAccession": "SAMN26267380",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "VN065",
@@ -1345,7 +1345,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26267381",
+    "biosampleAccession": "SAMN26267381",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "VN066",
@@ -1361,7 +1361,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN13957942",
+    "biosampleAccession": "SAMN13957942",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -1377,7 +1377,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237504",
+    "biosampleAccession": "SAMN26237504",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "VN069",
@@ -1393,7 +1393,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN13958415",
+    "biosampleAccession": "SAMN13958415",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -1409,7 +1409,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33621950",
+    "biosampleAccession": "SAMN33621950",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "VN079",
@@ -1425,7 +1425,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26267382",
+    "biosampleAccession": "SAMN26267382",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "VN080",
@@ -1441,7 +1441,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26267392",
+    "biosampleAccession": "SAMN26267392",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "VN081",
@@ -1457,7 +1457,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN13961514",
+    "biosampleAccession": "SAMN13961514",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -1473,7 +1473,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861663",
+    "biosampleAccession": "SAMN17861663",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PEL39",
@@ -1489,7 +1489,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33621951",
+    "biosampleAccession": "SAMN33621951",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -1505,7 +1505,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758785",
+    "biosampleAccession": "SAMN33758785",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -1521,7 +1521,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021617",
+    "biosampleAccession": "SAMN41021617",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -1537,7 +1537,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861237",
+    "biosampleAccession": "SAMN17861237",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "BB21",
@@ -1553,7 +1553,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33621952",
+    "biosampleAccession": "SAMN33621952",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "BB22",
@@ -1569,7 +1569,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33621953",
+    "biosampleAccession": "SAMN33621953",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PEL46",
@@ -1585,7 +1585,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237505",
+    "biosampleAccession": "SAMN26237505",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "BB23",
@@ -1601,7 +1601,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26267394",
+    "biosampleAccession": "SAMN26267394",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PEL51",
@@ -1617,7 +1617,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26267395",
+    "biosampleAccession": "SAMN26267395",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PEL52",
@@ -1633,7 +1633,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37797104",
+    "biosampleAccession": "SAMN37797104",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -1649,7 +1649,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021615",
+    "biosampleAccession": "SAMN41021615",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -1665,7 +1665,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758786",
+    "biosampleAccession": "SAMN33758786",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "BB46",
@@ -1681,7 +1681,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861238",
+    "biosampleAccession": "SAMN17861238",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "BB55",
@@ -1697,7 +1697,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37797105",
+    "biosampleAccession": "SAMN37797105",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "VN087",
@@ -1713,7 +1713,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237506",
+    "biosampleAccession": "SAMN26237506",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "VN090",
@@ -1729,7 +1729,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861239",
+    "biosampleAccession": "SAMN17861239",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "BB68",
@@ -1745,7 +1745,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861240",
+    "biosampleAccession": "SAMN17861240",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "GB21",
@@ -1761,7 +1761,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021657",
+    "biosampleAccession": "SAMN41021657",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "GB23",
@@ -1777,7 +1777,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237507",
+    "biosampleAccession": "SAMN26237507",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PK09",
@@ -1793,7 +1793,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237508",
+    "biosampleAccession": "SAMN26237508",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "GB29",
@@ -1809,7 +1809,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861664",
+    "biosampleAccession": "SAMN17861664",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "GB31",
@@ -1825,7 +1825,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861665",
+    "biosampleAccession": "SAMN17861665",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "GB33",
@@ -1841,7 +1841,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26267383",
+    "biosampleAccession": "SAMN26267383",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "GB38",
@@ -1857,7 +1857,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37706906",
+    "biosampleAccession": "SAMN37706906",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "GB40",
@@ -1873,7 +1873,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237509",
+    "biosampleAccession": "SAMN26237509",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PK21",
@@ -1889,7 +1889,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861666",
+    "biosampleAccession": "SAMN17861666",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "GB50",
@@ -1905,7 +1905,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN13958364",
+    "biosampleAccession": "SAMN13958364",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -1921,7 +1921,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758787",
+    "biosampleAccession": "SAMN33758787",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PK26",
@@ -1937,7 +1937,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26267396",
+    "biosampleAccession": "SAMN26267396",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PK27",
@@ -1953,7 +1953,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237510",
+    "biosampleAccession": "SAMN26237510",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "GB63",
@@ -1969,7 +1969,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN05603745",
+    "biosampleAccession": "SAMN05603745",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -1985,7 +1985,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37797106",
+    "biosampleAccession": "SAMN37797106",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "GB74",
@@ -2001,7 +2001,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861667",
+    "biosampleAccession": "SAMN17861667",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "GB89",
@@ -2017,7 +2017,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758788",
+    "biosampleAccession": "SAMN33758788",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "NG06",
@@ -2033,7 +2033,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33621954",
+    "biosampleAccession": "SAMN33621954",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "NG20",
@@ -2049,7 +2049,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33621955",
+    "biosampleAccession": "SAMN33621955",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "NG24",
@@ -2065,7 +2065,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37797107",
+    "biosampleAccession": "SAMN37797107",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "GB97",
@@ -2081,7 +2081,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758789",
+    "biosampleAccession": "SAMN33758789",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PK35",
@@ -2097,7 +2097,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758790",
+    "biosampleAccession": "SAMN33758790",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "GB110",
@@ -2113,7 +2113,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37797108",
+    "biosampleAccession": "SAMN37797108",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "GB113",
@@ -2129,7 +2129,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN13957944",
+    "biosampleAccession": "SAMN13957944",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -2145,7 +2145,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758791",
+    "biosampleAccession": "SAMN33758791",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "NG36",
@@ -2161,7 +2161,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758792",
+    "biosampleAccession": "SAMN33758792",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -2177,7 +2177,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33621956",
+    "biosampleAccession": "SAMN33621956",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "NG58",
@@ -2193,7 +2193,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758793",
+    "biosampleAccession": "SAMN33758793",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -2209,7 +2209,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33621957",
+    "biosampleAccession": "SAMN33621957",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -2225,7 +2225,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758794",
+    "biosampleAccession": "SAMN33758794",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PK41",
@@ -2241,7 +2241,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021631",
+    "biosampleAccession": "SAMN41021631",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -2257,7 +2257,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021668",
+    "biosampleAccession": "SAMN41021668",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -2273,7 +2273,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861668",
+    "biosampleAccession": "SAMN17861668",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "SL50",
@@ -2289,7 +2289,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37797110",
+    "biosampleAccession": "SAMN37797110",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "SL56",
@@ -2305,7 +2305,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861669",
+    "biosampleAccession": "SAMN17861669",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "SL56i",
@@ -2321,7 +2321,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN08723473",
+    "biosampleAccession": "SAMN08723473",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -2337,7 +2337,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861241",
+    "biosampleAccession": "SAMN17861241",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "NG107",
@@ -2353,7 +2353,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021651",
+    "biosampleAccession": "SAMN41021651",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "NG109",
@@ -2369,7 +2369,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861670",
+    "biosampleAccession": "SAMN17861670",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "GB125",
@@ -2385,7 +2385,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN17861671",
+    "biosampleAccession": "SAMN17861671",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "SL72",
@@ -2401,7 +2401,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021645",
+    "biosampleAccession": "SAMN41021645",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "SL73",
@@ -2417,7 +2417,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237511",
+    "biosampleAccession": "SAMN26237511",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PK53",
@@ -2433,7 +2433,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237512",
+    "biosampleAccession": "SAMN26237512",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PK58",
@@ -2449,7 +2449,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26267385",
+    "biosampleAccession": "SAMN26267385",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "ST016",
@@ -2465,7 +2465,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758795",
+    "biosampleAccession": "SAMN33758795",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PK60",
@@ -2481,7 +2481,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237513",
+    "biosampleAccession": "SAMN26237513",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "PK62",
@@ -2497,7 +2497,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37797111",
+    "biosampleAccession": "SAMN37797111",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -2513,7 +2513,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021647",
+    "biosampleAccession": "SAMN41021647",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -2529,7 +2529,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37706907",
+    "biosampleAccession": "SAMN37706907",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "BD18",
@@ -2545,7 +2545,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37706908",
+    "biosampleAccession": "SAMN37706908",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "BD22",
@@ -2561,7 +2561,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26237514",
+    "biosampleAccession": "SAMN26237514",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "BD27",
@@ -2577,7 +2577,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33621958",
+    "biosampleAccession": "SAMN33621958",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "BD28",
@@ -2593,7 +2593,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021625",
+    "biosampleAccession": "SAMN41021625",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -2609,7 +2609,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26267386",
+    "biosampleAccession": "SAMN26267386",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "BD37",
@@ -2625,7 +2625,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26267387",
+    "biosampleAccession": "SAMN26267387",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "BD42",
@@ -2641,7 +2641,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26267388",
+    "biosampleAccession": "SAMN26267388",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "ST111",
@@ -2657,7 +2657,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37706909",
+    "biosampleAccession": "SAMN37706909",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "BD52",
@@ -2673,7 +2673,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37706910",
+    "biosampleAccession": "SAMN37706910",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "BD53",
@@ -2689,7 +2689,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26267397",
+    "biosampleAccession": "SAMN26267397",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "BD61",
@@ -2705,7 +2705,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37706911",
+    "biosampleAccession": "SAMN37706911",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "BD62",
@@ -2721,7 +2721,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26267389",
+    "biosampleAccession": "SAMN26267389",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "ST203",
@@ -2737,7 +2737,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26267390",
+    "biosampleAccession": "SAMN26267390",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "ST006",
@@ -2753,7 +2753,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN26267391",
+    "biosampleAccession": "SAMN26267391",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "ST232",
@@ -2769,7 +2769,7 @@
   },
   {
     "alternativeId": "PAN027",
-    "biosampleId": "SAMN33621959",
+    "biosampleAccession": "SAMN33621959",
     "collection": "N/A",
     "contributors": "UCSC-Masaryk Universty",
     "familyId": "Unspecified",
@@ -2785,7 +2785,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021643",
+    "biosampleAccession": "SAMN41021643",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Y005",
@@ -2801,7 +2801,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021626",
+    "biosampleAccession": "SAMN41021626",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -2817,7 +2817,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758796",
+    "biosampleAccession": "SAMN33758796",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Y016",
@@ -2833,7 +2833,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021669",
+    "biosampleAccession": "SAMN41021669",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -2849,7 +2849,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37797086",
+    "biosampleAccession": "SAMN37797086",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -2865,7 +2865,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021619",
+    "biosampleAccession": "SAMN41021619",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -2881,7 +2881,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021618",
+    "biosampleAccession": "SAMN41021618",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -2897,7 +2897,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758797",
+    "biosampleAccession": "SAMN33758797",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -2913,7 +2913,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021661",
+    "biosampleAccession": "SAMN41021661",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -2929,7 +2929,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN13957875",
+    "biosampleAccession": "SAMN13957875",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -2945,7 +2945,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN44671128",
+    "biosampleAccession": "SAMN44671128",
     "collection": "1000G",
     "contributors": "AMED",
     "familyId": "Unspecified",
@@ -2961,7 +2961,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN44671129",
+    "biosampleAccession": "SAMN44671129",
     "collection": "1000G",
     "contributors": "AMED",
     "familyId": "Unspecified",
@@ -2977,7 +2977,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN44671130",
+    "biosampleAccession": "SAMN44671130",
     "collection": "1000G",
     "contributors": "AMED",
     "familyId": "Unspecified",
@@ -2993,7 +2993,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN44671131",
+    "biosampleAccession": "SAMN44671131",
     "collection": "1000G",
     "contributors": "AMED",
     "familyId": "Unspecified",
@@ -3009,7 +3009,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN44671132",
+    "biosampleAccession": "SAMN44671132",
     "collection": "1000G",
     "contributors": "AMED",
     "familyId": "Unspecified",
@@ -3025,7 +3025,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021621",
+    "biosampleAccession": "SAMN41021621",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3041,7 +3041,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN44671133",
+    "biosampleAccession": "SAMN44671133",
     "collection": "1000G",
     "contributors": "AMED",
     "familyId": "Unspecified",
@@ -3057,7 +3057,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN44671134",
+    "biosampleAccession": "SAMN44671134",
     "collection": "1000G",
     "contributors": "AMED",
     "familyId": "Unspecified",
@@ -3073,7 +3073,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN44671135",
+    "biosampleAccession": "SAMN44671135",
     "collection": "1000G",
     "contributors": "AMED",
     "familyId": "Unspecified",
@@ -3089,7 +3089,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN44671136",
+    "biosampleAccession": "SAMN44671136",
     "collection": "1000G",
     "contributors": "AMED",
     "familyId": "Unspecified",
@@ -3105,7 +3105,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33621961",
+    "biosampleAccession": "SAMN33621961",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3121,7 +3121,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021620",
+    "biosampleAccession": "SAMN41021620",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3137,7 +3137,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021622",
+    "biosampleAccession": "SAMN41021622",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3153,7 +3153,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN44671137",
+    "biosampleAccession": "SAMN44671137",
     "collection": "1000G",
     "contributors": "AMED",
     "familyId": "Unspecified",
@@ -3169,7 +3169,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758798",
+    "biosampleAccession": "SAMN33758798",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3185,7 +3185,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021642",
+    "biosampleAccession": "SAMN41021642",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3201,7 +3201,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758799",
+    "biosampleAccession": "SAMN33758799",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3217,7 +3217,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37797087",
+    "biosampleAccession": "SAMN37797087",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3233,7 +3233,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37797089",
+    "biosampleAccession": "SAMN37797089",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Y056",
@@ -3249,7 +3249,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37797090",
+    "biosampleAccession": "SAMN37797090",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Y039",
@@ -3265,7 +3265,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN03838746",
+    "biosampleAccession": "SAMN03838746",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3281,7 +3281,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37797091",
+    "biosampleAccession": "SAMN37797091",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3297,7 +3297,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37797092",
+    "biosampleAccession": "SAMN37797092",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3313,7 +3313,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021640",
+    "biosampleAccession": "SAMN41021640",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3329,7 +3329,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37797093",
+    "biosampleAccession": "SAMN37797093",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3345,7 +3345,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021611",
+    "biosampleAccession": "SAMN41021611",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3361,7 +3361,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021612",
+    "biosampleAccession": "SAMN41021612",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3377,7 +3377,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021610",
+    "biosampleAccession": "SAMN41021610",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3393,7 +3393,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021665",
+    "biosampleAccession": "SAMN41021665",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3409,7 +3409,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021607",
+    "biosampleAccession": "SAMN41021607",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3425,7 +3425,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN13207712",
+    "biosampleAccession": "SAMN13207712",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3441,7 +3441,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021608",
+    "biosampleAccession": "SAMN41021608",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3457,7 +3457,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021609",
+    "biosampleAccession": "SAMN41021609",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3473,7 +3473,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021630",
+    "biosampleAccession": "SAMN41021630",
     "collection": "1000G",
     "contributors": "Human Technopole",
     "familyId": "Unspecified",
@@ -3489,7 +3489,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758800",
+    "biosampleAccession": "SAMN33758800",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3505,7 +3505,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021652",
+    "biosampleAccession": "SAMN41021652",
     "collection": "1000G",
     "contributors": "Human Technopole",
     "familyId": "Unspecified",
@@ -3521,7 +3521,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN37797094",
+    "biosampleAccession": "SAMN37797094",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3537,7 +3537,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33621962",
+    "biosampleAccession": "SAMN33621962",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3553,7 +3553,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021648",
+    "biosampleAccession": "SAMN41021648",
     "collection": "1000G",
     "contributors": "Human Technopole",
     "familyId": "Unspecified",
@@ -3569,7 +3569,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021671",
+    "biosampleAccession": "SAMN41021671",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3585,7 +3585,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021650",
+    "biosampleAccession": "SAMN41021650",
     "collection": "1000G",
     "contributors": "Human Technopole",
     "familyId": "Unspecified",
@@ -3601,7 +3601,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021664",
+    "biosampleAccession": "SAMN41021664",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3617,7 +3617,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021623",
+    "biosampleAccession": "SAMN41021623",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3633,7 +3633,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN33758801",
+    "biosampleAccession": "SAMN33758801",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3649,7 +3649,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021627",
+    "biosampleAccession": "SAMN41021627",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3665,7 +3665,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021672",
+    "biosampleAccession": "SAMN41021672",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3681,7 +3681,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021629",
+    "biosampleAccession": "SAMN41021629",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3697,7 +3697,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021624",
+    "biosampleAccession": "SAMN41021624",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3713,7 +3713,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN41021649",
+    "biosampleAccession": "SAMN41021649",
     "collection": "1000G",
     "contributors": "NIH",
     "familyId": "Unspecified",
@@ -3729,7 +3729,7 @@
   },
   {
     "alternativeId": "Unspecified",
-    "biosampleId": "SAMN11308573",
+    "biosampleAccession": "SAMN11308573",
     "collection": "HapMap",
     "contributors": "NIH",
     "familyId": "Unspecified",

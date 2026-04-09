@@ -56,7 +56,7 @@ async function buildCatalog(): Promise<void> {
   );
   const annotations = enforceUniqueIds(
     "annotations",
-    await buildAnnotations(),
+    await buildAnnotations(samplesById),
     getAnnotationId
   );
   const alignments = enforceUniqueIds(
@@ -89,7 +89,7 @@ async function buildSamples(): Promise<HPRCDataExplorerSample[]> {
   const mappedRows = sourceRows.map(
     (row): HPRCDataExplorerSample => ({
       alternativeId: parseStringOrAbsent(row.alternative_id),
-      biosampleId: parseStringOrAbsent(row.biosample_id),
+      biosampleAccession: parseStringOrAbsent(row.biosample_id),
       collection: parseStringOrAbsent(row.collection),
       contributors: parseStringOrAbsent(row.contributors),
       familyId: parseStringOrAbsent(row.family_id),
@@ -129,7 +129,7 @@ async function buildRawSequencingData(
         basecallerModel: parseStringOrAbsent(row.basecaller_model),
         basecallerVersion: parseStringOrAbsent(row.basecaller_version),
         bioprojectAccession: parseStringOrAbsent(row.bioproject_accession),
-        biosampleAccession: parseStringOrAbsent(sample.biosampleId),
+        biosampleAccession: parseStringOrAbsent(sample.biosampleAccession),
         ccsAlgorithm: parseStringOrAbsent(row.ccs_algorithm),
         coverage: parseNumberOrAbsent(row.coverage),
         familyId: parseStringOrAbsent(sample.familyId),
@@ -181,7 +181,7 @@ async function buildAssemblies(
     );
     return {
       awsFasta: parseStringOrAbsent(row.assembly),
-      biosampleAccession: parseStringOrAbsent(sample.biosampleId),
+      biosampleAccession: parseStringOrAbsent(sample.biosampleAccession),
       familyId: parseStringOrAbsent(sample.familyId),
       fastaMd5: parseStringOrAbsent(row.assembly_md5),
       fastaSha256: parseStringOrAbsent(row.fasta_sha256),
@@ -206,21 +206,37 @@ async function buildAssemblies(
   );
 }
 
-async function buildAnnotations(): Promise<HPRCDataExplorerAnnotation[]> {
+async function buildAnnotations(
+  samplesById: Map<string, HPRCDataExplorerSample>
+): Promise<HPRCDataExplorerAnnotation[]> {
   const sourceRows = await readUnknownValuesFile<SourceAnnotationKey>(
     SOURCE_PATH_ANNOTATIONS
   );
-  const mappedRows = sourceRows.map(
-    (row): HPRCDataExplorerAnnotation => ({
+  const missingSamples: string[] = [];
+  const mappedRows = sourceRows.map((row): HPRCDataExplorerAnnotation => {
+    const sample = getSampleOrDefault(
+      samplesById,
+      row.sample_id,
+      missingSamples
+    );
+    return {
       annotationType: parseStringOrAbsent(row.annotation_type),
+      biosampleAccession: sample.biosampleAccession,
+      familyId: sample.familyId,
       fileLocation: parseStringOrAbsent(row.location),
       fileSize: parseNumberOrAbsent(row.file_size),
       filename: parseStringOrAbsent(row.location, getFileNameFromPath),
       haplotype: parseStringOrAbsent(row.haplotype, getHaplotypeFromId),
+      populationAbbreviation: sample.populationAbbreviation,
+      populationDescriptor: sample.populationDescriptor,
       release: parseStringOrAbsent(row.release),
       sampleId: parseStringOrAbsent(row.sample_id),
-    })
-  );
+    };
+  });
+  if (missingSamples.length)
+    console.log(
+      `The following samples linked to annotations were not found in the samples list: ${missingSamples.join(", ")}`
+    );
   return mappedRows.sort((a, b) =>
     getAnnotationId(a).localeCompare(getAnnotationId(b))
   );
@@ -311,7 +327,7 @@ function getSampleOrDefault(
   }
   return {
     alternativeId: LABEL.UNSPECIFIED,
-    biosampleId: LABEL.UNSPECIFIED,
+    biosampleAccession: LABEL.UNSPECIFIED,
     collection: LABEL.UNSPECIFIED,
     contributors: LABEL.UNSPECIFIED,
     familyId: LABEL.UNSPECIFIED,

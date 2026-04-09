@@ -35,6 +35,11 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
             },
             {
               enableChartView: false,
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
+            },
+            {
+              enableChartView: false,
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.HAPLOTYPE,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.HAPLOTYPE,
             },
@@ -146,6 +151,50 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILE_LOCATION,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILE_LOCATION,
           width: { max: "1fr", min: "112px" },
+        },
+        {
+          columnVisible: true,
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildBiosampleAccession,
+          } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
+          enableGrouping: true,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
+          width: { max: "1fr", min: "160px" },
+        },
+        {
+          columnVisible: false,
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildFamilyId,
+          } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
+          enableGrouping: true,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
+          width: { max: "0.5fr", min: "112px" },
+        },
+        {
+          columnVisible: false,
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildPopulationAbbreviation,
+          } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
+          enableGrouping: true,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_ABBREVIATION,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_ABBREVIATION,
+          width: { max: "0.5fr", min: "112px" },
+        },
+        {
+          columnVisible: false,
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildPopulationDescriptor,
+          } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
+          enableGrouping: true,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_DESCRIPTOR,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_DESCRIPTOR,
+          width: { max: "1fr", min: "160px" },
         },
       ],
       tableOptions: {

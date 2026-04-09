@@ -14,7 +14,7 @@ export type HPRCDataExplorerEntity =
 
 export type HPRCDataExplorerSample = WithAbsentValues<{
   alternativeId: string;
-  biosampleId: string;
+  biosampleAccession: string;
   collection: string;
   contributors: string;
   familyId: string;
@@ -78,10 +78,14 @@ export type HPRCDataExplorerAssembly = WithAbsentValues<{
 
 export type HPRCDataExplorerAnnotation = WithAbsentValues<{
   annotationType: string;
+  biosampleAccession: string;
+  familyId: string;
   fileLocation: string;
   filename: string;
   fileSize: number;
   haplotype: string;
+  populationAbbreviation: string;
+  populationDescriptor: string;
   release: string;
   sampleId: string;
 }>;

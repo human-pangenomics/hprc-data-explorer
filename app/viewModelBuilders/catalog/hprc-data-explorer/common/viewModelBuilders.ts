@@ -179,11 +179,11 @@ export const buildBioprojectAccession = (
 
 /**
  * Build props for the biosample accession cell.
- * @param entity - Raw sequencing data or assembly entity.
+ * @param entity - Entity containing biosample accession.
  * @returns Props to be used for the cell.
  */
 export const buildBiosampleAccession = (
-  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
+  entity: Exclude<HPRCDataExplorerEntity, HPRCDataExplorerAlignment>
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: entity.biosampleAccession,
@@ -218,11 +218,11 @@ export const buildCoverage = (
 
 /**
  * Build props for the family ID cell.
- * @param entity - Raw sequencing data or assembly entity.
+ * @param entity - Entity containing family ID.
  * @returns Props to be used for the cell.
  */
 export const buildFamilyId = (
-  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
+  entity: Exclude<HPRCDataExplorerEntity, HPRCDataExplorerAlignment>
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: entity.familyId,
@@ -471,11 +471,11 @@ export const buildPlatform = (
 
 /**
  * Build props for the population abbreviation cell.
- * @param entity - Raw sequencing data or assembly entity.
+ * @param entity - Entity containing population abbreviation.
  * @returns Props to be used for the cell.
  */
 export const buildPopulationAbbreviation = (
-  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
+  entity: Exclude<HPRCDataExplorerEntity, HPRCDataExplorerAlignment>
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: entity.populationAbbreviation,
@@ -484,11 +484,11 @@ export const buildPopulationAbbreviation = (
 
 /**
  * Build props for the population descriptor cell.
- * @param entity - Raw sequencing data or assembly entity.
+ * @param entity - Entity containing population descriptor.
  * @returns Props to be used for the cell.
  */
 export const buildPopulationDescriptor = (
-  entity: HPRCDataExplorerRawSequencingData | HPRCDataExplorerAssembly
+  entity: Exclude<HPRCDataExplorerEntity, HPRCDataExplorerAlignment>
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: entity.populationDescriptor,
