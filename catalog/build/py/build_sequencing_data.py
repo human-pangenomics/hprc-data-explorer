@@ -22,8 +22,6 @@ METADA_SOURCES = [
     {"model": schema.KinnexSequencingData, "filename": "kinnex_sheet.csv", "url": "https://docs.google.com/spreadsheets/d/1EuZNw2sdijKYpJLqgHUYBOF6F4ECry8EWKZzVPjAw4Y/gviz/tq?tqx=out:csv&sheet=kinnex"},
 ]
 
-BIOSAMPLES_TABLE_URL = "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sample/hprc_release2_sample_metadata.csv"
-
 
 def download_source_files(urls_source, output_folder_path, get_filename=None, get_url=lambda v: v, get_result_info=lambda v, _: v):
     paths_info = []
@@ -33,7 +31,7 @@ def download_source_files(urls_source, output_folder_path, get_filename=None, ge
     return paths_info
 
 
-def join_samples(metadata_paths, biosamples_table_path):
+def join_samples(metadata_paths):
     schemaview = SchemaView(SEQUENCING_DATA_SCHEMA_PATH)
     # Generate each column across all provided sheets
     metadata_list = []
@@ -49,34 +47,15 @@ def join_samples(metadata_paths, biosamples_table_path):
         .reindex(columns=metadata_columns)
         .fillna("N/A")
     )
-    # Join the concatenated sheets with the table
-    biosamples_table = pd.read_csv(biosamples_table_path, sep=",").drop(columns=["notes"])
-    joined = all_metadata.merge(
-        biosamples_table,
-        on="sample_id",
-        how="left",
-        validate="many_to_one",
-    )
-    print("\nThe following biosamples did not have corresponding metadata:")
-    print(
-        ", ".join(
-            all_metadata[~all_metadata["sample_id"].isin(biosamples_table["sample_id"])][
-                "sample_id"
-            ].unique()
-        )
-    )
 
-    joined_with_size = joined.assign(file_size=get_file_sizes_from_uris(joined["path"], "sequencing data"))
+    with_size = all_metadata.assign(file_size=get_file_sizes_from_uris(all_metadata["path"], "sequencing data"))
 
-    return (joined_with_size, errors_by_file)
+    return (with_size, errors_by_file)
 
 
 if __name__ == "__main__":
     metadata_files = download_source_files(METADA_SOURCES, DOWNLOADS_FOLDER_PATH, lambda source: source.get("filename"), lambda source: source["url"], lambda path, source: (path, source["model"]))
-    biosamples_table_file = download_source_files(
-        [BIOSAMPLES_TABLE_URL], DOWNLOADS_FOLDER_PATH
-    )[0]
-    joined, errors_by_file = join_samples(metadata_files, biosamples_table_file)
+    joined, errors_by_file = join_samples(metadata_files)
     if errors_by_file:
         print(f"\nValidation errors:\n\n{format_errors_by_file(errors_by_file)}")
         print(f"\nFound errors in {len(errors_by_file)} source files")
