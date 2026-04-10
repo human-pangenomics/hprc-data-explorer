@@ -1,6 +1,8 @@
 import { HprcTabCollection } from "./testInterfaces";
 
 const SEARCH_FILTERS_PLACEHOLDER_TEXT = "Search all filters...";
+const DEFAULT_RELEASE_FILTER =
+  "%5B%7B%22categoryKey%22%3A%22release%22%2C%22value%22%3A%5B%222%22%5D%7D%5D";
 
 export const HPRC_TABS: HprcTabCollection = {
   alignments: {
@@ -15,14 +17,14 @@ export const HPRC_TABS: HprcTabCollection = {
     searchFiltersPlaceholderText: SEARCH_FILTERS_PLACEHOLDER_TEXT,
     selectableColumns: [],
     tabName: "Annotations",
-    url: "/annotations",
+    url: `/annotations?filter=${DEFAULT_RELEASE_FILTER}`,
   },
   assemblies: {
     preselectedColumns: [],
     searchFiltersPlaceholderText: SEARCH_FILTERS_PLACEHOLDER_TEXT,
     selectableColumns: [],
     tabName: "Assemblies",
-    url: "/assemblies",
+    url: `/assemblies?filter=${DEFAULT_RELEASE_FILTER}`,
   },
   rawSequencingData: {
     preselectedColumns: [],

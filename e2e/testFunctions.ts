@@ -138,7 +138,6 @@ export async function testFilterPresence(
     await expect(page.getByText(filterRegex(filterName))).toBeVisible();
     await page.getByText(filterRegex(filterName)).dispatchEvent("click");
     await expect(page.getByRole("checkbox").first()).toBeVisible();
-    await expect(page.getByRole("checkbox").first()).not.toBeChecked();
     // Check that clicking out of the filter menu causes it to disappear
     await page.locator("body").click();
     await expect(page.getByRole("checkbox")).toHaveCount(0);
