@@ -33,14 +33,29 @@ export const sampleEntityConfig: EntityConfig<HPRCDataExplorerSample> = {
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
           },
           {
-            enableChartView: false,
+            enableChartView: true,
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PROJECT,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PROJECT,
           },
           {
-            enableChartView: false,
+            enableChartView: true,
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.CONTRIBUTORS,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.CONTRIBUTORS,
+          },
+          {
+            enableChartView: false,
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
+          },
+          {
+            enableChartView: true,
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_ABBREVIATION,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_ABBREVIATION,
+          },
+          {
+            enableChartView: true,
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_DESCRIPTOR,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_DESCRIPTOR,
           },
         ],
       },
