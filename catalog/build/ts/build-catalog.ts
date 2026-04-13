@@ -185,7 +185,7 @@ async function buildAssemblies(
       fastaSha256: parseStringOrAbsent(row.fasta_sha256),
       fileSize: parseNumberOrAbsent(row.file_size),
       filename: parseStringOrAbsent(row.assembly, getFileNameFromPath),
-      haplotype: parseStringOrAbsent(row.haplotype, getHaplotypeFromId),
+      haplotype: parseStringOrAbsent(row.haplotype),
       populationAbbreviation: sample.populationAbbreviation,
       populationDescriptor: sample.populationDescriptor,
       project: sample.project,
@@ -221,7 +221,7 @@ async function buildAnnotations(
       fileLocation: parseStringOrAbsent(row.location),
       fileSize: parseNumberOrAbsent(row.file_size),
       filename: parseStringOrAbsent(row.location, getFileNameFromPath),
-      haplotype: parseStringOrAbsent(row.haplotype, getHaplotypeFromId),
+      haplotype: parseStringOrAbsent(row.haplotype),
       populationAbbreviation: sample.populationAbbreviation,
       populationDescriptor: sample.populationDescriptor,
       project: sample.project,
@@ -370,19 +370,6 @@ async function saveJson(filePath: string, data: unknown): Promise<void> {
 
 function getFileNameFromPath(p: string): string {
   return p.substring(p.lastIndexOf("/") + 1);
-}
-
-function getHaplotypeFromId(id: string): string | LABEL.NA {
-  switch (id) {
-    case "0":
-      return LABEL.NA;
-    case "1":
-      return "paternal";
-    case "2":
-      return "maternal";
-    default:
-      return id;
-  }
 }
 
 /**
