@@ -6,10 +6,28 @@ type WithAbsentValues<T> = {
 };
 
 export type HPRCDataExplorerEntity =
+  | HPRCDataExplorerSample
   | HPRCDataExplorerAlignment
   | HPRCDataExplorerAnnotation
   | HPRCDataExplorerAssembly
   | HPRCDataExplorerRawSequencingData;
+
+export type HPRCDataExplorerSample = WithAbsentValues<{
+  alternativeId: string;
+  biosampleAccession: string;
+  collection: string;
+  contributors: string;
+  familyId: string;
+  maternalId: string;
+  paternalId: string;
+  populationAbbreviation: string;
+  populationDescriptor: string;
+  project: string;
+  sampleId: string;
+  sex: string;
+  tissue: string;
+  trioAvailable: boolean;
+}>;
 
 export type HPRCDataExplorerRawSequencingData = WithAbsentValues<{
   accession: string;
@@ -19,6 +37,7 @@ export type HPRCDataExplorerRawSequencingData = WithAbsentValues<{
   bioprojectAccession: string;
   biosampleAccession: string;
   ccsAlgorithm: string;
+  contributors: string;
   coverage: number;
   familyId: string;
   filename: string;
@@ -35,6 +54,7 @@ export type HPRCDataExplorerRawSequencingData = WithAbsentValues<{
   platform: string;
   populationAbbreviation: string;
   populationDescriptor: string;
+  project: string;
   sampleId: string;
   study: string;
   totalGbp: number;
@@ -45,6 +65,7 @@ export type HPRCDataExplorerRawSequencingData = WithAbsentValues<{
 export type HPRCDataExplorerAssembly = WithAbsentValues<{
   awsFasta: string;
   biosampleAccession: string;
+  contributors: string;
   familyId: string;
   fastaMd5: string;
   fastaSha256: string;
@@ -53,6 +74,7 @@ export type HPRCDataExplorerAssembly = WithAbsentValues<{
   haplotype: string;
   populationAbbreviation: string;
   populationDescriptor: string;
+  project: string;
   release: string;
   sampleId: string;
   ucscBrowserUrl: string;
@@ -60,10 +82,16 @@ export type HPRCDataExplorerAssembly = WithAbsentValues<{
 
 export type HPRCDataExplorerAnnotation = WithAbsentValues<{
   annotationType: string;
+  biosampleAccession: string;
+  contributors: string;
+  familyId: string;
   fileLocation: string;
   filename: string;
   fileSize: number;
   haplotype: string;
+  populationAbbreviation: string;
+  populationDescriptor: string;
+  project: string;
   release: string;
   sampleId: string;
 }>;

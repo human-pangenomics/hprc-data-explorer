@@ -45,7 +45,6 @@ RELEASE_SPECIFIC_DATA = [
     }
 ]
 
-BIOSAMPLE_TABLE_URL = "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/sample/hprc_release2_sample_metadata.csv"
 UCSC_BROWSER_TABLE_URL = "https://raw.githubusercontent.com/human-pangenomics/hprc_intermediate_assembly/refs/heads/main/data_tables/browser/ucsc_browser_hprc_r2_v1.0.index.csv"
 
 
@@ -97,8 +96,6 @@ def format_release_1_assemblies_df(data):
 
 if __name__ == "__main__":
     # Download the files from Github and load them as dataframes
-    biosample_path = download_file(BIOSAMPLE_TABLE_URL, DOWNLOADS_FOLDER_PATH)
-    biosample_df = pd.read_csv(biosample_path, sep=",")
     ucsc_browser_path = download_file(UCSC_BROWSER_TABLE_URL, DOWNLOADS_FOLDER_PATH)
     ucsc_browser_df = pd.read_csv(ucsc_browser_path, sep=",")[["assembly_name", "browser"]]
     loaded_dfs, load_metadata = load_data_for_releases(RELEASE_SPECIFIC_DATA, DOWNLOADS_FOLDER_PATH)
@@ -109,17 +106,11 @@ if __name__ == "__main__":
         print(f"\nValidation errors:\n\n{format_errors_by_file(validation_errors)}")
         print(f"\nFound errors in {len(validation_errors)} source files\n")
 
-    # Merge all DataFrames
+    # Merge both DataFrames
     combined_df = assembly_df.merge(
-        biosample_df, on="sample_id", how="left", validate="many_to_one"
-    ).merge(
         ucsc_browser_df, on="assembly_name", how="left", validate="many_to_one"
     )
     combined_df["browser"] = combined_df["browser"].fillna("")
-    print("The following sample IDs did not correspond to a value in the Biosample sheet, so NA values were entered:")
-    print(", ".join(
-        assembly_df.loc[~assembly_df["sample_id"].isin(biosample_df["sample_id"]), "sample_id"]
-    ))
     output_df = combined_df.assign(file_size=get_file_sizes_from_uris(combined_df["assembly"], "assembly"))
     output_df.to_csv(OUTPUT_FILE_PATH, index=False)
     print("\nAssembly processing complete!\n")

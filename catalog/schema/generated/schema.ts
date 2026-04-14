@@ -1,3 +1,19 @@
+export type SamplesSlotName =
+  | "sample_id"
+  | "biosample_id"
+  | "population_descriptor"
+  | "population_abbreviation"
+  | "family_id"
+  | "paternal_id"
+  | "maternal_id"
+  | "alternative_id"
+  | "sex"
+  | "tissue"
+  | "trio_available"
+  | "collection"
+  | "project"
+  | "contributors";
+
 export type SequencingDataSlotName =
   | "coverage_over_100kb"
   | "accession"

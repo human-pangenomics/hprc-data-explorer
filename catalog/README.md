@@ -2,7 +2,7 @@
 
 ## Overview of Catalog-Building Process
 
-The HPRC Data Explorer catalog data is supplied via spreadsheets hosted on GitHub and Google Sheets, and is transformed by manually-run scripts into JSON that can be used by the Data Explorer app to display catalog content. The scripts used to build the catalog are split into two steps: first, Python scripts are used to download the input files, process them, and combine them into one CSV file for each entity type (sequencing data, assemblies, and annotations); then, a TypeScript script is used to transform the CSVs into JSON files for use by the app.
+The HPRC Data Explorer catalog data is supplied via spreadsheets hosted on GitHub and Google Sheets, and is transformed by manually-run scripts into JSON that can be used by the Data Explorer app to display catalog content. The scripts used to build the catalog are split into two steps: first, Python scripts are used to download the input files, process them, and combine them into one CSV file for each entity type (samples, sequencing data, assemblies, and annotations); then, a TypeScript script is used to transform the CSVs into JSON files for use by the app. The different entity types are kept separate for the Python step, but may be combined in the TypeScript step, e.g. to associate samples' metadata with related entities.
 
 Alignments are a special case in that they are not handled by the Python build step, and instead have a manually-maintained CSV as input for the TypeScript build step.
 
@@ -23,7 +23,7 @@ The input files for each entity type are validated using LinkML schemas; this is
 
 ## Building the Intermediate Catalog Files
 
-The intermediate composite files for raw sequencing data, assemblies, and annotations are generated through Python scripts.
+The intermediate composite files for samples, raw sequencing data, assemblies, and annotations are generated through Python scripts.
 
 See [README.md](../README.md) in the repository root for instructions on setting up the Python environment.
 
@@ -38,6 +38,7 @@ This will also validate all entity types (including alignments), with any valida
 As the scripts can take a long time to run (due to file sizes being queried from Amazon S3), it may be desirable to build or validate only a single entity type that has been updated, which can be done using the corresponding one of the following commands:
 
 ```shell
+npm run build-samples-source
 npm run build-sequencing-data-source
 npm run build-assemblies-source
 npm run build-annotations-source

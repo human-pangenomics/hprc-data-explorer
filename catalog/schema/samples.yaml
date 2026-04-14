@@ -1,0 +1,86 @@
+id: https://github.com/human-pangenomics/hprc-data-explorer/blob/main/catalog/schema/samples.yaml#
+name: samples
+description: Schema for source samples.
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+
+imports:
+  - linkml:types
+
+classes:
+  Sample:
+    description: A sample.
+    slots:
+      - sample_id
+      - biosample_id
+      - population_descriptor
+      - population_abbreviation
+      - family_id
+      - paternal_id
+      - maternal_id
+      - alternative_id
+      - sex
+      - tissue
+      - trio_available
+      - collection
+      - project
+      - contributors
+
+slots:
+  sample_id:
+    description: Sample ID to identify sample. This is typically the Catalog ID from Coriell. When names with the prefix HG are not available, NA is preferred over GM. For example NA18982 should be used instead of GM18982 though in some cases both NA and GM may be used to identify the same sample.
+    required: true
+    range: string
+  biosample_id:
+    description: NCBI BioSample ID used for sequence read and assembly uploads. Also called biosample_accession
+    required: false
+    range: string
+  population_descriptor:
+    description: Population descriptor from NHGRI collection. Describes ancestral geography or ethnicity of each population and the geographic location where the samples from that population were collected.
+    required: false
+    range: string
+  population_abbreviation:
+    description: Abbreviation for population descriptor.
+    required: false
+    range: string
+  family_id:
+    description: Family ID from 1000G pedigree data. For samples who are not part of a trio dataset in 1000G this is left blank.
+    required: false
+    range: string
+  paternal_id:
+    description: Sample ID of father of trio. For non-trio samples this is left blank.
+    required: false
+    range: string
+  maternal_id:
+    description: Sample ID of mother of trio. For non-trio samples this is left blank.
+    required: false
+    range: string
+  alternative_id:
+    description: Alternative sample ID (included if it is often used in other sequencing and assembly efforts)
+    required: false
+    range: string
+  sex:
+    description: Sex of donor
+    required: false
+    range: string
+  tissue:
+    description: Tissue where B-Lymphocyte likely means that the sample is sourced from EBV-transformed B cells.
+    required: false
+    range: string
+  trio_available:
+    description: TRUE if a sample is the child in a trio and the parental sequencing data is available for phasing.
+    required: false
+    range: boolean
+  collection:
+    description: Collection that sample was pulled from.
+    required: false
+    range: string
+  project:
+    description: The project the sample was a part of prior to inclusion in HPRC.
+    required: false
+    range: string
+  contributors:
+    description: The group or groups responsible for the inclusion of this sample in HPRC and its primary publication.
+    required: false
+    range: string

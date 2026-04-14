@@ -5,6 +5,7 @@ import {
   HPRCDataExplorerAnnotation,
   HPRCDataExplorerAssembly,
   HPRCDataExplorerRawSequencingData,
+  HPRCDataExplorerSample,
   LABEL,
 } from "../../../app/apis/catalog/hprc-data-explorer/common/entities";
 import {
@@ -12,16 +13,19 @@ import {
   getAnnotationId,
   getAssemblyId,
   getRawSequencingDataId,
+  getSampleId,
 } from "../../../app/apis/catalog/hprc-data-explorer/common/utils";
 import {
   SourceAlignmentKey,
   SourceAnnotationKey,
   SourceAssemblyKey,
   SourceRawSequencingDataKey,
+  SourceSampleKey,
 } from "./entities";
 
 const CATALOG_DIR = "catalog/output";
 
+const SOURCE_PATH_SAMPLES = "catalog/build/intermediate/samples.csv";
 const SOURCE_PATH_RAW_SEQUENCING_DATA =
   "catalog/build/intermediate/sequencing-data.csv";
 const SOURCE_PATH_ASSEMBLIES = "catalog/build/intermediate/assemblies.csv";
@@ -32,19 +36,27 @@ buildCatalog();
 
 async function buildCatalog(): Promise<void> {
   console.log("Building catalog...");
+  const samples = enforceUniqueIds(
+    "samples",
+    await buildSamples(),
+    getSampleId
+  );
+  const samplesById = new Map(
+    samples.map((sample) => [sample.sampleId, sample])
+  );
   const rawSequencingData = enforceUniqueIds(
     "raw sequencing data",
-    await buildRawSequencingData(),
+    await buildRawSequencingData(samplesById),
     getRawSequencingDataId
   );
   const assemblies = enforceUniqueIds(
     "assemblies",
-    await buildAssemblies(),
+    await buildAssemblies(samplesById),
     getAssemblyId
   );
   const annotations = enforceUniqueIds(
     "annotations",
-    await buildAnnotations(),
+    await buildAnnotations(samplesById),
     getAnnotationId
   );
   const alignments = enforceUniqueIds(
@@ -52,6 +64,9 @@ async function buildCatalog(): Promise<void> {
     await buildAlignments(),
     getAlignmentId
   );
+
+  console.log("Samples:", samples.length);
+  await saveJson(`${CATALOG_DIR}/samples.json`, samples);
 
   console.log("Sequencing data:", rawSequencingData.length);
   await saveJson(`${CATALOG_DIR}/sequencing-data.json`, rawSequencingData);
@@ -68,90 +83,153 @@ async function buildCatalog(): Promise<void> {
   console.log("Done");
 }
 
-async function buildRawSequencingData(): Promise<
-  HPRCDataExplorerRawSequencingData[]
-> {
+async function buildSamples(): Promise<HPRCDataExplorerSample[]> {
+  const sourceRows =
+    await readUnknownValuesFile<SourceSampleKey>(SOURCE_PATH_SAMPLES);
+  const mappedRows = sourceRows.map(
+    (row): HPRCDataExplorerSample => ({
+      alternativeId: parseStringOrAbsent(row.alternative_id),
+      biosampleAccession: parseStringOrAbsent(row.biosample_id),
+      collection: parseStringOrAbsent(row.collection),
+      contributors: parseStringOrAbsent(row.contributors),
+      familyId: parseStringOrAbsent(row.family_id),
+      maternalId: parseStringOrAbsent(row.maternal_id),
+      paternalId: parseStringOrAbsent(row.paternal_id),
+      populationAbbreviation: parseStringOrAbsent(row.population_abbreviation),
+      populationDescriptor: parseStringOrAbsent(row.population_descriptor),
+      project: parseStringOrAbsent(row.project),
+      sampleId: parseStringOrAbsent(row.sample_id),
+      sex: parseStringOrAbsent(row.sex),
+      tissue: parseStringOrAbsent(row.tissue),
+      trioAvailable: parseBooleanOrAbsent(row.trio_available),
+    })
+  );
+  return mappedRows.sort((a, b) =>
+    getSampleId(a).localeCompare(getSampleId(b))
+  );
+}
+
+async function buildRawSequencingData(
+  samplesById: Map<string, HPRCDataExplorerSample>
+): Promise<HPRCDataExplorerRawSequencingData[]> {
   const sourceRows = await readUnknownValuesFile<SourceRawSequencingDataKey>(
     SOURCE_PATH_RAW_SEQUENCING_DATA
   );
+  const missingSamples = new Set<string>();
   const mappedRows = sourceRows.map(
-    (row): HPRCDataExplorerRawSequencingData => ({
-      accession: parseStringOrAbsent(row.accession),
-      basecaller: parseStringOrAbsent(row.basecaller),
-      basecallerModel: parseStringOrAbsent(row.basecaller_model),
-      basecallerVersion: parseStringOrAbsent(row.basecaller_version),
-      bioprojectAccession: parseStringOrAbsent(row.bioproject_accession),
-      biosampleAccession: parseStringOrAbsent(row.biosample_id),
-      ccsAlgorithm: parseStringOrAbsent(row.ccs_algorithm),
-      coverage: parseNumberOrAbsent(row.coverage),
-      familyId: parseStringOrAbsent(row.family_id),
-      filename: parseStringOrAbsent(row.filename),
-      filetype: parseStringOrAbsent(row.filetype),
-      generatorContact: parseStringOrAbsent(row.generator_contact),
-      generatorFacility: parseStringOrAbsent(row.generator_facility),
-      instrumentModel: parseStringOrAbsent(row.instrument_model),
-      librarySource: parseStringOrAbsent(row.library_source),
-      libraryStrategy: parseStringOrAbsent(row.library_strategy),
-      mmTag: parseBooleanOrAbsent(row.mm_tag),
-      n50: parseNumberOrAbsent(row.n50),
-      oneHundredkbPlus: parseNumberOrAbsent(row.coverage_over_100kb),
-      path: parseStringOrAbsent(row.path),
-      platform: parseStringOrAbsent(row.platform),
-      populationAbbreviation: parseStringOrAbsent(row.population_abbreviation),
-      populationDescriptor: parseStringOrAbsent(row.population_descriptor),
-      sampleId: parseStringOrAbsent(row.sample_id),
-      study: parseStringOrAbsent(row.study),
-      totalGbp: parseNumberOrAbsent(row.total_gbp),
-      totalReads: parseNumberOrAbsent(row.total_reads),
-      whales: parseNumberOrAbsent(row.whales),
-    })
+    (row): HPRCDataExplorerRawSequencingData => {
+      const sample = getSampleOrDefault(
+        samplesById,
+        row.sample_id,
+        missingSamples
+      );
+      return {
+        accession: parseStringOrAbsent(row.accession),
+        basecaller: parseStringOrAbsent(row.basecaller),
+        basecallerModel: parseStringOrAbsent(row.basecaller_model),
+        basecallerVersion: parseStringOrAbsent(row.basecaller_version),
+        bioprojectAccession: parseStringOrAbsent(row.bioproject_accession),
+        biosampleAccession: sample.biosampleAccession,
+        ccsAlgorithm: parseStringOrAbsent(row.ccs_algorithm),
+        coverage: parseNumberOrAbsent(row.coverage),
+        familyId: sample.familyId,
+        contributors: sample.contributors,
+        filename: parseStringOrAbsent(row.filename),
+        filetype: parseStringOrAbsent(row.filetype),
+        generatorContact: parseStringOrAbsent(row.generator_contact),
+        generatorFacility: parseStringOrAbsent(row.generator_facility),
+        instrumentModel: parseStringOrAbsent(row.instrument_model),
+        librarySource: parseStringOrAbsent(row.library_source),
+        libraryStrategy: parseStringOrAbsent(row.library_strategy),
+        mmTag: parseBooleanOrAbsent(row.mm_tag),
+        n50: parseNumberOrAbsent(row.n50),
+        oneHundredkbPlus: parseNumberOrAbsent(row.coverage_over_100kb),
+        path: parseStringOrAbsent(row.path),
+        platform: parseStringOrAbsent(row.platform),
+        populationAbbreviation: sample.populationAbbreviation,
+        populationDescriptor: sample.populationDescriptor,
+        project: sample.project,
+        sampleId: parseStringOrAbsent(row.sample_id),
+        study: parseStringOrAbsent(row.study),
+        totalGbp: parseNumberOrAbsent(row.total_gbp),
+        totalReads: parseNumberOrAbsent(row.total_reads),
+        whales: parseNumberOrAbsent(row.whales),
+      };
+    }
   );
+  reportMissingSamples(missingSamples, "sequencing data");
   return mappedRows.sort((a, b) =>
     getRawSequencingDataId(a).localeCompare(getRawSequencingDataId(b))
   );
 }
 
-async function buildAssemblies(): Promise<HPRCDataExplorerAssembly[]> {
+async function buildAssemblies(
+  samplesById: Map<string, HPRCDataExplorerSample>
+): Promise<HPRCDataExplorerAssembly[]> {
   const sourceRows = await readUnknownValuesFile<SourceAssemblyKey>(
     SOURCE_PATH_ASSEMBLIES
   );
-  const mappedRows = sourceRows.map(
-    (row): HPRCDataExplorerAssembly => ({
+  const missingSamples = new Set<string>();
+  const mappedRows = sourceRows.map((row): HPRCDataExplorerAssembly => {
+    const sample = getSampleOrDefault(
+      samplesById,
+      row.sample_id,
+      missingSamples
+    );
+    return {
       awsFasta: parseStringOrAbsent(row.assembly),
-      biosampleAccession: parseStringOrAbsent(row.biosample_id),
-      familyId: parseStringOrAbsent(row.family_id),
+      biosampleAccession: sample.biosampleAccession,
+      contributors: sample.contributors,
+      familyId: sample.familyId,
       fastaMd5: parseStringOrAbsent(row.assembly_md5),
       fastaSha256: parseStringOrAbsent(row.fasta_sha256),
       fileSize: parseNumberOrAbsent(row.file_size),
       filename: parseStringOrAbsent(row.assembly, getFileNameFromPath),
       haplotype: parseStringOrAbsent(row.haplotype, getHaplotypeFromId),
-      populationAbbreviation: parseStringOrAbsent(row.population_abbreviation),
-      populationDescriptor: parseStringOrAbsent(row.population_descriptor),
+      populationAbbreviation: sample.populationAbbreviation,
+      populationDescriptor: sample.populationDescriptor,
+      project: sample.project,
       release: parseStringOrAbsent(row.release),
       sampleId: parseStringOrAbsent(row.sample_id),
       ucscBrowserUrl: parseStringOrAbsent(row.browser),
-    })
-  );
+    };
+  });
+  reportMissingSamples(missingSamples, "assemblies");
   return mappedRows.sort((a, b) =>
     getAssemblyId(a).localeCompare(getAssemblyId(b))
   );
 }
 
-async function buildAnnotations(): Promise<HPRCDataExplorerAnnotation[]> {
+async function buildAnnotations(
+  samplesById: Map<string, HPRCDataExplorerSample>
+): Promise<HPRCDataExplorerAnnotation[]> {
   const sourceRows = await readUnknownValuesFile<SourceAnnotationKey>(
     SOURCE_PATH_ANNOTATIONS
   );
-  const mappedRows = sourceRows.map(
-    (row): HPRCDataExplorerAnnotation => ({
+  const missingSamples = new Set<string>();
+  const mappedRows = sourceRows.map((row): HPRCDataExplorerAnnotation => {
+    const sample = getSampleOrDefault(
+      samplesById,
+      row.sample_id,
+      missingSamples
+    );
+    return {
       annotationType: parseStringOrAbsent(row.annotation_type),
+      biosampleAccession: sample.biosampleAccession,
+      contributors: sample.contributors,
+      familyId: sample.familyId,
       fileLocation: parseStringOrAbsent(row.location),
       fileSize: parseNumberOrAbsent(row.file_size),
       filename: parseStringOrAbsent(row.location, getFileNameFromPath),
       haplotype: parseStringOrAbsent(row.haplotype, getHaplotypeFromId),
+      populationAbbreviation: sample.populationAbbreviation,
+      populationDescriptor: sample.populationDescriptor,
+      project: sample.project,
       release: parseStringOrAbsent(row.release),
       sampleId: parseStringOrAbsent(row.sample_id),
-    })
-  );
+    };
+  });
+  reportMissingSamples(missingSamples, "annotations");
   return mappedRows.sort((a, b) =>
     getAnnotationId(a).localeCompare(getAnnotationId(b))
   );
@@ -223,6 +301,49 @@ function verifyUniqueIds<T>(
     const duplicateIds = duplicateIdEntries.map(([id]) => id);
     throw new Error(
       `Duplicate ${entityName} IDs found: ${duplicateIds.join(", ")}`
+    );
+  }
+}
+
+function getSampleOrDefault(
+  samplesById: Map<string, HPRCDataExplorerSample>,
+  id: string | undefined,
+  missingSamples: Set<string>
+): HPRCDataExplorerSample {
+  if (id !== undefined) {
+    const sample = samplesById.get(id);
+    if (sample === undefined) {
+      missingSamples.add(id);
+    } else {
+      return sample;
+    }
+  }
+  return {
+    alternativeId: LABEL.UNSPECIFIED,
+    biosampleAccession: LABEL.UNSPECIFIED,
+    collection: LABEL.UNSPECIFIED,
+    contributors: LABEL.UNSPECIFIED,
+    familyId: LABEL.UNSPECIFIED,
+    maternalId: LABEL.UNSPECIFIED,
+    paternalId: LABEL.UNSPECIFIED,
+    populationAbbreviation: LABEL.UNSPECIFIED,
+    populationDescriptor: LABEL.UNSPECIFIED,
+    project: LABEL.UNSPECIFIED,
+    sampleId: LABEL.UNSPECIFIED,
+    sex: LABEL.UNSPECIFIED,
+    tissue: LABEL.UNSPECIFIED,
+    trioAvailable: LABEL.UNSPECIFIED,
+  };
+}
+
+function reportMissingSamples(
+  missingSamples: Set<string>,
+  pluralEntityName: string
+): void {
+  if (missingSamples.size) {
+    const missingSamplesList = Array.from(missingSamples).sort();
+    console.log(
+      `The following samples linked to ${pluralEntityName} were not found in the samples list: ${missingSamplesList.join(", ")}`
     );
   }
 }
