@@ -2,7 +2,8 @@
 
 ## Notes
 
-For reference when considering duplicated entity IDs, the functions used to generate IDs can be found in [utils.ts](../../../app/apis/catalog/hprc-data-explorer/common/utils.ts).
+- As catalog build scripts may be run independently of each other, some parts of this report may be more up-to-date than others, although they should all be applicable to what's displayed in the app as long as `npm run build-catalog` is the most recent catalog build script to have been run.
+- For reference when considering duplicated entity IDs, the functions used to generate IDs can be found in [utils.ts](../../../app/apis/catalog/hprc-data-explorer/common/utils.ts).
 
 ## Samples
 

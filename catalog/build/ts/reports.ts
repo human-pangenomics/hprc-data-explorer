@@ -59,6 +59,10 @@ const ENTITY_TYPE_TITLES: EntityTypeMapping<string> = {
 const ID_FUNCTIONS_FOLDER_PATH_FROM_REPORT =
   "../../../app/apis/catalog/hprc-data-explorer/common";
 const ID_FUNCTIONS_FILE_NAME = "utils.ts";
+const CATALOG_REPORT_NOTES_TEXT = `
+- As catalog build scripts may be run independently of each other, some parts of this report may be more up-to-date than others, although they should all be applicable to what's displayed in the app as long as \`npm run build-catalog\` is the most recent catalog build script to have been run.
+- For reference when considering duplicated entity IDs, the functions used to generate IDs can be found in [${ID_FUNCTIONS_FILE_NAME}](${ID_FUNCTIONS_FOLDER_PATH_FROM_REPORT}/${ID_FUNCTIONS_FILE_NAME}).
+`.trim();
 
 export async function saveCatalogConversionReport(
   report: CatalogConversionReport
@@ -74,7 +78,7 @@ export async function generateCatalogBuildReport(): Promise<void> {
     path.resolve(REPORTS_DATA_PATH, CONVERSION_REPORT_NAME)
   );
 
-  let report = `# Catalog build report\n\n## Notes\n\nFor reference when considering duplicated entity IDs, the functions used to generate IDs can be found in [${ID_FUNCTIONS_FILE_NAME}](${ID_FUNCTIONS_FOLDER_PATH_FROM_REPORT}/${ID_FUNCTIONS_FILE_NAME}).`;
+  let report = `# Catalog build report\n\n## Notes\n\n${CATALOG_REPORT_NOTES_TEXT}`;
 
   for (const entityType of ENTITY_TYPE_KEYS) {
     // Add report section for an entity type
