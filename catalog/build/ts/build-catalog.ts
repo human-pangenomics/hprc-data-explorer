@@ -110,7 +110,7 @@ async function buildCatalog(): Promise<void> {
     missingSamples: missingSamplesByEntityType,
   });
 
-  generateCatalogBuildReport();
+  await generateCatalogBuildReport();
 
   console.log("Done");
 }
