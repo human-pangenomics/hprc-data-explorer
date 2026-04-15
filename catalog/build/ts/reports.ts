@@ -113,6 +113,8 @@ export async function generateCatalogBuildReport(): Promise<void> {
   }
 
   await fsp.writeFile(path.resolve(REPORTS_PATH, CATALOG_REPORT_NAME), report);
+
+  console.log("Updated catalog build report");
 }
 
 function generateStringListOrNone(arr: string[], indent?: string): string {
