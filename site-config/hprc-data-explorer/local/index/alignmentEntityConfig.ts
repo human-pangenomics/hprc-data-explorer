@@ -24,7 +24,6 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
       {
         categoryConfigs: [
           {
-            enableChartView: false,
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.ALIGNMENT,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ALIGNMENT,
           },
@@ -41,7 +40,6 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.REFERENCE_COORDINATES,
           },
           {
-            enableChartView: false,
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILENAME,
           },

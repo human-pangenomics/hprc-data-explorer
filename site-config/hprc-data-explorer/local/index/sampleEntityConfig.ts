@@ -23,37 +23,34 @@ export const sampleEntityConfig: EntityConfig<HPRCDataExplorerSample> = {
       {
         categoryConfigs: [
           {
-            enableChartView: false,
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SAMPLE_ID,
           },
           {
-            enableChartView: false,
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
           },
           {
-            enableChartView: true,
+            chart: { enable: true },
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PROJECT,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PROJECT,
           },
           {
-            enableChartView: true,
+            chart: { enable: true },
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.CONTRIBUTORS,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.CONTRIBUTORS,
           },
           {
-            enableChartView: false,
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
           },
           {
-            enableChartView: true,
+            chart: { enable: true },
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_ABBREVIATION,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_ABBREVIATION,
           },
           {
-            enableChartView: true,
+            chart: { enable: true },
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_DESCRIPTOR,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_DESCRIPTOR,
           },

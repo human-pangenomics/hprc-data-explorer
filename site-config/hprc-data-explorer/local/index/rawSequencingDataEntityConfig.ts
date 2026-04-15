@@ -24,12 +24,10 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
         {
           categoryConfigs: [
             {
-              enableChartView: false,
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.ACCESSION,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ACCESSION,
             },
             {
-              enableChartView: false,
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
             },
@@ -39,17 +37,14 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
         {
           categoryConfigs: [
             {
-              enableChartView: false,
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SAMPLE_ID,
             },
             {
-              enableChartView: false,
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PROJECT,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PROJECT,
             },
             {
-              enableChartView: false,
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.CONTRIBUTORS,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.CONTRIBUTORS,
             },

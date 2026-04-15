@@ -27,22 +27,18 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.RELEASE,
           },
           {
-            enableChartView: false,
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SAMPLE_ID,
           },
           {
-            enableChartView: false,
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
           },
           {
-            enableChartView: false,
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PROJECT,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PROJECT,
           },
           {
-            enableChartView: false,
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.CONTRIBUTORS,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.CONTRIBUTORS,
           },
