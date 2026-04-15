@@ -1,3 +1,4 @@
+import { FILTER_SORT } from "@databiosphere/findable-ui/lib/common/filters/sort/config/types";
 import { ANCHOR_TARGET } from "@databiosphere/findable-ui/lib/components/Links/common/entities";
 import { SiteConfig } from "@databiosphere/findable-ui/lib/config/entities";
 import * as C from "../../../app/components/index";
@@ -6,7 +7,6 @@ import { alignmentEntityConfig } from "./index/alignmentEntityConfig";
 import { annotationEntityConfig } from "./index/annotationEntityConfig";
 import { assemblyEntityConfig } from "./index/assemblyEntityConfig";
 import { rawSequencingDataEntityConfig } from "./index/rawSequencingDataEntityConfig";
-import { FILTER_SORT } from "@databiosphere/findable-ui/lib/common/filters/sort/config/types";
 import { sampleEntityConfig } from "./index/sampleEntityConfig";
 
 // Template constants
@@ -38,6 +38,10 @@ export function makeConfig(browserUrl: string, gitHubUrl: string): SiteConfig {
     layout: {
       footer: {
         Branding: "",
+        poweredByCC: {
+          alt: "Powered by Clever Canary",
+          src: "/images/powered-by-clevercanary.webp",
+        },
         versionInfo: true,
       },
       header: {
