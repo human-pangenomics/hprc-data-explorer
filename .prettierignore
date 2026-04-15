@@ -11,6 +11,7 @@ out
 
 # catalog
 /catalog/output
+/catalog/build/reports/data
 
 # production
 /build

@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 from generated_schema.annotations import Annotation, ReleaseOneAnnotation, ReleaseOneFlaggerAnnotation
 from build_help import columns_mapper, format_errors_by_file, load_data_for_releases, get_file_sizes_from_uris, validation_input_formatter
+from reports import EntityTypeReport, get_error_strings_per_file, make_uri_error_accumulator
 
 RELEASE_1_CAT_ANNOTATION_TYPES = {"chm13": "CAT_genes_chm13", "hg38": "CAT_genes_hg38"}
 RELEASE_1_FLAGGER_ANNOTATION_TYPES = {
@@ -24,6 +25,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # Define paths relative to the script's directory
 DOWNLOADS_FOLDER_PATH = os.path.join(BASE_DIR, "../temporary")
 OUTPUT_FILE_PATH = os.path.join(BASE_DIR, "../intermediate/annotations.csv")
+REPORT_PATH = os.path.join(BASE_DIR, "../reports/data/normalization_annotations.json")
 ANNOTATIONS_SCHEMA_PATH = os.path.join(BASE_DIR, "../../schema/annotations.yaml")
 
 ANNOTATIONS_SCHEMAVIEW = SchemaView(ANNOTATIONS_SCHEMA_PATH)
@@ -136,7 +138,14 @@ if __name__ == "__main__":
         print(f"\nValidation errors:\n\n{format_errors_by_file(validation_errors)}")
         print(f"\nFound errors in {len(validation_errors)} source files\n")
     
-    output_df = annotations_df.assign(file_size=get_file_sizes_from_uris(annotations_df["location"], "annotation"))
+    handle_uri_error, uri_errors = make_uri_error_accumulator()
+    output_df = annotations_df.assign(file_size=get_file_sizes_from_uris(annotations_df["location"], "annotation", handle_uri_error))
+
+    EntityTypeReport(
+        validation_errors=get_error_strings_per_file(validation_errors),
+        file_uri_errors=uri_errors
+    ).save_to(REPORT_PATH)
+
     output_df.to_csv(OUTPUT_FILE_PATH, index=False)
 
     print("\nAnnotation processing complete!\n")

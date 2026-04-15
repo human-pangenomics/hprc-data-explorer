@@ -22,6 +22,8 @@ import {
   SourceRawSequencingDataKey,
   SourceSampleKey,
 } from "./entities";
+import { MissingSamples, saveCatalogConversionReport } from "./reports";
+import { saveJson } from "./utils";
 
 const CATALOG_DIR = "catalog/output";
 
@@ -36,7 +38,16 @@ buildCatalog();
 
 async function buildCatalog(): Promise<void> {
   console.log("Building catalog...");
-  const samples = enforceUniqueIds(
+
+  const missingSamplesByEntityType: MissingSamples = {
+    alignments: null,
+    annotations: null,
+    assemblies: null,
+    samples: null,
+    sequencingData: null,
+  };
+
+  const [samples, dedupedSampleIds] = enforceUniqueIds(
     "samples",
     await buildSamples(),
     getSampleId
@@ -44,22 +55,26 @@ async function buildCatalog(): Promise<void> {
   const samplesById = new Map(
     samples.map((sample) => [sample.sampleId, sample])
   );
-  const rawSequencingData = enforceUniqueIds(
+
+  const [rawSequencingData, dedupedSequencingDataIds] = enforceUniqueIds(
     "raw sequencing data",
-    await buildRawSequencingData(samplesById),
+    await buildRawSequencingData(samplesById, missingSamplesByEntityType),
     getRawSequencingDataId
   );
-  const assemblies = enforceUniqueIds(
+
+  const [assemblies, dedupedAssemblyIds] = enforceUniqueIds(
     "assemblies",
-    await buildAssemblies(samplesById),
+    await buildAssemblies(samplesById, missingSamplesByEntityType),
     getAssemblyId
   );
-  const annotations = enforceUniqueIds(
+
+  const [annotations, dedupedAnnotationIds] = enforceUniqueIds(
     "annotations",
-    await buildAnnotations(samplesById),
+    await buildAnnotations(samplesById, missingSamplesByEntityType),
     getAnnotationId
   );
-  const alignments = enforceUniqueIds(
+
+  const [alignments, dedupedAlignmentIds] = enforceUniqueIds(
     "alignments",
     await buildAlignments(),
     getAlignmentId
@@ -79,6 +94,17 @@ async function buildCatalog(): Promise<void> {
 
   console.log("Alignments:", alignments.length);
   await saveJson(`${CATALOG_DIR}/alignments.json`, alignments);
+
+  await saveCatalogConversionReport({
+    deduplicatedIds: {
+      alignments: dedupedAlignmentIds,
+      annotations: dedupedAnnotationIds,
+      assemblies: dedupedAssemblyIds,
+      samples: dedupedSampleIds,
+      sequencingData: dedupedSequencingDataIds,
+    },
+    missingSamples: missingSamplesByEntityType,
+  });
 
   console.log("Done");
 }
@@ -110,7 +136,8 @@ async function buildSamples(): Promise<HPRCDataExplorerSample[]> {
 }
 
 async function buildRawSequencingData(
-  samplesById: Map<string, HPRCDataExplorerSample>
+  samplesById: Map<string, HPRCDataExplorerSample>,
+  missingSamplesByEntityType: MissingSamples
 ): Promise<HPRCDataExplorerRawSequencingData[]> {
   const sourceRows = await readUnknownValuesFile<SourceRawSequencingDataKey>(
     SOURCE_PATH_RAW_SEQUENCING_DATA
@@ -157,14 +184,18 @@ async function buildRawSequencingData(
       };
     }
   );
-  reportMissingSamples(missingSamples, "sequencing data");
+  missingSamplesByEntityType.sequencingData = reportMissingSamples(
+    missingSamples,
+    "sequencing data"
+  );
   return mappedRows.sort((a, b) =>
     getRawSequencingDataId(a).localeCompare(getRawSequencingDataId(b))
   );
 }
 
 async function buildAssemblies(
-  samplesById: Map<string, HPRCDataExplorerSample>
+  samplesById: Map<string, HPRCDataExplorerSample>,
+  missingSamplesByEntityType: MissingSamples
 ): Promise<HPRCDataExplorerAssembly[]> {
   const sourceRows = await readUnknownValuesFile<SourceAssemblyKey>(
     SOURCE_PATH_ASSEMBLIES
@@ -194,14 +225,18 @@ async function buildAssemblies(
       ucscBrowserUrl: parseStringOrAbsent(row.browser),
     };
   });
-  reportMissingSamples(missingSamples, "assemblies");
+  missingSamplesByEntityType.assemblies = reportMissingSamples(
+    missingSamples,
+    "assemblies"
+  );
   return mappedRows.sort((a, b) =>
     getAssemblyId(a).localeCompare(getAssemblyId(b))
   );
 }
 
 async function buildAnnotations(
-  samplesById: Map<string, HPRCDataExplorerSample>
+  samplesById: Map<string, HPRCDataExplorerSample>,
+  missingSamplesByEntityType: MissingSamples
 ): Promise<HPRCDataExplorerAnnotation[]> {
   const sourceRows = await readUnknownValuesFile<SourceAnnotationKey>(
     SOURCE_PATH_ANNOTATIONS
@@ -229,7 +264,10 @@ async function buildAnnotations(
       sampleId: parseStringOrAbsent(row.sample_id),
     };
   });
-  reportMissingSamples(missingSamples, "annotations");
+  missingSamplesByEntityType.annotations = reportMissingSamples(
+    missingSamples,
+    "annotations"
+  );
   return mappedRows.sort((a, b) =>
     getAnnotationId(a).localeCompare(getAnnotationId(b))
   );
@@ -258,7 +296,7 @@ function enforceUniqueIds<T>(
   pluralEntityName: string,
   entities: T[],
   getId: (entity: T) => string
-): T[] {
+): [T[], string[]] {
   const foundIds = new Set<string>();
   const deduplicatedIds = new Set<string>();
   const filteredEntities: T[] = [];
@@ -271,11 +309,12 @@ function enforceUniqueIds<T>(
       foundIds.add(id);
     }
   }
-  if (deduplicatedIds.size)
+  const deduplicatedIdsArr = Array.from(deduplicatedIds);
+  if (deduplicatedIdsArr.length)
     console.warn(
-      `Removed ${pluralEntityName} with duplicate IDs: ${Array.from(deduplicatedIds).join(", ")}`
+      `Removed ${pluralEntityName} with duplicate IDs: ${deduplicatedIdsArr.join(", ")}`
     );
-  return filteredEntities;
+  return [filteredEntities, deduplicatedIdsArr];
 }
 
 /**
@@ -339,13 +378,14 @@ function getSampleOrDefault(
 function reportMissingSamples(
   missingSamples: Set<string>,
   pluralEntityName: string
-): void {
-  if (missingSamples.size) {
-    const missingSamplesList = Array.from(missingSamples).sort();
+): string[] {
+  const missingSamplesList = Array.from(missingSamples).sort();
+  if (missingSamplesList.length) {
     console.log(
       `The following samples linked to ${pluralEntityName} were not found in the samples list: ${missingSamplesList.join(", ")}`
     );
   }
+  return missingSamplesList;
 }
 
 function getTypeFromFilename(name: string): string {
@@ -362,10 +402,6 @@ async function readUnknownValuesFile<TAccessedKeys extends string>(
     delimiter,
     relax_quotes: true,
   });
-}
-
-async function saveJson(filePath: string, data: unknown): Promise<void> {
-  await fsp.writeFile(filePath, JSON.stringify(data, undefined, 2));
 }
 
 function getFileNameFromPath(p: string): string {

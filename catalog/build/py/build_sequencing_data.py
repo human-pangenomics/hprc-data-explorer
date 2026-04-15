@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 from linkml_runtime.utils.schemaview import SchemaView
 from build_help import load_and_validate_csv, format_errors_by_file, download_file, get_file_sizes_from_uris
+from reports import EntityTypeReport, get_error_strings_per_file
 import generated_schema.sequencing_data as schema
 
 # Determine the base directory of the script
@@ -11,6 +12,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # Define paths relative to the script's directory
 DOWNLOADS_FOLDER_PATH = os.path.join(BASE_DIR, "../temporary")
 OUTPUT_FILE_PATH = os.path.join(BASE_DIR, "../intermediate/sequencing-data.csv")
+REPORT_PATH = os.path.join(BASE_DIR, "../reports/data/normalization_sequencing_data.json")
 SEQUENCING_DATA_SCHEMA_PATH = os.path.join(BASE_DIR, "../../schema/sequencing_data.yaml")
 
 METADA_SOURCES = [
@@ -59,5 +61,11 @@ if __name__ == "__main__":
     if errors_by_file:
         print(f"\nValidation errors:\n\n{format_errors_by_file(errors_by_file)}")
         print(f"\nFound errors in {len(errors_by_file)} source files")
+    
+    EntityTypeReport(
+        validation_errors=get_error_strings_per_file(errors_by_file)
+    ).save_to(REPORT_PATH)
+
     joined.to_csv(OUTPUT_FILE_PATH, index=False)
+
     print("\nSequencing data processing complete!\n")
