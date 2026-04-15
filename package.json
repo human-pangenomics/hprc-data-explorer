@@ -19,6 +19,7 @@
     "build-assemblies-source": "poetry run python catalog/build/py/build_assemblies.py",
     "build-annotations-source": "poetry run python catalog/build/py/build_annotations.py",
     "validate-alignments": "poetry run python catalog/build/py/validate_alignments.py",
+    "generate-catalog-report": "esrun catalog/build/ts/generate-report.ts",
     "gen-schema": "poetry run ./catalog/schema/scripts/gen-schema.sh"
   },
   "dependencies": {
