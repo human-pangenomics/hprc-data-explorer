@@ -1,7 +1,7 @@
 import os
 from linkml_runtime import SchemaView
 from build_help import format_file_errors, load_and_validate_csv
-from reports import EntityTypeReport, get_error_strings_for_file
+from reports import EntityTypeReport, get_error_strings_for_file, generate_catalog_report
 from generated_schema.alignments import Alignment
 
 # Determine the base directory of the script
@@ -13,7 +13,7 @@ ALIGNMENTS_SCHEMA_PATH = os.path.join(BASE_DIR, "../../schema/alignments.yaml")
 
 ALIGNMENTS_SCHEMAVIEW = SchemaView(ALIGNMENTS_SCHEMA_PATH)
 
-if __name__ == "__main__":
+def validate_alignments():
   errors = load_and_validate_csv(FILE_PATH, Alignment, ALIGNMENTS_SCHEMAVIEW)[1]
   if errors:
     print(f"\nValidation errors:\n\n{format_file_errors(errors)}")
@@ -22,3 +22,7 @@ if __name__ == "__main__":
   EntityTypeReport(
       validation_errors=[get_error_strings_for_file(os.path.basename(FILE_PATH), errors)]
   ).save_to(REPORT_PATH)
+
+if __name__ == "__main__":
+  validate_alignments()
+  generate_catalog_report()

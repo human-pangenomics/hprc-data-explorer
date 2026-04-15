@@ -1,7 +1,7 @@
 import os
 from linkml_runtime.utils.schemaview import SchemaView
 from build_help import load_and_validate_csv, format_file_errors, download_file
-from reports import EntityTypeReport, get_error_strings_for_file
+from reports import EntityTypeReport, get_error_strings_for_file, generate_catalog_report
 import generated_schema.samples as schema
 
 # Determine the base directory of the script
@@ -16,7 +16,7 @@ SAMPLE_SCHEMA_PATH = os.path.join(BASE_DIR, "../../schema/samples.yaml")
 BIOSAMPLES_TABLE_URL = "https://github.com/human-pangenomics/hprc_intermediate_assembly/raw/refs/heads/main/data_tables/sample/hprc_release2_sample_metadata.csv"
 
 
-if __name__ == "__main__":
+def build_samples():
     schemaview = SchemaView(SAMPLE_SCHEMA_PATH)
     samples_file = download_file(BIOSAMPLES_TABLE_URL, DOWNLOADS_FOLDER_PATH)
     df, errors = load_and_validate_csv(samples_file, schema.Sample, schemaview)
@@ -31,3 +31,8 @@ if __name__ == "__main__":
     df.to_csv(OUTPUT_FILE_PATH, index=False)
 
     print("\nSample processing complete!\n")
+
+
+if __name__ == "__main__":
+    build_samples()
+    generate_catalog_report()

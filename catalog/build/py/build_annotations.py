@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 from generated_schema.annotations import Annotation, ReleaseOneAnnotation, ReleaseOneFlaggerAnnotation
 from build_help import columns_mapper, format_errors_by_file, load_data_for_releases, get_file_sizes_from_uris, validation_input_formatter
-from reports import EntityTypeReport, get_error_strings_per_file, make_uri_error_accumulator
+from reports import EntityTypeReport, get_error_strings_per_file, make_uri_error_accumulator, generate_catalog_report
 
 RELEASE_1_CAT_ANNOTATION_TYPES = {"chm13": "CAT_genes_chm13", "hg38": "CAT_genes_hg38"}
 RELEASE_1_FLAGGER_ANNOTATION_TYPES = {
@@ -129,7 +129,8 @@ RELEASE_SPECIFIC_DATA = [
 def get_type_df(source_df, type):
     return source_df.assign(annotation_type=pd.Series(type, index=source_df.index))
 
-if __name__ == "__main__":
+
+def build_annotations():
     loaded_dfs, load_metadata = load_data_for_releases(RELEASE_SPECIFIC_DATA, DOWNLOADS_FOLDER_PATH)
     annotations_df = loaded_dfs["ANNOTATIONS"]
     validation_errors = {file_name: errors for release_errors in load_metadata["ANNOTATIONS"].values() for file_name, errors in release_errors if errors}
@@ -149,3 +150,8 @@ if __name__ == "__main__":
     output_df.to_csv(OUTPUT_FILE_PATH, index=False)
 
     print("\nAnnotation processing complete!\n")
+
+
+if __name__ == "__main__":
+    build_annotations()
+    generate_catalog_report()

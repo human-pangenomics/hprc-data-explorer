@@ -22,7 +22,11 @@ import {
   SourceRawSequencingDataKey,
   SourceSampleKey,
 } from "./entities";
-import { MissingSamples, saveCatalogConversionReport } from "./reports";
+import {
+  generateCatalogBuildReport,
+  MissingSamples,
+  saveCatalogConversionReport,
+} from "./reports";
 import { saveJson } from "./utils";
 
 const CATALOG_DIR = "catalog/output";
@@ -105,6 +109,8 @@ async function buildCatalog(): Promise<void> {
     },
     missingSamples: missingSamplesByEntityType,
   });
+
+  generateCatalogBuildReport();
 
   console.log("Done");
 }

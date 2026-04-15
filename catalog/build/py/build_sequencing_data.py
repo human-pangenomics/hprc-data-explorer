@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from linkml_runtime.utils.schemaview import SchemaView
 from build_help import load_and_validate_csv, format_errors_by_file, download_file, get_file_sizes_from_uris
-from reports import EntityTypeReport, get_error_strings_per_file
+from reports import EntityTypeReport, get_error_strings_per_file, generate_catalog_report
 import generated_schema.sequencing_data as schema
 
 # Determine the base directory of the script
@@ -55,7 +55,7 @@ def join_samples(metadata_paths):
     return (with_size, errors_by_file)
 
 
-if __name__ == "__main__":
+def build_sequencing_data():
     metadata_files = download_source_files(METADA_SOURCES, DOWNLOADS_FOLDER_PATH, lambda source: source.get("filename"), lambda source: source["url"], lambda path, source: (path, source["model"]))
     joined, errors_by_file = join_samples(metadata_files)
     if errors_by_file:
@@ -69,3 +69,8 @@ if __name__ == "__main__":
     joined.to_csv(OUTPUT_FILE_PATH, index=False)
 
     print("\nSequencing data processing complete!\n")
+
+
+if __name__ == "__main__":
+    build_sequencing_data()
+    generate_catalog_report()

@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 from generated_schema.assemblies import Assembly, ReleaseOneAssembly
 from build_help import columns_mapper, format_errors_by_file, download_file, validation_input_formatter, load_data_for_releases, get_file_sizes_from_uris
-from reports import EntityTypeReport, get_error_strings_per_file, make_uri_error_accumulator
+from reports import EntityTypeReport, get_error_strings_per_file, make_uri_error_accumulator, generate_catalog_report
 
 # Determine the base directory of the script
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -96,7 +96,7 @@ def format_release_1_assemblies_df(data):
     ).drop_duplicates(subset=["sample", "haplotype"], keep="first")
     return outputData
 
-if __name__ == "__main__":
+def build_assemblies():
     # Download the files from Github and load them as dataframes
     ucsc_browser_path = download_file(UCSC_BROWSER_TABLE_URL, DOWNLOADS_FOLDER_PATH)
     ucsc_browser_df = pd.read_csv(ucsc_browser_path, sep=",")[["assembly_name", "browser"]]
@@ -127,3 +127,7 @@ if __name__ == "__main__":
     # Output assemblies
     output_df.to_csv(OUTPUT_FILE_PATH, index=False)
     print("\nAssembly processing complete!\n")
+
+if __name__ == "__main__":
+    build_assemblies()
+    generate_catalog_report()

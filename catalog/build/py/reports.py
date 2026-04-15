@@ -1,5 +1,6 @@
 from dataclasses import dataclass, asdict
 import json
+import subprocess
 from build_help import get_file_error_strings
 
 @dataclass
@@ -31,3 +32,6 @@ def make_uri_error_accumulator():
   def handle_error(uri, message):
     errors.append(UriError(uri, message))
   return handle_error, errors
+
+def generate_catalog_report():
+  subprocess.run(["npm", "run", "generate-catalog-report"], check=True)
