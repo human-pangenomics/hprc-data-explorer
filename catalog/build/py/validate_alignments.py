@@ -14,15 +14,15 @@ ALIGNMENTS_SCHEMA_PATH = os.path.join(BASE_DIR, "../../schema/alignments.yaml")
 ALIGNMENTS_SCHEMAVIEW = SchemaView(ALIGNMENTS_SCHEMA_PATH)
 
 def validate_alignments():
-  errors = load_and_validate_csv(FILE_PATH, Alignment, ALIGNMENTS_SCHEMAVIEW)[1]
-  if errors:
-    print(f"\nValidation errors:\n\n{format_file_errors(errors)}")
-    print(f"\nFound errors in file")
-  
-  EntityTypeReport(
-      validation_errors=[get_error_strings_for_file(os.path.basename(FILE_PATH), errors)]
-  ).save_to(REPORT_PATH)
+    errors = load_and_validate_csv(FILE_PATH, Alignment, ALIGNMENTS_SCHEMAVIEW)[1]
+    if errors:
+        print(f"\nValidation errors:\n\n{format_file_errors(errors)}")
+        print(f"\nFound errors in file")
+    
+    EntityTypeReport(
+        validation_errors=[get_error_strings_for_file(os.path.basename(FILE_PATH), errors)]
+    ).save_to(REPORT_PATH)
 
 if __name__ == "__main__":
-  validate_alignments()
-  generate_catalog_report()
+    validate_alignments()
+    generate_catalog_report()
