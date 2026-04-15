@@ -1,3 +1,3 @@
 import { generateCatalogBuildReport } from "./reports";
 
-generateCatalogBuildReport();
+await generateCatalogBuildReport();
