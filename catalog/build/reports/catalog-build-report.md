@@ -31,6 +31,10 @@ None
   - basecaller: Specified slot is in the broader model but not the specific class (source rows 2-1070)
   - basecaller_version: Specified slot is in the broader model but not the specific class (source rows 2-1070)
 
+### File URI errors
+
+None
+
 ### Linked samples not found in samples list
 
 None

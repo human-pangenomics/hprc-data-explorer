@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from linkml_runtime.utils.schemaview import SchemaView
 from build_help import load_and_validate_csv, format_errors_by_file, download_file, get_file_sizes_from_uris
-from reports import EntityTypeReport, get_error_strings_per_file, generate_catalog_report
+from reports import EntityTypeReport, get_error_strings_per_file, make_uri_error_accumulator, generate_catalog_report
 import generated_schema.sequencing_data as schema
 
 # Determine the base directory of the script
@@ -33,7 +33,7 @@ def download_source_files(urls_source, output_folder_path, get_filename=None, ge
     return paths_info
 
 
-def join_samples(metadata_paths):
+def join_samples(metadata_paths, handle_uri_error):
     schemaview = SchemaView(SEQUENCING_DATA_SCHEMA_PATH)
     # Generate each column across all provided sheets
     metadata_list = []
@@ -50,20 +50,22 @@ def join_samples(metadata_paths):
         .fillna("N/A")
     )
 
-    with_size = all_metadata.assign(file_size=get_file_sizes_from_uris(all_metadata["path"], "sequencing data"))
+    with_size = all_metadata.assign(file_size=get_file_sizes_from_uris(all_metadata["path"], "sequencing data", handle_uri_error))
 
     return (with_size, errors_by_file)
 
 
 def build_sequencing_data():
     metadata_files = download_source_files(METADA_SOURCES, DOWNLOADS_FOLDER_PATH, lambda source: source.get("filename"), lambda source: source["url"], lambda path, source: (path, source["model"]))
-    joined, errors_by_file = join_samples(metadata_files)
+    handle_uri_error, uri_errors = make_uri_error_accumulator()
+    joined, errors_by_file = join_samples(metadata_files, handle_uri_error)
     if errors_by_file:
         print(f"\nValidation errors:\n\n{format_errors_by_file(errors_by_file)}")
         print(f"\nFound errors in {len(errors_by_file)} source files")
     
     EntityTypeReport(
-        validation_errors=get_error_strings_per_file(errors_by_file)
+        validation_errors=get_error_strings_per_file(errors_by_file),
+        file_uri_errors=uri_errors
     ).save_to(REPORT_PATH)
 
     joined.to_csv(OUTPUT_FILE_PATH, index=False)
