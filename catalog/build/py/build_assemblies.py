@@ -4,11 +4,13 @@ import pandas as pd
 import numpy as np
 from generated_schema.assemblies import Assembly, ReleaseOneAssembly
 from build_help import columns_mapper, format_errors_by_file, download_file, validation_input_formatter, load_data_for_releases, get_file_sizes_from_uris
+from reports import EntityTypeReport, get_error_strings_per_file, make_uri_error_accumulator, generate_catalog_report
 
 # Determine the base directory of the script
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DOWNLOADS_FOLDER_PATH = os.path.join(BASE_DIR, "../temporary")
 OUTPUT_FILE_PATH = os.path.join(BASE_DIR, "../intermediate/assemblies.csv")
+REPORT_PATH = os.path.join(BASE_DIR, "../reports/data/normalization_assemblies.json")
 ASSEMBLIES_SCHEMA_PATH = os.path.join(BASE_DIR, "../../schema/assemblies.yaml")
 
 ASSEMBLIES_SCHEMAVIEW = SchemaView(ASSEMBLIES_SCHEMA_PATH)
@@ -94,7 +96,7 @@ def format_release_1_assemblies_df(data):
     ).drop_duplicates(subset=["sample", "haplotype"], keep="first")
     return outputData
 
-if __name__ == "__main__":
+def build_assemblies():
     # Download the files from Github and load them as dataframes
     ucsc_browser_path = download_file(UCSC_BROWSER_TABLE_URL, DOWNLOADS_FOLDER_PATH)
     ucsc_browser_df = pd.read_csv(ucsc_browser_path, sep=",")[["assembly_name", "browser"]]
@@ -111,6 +113,21 @@ if __name__ == "__main__":
         ucsc_browser_df, on="assembly_name", how="left", validate="many_to_one"
     )
     combined_df["browser"] = combined_df["browser"].fillna("")
-    output_df = combined_df.assign(file_size=get_file_sizes_from_uris(combined_df["assembly"], "assembly"))
+
+    # Get file sizes
+    handle_uri_error, uri_errors = make_uri_error_accumulator()
+    output_df = combined_df.assign(file_size=get_file_sizes_from_uris(combined_df["assembly"], "assembly", handle_uri_error))
+
+    # Create report
+    EntityTypeReport(
+        validation_errors=get_error_strings_per_file(validation_errors),
+        file_uri_errors=uri_errors
+    ).save_to(REPORT_PATH)
+
+    # Output assemblies
     output_df.to_csv(OUTPUT_FILE_PATH, index=False)
     print("\nAssembly processing complete!\n")
+
+if __name__ == "__main__":
+    build_assemblies()
+    generate_catalog_report()

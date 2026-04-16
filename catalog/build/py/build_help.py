@@ -146,7 +146,7 @@ def format_index_list(ordered_indices):
     else:
         return " and ".join(range_strings)
 
-def format_file_errors(errors):
+def get_file_error_strings(errors):
     rows_by_field_and_message = {}
     for err in errors:
         field_and_message = (err.field, err.message)
@@ -154,10 +154,13 @@ def format_file_errors(errors):
             rows_by_field_and_message[field_and_message] = [err.row]
         else:
             rows_by_field_and_message[field_and_message].append(err.row)
-    return "\n".join(
+    return [
         f"{field_and_message[0]}: {field_and_message[1]} (source {"row" if len(rows) == 1 else "rows"} {format_index_list(rows)})"
         for field_and_message, rows in rows_by_field_and_message.items()
-    )
+    ]
+
+def format_file_errors(errors):
+    return "\n".join(get_file_error_strings(errors))
 
 def format_errors_by_file(errors_by_file):
     return "\n\n".join(f"{filename}:\n{format_file_errors(errors)}" for filename, errors in errors_by_file.items())
@@ -283,11 +286,13 @@ def load_data_for_releases(releases_info, output_folder_path):
     return dfs if all(m is None for type_metadata in metadata.values() for m in type_metadata.values()) else (dfs, metadata)
 
 
-def get_file_size(uri, total_files, current_index, entity_type_name):
+def get_file_size(uri, total_files, current_index, entity_type_name, handle_error=None):
     """
     Convert S3 URI to HTTPS if necessary and fetch file size using HEAD request.
     Show progress by printing remaining files to process.
     """
+    size = "N/A"
+    error_message = None
     try:
         # Convert S3 to HTTPS URL
         if uri.startswith("s3://"):
@@ -300,24 +305,28 @@ def get_file_size(uri, total_files, current_index, entity_type_name):
         response = requests.head(uri, timeout=10)
         if response.status_code == 200:
             if "Content-Length" in response.headers:
-                return int(response.headers["Content-Length"])
+                size = int(response.headers["Content-Length"])
             else:
-                print(f"No `Content-Length` header received from {uri}")
-                return "N/A"
+                error_message = f"No `Content-Length` header received"
         else:
-            print(f"Received {response.status_code} response from {uri}")
-            return "N/A"
-    except Exception:
-        print(f"Exception occurred while requesting {uri}")
-        return "N/A"
+            error_message = f"Received {response.status_code} response"
+    except Exception as ex:
+        error_message = str(ex)
     finally:
         # Update progress
         remaining_files = total_files - current_index - 1
         print(f"Remaining {entity_type_name} files to process: {remaining_files}")
+        # Handle error, if present
+        if error_message is not None:
+            print(f"An error occurred while requesting {uri}: {error_message}")
+            if handle_error is not None:
+                handle_error(uri, error_message)
+        # Return size
+        return size
 
-def get_file_sizes_from_uris(uris, entity_type_name):
+def get_file_sizes_from_uris(uris, entity_type_name, handle_error=None):
     total_files = len(uris)
     return [
-        get_file_size(uri, total_files, index, entity_type_name)
+        get_file_size(uri, total_files, index, entity_type_name, handle_error)
         for index, uri in enumerate(uris)
     ]

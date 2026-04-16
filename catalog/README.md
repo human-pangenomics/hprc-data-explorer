@@ -6,7 +6,7 @@ The HPRC Data Explorer catalog data is supplied via spreadsheets hosted on GitHu
 
 Alignments are a special case in that they are not handled by the Python build step, and instead have a manually-maintained CSV as input for the TypeScript build step.
 
-The input files for each entity type are validated using LinkML schemas; this is done automatically during the Python step.
+The input files for each entity type are validated using LinkML schemas; this is done automatically during the Python step. Any validation errors will be automatically saved in the [catalog build report](./build/reports/catalog-build-report.md), which can be referred to later to address errors that are left unresolved.
 
 ## Directory Structure
 
