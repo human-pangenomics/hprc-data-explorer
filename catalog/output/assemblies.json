@@ -7312,7 +7312,7 @@
   {
     "awsFasta": "s3://human-pangenomics/working/HPRC_PLUS/HG06807/assemblies/genbank/HG06807_pat_v1.0.genbank.fa.gz",
     "biosampleAccession": "SAMN33621959",
-    "contributors": "UCSC-Masaryk Universty",
+    "contributors": "UCSC-Masaryk University",
     "familyId": "Unspecified",
     "fastaMd5": "s3://human-pangenomics/working/HPRC_PLUS/HG06807/assemblies/genbank/HG06807_pat_v1.0.genbank.fa.gz.md5",
     "fastaSha256": "N/A",
@@ -7329,7 +7329,7 @@
   {
     "awsFasta": "s3://human-pangenomics/working/HPRC_PLUS/HG06807/assemblies/genbank/HG06807_mat_v1.0.genbank.fa.gz",
     "biosampleAccession": "SAMN33621959",
-    "contributors": "UCSC-Masaryk Universty",
+    "contributors": "UCSC-Masaryk University",
     "familyId": "Unspecified",
     "fastaMd5": "s3://human-pangenomics/working/HPRC_PLUS/HG06807/assemblies/genbank/HG06807_mat_v1.0.genbank.fa.gz.md5",
     "fastaSha256": "N/A",
