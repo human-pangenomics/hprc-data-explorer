@@ -60,6 +60,7 @@ const ID_FUNCTIONS_FOLDER_PATH_FROM_REPORT =
   "../../../app/apis/catalog/hprc-data-explorer/common";
 const ID_FUNCTIONS_FILE_NAME = "utils.ts";
 const CATALOG_REPORT_NOTES_TEXT = `
+- The version of this report that is linked from the HPRC Data Explorer website corresponds to the version of the catalog that is present on the site. The most recent version of the report, including undeployed updates, can be found [on the main branch](https://github.com/human-pangenomics/hprc-data-explorer/blob/main/catalog/build/reports/catalog-build-report.md).
 - As catalog build scripts may be run independently of each other, some parts of this report may be more up-to-date than others, although they should all be applicable to what's displayed in the app as long as \`npm run build-catalog\` is the most recent catalog build script to have been run.
 - For reference when considering duplicated entity IDs, the functions used to generate IDs can be found in [${ID_FUNCTIONS_FILE_NAME}](${ID_FUNCTIONS_FOLDER_PATH_FROM_REPORT}/${ID_FUNCTIONS_FILE_NAME}).
 `.trim();

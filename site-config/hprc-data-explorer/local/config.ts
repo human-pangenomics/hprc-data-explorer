@@ -38,6 +38,12 @@ export function makeConfig(browserUrl: string, gitHubUrl: string): SiteConfig {
     layout: {
       footer: {
         Branding: "",
+        navLinks: [
+          {
+            label: "Catalog Build Report",
+            url: `https://github.com/human-pangenomics/hprc-data-explorer/blob/${process.env.NEXT_PUBLIC_GIT_HASH}/catalog/build/reports/catalog-build-report.md`,
+          },
+        ],
         poweredByCC: {
           alt: "Powered by Clever Canary",
           src: "/images/powered-by-clevercanary.webp",
