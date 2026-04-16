@@ -315,7 +315,7 @@ function enforceUniqueIds<T>(
       foundIds.add(id);
     }
   }
-  const deduplicatedIdsArr = Array.from(deduplicatedIds);
+  const deduplicatedIdsArr = Array.from(deduplicatedIds).sort();
   if (deduplicatedIdsArr.length)
     console.warn(
       `Removed ${pluralEntityName} with duplicate IDs: ${deduplicatedIdsArr.join(", ")}`

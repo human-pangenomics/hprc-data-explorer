@@ -167,10 +167,6 @@ None
 - HG00438_1_Reference Mappings GRCh38_2
 - HG00438_2_Reference Mappings CHM13_2
 - HG00438_2_Reference Mappings GRCh38_2
-- HG005_1_Reference Mappings CHM13_2
-- HG005_1_Reference Mappings GRCh38_2
-- HG005_2_Reference Mappings CHM13_2
-- HG005_2_Reference Mappings GRCh38_2
 - HG00544_1_Reference Mappings CHM13_2
 - HG00544_1_Reference Mappings GRCh38_2
 - HG00544_2_Reference Mappings CHM13_2
@@ -183,6 +179,10 @@ None
 - HG00597_1_Reference Mappings GRCh38_2
 - HG00597_2_Reference Mappings CHM13_2
 - HG00597_2_Reference Mappings GRCh38_2
+- HG005_1_Reference Mappings CHM13_2
+- HG005_1_Reference Mappings GRCh38_2
+- HG005_2_Reference Mappings CHM13_2
+- HG005_2_Reference Mappings GRCh38_2
 - HG00609_1_Reference Mappings CHM13_2
 - HG00609_1_Reference Mappings GRCh38_2
 - HG00609_2_Reference Mappings CHM13_2
