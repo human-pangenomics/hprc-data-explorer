@@ -1,1 +1,9 @@
-{"validation_errors": [{"filename": "alignments.csv", "errors": []}], "file_uri_errors": null}
+{
+  "file_uri_errors": null,
+  "validation_errors": [
+    {
+      "errors": [],
+      "filename": "alignments.csv"
+    }
+  ]
+}

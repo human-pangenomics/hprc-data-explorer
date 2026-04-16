@@ -19,7 +19,7 @@ class EntityTypeReport:
     file_uri_errors: list[UriError] | None = None
     def save_to(self, file_path):
         with open(file_path, "w") as f:
-            json.dump(asdict(self), f)
+            json.dump(asdict(self), f, indent=2, sort_keys=True)
 
 def get_error_strings_for_file(filename, errors):
     return InputFileErrors(filename, get_file_error_strings(errors))
