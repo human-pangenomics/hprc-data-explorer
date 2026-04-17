@@ -2,7 +2,7 @@
 **/out/*
 **/.next/*
 
-build
+/build
 
 venv
 

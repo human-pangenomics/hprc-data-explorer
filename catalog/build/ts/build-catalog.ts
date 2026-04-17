@@ -164,9 +164,9 @@ async function buildRawSequencingData(
         bioprojectAccession: parseStringOrAbsent(row.bioproject_accession),
         biosampleAccession: sample.biosampleAccession,
         ccsAlgorithm: parseStringOrAbsent(row.ccs_algorithm),
+        contributors: sample.contributors,
         coverage: parseNumberOrAbsent(row.coverage),
         familyId: sample.familyId,
-        contributors: sample.contributors,
         filename: parseStringOrAbsent(row.filename),
         filetype: parseStringOrAbsent(row.filetype),
         generatorContact: parseStringOrAbsent(row.generator_contact),
@@ -321,33 +321,6 @@ function enforceUniqueIds<T>(
       `Removed ${pluralEntityName} with duplicate IDs: ${deduplicatedIdsArr.join(", ")}`
     );
   return [filteredEntities, deduplicatedIdsArr];
-}
-
-/**
- * Take a list of entities and check for duplicate IDs, as calculated by the given function, and throw an error if there are any.
- * @param entityName - Name of the entity type, to use in the error message.
- * @param entities - Array of entities.
- * @param getId - Function to get an entity's ID.
- */
-function verifyUniqueIds<T>(
-  entityName: string,
-  entities: T[],
-  getId: (entity: T) => string
-): void {
-  const idCounts = new Map<string, number>();
-  for (const entity of entities) {
-    const id = getId(entity);
-    idCounts.set(id, (idCounts.get(id) ?? 0) + 1);
-  }
-  const duplicateIdEntries = Array.from(idCounts.entries()).filter(
-    ([, count]) => count > 1
-  );
-  if (duplicateIdEntries.length > 0) {
-    const duplicateIds = duplicateIdEntries.map(([id]) => id);
-    throw new Error(
-      `Duplicate ${entityName} IDs found: ${duplicateIds.join(", ")}`
-    );
-  }
 }
 
 function getSampleOrDefault(
