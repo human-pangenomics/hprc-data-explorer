@@ -24,14 +24,14 @@ interface CatalogConversionReport {
 }
 
 interface EntityNormalizationReport {
-  validation_errors: Array<{
-    filename: string;
-    errors: string[];
-  }>;
   file_uri_errors: Array<{
-    uri: string;
     message: string;
+    uri: string;
   }> | null;
+  validation_errors: Array<{
+    errors: string[];
+    filename: string;
+  }>;
 }
 
 const REPORTS_PATH = "./catalog/build/reports";
@@ -96,14 +96,18 @@ export async function generateCatalogBuildReport(): Promise<void> {
     );
     report += `\n\n### Validation errors\n\n${generateListOrNone(
       filesWithErrors,
-      ({ filename, errors }) => {
+      ({ errors, filename }) => {
         return `${filename}:\n${generateStringList(errors, "  ")}`;
       }
     )}`;
 
     // File URI errors
     if (normalizationReport.file_uri_errors !== null) {
-      report += `\n\n### File URI errors\n\n${generateListOrNone(normalizationReport.file_uri_errors, ({ uri, message }) => `\`${uri}\`: ${message}`)}`;
+      const listText = generateListOrNone(
+        normalizationReport.file_uri_errors,
+        ({ message, uri }) => `\`${uri}\`: ${message}`
+      );
+      report += `\n\n### File URI errors\n\n${listText}`;
     }
 
     // Missing samples
