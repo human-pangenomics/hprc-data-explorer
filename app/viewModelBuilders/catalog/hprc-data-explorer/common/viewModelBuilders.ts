@@ -1,4 +1,7 @@
+import { ALERT_PROPS } from "@databiosphere/findable-ui/lib/components/common/Alert/constants";
+import { ViewContext } from "@databiosphere/findable-ui/lib/config/entities";
 import { formatFileSize } from "@databiosphere/findable-ui/lib/utils/formatFileSize";
+import { LinkProps } from "@mui/material";
 import {
   HPRCDataExplorerAlignment,
   HPRCDataExplorerAnnotation,
@@ -8,11 +11,8 @@ import {
   HPRCDataExplorerSample,
   LABEL,
 } from "../../../../apis/catalog/hprc-data-explorer/common/entities";
-import * as C from "../../../../components/index";
-import { ViewContext } from "@databiosphere/findable-ui/lib/config/entities";
 import * as MDX from "../../../../components/common/MDXContent";
-import { ALERT_PROPS } from "@databiosphere/findable-ui/lib/components/common/Alert/constants";
-import { LinkProps } from "@mui/material";
+import * as C from "../../../../components/index";
 
 /**
  * Build props for the accession cell.
