@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.8.0](https://github.com/human-pangenomics/hprc-data-explorer/compare/v0.7.0...v0.8.0) (2026-04-22)
+
+
+### Features
+
+* add powered by clever canary at bottom of page ([#228](https://github.com/human-pangenomics/hprc-data-explorer/issues/228)) ([094ec1b](https://github.com/human-pangenomics/hprc-data-explorer/commit/094ec1b0f7e4f2349bc8edb6832bcfb1c1d6525f))
+* add samples list and new sample-related columns ([#218](https://github.com/human-pangenomics/hprc-data-explorer/issues/218), [#206](https://github.com/human-pangenomics/hprc-data-explorer/issues/206)) ([#220](https://github.com/human-pangenomics/hprc-data-explorer/issues/220)) ([45f9670](https://github.com/human-pangenomics/hprc-data-explorer/commit/45f96707bb880ae9e6138f74ffb38d6cfa874bd4))
+* add styled footer with align-items flex-end ([#229](https://github.com/human-pangenomics/hprc-data-explorer/issues/229)) ([9de8692](https://github.com/human-pangenomics/hprc-data-explorer/commit/9de86927d10e6a21da12db83f43d97c239cafd4f))
+* add styled footer with align-items flex-end ([#231](https://github.com/human-pangenomics/hprc-data-explorer/issues/231)) ([9de8692](https://github.com/human-pangenomics/hprc-data-explorer/commit/9de86927d10e6a21da12db83f43d97c239cafd4f))
+* display haplotype as numeric values from source files ([#221](https://github.com/human-pangenomics/hprc-data-explorer/issues/221)) ([#230](https://github.com/human-pangenomics/hprc-data-explorer/issues/230)) ([7cbb5dd](https://github.com/human-pangenomics/hprc-data-explorer/commit/7cbb5ddc4891d30c84feffcca18ff24bd7c2fee3))
+* generate catalog build report from catalog build scripts ([#225](https://github.com/human-pangenomics/hprc-data-explorer/issues/225)) ([#232](https://github.com/human-pangenomics/hprc-data-explorer/issues/232)) ([9e6619f](https://github.com/human-pangenomics/hprc-data-explorer/commit/9e6619f25a450a7927856a2b62998b31165f5186))
+* update catalog-building npm scripts and docs for clarity and ease-of-use ([#213](https://github.com/human-pangenomics/hprc-data-explorer/issues/213)) ([#217](https://github.com/human-pangenomics/hprc-data-explorer/issues/217)) ([2577c18](https://github.com/human-pangenomics/hprc-data-explorer/commit/2577c18414fe420eb007d9a7616c8a3e39de72ee))
+
 ## [0.7.0](https://github.com/human-pangenomics/hprc-data-explorer/compare/v0.6.1...v0.7.0) (2026-04-03)
 
 
