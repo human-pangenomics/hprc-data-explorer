@@ -23,7 +23,7 @@
     "gen-schema": "poetry run ./catalog/schema/scripts/gen-schema.sh"
   },
   "dependencies": {
-    "@databiosphere/findable-ui": "^50",
+    "@databiosphere/findable-ui": "^51.0.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@mdx-js/loader": "^3.0.1",
@@ -40,7 +40,6 @@
     "isomorphic-dompurify": "^2.34.0",
     "ky": "^1.7.2",
     "next": "^15.5.13",
-    "next-auth": "^4.24.13",
     "next-compose-plugins": "^2.2.1",
     "next-mdx-remote": "^5.0.0",
     "react": "^19.2.3",
