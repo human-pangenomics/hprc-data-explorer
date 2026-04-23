@@ -13,3 +13,9 @@ test("Expect sorting the first column of the Assemblies tab to switch its first 
 }) => {
   await testSortFirstColumn(page, HPRC_TABS.assemblies);
 });
+
+test("Expect sorting the first column of the Samples tab to switch its first and last entry", async ({
+  page,
+}) => {
+  await testSortFirstColumn(page, HPRC_TABS.samples);
+});

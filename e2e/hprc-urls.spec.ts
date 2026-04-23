@@ -22,3 +22,10 @@ test("Expect the Alignments tab to appear as selected when the corresponding url
   const tab = HPRC_TABS.alignments;
   await testUrl(page, tab, HPRC_TAB_LIST);
 });
+
+test("Expect the Samples tab to appear as selected when the corresponding url is accessed", async ({
+  page,
+}) => {
+  const tab = HPRC_TABS.samples;
+  await testUrl(page, tab, HPRC_TAB_LIST);
+});

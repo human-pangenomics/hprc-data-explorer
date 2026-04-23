@@ -19,3 +19,9 @@ test("Expect the table to exist and have at least one row on the Alignments tab"
 }) => {
   await testTableExists(page, HPRC_TABS.alignments);
 });
+
+test("Expect the table to exist and have at least one row on the Samples tab", async ({
+  page,
+}) => {
+  await testTableExists(page, HPRC_TABS.samples);
+});
