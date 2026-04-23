@@ -96,7 +96,6 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
         width: { max: "0.5fr", min: "112px" },
       },
       {
-        columnVisible: false,
         componentConfig: {
           component: C.BasicCell,
           viewBuilder: V.buildVersion,
@@ -155,6 +154,7 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
       initialState: {
         columnVisibility: {
           [HPRC_DATA_EXPLORER_CATEGORY_KEY.FILETYPE]: false,
+          [HPRC_DATA_EXPLORER_CATEGORY_KEY.HPRC_VERSION]: false,
         },
         expanded: true,
         grouping: [HPRC_DATA_EXPLORER_CATEGORY_KEY.ALIGNMENT],

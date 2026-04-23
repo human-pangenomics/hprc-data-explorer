@@ -143,7 +143,6 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
           width: { max: "1fr", min: "160px" },
         },
         {
-          columnVisible: true,
           componentConfig: {
             component: C.TypographyNoWrap,
             viewBuilder: V.buildFileLocation,
@@ -157,7 +156,6 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
           width: { max: "1fr", min: "112px" },
         },
         {
-          columnVisible: true,
           componentConfig: {
             component: C.BasicCell,
             viewBuilder: V.buildBiosampleAccession,
@@ -168,7 +166,6 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
           width: { max: "1fr", min: "160px" },
         },
         {
-          columnVisible: false,
           componentConfig: {
             component: C.BasicCell,
             viewBuilder: V.buildFamilyId,
@@ -179,7 +176,6 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
           width: { max: "0.5fr", min: "112px" },
         },
         {
-          columnVisible: false,
           componentConfig: {
             component: C.BasicCell,
             viewBuilder: V.buildPopulationAbbreviation,
@@ -190,7 +186,6 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
           width: { max: "0.5fr", min: "112px" },
         },
         {
-          columnVisible: false,
           componentConfig: {
             component: C.BasicCell,
             viewBuilder: V.buildPopulationDescriptor,
@@ -201,7 +196,6 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
           width: { max: "1fr", min: "160px" },
         },
         {
-          columnVisible: false,
           componentConfig: {
             component: C.BasicCell,
             viewBuilder: V.buildProject,
@@ -212,7 +206,6 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
           width: { max: "1fr", min: "160px" },
         },
         {
-          columnVisible: false,
           componentConfig: {
             component: C.BasicCell,
             viewBuilder: V.buildContributors,
@@ -229,6 +222,13 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
         enableGrouping: true,
         enableTableDownload: true,
         initialState: {
+          columnVisibility: {
+            [HPRC_DATA_EXPLORER_CATEGORY_KEY.CONTRIBUTORS]: false,
+            [HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID]: false,
+            [HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_ABBREVIATION]: false,
+            [HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_DESCRIPTOR]: false,
+            [HPRC_DATA_EXPLORER_CATEGORY_KEY.PROJECT]: false,
+          },
           expanded: true,
           sorting: [
             {
