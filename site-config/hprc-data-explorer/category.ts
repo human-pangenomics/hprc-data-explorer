@@ -16,6 +16,7 @@ export const HPRC_DATA_EXPLORER_CATEGORY_KEY = {
   CCS_ALGORITHM: "ccsAlgorithm",
   COLLECTION: "collection",
   CONTRIBUTORS: "contributors",
+  COVERAGE: "coverage",
   DNA_BRNN_ANNOTATION_FILE: "dnaBrnnAnnotationFile",
   DOWNLOAD: "DOWNLOAD",
   FAMILY_ID: "familyId",
@@ -65,7 +66,7 @@ export const HPRC_DATA_EXPLORER_CATEGORY_KEY = {
 };
 
 export const HPRC_DATA_EXPLORER_CATEGORY_LABEL = {
-  ACCESSION: "Accession",
+  ACCESSION: "Run Accession",
   ALIGNMENT: "Alignment",
   ALIGNMENT_DOWNLOAD: "",
   ALTERNATIVE_ID: "Alternative ID",
@@ -82,6 +83,7 @@ export const HPRC_DATA_EXPLORER_CATEGORY_LABEL = {
   CCS_ALGORITHM: "CCS Algorithm",
   COLLECTION: "Collection",
   CONTRIBUTORS: "Contributors",
+  COVERAGE: "Coverage",
   DNA_BRNN_ANNOTATION_FILE: "DNA BRNN",
   DOWNLOAD: "",
   FAMILY_ID: "Family ID",
