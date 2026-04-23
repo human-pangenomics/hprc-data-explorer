@@ -23,14 +23,6 @@ export const sampleEntityConfig: EntityConfig<HPRCDataExplorerSample> = {
       {
         categoryConfigs: [
           {
-            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
-            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SAMPLE_ID,
-          },
-          {
-            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
-            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
-          },
-          {
             chart: { enable: true },
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PROJECT,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PROJECT,
@@ -41,8 +33,18 @@ export const sampleEntityConfig: EntityConfig<HPRCDataExplorerSample> = {
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.CONTRIBUTORS,
           },
           {
-            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
-            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.COLLECTION,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.COLLECTION,
+          },
+        ],
+        label: "Source",
+      },
+      {
+        categoryConfigs: [
+          {
+            chart: { enable: true },
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_DESCRIPTOR,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_DESCRIPTOR,
           },
           {
             chart: { enable: true },
@@ -50,11 +52,31 @@ export const sampleEntityConfig: EntityConfig<HPRCDataExplorerSample> = {
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_ABBREVIATION,
           },
           {
-            chart: { enable: true },
-            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_DESCRIPTOR,
-            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_DESCRIPTOR,
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
+          },
+          {
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.TRIO_AVAILABLE,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TRIO_AVAILABLE,
+          },
+          {
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SEX,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SEX,
+          },
+          {
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.TISSUE,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TISSUE,
+          },
+          {
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SAMPLE_ID,
+          },
+          {
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
           },
         ],
+        label: "Sample",
       },
     ],
     key: "samples",
@@ -84,6 +106,16 @@ export const sampleEntityConfig: EntityConfig<HPRCDataExplorerSample> = {
       {
         componentConfig: {
           component: C.BasicCell,
+          viewBuilder: V.buildAlternativeId,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerSample>,
+        enableGrouping: false,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ALTERNATIVE_ID,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ALTERNATIVE_ID,
+        width: { max: "0.5fr", min: "160px" },
+      },
+      {
+        componentConfig: {
+          component: C.BasicCell,
           viewBuilder: V.buildBiosampleAccession,
         } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerSample>,
         enableGrouping: true,
@@ -94,12 +126,12 @@ export const sampleEntityConfig: EntityConfig<HPRCDataExplorerSample> = {
       {
         componentConfig: {
           component: C.BasicCell,
-          viewBuilder: V.buildFamilyId,
+          viewBuilder: V.buildPopulationDescriptor,
         } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerSample>,
         enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
-        width: { max: "0.5fr", min: "112px" },
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_DESCRIPTOR,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_DESCRIPTOR,
+        width: { max: "1fr", min: "160px" },
       },
       {
         componentConfig: {
@@ -114,12 +146,62 @@ export const sampleEntityConfig: EntityConfig<HPRCDataExplorerSample> = {
       {
         componentConfig: {
           component: C.BasicCell,
-          viewBuilder: V.buildPopulationDescriptor,
+          viewBuilder: V.buildFamilyId,
         } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerSample>,
         enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_DESCRIPTOR,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_DESCRIPTOR,
-        width: { max: "1fr", min: "160px" },
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
+        width: { max: "0.5fr", min: "112px" },
+      },
+      {
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildMaternalId,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerSample>,
+        enableGrouping: false,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.MATERNAL_ID,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.MATERNAL_ID,
+        width: { max: "0.5fr", min: "112px" },
+      },
+      {
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildPaternalId,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerSample>,
+        enableGrouping: false,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PATERNAL_ID,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.PATERNAL_ID,
+        width: { max: "0.5fr", min: "112px" },
+      },
+      {
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildTrioAvailable,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerSample>,
+        enableGrouping: true,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TRIO_AVAILABLE,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.TRIO_AVAILABLE,
+        width: { max: "0.5fr", min: "112px" },
+      },
+      {
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildSex,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerSample>,
+        enableGrouping: true,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SEX,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.SEX,
+        width: { max: "0.5fr", min: "112px" },
+      },
+      {
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildTissue,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerSample>,
+        enableGrouping: true,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TISSUE,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.TISSUE,
+        width: { max: "0.5fr", min: "112px" },
       },
       {
         componentConfig: {
@@ -141,6 +223,16 @@ export const sampleEntityConfig: EntityConfig<HPRCDataExplorerSample> = {
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.CONTRIBUTORS,
         width: { max: "1fr", min: "160px" },
       },
+      {
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildCollection,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerSample>,
+        enableGrouping: true,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.COLLECTION,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.COLLECTION,
+        width: { max: "0.5fr", min: "112px" },
+      },
     ],
     tableOptions: {
       enableExpanding: true,
@@ -148,11 +240,9 @@ export const sampleEntityConfig: EntityConfig<HPRCDataExplorerSample> = {
       enableTableDownload: true,
       initialState: {
         columnVisibility: {
-          [HPRC_DATA_EXPLORER_CATEGORY_KEY.CONTRIBUTORS]: false,
-          [HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID]: false,
-          [HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_ABBREVIATION]: false,
-          [HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_DESCRIPTOR]: false,
-          [HPRC_DATA_EXPLORER_CATEGORY_KEY.PROJECT]: false,
+          [HPRC_DATA_EXPLORER_CATEGORY_KEY.ALTERNATIVE_ID]: false,
+          [HPRC_DATA_EXPLORER_CATEGORY_KEY.MATERNAL_ID]: false,
+          [HPRC_DATA_EXPLORER_CATEGORY_KEY.PATERNAL_ID]: false,
         },
         expanded: true,
         sorting: [

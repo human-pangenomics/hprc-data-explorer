@@ -28,6 +28,19 @@ export const buildAccession = (
 };
 
 /**
+ * Build props for the alternative ID cell.
+ * @param sample - Sample entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildAlternativeId = (
+  sample: HPRCDataExplorerSample
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: sample.alternativeId,
+  };
+};
+
+/**
  * Build props for the alignment cell.
  * @param alignment - Alignment entity.
  * @returns Props to be used for the cell.
@@ -187,6 +200,19 @@ export const buildBiosampleAccession = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: entity.biosampleAccession,
+  };
+};
+
+/**
+ * Build props for the collection cell.
+ * @param sample - Sample entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildCollection = (
+  sample: HPRCDataExplorerSample
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: sample.collection,
   };
 };
 
@@ -405,6 +431,19 @@ export const buildLibraryStrategy = (
 };
 
 /**
+ * Build props for the maternal ID cell.
+ * @param sample - Sample entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildMaternalId = (
+  sample: HPRCDataExplorerSample
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: sample.maternalId,
+  };
+};
+
+/**
  * Build props for the MM tag cell.
  * @param rawSequencingData - Raw sequencing data entity.
  * @returns Props to be used for the cell.
@@ -440,6 +479,19 @@ export const buildOneHundredkbPlus = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.oneHundredkbPlus?.toLocaleString(),
+  };
+};
+
+/**
+ * Build props for the paternal ID cell.
+ * @param sample - Sample entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildPaternalId = (
+  sample: HPRCDataExplorerSample
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: sample.paternalId,
   };
 };
 
@@ -561,6 +613,19 @@ export const buildSampleId = (
 };
 
 /**
+ * Build props for the sex cell.
+ * @param sample - Sample entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildSex = (
+  sample: HPRCDataExplorerSample
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: sample.sex,
+  };
+};
+
+/**
  * Build props for the sequencing data download cell.
  * @param rawSequencingData - Raw sequencing data entity.
  * @returns Props to be used for the cell.
@@ -584,6 +649,32 @@ export const buildStudy = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: rawSequencingData.study,
+  };
+};
+
+/**
+ * Build props for the tissue cell.
+ * @param sample - Sample entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildTissue = (
+  sample: HPRCDataExplorerSample
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: sample.tissue,
+  };
+};
+
+/**
+ * Build props for the trio available cell.
+ * @param sample - Sample entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildTrioAvailable = (
+  sample: HPRCDataExplorerSample
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: String(sample.trioAvailable),
   };
 };
 
