@@ -481,6 +481,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             HPRCDataExplorerRawSequencingData
           >,
           enableGrouping: true,
+          filterFn: "inNumberRange",
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.COVERAGE,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.COVERAGE,
           width: { max: "0.5fr", min: "112px" },
@@ -494,6 +495,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             HPRCDataExplorerRawSequencingData
           >,
           enableGrouping: true,
+          filterFn: "inNumberRange",
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TOTAL_GBP,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.TOTAL_GBP,
           width: { max: "0.5fr", min: "144px" },
@@ -507,6 +509,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             HPRCDataExplorerRawSequencingData
           >,
           enableGrouping: true,
+          filterFn: "inNumberRange",
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.N50,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.N50,
           width: { max: "0.5fr", min: "112px" },
@@ -520,6 +523,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             HPRCDataExplorerRawSequencingData
           >,
           enableGrouping: true,
+          filterFn: "inNumberRange",
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TOTAL_READS,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.TOTAL_READS,
           width: { max: "0.5fr", min: "112px" },
@@ -533,6 +537,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             HPRCDataExplorerRawSequencingData
           >,
           enableGrouping: true,
+          filterFn: "inNumberRange",
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ONE_HUNDRED_KB_PLUS,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ONE_HUNDRED_KB_PLUS,
           width: { max: "0.5fr", min: "112px" },
@@ -546,6 +551,7 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             HPRCDataExplorerRawSequencingData
           >,
           enableGrouping: true,
+          filterFn: "inNumberRange",
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.WHALES,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.WHALES,
           width: { max: "0.5fr", min: "112px" },
