@@ -85,7 +85,7 @@ test("Expect at least one filter to exist on the Samples tab and for all filters
   await testAllFiltersPresence(page, HPRC_TABS.samples);
 });
 
-test("Expect filter counts to update for the first five filters on the Samples tab", async ({
+test("Expect filter counts to update for the first three filters on the Samples tab", async ({
   page,
 }) => {
   const result = await testFirstNFilterCounts(page, HPRC_TABS.samples, 3);
