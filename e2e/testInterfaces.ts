@@ -11,6 +11,7 @@ export interface HprcTabCollection {
   annotations: TabDescription;
   assemblies: TabDescription;
   rawSequencingData: TabDescription;
+  samples: TabDescription;
 }
 
 export interface ColumnDescription {

@@ -31,10 +31,18 @@ export const HPRC_TABS: HprcTabCollection = {
     tabName: "Sequencing Data",
     url: "/raw-sequencing-data",
   },
+  samples: {
+    preselectedColumns: [],
+    searchFiltersPlaceholderText: SEARCH_FILTERS_PLACEHOLDER_TEXT,
+    selectableColumns: [],
+    tabName: "Samples",
+    url: "/samples",
+  },
 };
 
 export const HPRC_TAB_LIST = [
   HPRC_TABS.rawSequencingData,
+  HPRC_TABS.samples,
   HPRC_TABS.assemblies,
   HPRC_TABS.alignments,
 ];

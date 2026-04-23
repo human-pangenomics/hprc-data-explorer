@@ -78,3 +78,24 @@ test('Check that selecting the first filter through the "Search all Filters" tex
 }) => {
   await testSelectFiltersThroughSearchBar(page, HPRC_TABS.alignments);
 });
+
+test("Expect at least one filter to exist on the Samples tab and for all filters to function", async ({
+  page,
+}) => {
+  await testAllFiltersPresence(page, HPRC_TABS.samples);
+});
+
+test("Expect filter counts to update for the first three filters on the Samples tab", async ({
+  page,
+}) => {
+  const result = await testFirstNFilterCounts(page, HPRC_TABS.samples, 3);
+  if (!result) {
+    test.fail();
+  }
+});
+
+test('Check that selecting the first filter through the "Search all Filters" textbox works correctly on the Samples tab', async ({
+  page,
+}) => {
+  await testSelectFiltersThroughSearchBar(page, HPRC_TABS.samples);
+});
