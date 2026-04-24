@@ -13,6 +13,8 @@ classes:
     abstract: true
     description: A sequencing data file.
     slots:
+      - basecaller
+      - basecaller_version
       - filename
       - filetype
       - instrument_model
@@ -47,6 +49,7 @@ classes:
       - accession
       - bioproject_accession
       - biosample_accession
+      - coverage
       - filename
       - filetype
       - generator_contact
@@ -57,6 +60,7 @@ classes:
       - n50
       - path
       - platform
+      - production
       - sample_id
       - study
       - total_gbp
@@ -95,8 +99,6 @@ classes:
     description: An Illumina sequencing data file.
     is_a: SequencingData
     slots:
-      - basecaller
-      - basecaller_version
       - coverage
       - family_id
       - filename
@@ -127,8 +129,6 @@ classes:
     slots:
       - accession
       - barcode
-      - basecaller
-      - basecaller_version
       - bioproject_accession
       - biosample_accession
       - ccs_algorithm
@@ -156,9 +156,7 @@ classes:
     slots:
       - coverage_over_100kb
       - accession
-      - basecaller
       - basecaller_model
-      - basecaller_version
       - bioproject_accession
       - biosample_accession
       - coverage
