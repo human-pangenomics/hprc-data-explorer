@@ -1,3 +1,4 @@
+import { VIEW_KIND } from "@databiosphere/findable-ui/lib/common/categories/views/types";
 import {
   ComponentConfig,
   EntityConfig,
@@ -24,29 +25,41 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
         {
           categoryConfigs: [
             {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.ACCESSION,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ACCESSION,
-            },
-            {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
-            },
-          ],
-          label: "SRA",
-        },
-        {
-          categoryConfigs: [
-            {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SAMPLE_ID,
-            },
-            {
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PROJECT,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PROJECT,
             },
             {
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.CONTRIBUTORS,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.CONTRIBUTORS,
+            },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.GENERATOR_FACILITY,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.GENERATOR_FACILITY,
+            },
+          ],
+          label: "Source",
+        },
+        {
+          categoryConfigs: [
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_DESCRIPTOR,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_DESCRIPTOR,
+            },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_ABBREVIATION,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_ABBREVIATION,
+            },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
+            },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.SAMPLE_ID,
+            },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
             },
           ],
           label: "Sample",
@@ -66,6 +79,10 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.LIBRARY_STRATEGY,
             },
             {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.LIBRARY_SOURCE,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.LIBRARY_SOURCE,
+            },
+            {
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILETYPE,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILETYPE,
             },
@@ -74,11 +91,58 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BASECALLER,
             },
             {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.BASECALLER_MODEL,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BASECALLER_MODEL,
+            },
+            {
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.BASECALLER_VERSION,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BASECALLER_VERSION,
             },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.CCS_ALGORITHM,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.CCS_ALGORITHM,
+            },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.ACCESSION,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ACCESSION,
+            },
           ],
           label: "Sequencing",
+        },
+        {
+          categoryConfigs: [
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.COVERAGE,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.COVERAGE,
+              viewKind: VIEW_KIND.RANGE,
+            },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.TOTAL_GBP,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TOTAL_GBP,
+              viewKind: VIEW_KIND.RANGE,
+            },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.N50,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.N50,
+              viewKind: VIEW_KIND.RANGE,
+            },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.TOTAL_READS,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TOTAL_READS,
+              viewKind: VIEW_KIND.RANGE,
+            },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.ONE_HUNDRED_KB_PLUS,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ONE_HUNDRED_KB_PLUS,
+              viewKind: VIEW_KIND.RANGE,
+            },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.WHALES,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.WHALES,
+              viewKind: VIEW_KIND.RANGE,
+            },
+          ],
+          label: "Metrics",
         },
       ],
       key: "raw-sequencing-data",
@@ -151,28 +215,54 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
         {
           componentConfig: {
             component: C.BasicCell,
-            viewBuilder: V.buildFamilyId,
+            viewBuilder: V.buildBiosampleAccession,
           } as ComponentConfig<
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
           enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
           width: { max: "0.5fr", min: "112px" },
         },
         {
           componentConfig: {
             component: C.BasicCell,
-            viewBuilder: V.buildPopulationAbbreviation,
+            viewBuilder: V.buildBioprojectAccession,
           } as ComponentConfig<
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
           enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_ABBREVIATION,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_ABBREVIATION,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOPROJECT_ACCESSION,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOPROJECT_ACCESSION,
           width: { max: "0.5fr", min: "112px" },
+        },
+        {
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildStudy,
+          } as ComponentConfig<
+            typeof C.BasicCell,
+            HPRCDataExplorerRawSequencingData
+          >,
+          enableGrouping: true,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.STUDY,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.STUDY,
+          width: { max: "0.5fr", min: "120px" },
+        },
+        {
+          componentConfig: {
+            component: C.TypographyNoWrap,
+            viewBuilder: V.buildPath,
+          } as ComponentConfig<
+            typeof C.TypographyNoWrap,
+            HPRCDataExplorerRawSequencingData
+          >,
+          enableGrouping: false,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PATH,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.PATH,
+          width: { max: "1fr", min: "112px" },
         },
         {
           componentConfig: {
@@ -190,14 +280,27 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
         {
           componentConfig: {
             component: C.BasicCell,
-            viewBuilder: V.buildBiosampleAccession,
+            viewBuilder: V.buildPopulationAbbreviation,
           } as ComponentConfig<
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
           enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_ABBREVIATION,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_ABBREVIATION,
+          width: { max: "0.5fr", min: "112px" },
+        },
+        {
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildFamilyId,
+          } as ComponentConfig<
+            typeof C.BasicCell,
+            HPRCDataExplorerRawSequencingData
+          >,
+          enableGrouping: true,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
           width: { max: "0.5fr", min: "112px" },
         },
         {
@@ -229,6 +332,19 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
         {
           componentConfig: {
             component: C.BasicCell,
+            viewBuilder: V.buildGeneratorFacility,
+          } as ComponentConfig<
+            typeof C.BasicCell,
+            HPRCDataExplorerRawSequencingData
+          >,
+          enableGrouping: true,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.GENERATOR_FACILITY,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.GENERATOR_FACILITY,
+          width: { max: "1fr", min: "160px" },
+        },
+        {
+          componentConfig: {
+            component: C.BasicCell,
             viewBuilder: V.buildPlatform,
           } as ComponentConfig<
             typeof C.BasicCell,
@@ -251,6 +367,45 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.INSTRUMENT_MODEL,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.INSTRUMENT_MODEL,
           width: { max: "1fr", min: "160px" },
+        },
+        {
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildLibraryStrategy,
+          } as ComponentConfig<
+            typeof C.BasicCell,
+            HPRCDataExplorerRawSequencingData
+          >,
+          enableGrouping: true,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.LIBRARY_STRATEGY,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.LIBRARY_STRATEGY,
+          width: { max: "0.5fr", min: "112px" },
+        },
+        {
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildLibrarySource,
+          } as ComponentConfig<
+            typeof C.BasicCell,
+            HPRCDataExplorerRawSequencingData
+          >,
+          enableGrouping: true,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.LIBRARY_SOURCE,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.LIBRARY_SOURCE,
+          width: { max: "0.5fr", min: "112px" },
+        },
+        {
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildFiletype,
+          } as ComponentConfig<
+            typeof C.BasicCell,
+            HPRCDataExplorerRawSequencingData
+          >,
+          enableGrouping: true,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILETYPE,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILETYPE,
+          width: { max: "0.5fr", min: "112px" },
         },
         {
           componentConfig: {
@@ -294,19 +449,6 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
         {
           componentConfig: {
             component: C.BasicCell,
-            viewBuilder: V.buildBioprojectAccession,
-          } as ComponentConfig<
-            typeof C.BasicCell,
-            HPRCDataExplorerRawSequencingData
-          >,
-          enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOPROJECT_ACCESSION,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOPROJECT_ACCESSION,
-          width: { max: "0.5fr", min: "112px" },
-        },
-        {
-          componentConfig: {
-            component: C.BasicCell,
             viewBuilder: V.buildCcsAlgorithm,
           } as ComponentConfig<
             typeof C.BasicCell,
@@ -316,71 +458,6 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.CCS_ALGORITHM,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.CCS_ALGORITHM,
           width: { max: "1fr", min: "160px" },
-        },
-        {
-          componentConfig: {
-            component: C.BasicCell,
-            viewBuilder: V.buildFiletype,
-          } as ComponentConfig<
-            typeof C.BasicCell,
-            HPRCDataExplorerRawSequencingData
-          >,
-          enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILETYPE,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILETYPE,
-          width: { max: "0.5fr", min: "112px" },
-        },
-        {
-          componentConfig: {
-            component: C.BasicCell,
-            viewBuilder: V.buildGeneratorContact,
-          } as ComponentConfig<
-            typeof C.BasicCell,
-            HPRCDataExplorerRawSequencingData
-          >,
-          enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.GENERATOR_CONTACT,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.GENERATOR_CONTACT,
-          width: { max: "1fr", min: "160px" },
-        },
-        {
-          componentConfig: {
-            component: C.BasicCell,
-            viewBuilder: V.buildGeneratorFacility,
-          } as ComponentConfig<
-            typeof C.BasicCell,
-            HPRCDataExplorerRawSequencingData
-          >,
-          enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.GENERATOR_FACILITY,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.GENERATOR_FACILITY,
-          width: { max: "1fr", min: "160px" },
-        },
-        {
-          componentConfig: {
-            component: C.BasicCell,
-            viewBuilder: V.buildLibrarySource,
-          } as ComponentConfig<
-            typeof C.BasicCell,
-            HPRCDataExplorerRawSequencingData
-          >,
-          enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.LIBRARY_SOURCE,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.LIBRARY_SOURCE,
-          width: { max: "0.5fr", min: "112px" },
-        },
-        {
-          componentConfig: {
-            component: C.BasicCell,
-            viewBuilder: V.buildLibraryStrategy,
-          } as ComponentConfig<
-            typeof C.BasicCell,
-            HPRCDataExplorerRawSequencingData
-          >,
-          enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.LIBRARY_STRATEGY,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.LIBRARY_STRATEGY,
-          width: { max: "0.5fr", min: "112px" },
         },
         {
           componentConfig: {
@@ -398,14 +475,57 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
         {
           componentConfig: {
             component: C.BasicCell,
+            viewBuilder: V.buildCoverage,
+          } as ComponentConfig<
+            typeof C.BasicCell,
+            HPRCDataExplorerRawSequencingData
+          >,
+          enableGrouping: true,
+          filterFn: "inNumberRange",
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.COVERAGE,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.COVERAGE,
+          width: { max: "0.5fr", min: "112px" },
+        },
+        {
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildTotalGbp,
+          } as ComponentConfig<
+            typeof C.BasicCell,
+            HPRCDataExplorerRawSequencingData
+          >,
+          enableGrouping: true,
+          filterFn: "inNumberRange",
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TOTAL_GBP,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.TOTAL_GBP,
+          width: { max: "0.5fr", min: "144px" },
+        },
+        {
+          componentConfig: {
+            component: C.BasicCell,
             viewBuilder: V.buildN50,
           } as ComponentConfig<
             typeof C.BasicCell,
             HPRCDataExplorerRawSequencingData
           >,
           enableGrouping: true,
+          filterFn: "inNumberRange",
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.N50,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.N50,
+          width: { max: "0.5fr", min: "112px" },
+        },
+        {
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildTotalReads,
+          } as ComponentConfig<
+            typeof C.BasicCell,
+            HPRCDataExplorerRawSequencingData
+          >,
+          enableGrouping: true,
+          filterFn: "inNumberRange",
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TOTAL_READS,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.TOTAL_READS,
           width: { max: "0.5fr", min: "112px" },
         },
         {
@@ -417,60 +537,9 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             HPRCDataExplorerRawSequencingData
           >,
           enableGrouping: true,
+          filterFn: "inNumberRange",
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ONE_HUNDRED_KB_PLUS,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ONE_HUNDRED_KB_PLUS,
-          width: { max: "0.5fr", min: "112px" },
-        },
-        {
-          componentConfig: {
-            component: C.TypographyNoWrap,
-            viewBuilder: V.buildPath,
-          } as ComponentConfig<
-            typeof C.TypographyNoWrap,
-            HPRCDataExplorerRawSequencingData
-          >,
-          enableGrouping: false,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PATH,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.PATH,
-          width: { max: "1fr", min: "112px" },
-        },
-        {
-          componentConfig: {
-            component: C.BasicCell,
-            viewBuilder: V.buildStudy,
-          } as ComponentConfig<
-            typeof C.BasicCell,
-            HPRCDataExplorerRawSequencingData
-          >,
-          enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.STUDY,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.STUDY,
-          width: { max: "0.5fr", min: "120px" },
-        },
-        {
-          componentConfig: {
-            component: C.BasicCell,
-            viewBuilder: V.buildTotalGbp,
-          } as ComponentConfig<
-            typeof C.BasicCell,
-            HPRCDataExplorerRawSequencingData
-          >,
-          enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TOTAL_GBP,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.TOTAL_GBP,
-          width: { max: "0.5fr", min: "144px" },
-        },
-        {
-          componentConfig: {
-            component: C.BasicCell,
-            viewBuilder: V.buildTotalReads,
-          } as ComponentConfig<
-            typeof C.BasicCell,
-            HPRCDataExplorerRawSequencingData
-          >,
-          enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.TOTAL_READS,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.TOTAL_READS,
           width: { max: "0.5fr", min: "112px" },
         },
         {
@@ -482,9 +551,23 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             HPRCDataExplorerRawSequencingData
           >,
           enableGrouping: true,
+          filterFn: "inNumberRange",
           header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.WHALES,
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.WHALES,
           width: { max: "0.5fr", min: "112px" },
+        },
+        {
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildGeneratorContact,
+          } as ComponentConfig<
+            typeof C.BasicCell,
+            HPRCDataExplorerRawSequencingData
+          >,
+          enableGrouping: true,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.GENERATOR_CONTACT,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.GENERATOR_CONTACT,
+          width: { max: "1fr", min: "160px" },
         },
       ],
       tableOptions: {
@@ -502,19 +585,16 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
             [HPRC_DATA_EXPLORER_CATEGORY_KEY.CCS_ALGORITHM]: false,
             [HPRC_DATA_EXPLORER_CATEGORY_KEY.CONTRIBUTORS]: false,
             [HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID]: false,
-            [HPRC_DATA_EXPLORER_CATEGORY_KEY.FILETYPE]: false,
             [HPRC_DATA_EXPLORER_CATEGORY_KEY.GENERATOR_CONTACT]: false,
             [HPRC_DATA_EXPLORER_CATEGORY_KEY.GENERATOR_FACILITY]: false,
             [HPRC_DATA_EXPLORER_CATEGORY_KEY.LIBRARY_SOURCE]: false,
-            [HPRC_DATA_EXPLORER_CATEGORY_KEY.LIBRARY_STRATEGY]: false,
             [HPRC_DATA_EXPLORER_CATEGORY_KEY.MM_TAG]: false,
-            [HPRC_DATA_EXPLORER_CATEGORY_KEY.N50]: false,
             [HPRC_DATA_EXPLORER_CATEGORY_KEY.ONE_HUNDRED_KB_PLUS]: false,
+            [HPRC_DATA_EXPLORER_CATEGORY_KEY.PATH]: false,
             [HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_ABBREVIATION]: false,
             [HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_DESCRIPTOR]: false,
             [HPRC_DATA_EXPLORER_CATEGORY_KEY.PROJECT]: false,
             [HPRC_DATA_EXPLORER_CATEGORY_KEY.STUDY]: false,
-            [HPRC_DATA_EXPLORER_CATEGORY_KEY.TOTAL_GBP]: false,
             [HPRC_DATA_EXPLORER_CATEGORY_KEY.TOTAL_READS]: false,
             [HPRC_DATA_EXPLORER_CATEGORY_KEY.WHALES]: false,
           },
