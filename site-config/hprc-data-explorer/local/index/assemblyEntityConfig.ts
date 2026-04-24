@@ -23,8 +23,29 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
       {
         categoryConfigs: [
           {
-            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.RELEASE,
-            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.RELEASE,
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PROJECT,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PROJECT,
+          },
+          {
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.CONTRIBUTORS,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.CONTRIBUTORS,
+          },
+        ],
+        label: "Source",
+      },
+      {
+        categoryConfigs: [
+          {
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_DESCRIPTOR,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_DESCRIPTOR,
+          },
+          {
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_ABBREVIATION,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_ABBREVIATION,
+          },
+          {
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
           },
           {
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
@@ -34,15 +55,29 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
           },
+        ],
+        label: "Sample",
+      },
+      {
+        categoryConfigs: [
           {
-            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PROJECT,
-            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PROJECT,
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.RELEASE,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.RELEASE,
           },
           {
-            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.CONTRIBUTORS,
-            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.CONTRIBUTORS,
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.HAPLOTYPE,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.HAPLOTYPE,
+          },
+          {
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PHASING,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PHASING,
+          },
+          {
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.ASSEMBLY_METHOD,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ASSEMBLY_METHOD,
           },
         ],
+        label: "Assembly",
       },
     ],
     key: "assemblies",
@@ -92,23 +127,83 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
       },
       {
         componentConfig: {
-          component: C.LinkCell,
-          viewBuilder: V.buildUcscBrowserUrl,
-        } as ComponentConfig<typeof C.LinkCell, HPRCDataExplorerAssembly>,
+          component: C.BasicCell,
+          viewBuilder: V.buildGenbankAccession,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
         enableGrouping: false,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.UCSC_BROWSER_URL,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.UCSC_BROWSER_URL,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.GENBANK_ACCESSION,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.GENBANK_ACCESSION,
         width: { max: "0.5fr", min: "160px" },
       },
       {
         componentConfig: {
           component: C.BasicCell,
-          viewBuilder: V.buildFileSize,
+          viewBuilder: V.buildAssemblyName,
         } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
         enableGrouping: false,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILE_SIZE,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILE_SIZE,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ASSEMBLY_NAME,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ASSEMBLY_NAME,
+        width: { max: "0.5fr", min: "160px" },
+      },
+      {
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildBiosampleAccession,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
+        enableGrouping: true,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
+        width: { max: "1fr", min: "160px" },
+      },
+      {
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildPopulationDescriptor,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
+        enableGrouping: true,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_DESCRIPTOR,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_DESCRIPTOR,
+        width: { max: "1fr", min: "160px" },
+      },
+      {
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildPopulationAbbreviation,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
+        enableGrouping: true,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_ABBREVIATION,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_ABBREVIATION,
         width: { max: "0.5fr", min: "112px" },
+      },
+      {
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildFamilyId,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
+        enableGrouping: true,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
+        width: { max: "0.5fr", min: "112px" },
+      },
+      {
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildProject,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
+        enableGrouping: true,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PROJECT,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.PROJECT,
+        width: { max: "1fr", min: "160px" },
+      },
+      {
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildContributors,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
+        enableGrouping: true,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.CONTRIBUTORS,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.CONTRIBUTORS,
+        width: { max: "1fr", min: "160px" },
       },
       {
         componentConfig: {
@@ -132,6 +227,66 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
       },
       {
         componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildPhasing,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
+        enableGrouping: true,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PHASING,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.PHASING,
+        width: { max: "0.5fr", min: "112px" },
+      },
+      {
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildAssemblyMethod,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
+        enableGrouping: true,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ASSEMBLY_METHOD,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ASSEMBLY_METHOD,
+        width: { max: "0.5fr", min: "160px" },
+      },
+      {
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildAssemblyMethodVersion,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
+        enableGrouping: true,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ASSEMBLY_METHOD_VERSION,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ASSEMBLY_METHOD_VERSION,
+        width: { max: "0.5fr", min: "160px" },
+      },
+      {
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildAssemblyDate,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
+        enableGrouping: false,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ASSEMBLY_DATE,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ASSEMBLY_DATE,
+        width: { max: "0.5fr", min: "112px" },
+      },
+      {
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildFileSize,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
+        enableGrouping: false,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILE_SIZE,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILE_SIZE,
+        width: { max: "0.5fr", min: "112px" },
+      },
+      {
+        componentConfig: {
+          component: C.LinkCell,
+          viewBuilder: V.buildUcscBrowserUrl,
+        } as ComponentConfig<typeof C.LinkCell, HPRCDataExplorerAssembly>,
+        enableGrouping: false,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.UCSC_BROWSER_URL,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.UCSC_BROWSER_URL,
+        width: { max: "0.5fr", min: "160px" },
+      },
+      {
+        componentConfig: {
           component: C.TypographyNoWrap,
           viewBuilder: V.buildAwsFasta,
         } as ComponentConfig<
@@ -142,26 +297,6 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.AWS_FASTA,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.AWS_FASTA,
         width: { max: "1fr", min: "112px" },
-      },
-      {
-        componentConfig: {
-          component: C.BasicCell,
-          viewBuilder: V.buildBiosampleAccession,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
-        enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
-        width: { max: "1fr", min: "160px" },
-      },
-      {
-        componentConfig: {
-          component: C.BasicCell,
-          viewBuilder: V.buildFamilyId,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
-        enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
-        width: { max: "0.5fr", min: "112px" },
       },
       {
         componentConfig: {
@@ -191,43 +326,29 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
       },
       {
         componentConfig: {
-          component: C.BasicCell,
-          viewBuilder: V.buildPopulationAbbreviation,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
-        enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_ABBREVIATION,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_ABBREVIATION,
-        width: { max: "0.5fr", min: "112px" },
+          component: C.TypographyNoWrap,
+          viewBuilder: V.buildAssemblyFai,
+        } as ComponentConfig<
+          typeof C.TypographyNoWrap,
+          HPRCDataExplorerAssembly
+        >,
+        enableGrouping: false,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ASSEMBLY_FAI,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ASSEMBLY_FAI,
+        width: { max: "1fr", min: "112px" },
       },
       {
         componentConfig: {
-          component: C.BasicCell,
-          viewBuilder: V.buildPopulationDescriptor,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
-        enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_DESCRIPTOR,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_DESCRIPTOR,
-        width: { max: "1fr", min: "160px" },
-      },
-      {
-        componentConfig: {
-          component: C.BasicCell,
-          viewBuilder: V.buildProject,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
-        enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PROJECT,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.PROJECT,
-        width: { max: "1fr", min: "160px" },
-      },
-      {
-        componentConfig: {
-          component: C.BasicCell,
-          viewBuilder: V.buildContributors,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
-        enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.CONTRIBUTORS,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.CONTRIBUTORS,
-        width: { max: "1fr", min: "160px" },
+          component: C.TypographyNoWrap,
+          viewBuilder: V.buildAssemblyGzi,
+        } as ComponentConfig<
+          typeof C.TypographyNoWrap,
+          HPRCDataExplorerAssembly
+        >,
+        enableGrouping: false,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ASSEMBLY_GZI,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ASSEMBLY_GZI,
+        width: { max: "1fr", min: "112px" },
       },
     ],
     tableOptions: {
@@ -237,12 +358,17 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
       enableTableDownload: true,
       initialState: {
         columnVisibility: {
-          [HPRC_DATA_EXPLORER_CATEGORY_KEY.CONTRIBUTORS]: false,
-          [HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID]: false,
+          [HPRC_DATA_EXPLORER_CATEGORY_KEY.ASSEMBLY_DATE]: false,
+          [HPRC_DATA_EXPLORER_CATEGORY_KEY.ASSEMBLY_FAI]: false,
+          [HPRC_DATA_EXPLORER_CATEGORY_KEY.ASSEMBLY_GZI]: false,
+          [HPRC_DATA_EXPLORER_CATEGORY_KEY.ASSEMBLY_METHOD_VERSION]: false,
+          [HPRC_DATA_EXPLORER_CATEGORY_KEY.ASSEMBLY_NAME]: false,
+          [HPRC_DATA_EXPLORER_CATEGORY_KEY.AWS_FASTA]: false,
+          [HPRC_DATA_EXPLORER_CATEGORY_KEY.FASTA_MD5]: false,
           [HPRC_DATA_EXPLORER_CATEGORY_KEY.FASTA_SHA256]: false,
+          [HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID]: false,
+          [HPRC_DATA_EXPLORER_CATEGORY_KEY.GENBANK_ACCESSION]: false,
           [HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_ABBREVIATION]: false,
-          [HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_DESCRIPTOR]: false,
-          [HPRC_DATA_EXPLORER_CATEGORY_KEY.PROJECT]: false,
         },
         expanded: true,
         sorting: [

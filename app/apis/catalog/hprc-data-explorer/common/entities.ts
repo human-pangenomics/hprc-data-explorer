@@ -63,6 +63,12 @@ export type HPRCDataExplorerRawSequencingData = WithAbsentValues<{
 }>;
 
 export type HPRCDataExplorerAssembly = WithAbsentValues<{
+  assemblyDate: string;
+  assemblyFai: string;
+  assemblyGzi: string;
+  assemblyMethod: string;
+  assemblyMethodVersion: string;
+  assemblyName: string;
   awsFasta: string;
   biosampleAccession: string;
   contributors: string;
@@ -71,7 +77,9 @@ export type HPRCDataExplorerAssembly = WithAbsentValues<{
   fastaSha256: string;
   filename: string;
   fileSize: number;
+  genbankAccession: string;
   haplotype: string;
+  phasing: string;
   populationAbbreviation: string;
   populationDescriptor: string;
   project: string;

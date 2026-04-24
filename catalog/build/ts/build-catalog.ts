@@ -214,6 +214,12 @@ async function buildAssemblies(
       missingSamples
     );
     return {
+      assemblyDate: parseStringOrAbsent(row.assembly_date),
+      assemblyFai: parseStringOrAbsent(row.assembly_fai),
+      assemblyGzi: parseStringOrAbsent(row.assembly_gzi),
+      assemblyMethod: parseStringOrAbsent(row.assembly_method),
+      assemblyMethodVersion: parseStringOrAbsent(row.assembly_method_version),
+      assemblyName: parseStringOrAbsent(row.assembly_name),
       awsFasta: parseStringOrAbsent(row.assembly),
       biosampleAccession: sample.biosampleAccession,
       contributors: sample.contributors,
@@ -222,7 +228,9 @@ async function buildAssemblies(
       fastaSha256: parseStringOrAbsent(row.fasta_sha256),
       fileSize: parseNumberOrAbsent(row.file_size),
       filename: parseStringOrAbsent(row.assembly, getFileNameFromPath),
+      genbankAccession: parseStringOrAbsent(row.genbank_accession),
       haplotype: parseStringOrAbsent(row.haplotype),
+      phasing: parseStringOrAbsent(row.phasing),
       populationAbbreviation: sample.populationAbbreviation,
       populationDescriptor: sample.populationDescriptor,
       project: sample.project,
