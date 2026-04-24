@@ -41,6 +41,84 @@ export const buildAlternativeId = (
 };
 
 /**
+ * Build props for the assembly date cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildAssemblyDate = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.assemblyDate,
+  };
+};
+
+/**
+ * Build props for the assembly FAI cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildAssemblyFai = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.TypographyNoWrap> => {
+  return {
+    value: assembly.assemblyFai,
+  };
+};
+
+/**
+ * Build props for the assembly GZI cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildAssemblyGzi = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.TypographyNoWrap> => {
+  return {
+    value: assembly.assemblyGzi,
+  };
+};
+
+/**
+ * Build props for the assembly method cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildAssemblyMethod = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.assemblyMethod,
+  };
+};
+
+/**
+ * Build props for the assembly method version cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildAssemblyMethodVersion = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.assemblyMethodVersion,
+  };
+};
+
+/**
+ * Build props for the assembly name cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildAssemblyName = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.assemblyName,
+  };
+};
+
+/**
  * Build props for the alignment cell.
  * @param alignment - Alignment entity.
  * @returns Props to be used for the cell.
@@ -353,6 +431,19 @@ export const buildFiletype = (
 };
 
 /**
+ * Build props for the genbank accession cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildGenbankAccession = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.genbankAccession,
+  };
+};
+
+/**
  * Build props for the generator contact cell.
  * @param rawSequencingData - Raw sequencing data entity.
  * @returns Props to be used for the cell.
@@ -492,6 +583,19 @@ export const buildPaternalId = (
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
     value: sample.paternalId,
+  };
+};
+
+/**
+ * Build props for the phasing cell.
+ * @param assembly - Assembly entity.
+ * @returns Props to be used for the cell.
+ */
+export const buildPhasing = (
+  assembly: HPRCDataExplorerAssembly
+): React.ComponentProps<typeof C.BasicCell> => {
+  return {
+    value: assembly.phasing,
   };
 };
 
