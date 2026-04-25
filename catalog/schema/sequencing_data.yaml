@@ -26,6 +26,8 @@ classes:
     is_a: SequencingData
     slots:
       - accession
+      - basecaller
+      - basecaller_version
       - bioproject_accession
       - biosample_accession
       - coverage
@@ -47,6 +49,8 @@ classes:
     is_a: SequencingData
     slots:
       - accession
+      - basecaller
+      - basecaller_version
       - bioproject_accession
       - biosample_accession
       - coverage
@@ -70,6 +74,8 @@ classes:
     is_a: SequencingData
     slots:
       - accession
+      - basecaller
+      - basecaller_version
       - bioproject_accession
       - biosample_accession
       - ccs_algorithm
@@ -99,6 +105,8 @@ classes:
     description: An Illumina sequencing data file.
     is_a: SequencingData
     slots:
+      - basecaller
+      - basecaller_version
       - coverage
       - family_id
       - filename
@@ -129,6 +137,8 @@ classes:
     slots:
       - accession
       - barcode
+      - basecaller
+      - basecaller_version
       - bioproject_accession
       - biosample_accession
       - ccs_algorithm
@@ -156,7 +166,9 @@ classes:
     slots:
       - coverage_over_100kb
       - accession
+      - basecaller
       - basecaller_model
+      - basecaller_version
       - bioproject_accession
       - biosample_accession
       - coverage
