@@ -10,10 +10,12 @@ import { HPRCDataExplorerRawSequencingData } from "../../../../app/apis/catalog/
 import { getRawSequencingDataId } from "../../../../app/apis/catalog/hprc-data-explorer/common/utils";
 import * as C from "../../../../app/components/index";
 import * as V from "../../../../app/viewModelBuilders/catalog/hprc-data-explorer/common/viewModelBuilders";
+import { EntityTitle } from "../../../../app/views/ExploreView/components/EntityTitle/entityTitle";
 import {
   HPRC_DATA_EXPLORER_CATEGORY_KEY,
   HPRC_DATA_EXPLORER_CATEGORY_LABEL,
 } from "../../category";
+import { DOCUMENTATION_URL } from "../../docs";
 
 /**
  * Entity config object responsible to config anything related to the /raw-sequencing-data route.
@@ -613,5 +615,10 @@ export const rawSequencingDataEntityConfig: EntityConfig<HPRCDataExplorerRawSequ
     },
     route: "raw-sequencing-data",
     staticLoadFile: "catalog/output/sequencing-data.json",
-    ui: { title: "Sequencing Data" },
+    ui: {
+      title: EntityTitle({
+        slotProps: { link: { href: DOCUMENTATION_URL.SEQUENCING_DATA } },
+        title: "Sequencing Data",
+      }),
+    },
   };

@@ -9,10 +9,12 @@ import { HPRCDataExplorerAnnotation } from "../../../../app/apis/catalog/hprc-da
 import { getAnnotationId } from "../../../../app/apis/catalog/hprc-data-explorer/common/utils";
 import * as C from "../../../../app/components/index";
 import * as V from "../../../../app/viewModelBuilders/catalog/hprc-data-explorer/common/viewModelBuilders";
+import { EntityTitle } from "../../../../app/views/ExploreView/components/EntityTitle/entityTitle";
 import {
   HPRC_DATA_EXPLORER_CATEGORY_KEY,
   HPRC_DATA_EXPLORER_CATEGORY_LABEL,
 } from "../../category";
+import { DOCUMENTATION_URL } from "../../docs";
 
 /**
  * Entity config object responsible to config anything related to the /annotations route.
@@ -276,5 +278,10 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
     },
     route: "annotations",
     staticLoadFile: "catalog/output/annotations.json",
-    ui: { title: "Annotations" },
+    ui: {
+      title: EntityTitle({
+        slotProps: { link: { href: DOCUMENTATION_URL.ANNOTATIONS } },
+        title: "Annotations",
+      }),
+    },
   };
