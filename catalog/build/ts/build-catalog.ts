@@ -264,6 +264,7 @@ async function buildAnnotations(
     );
     return {
       annotationType: parseStringOrAbsent(row.annotation_type),
+      assemblyName: parseStringOrAbsent(row.assembly_name),
       biosampleAccession: sample.biosampleAccession,
       contributors: sample.contributors,
       familyId: sample.familyId,

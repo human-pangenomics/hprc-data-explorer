@@ -107,14 +107,14 @@ export const buildAssemblyMethodVersion = (
 
 /**
  * Build props for the assembly name cell.
- * @param assembly - Assembly entity.
+ * @param entity - Assembly or annotation entity.
  * @returns Props to be used for the cell.
  */
 export const buildAssemblyName = (
-  assembly: HPRCDataExplorerAssembly
+  entity: HPRCDataExplorerAssembly | HPRCDataExplorerAnnotation
 ): React.ComponentProps<typeof C.BasicCell> => {
   return {
-    value: assembly.assemblyName,
+    value: entity.assemblyName,
   };
 };
 
