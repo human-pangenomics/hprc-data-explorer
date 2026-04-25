@@ -90,6 +90,7 @@ export type HPRCDataExplorerAssembly = WithAbsentValues<{
 
 export type HPRCDataExplorerAnnotation = WithAbsentValues<{
   annotationType: string;
+  assemblyName: string;
   biosampleAccession: string;
   contributors: string;
   familyId: string;

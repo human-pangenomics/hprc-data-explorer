@@ -24,8 +24,29 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
         {
           categoryConfigs: [
             {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.RELEASE,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.RELEASE,
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PROJECT,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PROJECT,
+            },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.CONTRIBUTORS,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.CONTRIBUTORS,
+            },
+          ],
+          label: "Source",
+        },
+        {
+          categoryConfigs: [
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_DESCRIPTOR,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_DESCRIPTOR,
+            },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_ABBREVIATION,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_ABBREVIATION,
+            },
+            {
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
             },
             {
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.SAMPLE_ID,
@@ -35,23 +56,25 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.BIOSAMPLE_ACCESSION,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.BIOSAMPLE_ACCESSION,
             },
+          ],
+          label: "Sample",
+        },
+        {
+          categoryConfigs: [
             {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.HAPLOTYPE,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.HAPLOTYPE,
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.RELEASE,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.RELEASE,
             },
             {
               key: HPRC_DATA_EXPLORER_CATEGORY_KEY.ANNOTATION_TYPE,
               label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ANNOTATION_TYPE,
             },
             {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PROJECT,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PROJECT,
-            },
-            {
-              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.CONTRIBUTORS,
-              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.CONTRIBUTORS,
+              key: HPRC_DATA_EXPLORER_CATEGORY_KEY.HAPLOTYPE,
+              label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.HAPLOTYPE,
             },
           ],
+          label: "Annotation",
         },
       ],
       key: "annotations",
@@ -105,55 +128,12 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
         {
           componentConfig: {
             component: C.BasicCell,
-            viewBuilder: V.buildFileSize,
+            viewBuilder: V.buildAssemblyName,
           } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
           enableGrouping: false,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILE_SIZE,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILE_SIZE,
-          width: { max: "0.5fr", min: "112px" },
-        },
-        {
-          componentConfig: {
-            component: C.BasicCell,
-            viewBuilder: V.buildRelease,
-          } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
-          enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.RELEASE,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.RELEASE,
-          width: { max: "0.5fr", min: "80px" },
-        },
-        {
-          componentConfig: {
-            component: C.BasicCell,
-            viewBuilder: V.buildHaplotype,
-          } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
-          enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.HAPLOTYPE,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.HAPLOTYPE,
-          width: { max: "0.5fr", min: "112px" },
-        },
-        {
-          componentConfig: {
-            component: C.BasicCell,
-            viewBuilder: V.buildAnnotationType,
-          } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
-          enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ANNOTATION_TYPE,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ANNOTATION_TYPE,
-          width: { max: "1fr", min: "160px" },
-        },
-        {
-          componentConfig: {
-            component: C.TypographyNoWrap,
-            viewBuilder: V.buildFileLocation,
-          } as ComponentConfig<
-            typeof C.TypographyNoWrap,
-            HPRCDataExplorerAnnotation
-          >,
-          enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILE_LOCATION,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILE_LOCATION,
-          width: { max: "1fr", min: "112px" },
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ASSEMBLY_NAME,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ASSEMBLY_NAME,
+          width: { max: "0.5fr", min: "160px" },
         },
         {
           componentConfig: {
@@ -168,12 +148,12 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
         {
           componentConfig: {
             component: C.BasicCell,
-            viewBuilder: V.buildFamilyId,
+            viewBuilder: V.buildPopulationDescriptor,
           } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
           enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
-          width: { max: "0.5fr", min: "112px" },
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_DESCRIPTOR,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_DESCRIPTOR,
+          width: { max: "1fr", min: "160px" },
         },
         {
           componentConfig: {
@@ -188,12 +168,12 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
         {
           componentConfig: {
             component: C.BasicCell,
-            viewBuilder: V.buildPopulationDescriptor,
+            viewBuilder: V.buildFamilyId,
           } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
           enableGrouping: true,
-          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.POPULATION_DESCRIPTOR,
-          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_DESCRIPTOR,
-          width: { max: "1fr", min: "160px" },
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FAMILY_ID,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID,
+          width: { max: "0.5fr", min: "112px" },
         },
         {
           componentConfig: {
@@ -215,6 +195,59 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
           id: HPRC_DATA_EXPLORER_CATEGORY_KEY.CONTRIBUTORS,
           width: { max: "1fr", min: "160px" },
         },
+        {
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildRelease,
+          } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
+          enableGrouping: true,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.RELEASE,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.RELEASE,
+          width: { max: "0.5fr", min: "80px" },
+        },
+        {
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildAnnotationType,
+          } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
+          enableGrouping: true,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ANNOTATION_TYPE,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ANNOTATION_TYPE,
+          width: { max: "1fr", min: "160px" },
+        },
+        {
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildHaplotype,
+          } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
+          enableGrouping: true,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.HAPLOTYPE,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.HAPLOTYPE,
+          width: { max: "0.5fr", min: "112px" },
+        },
+        {
+          componentConfig: {
+            component: C.BasicCell,
+            viewBuilder: V.buildFileSize,
+          } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAnnotation>,
+          enableGrouping: false,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILE_SIZE,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILE_SIZE,
+          width: { max: "0.5fr", min: "112px" },
+        },
+        {
+          componentConfig: {
+            component: C.TypographyNoWrap,
+            viewBuilder: V.buildFileLocation,
+          } as ComponentConfig<
+            typeof C.TypographyNoWrap,
+            HPRCDataExplorerAnnotation
+          >,
+          enableGrouping: false,
+          header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILE_LOCATION,
+          id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILE_LOCATION,
+          width: { max: "1fr", min: "112px" },
+        },
       ],
       tableOptions: {
         downloadFilename: "annotations",
@@ -223,11 +256,10 @@ export const annotationEntityConfig: EntityConfig<HPRCDataExplorerAnnotation> =
         enableTableDownload: true,
         initialState: {
           columnVisibility: {
-            [HPRC_DATA_EXPLORER_CATEGORY_KEY.CONTRIBUTORS]: false,
+            [HPRC_DATA_EXPLORER_CATEGORY_KEY.ASSEMBLY_NAME]: false,
             [HPRC_DATA_EXPLORER_CATEGORY_KEY.FAMILY_ID]: false,
+            [HPRC_DATA_EXPLORER_CATEGORY_KEY.FILE_LOCATION]: false,
             [HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_ABBREVIATION]: false,
-            [HPRC_DATA_EXPLORER_CATEGORY_KEY.POPULATION_DESCRIPTOR]: false,
-            [HPRC_DATA_EXPLORER_CATEGORY_KEY.PROJECT]: false,
           },
           expanded: true,
           sorting: [
