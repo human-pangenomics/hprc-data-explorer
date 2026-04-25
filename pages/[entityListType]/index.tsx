@@ -1,16 +1,24 @@
 import { AzulEntitiesStaticResponse } from "@databiosphere/findable-ui/lib/apis/azul/common/entities";
+import {
+  CategoryValueKey,
+  SelectedFilter,
+} from "@databiosphere/findable-ui/lib/common/entities";
 import { Main as DXMain } from "@databiosphere/findable-ui/lib/components/Layout/components/Main/main.styles";
 import { EntityConfig } from "@databiosphere/findable-ui/lib/config/entities";
 import { getEntityConfig } from "@databiosphere/findable-ui/lib/config/utils";
 import { getEntityService } from "@databiosphere/findable-ui/lib/hooks/useEntityService";
 import { EXPLORE_MODE } from "@databiosphere/findable-ui/lib/hooks/useExploreMode/types";
+import { useExploreState } from "@databiosphere/findable-ui/lib/hooks/useExploreState";
+import { ExploreActionKind } from "@databiosphere/findable-ui/lib/providers/exploreState";
 import { database } from "@databiosphere/findable-ui/lib/utils/database";
 import { ExploreView } from "@databiosphere/findable-ui/lib/views/ExploreView/exploreView";
 import { config } from "app/config/config";
 import fsp from "fs/promises";
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
+import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
-import type { JSX } from "react";
+import { useEffect, useRef, type JSX } from "react";
+import { HPRC_DATA_EXPLORER_CATEGORY_KEY } from "../../site-config/hprc-data-explorer/category";
 
 interface PageUrl extends ParsedUrlQuery {
   entityListType: string;
@@ -18,6 +26,28 @@ interface PageUrl extends ParsedUrlQuery {
 
 interface ListPageProps extends AzulEntitiesStaticResponse {
   entityListType: string;
+}
+
+const DEFAULT_FILTERS_BY_ENTITY_LIST_TYPE: Record<string, SelectedFilter[]> = {
+  annotations: [
+    {
+      categoryKey: HPRC_DATA_EXPLORER_CATEGORY_KEY.RELEASE,
+      value: ["2"],
+    },
+  ],
+  assemblies: [
+    {
+      categoryKey: HPRC_DATA_EXPLORER_CATEGORY_KEY.RELEASE,
+      value: ["2"],
+    },
+  ],
+};
+
+const SESSION_STORAGE_DEFAULT_FILTER_INITIALIZED_PREFIX =
+  "hprc-data-explorer:default-filter-initialized:";
+
+function getDefaultFilterInitializedStorageKey(entityListType: string): string {
+  return `${SESSION_STORAGE_DEFAULT_FILTER_INITIALIZED_PREFIX}${entityListType}`;
 }
 
 /**
@@ -61,7 +91,59 @@ const IndexPage = ({
   entityListType,
   ...props
 }: ListPageProps): JSX.Element => {
+  const router = useRouter();
+  const { exploreDispatch, exploreState } = useExploreState();
+  const defaultFilters = DEFAULT_FILTERS_BY_ENTITY_LIST_TYPE[entityListType];
+  const injectedEntityListTypeRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (!router.isReady || !defaultFilters) return;
+    if (exploreState.tabValue !== entityListType) return;
+
+    const initializedStorageKey =
+      getDefaultFilterInitializedStorageKey(entityListType);
+
+    if (typeof router.query.filter !== "undefined") {
+      if (typeof window !== "undefined") {
+        window.sessionStorage.setItem(initializedStorageKey, "true");
+      }
+      return;
+    }
+    if (
+      typeof window !== "undefined" &&
+      window.sessionStorage.getItem(initializedStorageKey)
+    ) {
+      return;
+    }
+    if (injectedEntityListTypeRef.current === entityListType) return;
+
+    injectedEntityListTypeRef.current = entityListType;
+    if (typeof window !== "undefined") {
+      window.sessionStorage.setItem(initializedStorageKey, "true");
+    }
+
+    defaultFilters.forEach(({ categoryKey, value }) => {
+      value.forEach((selectedValue) => {
+        exploreDispatch({
+          payload: {
+            categoryKey,
+            selected: true,
+            selectedValue: selectedValue as CategoryValueKey,
+          },
+          type: ExploreActionKind.UpdateFilter,
+        });
+      });
+    });
+  }, [
+    defaultFilters,
+    entityListType,
+    exploreDispatch,
+    exploreState.tabValue,
+    router,
+  ]);
+
   if (!entityListType) return <></>;
+
   return <ExploreView entityListType={entityListType} {...props} />;
 };
 
