@@ -21,16 +21,8 @@ None
 ### Validation errors
 
 - hic_sheet.csv:
-  - basecaller: Specified slot is in the broader model but not the specific class (source rows 2-3003)
-  - basecaller_version: Specified slot is in the broader model but not the specific class (source rows 2-3003)
-- dc_sheet.csv:
-  - basecaller: Specified slot is in the broader model but not the specific class (source rows 2-620)
-  - basecaller_version: Specified slot is in the broader model but not the specific class (source rows 2-620)
-  - coverage: Specified slot is in the broader model but not the specific class (source rows 2-620)
-  - production: Specified slot is in the broader model but not the specific class (source rows 2-620)
-- hifi_sheet.csv:
-  - basecaller: Specified slot is in the broader model but not the specific class (source rows 2-1070)
-  - basecaller_version: Specified slot is in the broader model but not the specific class (source rows 2-1070)
+  - basecaller: Input should be a valid string (source rows 2-3003)
+  - basecaller_version: Input should be a valid string (source rows 2-3003)
 
 ### File URI errors
 
