@@ -13,6 +13,8 @@ classes:
     abstract: true
     description: A sequencing data file.
     slots:
+      - basecaller
+      - basecaller_version
       - filename
       - filetype
       - instrument_model
@@ -24,6 +26,8 @@ classes:
     is_a: SequencingData
     slots:
       - accession
+      - basecaller
+      - basecaller_version
       - bioproject_accession
       - biosample_accession
       - coverage
@@ -45,8 +49,11 @@ classes:
     is_a: SequencingData
     slots:
       - accession
+      - basecaller
+      - basecaller_version
       - bioproject_accession
       - biosample_accession
+      - coverage
       - filename
       - filetype
       - generator_contact
@@ -57,6 +64,7 @@ classes:
       - n50
       - path
       - platform
+      - production
       - sample_id
       - study
       - total_gbp
@@ -66,6 +74,8 @@ classes:
     is_a: SequencingData
     slots:
       - accession
+      - basecaller
+      - basecaller_version
       - bioproject_accession
       - biosample_accession
       - ccs_algorithm
