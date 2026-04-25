@@ -9,6 +9,7 @@ import { HPRCDataExplorerAlignment } from "../../../../app/apis/catalog/hprc-dat
 import { getAlignmentId } from "../../../../app/apis/catalog/hprc-data-explorer/common/utils";
 import * as C from "../../../../app/components/index";
 import * as V from "../../../../app/viewModelBuilders/catalog/hprc-data-explorer/common/viewModelBuilders";
+import { EntityTitle } from "../../../../app/views/ExploreView/components/EntityTitle/entityTitle";
 import {
   HPRC_DATA_EXPLORER_CATEGORY_KEY,
   HPRC_DATA_EXPLORER_CATEGORY_LABEL,
@@ -169,5 +170,8 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
   },
   route: "alignments",
   staticLoadFile: "catalog/output/alignments.json",
-  ui: { slots: { entityListSlot }, title: "Alignments" },
+  ui: {
+    slots: { entityListSlot },
+    title: EntityTitle({ title: "Alignments" }),
+  },
 };

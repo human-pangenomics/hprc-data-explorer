@@ -9,10 +9,12 @@ import { HPRCDataExplorerSample } from "../../../../app/apis/catalog/hprc-data-e
 import { getSampleId } from "../../../../app/apis/catalog/hprc-data-explorer/common/utils";
 import * as C from "../../../../app/components/index";
 import * as V from "../../../../app/viewModelBuilders/catalog/hprc-data-explorer/common/viewModelBuilders";
+import { EntityTitle } from "../../../../app/views/ExploreView/components/EntityTitle/entityTitle";
 import {
   HPRC_DATA_EXPLORER_CATEGORY_KEY,
   HPRC_DATA_EXPLORER_CATEGORY_LABEL,
 } from "../../category";
+import { DOCUMENTATION_URL } from "../../docs";
 
 /**
  * Entity config object responsible to config anything related to the /samples route.
@@ -259,5 +261,10 @@ export const sampleEntityConfig: EntityConfig<HPRCDataExplorerSample> = {
   },
   route: "samples",
   staticLoadFile: "catalog/output/samples.json",
-  ui: { title: "Samples" },
+  ui: {
+    title: EntityTitle({
+      slotProps: { link: { href: DOCUMENTATION_URL.SAMPLES } },
+      title: "Samples",
+    }),
+  },
 };

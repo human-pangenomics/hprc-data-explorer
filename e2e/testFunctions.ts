@@ -132,7 +132,9 @@ export async function testFilterPresence(
 ): Promise<void> {
   // Goto the selected tab
   await page.goto(tab.url);
-  await expect(page.getByRole("link").getByText(tab.tabName)).toBeVisible();
+  await expect(
+    page.getByTestId("navigation").getByRole("link", { name: tab.tabName })
+  ).toBeVisible();
   for (const filterName of filterNames) {
     // Check that each filter is visible and clickable
     await expect(page.getByText(filterRegex(filterName))).toBeVisible();

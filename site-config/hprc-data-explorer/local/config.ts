@@ -3,6 +3,7 @@ import { ANCHOR_TARGET } from "@databiosphere/findable-ui/lib/components/Links/c
 import { SiteConfig } from "@databiosphere/findable-ui/lib/config/entities";
 import * as C from "../../../app/components/index";
 import { ROUTE } from "../../../app/routes/constants";
+import { DOCUMENTATION_URL } from "../docs";
 import { alignmentEntityConfig } from "./index/alignmentEntityConfig";
 import { annotationEntityConfig } from "./index/annotationEntityConfig";
 import { assemblyEntityConfig } from "./index/assemblyEntityConfig";
@@ -89,22 +90,22 @@ export function makeConfig(browserUrl: string, gitHubUrl: string): SiteConfig {
                 {
                   label: "Samples",
                   target: ANCHOR_TARGET.BLANK,
-                  url: "https://github.com/human-pangenomics/hprc_intermediate_assembly/blob/main/data_tables/sample/README.md",
+                  url: DOCUMENTATION_URL.SAMPLES,
                 },
                 {
                   label: "Assemblies",
                   target: ANCHOR_TARGET.BLANK,
-                  url: "https://github.com/human-pangenomics/hprc_intermediate_assembly/blob/main/data_tables/README.md",
+                  url: DOCUMENTATION_URL.ASSEMBLIES,
                 },
                 {
                   label: "Sequencing Data",
                   target: ANCHOR_TARGET.BLANK,
-                  url: "https://github.com/human-pangenomics/hprc_intermediate_assembly/blob/main/data_tables/sequencing_data/README.md",
+                  url: DOCUMENTATION_URL.SEQUENCING_DATA,
                 },
                 {
                   label: "Annotations",
                   target: ANCHOR_TARGET.BLANK,
-                  url: "https://github.com/human-pangenomics/hprc_intermediate_assembly/blob/main/data_tables/annotation/README.md",
+                  url: DOCUMENTATION_URL.ANNOTATIONS,
                 },
                 {
                   icon: C.GitHubIcon({ fontSize: "small" }),
