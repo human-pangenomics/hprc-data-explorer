@@ -32,22 +32,23 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.HPRC_VERSION,
           },
           {
-            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PIPELINE,
-            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PIPELINE,
-          },
-          {
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.REFERENCE_COORDINATES,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.REFERENCE_COORDINATES,
           },
           {
-            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
-            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILENAME,
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.PIPELINE,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.PIPELINE,
           },
           {
             key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILETYPE,
             label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILETYPE,
           },
+          {
+            key: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILENAME,
+            label: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILENAME,
+          },
         ],
+        label: "Alignment",
       },
     ],
     key: "alignments",
@@ -88,12 +89,12 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
       {
         componentConfig: {
           component: C.BasicCell,
-          viewBuilder: V.buildFileSize,
+          viewBuilder: V.buildAlignment,
         } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
-        enableGrouping: false,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILE_SIZE,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILE_SIZE,
-        width: { max: "0.5fr", min: "112px" },
+        enableGrouping: true,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ALIGNMENT,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ALIGNMENT,
+        width: { max: "1fr", min: "112px" },
       },
       {
         componentConfig: {
@@ -108,22 +109,12 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
       {
         componentConfig: {
           component: C.BasicCell,
-          viewBuilder: V.buildAlignment,
+          viewBuilder: V.buildReferenceCoordinates,
         } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
         enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.ALIGNMENT,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.ALIGNMENT,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.REFERENCE_COORDINATES,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.REFERENCE_COORDINATES,
         width: { max: "1fr", min: "112px" },
-      },
-      {
-        componentConfig: {
-          component: C.BasicCell,
-          viewBuilder: V.buildFiletype,
-        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
-        enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILETYPE,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILETYPE,
-        width: { max: "0.5fr", min: "112px" },
       },
       {
         componentConfig: {
@@ -138,12 +129,22 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
       {
         componentConfig: {
           component: C.BasicCell,
-          viewBuilder: V.buildReferenceCoordinates,
+          viewBuilder: V.buildFiletype,
         } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
         enableGrouping: true,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.REFERENCE_COORDINATES,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.REFERENCE_COORDINATES,
-        width: { max: "1fr", min: "112px" },
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILETYPE,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILETYPE,
+        width: { max: "0.5fr", min: "112px" },
+      },
+      {
+        componentConfig: {
+          component: C.BasicCell,
+          viewBuilder: V.buildFileSize,
+        } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAlignment>,
+        enableGrouping: false,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILE_SIZE,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILE_SIZE,
+        width: { max: "0.5fr", min: "112px" },
       },
     ],
     tableOptions: {
@@ -152,10 +153,6 @@ export const alignmentEntityConfig: EntityConfig<HPRCDataExplorerAlignment> = {
       enableGrouping: true,
       enableTableDownload: true,
       initialState: {
-        columnVisibility: {
-          [HPRC_DATA_EXPLORER_CATEGORY_KEY.FILETYPE]: false,
-          [HPRC_DATA_EXPLORER_CATEGORY_KEY.HPRC_VERSION]: false,
-        },
         expanded: true,
         grouping: [HPRC_DATA_EXPLORER_CATEGORY_KEY.ALIGNMENT],
         sorting: [
