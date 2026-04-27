@@ -61,26 +61,6 @@
   },
   {
     "alignment": "HPRC-v1.0-grch38-mc",
-    "fileSize": 4551104343,
-    "filename": "hprc-v1.0-mc-grch38-minaf.0.1.dist.old",
-    "filetype": "old",
-    "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/filtered/hprc-v1.0-mc-grch38-minaf.0.1.dist.old",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "grch38",
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-chm13-mc",
-    "fileSize": 4551104343,
-    "filename": "hprc-v1.0-mc-grch38-minaf.0.1.dist.old",
-    "filetype": "old",
-    "loc": "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/filtered/hprc-v1.0-mc-grch38-minaf.0.1.dist.old",
-    "pipeline": "minigraph-cactus",
-    "referenceCoordinates": "chm13",
-    "version": "v1.0"
-  },
-  {
-    "alignment": "HPRC-v1.0-grch38-mc",
     "fileSize": 2824204560,
     "filename": "hprc-v1.0-mc-grch38-minaf.0.1.gbwt",
     "filetype": "gbwt",

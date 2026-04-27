@@ -312,24 +312,28 @@ function enforceUniqueIds<T>(
   entities: T[],
   getId: (entity: T) => string
 ): [T[], string[]] {
-  const foundIds = new Set<string>();
-  const deduplicatedIds = new Set<string>();
-  const filteredEntities: T[] = [];
+  const removedDuplicatedIds = new Set<string>();
+  const filteredEntities = new Map<string, T>();
   for (const entity of entities) {
     const id = getId(entity);
-    if (foundIds.has(id)) {
-      deduplicatedIds.add(id);
-    } else {
-      filteredEntities.push(entity);
-      foundIds.add(id);
+    if (removedDuplicatedIds.has(id)) continue;
+    if (filteredEntities.has(id)) {
+      // If this ID has already been encountered, note it as a duplicate and remove it from the result map
+      removedDuplicatedIds.add(id);
+      filteredEntities.delete(id);
+      continue;
     }
+    filteredEntities.set(id, entity);
   }
-  const deduplicatedIdsArr = Array.from(deduplicatedIds).sort();
-  if (deduplicatedIdsArr.length)
+  const removedIdsArr = Array.from(removedDuplicatedIds).sort();
+  if (removedIdsArr.length)
     console.warn(
-      `Removed ${pluralEntityName} with duplicate IDs: ${deduplicatedIdsArr.join(", ")}`
+      `Removed ${pluralEntityName} with duplicated IDs: ${removedIdsArr.join(", ")}`
     );
-  return [filteredEntities, deduplicatedIdsArr];
+  return [
+    Array.from(filteredEntities.values()), // Maps are ordered, so the original order will be retained here
+    removedIdsArr,
+  ];
 }
 
 function getSampleOrDefault(

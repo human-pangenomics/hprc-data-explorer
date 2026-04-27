@@ -13,19 +13,19 @@ export function getSampleId(sample: HPRCDataExplorerSample): string {
 export function getRawSequencingDataId(
   rawSequencingData: HPRCDataExplorerRawSequencingData
 ): string {
-  return `${rawSequencingData.mmTag}_${rawSequencingData.filename}`;
+  return rawSequencingData.path;
 }
 
 export function getAssemblyId(assembly: HPRCDataExplorerAssembly): string {
-  return `${assembly.sampleId}_${assembly.haplotype}_${assembly.release}`;
+  return assembly.awsFasta;
 }
 
 export function getAnnotationId(
   annotation: HPRCDataExplorerAnnotation
 ): string {
-  return `${annotation.sampleId}_${annotation.haplotype}_${annotation.annotationType}_${annotation.release}`;
+  return annotation.fileLocation;
 }
 
 export function getAlignmentId(alignment: HPRCDataExplorerAlignment): string {
-  return `${alignment.referenceCoordinates}_${alignment.loc}`;
+  return alignment.loc;
 }
