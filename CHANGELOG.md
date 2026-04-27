@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.9.0](https://github.com/human-pangenomics/hprc-data-explorer/compare/v0.8.0...v0.9.0) (2026-04-27)
+
+
+### Features
+
+* add additional columns present in spreadsheets to sequencing data schemas ([#236](https://github.com/human-pangenomics/hprc-data-explorer/issues/236)) ([#266](https://github.com/human-pangenomics/hprc-data-explorer/issues/266)) ([b3000ae](https://github.com/human-pangenomics/hprc-data-explorer/commit/b3000ae5885fd1dd531964576cc8627c10bbf6b0))
+* add samples tab filters, new columns, and default visibility ([#250](https://github.com/human-pangenomics/hprc-data-explorer/issues/250)) ([#258](https://github.com/human-pangenomics/hprc-data-explorer/issues/258)) ([8fda3b3](https://github.com/human-pangenomics/hprc-data-explorer/commit/8fda3b33066bd50ac8de6b38b6d318ed07f9ae73))
+* alignments tab filter grouping and column order ([#254](https://github.com/human-pangenomics/hprc-data-explorer/issues/254)) ([#263](https://github.com/human-pangenomics/hprc-data-explorer/issues/263)) ([139c5f5](https://github.com/human-pangenomics/hprc-data-explorer/commit/139c5f5acac11332c61952f4971ef62d30a4b448))
+* annotations tab filters, column defaults, expose assembly_name ([#252](https://github.com/human-pangenomics/hprc-data-explorer/issues/252)) ([#265](https://github.com/human-pangenomics/hprc-data-explorer/issues/265)) ([995069a](https://github.com/human-pangenomics/hprc-data-explorer/commit/995069aa2bc47d4ad110ef2c33f455c53ed12db9))
+* assemblies tab filters, column defaults, and expose dropped assembly fields ([#251](https://github.com/human-pangenomics/hprc-data-explorer/issues/251)) ([#262](https://github.com/human-pangenomics/hprc-data-explorer/issues/262)) ([9977728](https://github.com/human-pangenomics/hprc-data-explorer/commit/99777281640e63cfa0a3fac21626a8d390ee20bf))
+* default release = 2 filter on first entry to assemblies and annotations ([#223](https://github.com/human-pangenomics/hprc-data-explorer/issues/223)) ([#272](https://github.com/human-pangenomics/hprc-data-explorer/issues/272)) ([ae790e9](https://github.com/human-pangenomics/hprc-data-explorer/commit/ae790e9584782a0797afd395531225d1ce0b3e21))
+* sequencing data tab filters, column defaults, and metrics range group ([#247](https://github.com/human-pangenomics/hprc-data-explorer/issues/247)) ([#259](https://github.com/human-pangenomics/hprc-data-explorer/issues/259)) ([98b6dd3](https://github.com/human-pangenomics/hprc-data-explorer/commit/98b6dd369ff555aaf9732455a7870097062898f2))
+* surface per-entity help link on entity pages ([#264](https://github.com/human-pangenomics/hprc-data-explorer/issues/264)) ([#267](https://github.com/human-pangenomics/hprc-data-explorer/issues/267)) ([5dbe89b](https://github.com/human-pangenomics/hprc-data-explorer/commit/5dbe89bc2260db9b9e701e94afef49f4af8e8906))
+* use file uris as entity ids and delete all entities for each duplicated id when building ([#261](https://github.com/human-pangenomics/hprc-data-explorer/issues/261)) ([#269](https://github.com/human-pangenomics/hprc-data-explorer/issues/269)) ([83bba90](https://github.com/human-pangenomics/hprc-data-explorer/commit/83bba905287aa9fcf48433ca15add9c5384c6200))
+
+
+### Bug Fixes
+
+* migrate dead columnvisible props to initialstate.columnvisibility ([#246](https://github.com/human-pangenomics/hprc-data-explorer/issues/246)) ([f5819e9](https://github.com/human-pangenomics/hprc-data-explorer/commit/f5819e990e95ef39422ec52dab01a275a5c22584))
+* migrate dead columnVisible props to initialState.columnVisibility ([#248](https://github.com/human-pangenomics/hprc-data-explorer/issues/248)) ([f5819e9](https://github.com/human-pangenomics/hprc-data-explorer/commit/f5819e990e95ef39422ec52dab01a275a5c22584))
+* move exploresteprovider inside errorboundary to prevent crash loops ([#270](https://github.com/human-pangenomics/hprc-data-explorer/issues/270)) ([#271](https://github.com/human-pangenomics/hprc-data-explorer/issues/271)) ([85ec6a4](https://github.com/human-pangenomics/hprc-data-explorer/commit/85ec6a46668b2302a873c86ce1bdd1d7041a0ec3))
+
 ## [0.8.0](https://github.com/human-pangenomics/hprc-data-explorer/compare/v0.7.0...v0.8.0) (2026-04-22)
 
 
