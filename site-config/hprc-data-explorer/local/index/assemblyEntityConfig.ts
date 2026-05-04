@@ -159,6 +159,16 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
       },
       {
         componentConfig: {
+          component: C.LinkCell,
+          viewBuilder: V.buildUcscBrowserUrl,
+        } as ComponentConfig<typeof C.LinkCell, HPRCDataExplorerAssembly>,
+        enableGrouping: false,
+        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.UCSC_BROWSER_URL,
+        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.UCSC_BROWSER_URL,
+        width: { max: "0.5fr", min: "160px" },
+      },
+      {
+        componentConfig: {
           component: C.BasicCell,
           viewBuilder: V.buildPopulationDescriptor,
         } as ComponentConfig<typeof C.BasicCell, HPRCDataExplorerAssembly>,
@@ -276,16 +286,6 @@ export const assemblyEntityConfig: EntityConfig<HPRCDataExplorerAssembly> = {
         header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.FILE_SIZE,
         id: HPRC_DATA_EXPLORER_CATEGORY_KEY.FILE_SIZE,
         width: { max: "0.5fr", min: "112px" },
-      },
-      {
-        componentConfig: {
-          component: C.LinkCell,
-          viewBuilder: V.buildUcscBrowserUrl,
-        } as ComponentConfig<typeof C.LinkCell, HPRCDataExplorerAssembly>,
-        enableGrouping: false,
-        header: HPRC_DATA_EXPLORER_CATEGORY_LABEL.UCSC_BROWSER_URL,
-        id: HPRC_DATA_EXPLORER_CATEGORY_KEY.UCSC_BROWSER_URL,
-        width: { max: "0.5fr", min: "160px" },
       },
       {
         componentConfig: {
