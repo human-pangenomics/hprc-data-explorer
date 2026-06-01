@@ -203,7 +203,7 @@ slots:
     required: true
     range: string
   basecaller:
-    description: Software used for basecalling ONT signal data.
+    description: Software used for basecalling signal data.
     required: true
     range: string
   basecaller_model:
@@ -336,7 +336,7 @@ slots:
     required: false
     range: string
   production:
-    description: Name of original data submisson.
+    description: Name of original data submission.
     required: true
     range: string
   relationship:
