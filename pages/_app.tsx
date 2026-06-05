@@ -1,7 +1,7 @@
 import "@databiosphere/findable-ui";
 import { AzulEntitiesStaticResponse } from "@databiosphere/findable-ui/lib/apis/azul/common/entities";
 import { Error } from "@databiosphere/findable-ui/lib/components/Error/error";
-import { ErrorBoundary } from "@databiosphere/findable-ui/lib/components/ErrorBoundary";
+import { ErrorBoundary } from "@databiosphere/findable-ui/lib/components/ErrorBoundary/errorBoundary";
 import { Head } from "@databiosphere/findable-ui/lib/components/Head/head";
 import { AppLayout } from "@databiosphere/findable-ui/lib/components/Layout/components/AppLayout/appLayout.styles";
 import { Floating } from "@databiosphere/findable-ui/lib/components/Layout/components/Floating/floating";
@@ -15,6 +15,7 @@ import { createAppTheme } from "@databiosphere/findable-ui/lib/theme/theme";
 import { DataExplorerError } from "@databiosphere/findable-ui/lib/types/error";
 import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
 import { CssBaseline, ThemeProvider } from "@mui/material";
+import { AppCacheProvider } from "@mui/material-nextjs/v16-pagesRouter";
 import { StyledFooter } from "app/components/Layout/components/Footer/footer.styles";
 import { NextPage } from "next";
 import type { AppProps } from "next/app";
@@ -33,7 +34,8 @@ export type AppPropsWithComponent = AppProps & {
   Component: NextPageWithComponent;
 };
 
-function MyApp({ Component, pageProps }: AppPropsWithComponent): JSX.Element {
+function MyApp(props: AppPropsWithComponent): JSX.Element {
+  const { Component, pageProps } = props;
   // Set up the site configuration, layout and theme.
   const appConfig = config();
   const { layout, redirectRootToPath, themeOptions } = appConfig;
@@ -42,45 +44,47 @@ function MyApp({ Component, pageProps }: AppPropsWithComponent): JSX.Element {
   const { entityListType, pageTitle } = pageProps as PageProps;
   const Main = Component.Main || DXMain;
   return (
-    <EmotionThemeProvider theme={appTheme}>
-      <ThemeProvider theme={appTheme}>
-        <DXConfigProvider config={appConfig} entityListType={entityListType}>
-          <Head pageTitle={pageTitle} />
-          <CssBaseline />
-          <SystemStatusProvider>
-            <LayoutDimensionsProvider>
-              <AppLayout>
-                <DXHeader {...header} />
-                <ExploreStateProvider entityListType={entityListType}>
-                  <Main>
-                    <ErrorBoundary
-                      fallbackRender={({
-                        error,
-                        reset,
-                      }: {
-                        error: DataExplorerError;
-                        reset: () => void;
-                      }): JSX.Element => (
-                        <Error
-                          errorMessage={error.message}
-                          requestUrlMessage={error.requestUrlMessage}
-                          rootPath={redirectRootToPath}
-                          onReset={reset}
-                        />
-                      )}
-                    >
-                      <Component {...pageProps} />
-                      <Floating {...floating} />
-                    </ErrorBoundary>
-                  </Main>
-                </ExploreStateProvider>
-                <StyledFooter {...footer} />
-              </AppLayout>
-            </LayoutDimensionsProvider>
-          </SystemStatusProvider>
-        </DXConfigProvider>
-      </ThemeProvider>
-    </EmotionThemeProvider>
+    <AppCacheProvider {...props}>
+      <EmotionThemeProvider theme={appTheme}>
+        <ThemeProvider theme={appTheme}>
+          <DXConfigProvider config={appConfig} entityListType={entityListType}>
+            <Head pageTitle={pageTitle} />
+            <CssBaseline />
+            <SystemStatusProvider>
+              <LayoutDimensionsProvider>
+                <AppLayout>
+                  <DXHeader {...header} />
+                  <ExploreStateProvider entityListType={entityListType}>
+                    <Main>
+                      <ErrorBoundary
+                        fallbackRender={({
+                          error,
+                          reset,
+                        }: {
+                          error: DataExplorerError;
+                          reset: () => void;
+                        }): JSX.Element => (
+                          <Error
+                            errorMessage={error.message}
+                            requestUrlMessage={error.requestUrlMessage}
+                            rootPath={redirectRootToPath}
+                            onReset={reset}
+                          />
+                        )}
+                      >
+                        <Component {...pageProps} />
+                        <Floating {...floating} />
+                      </ErrorBoundary>
+                    </Main>
+                  </ExploreStateProvider>
+                  <StyledFooter {...footer} />
+                </AppLayout>
+              </LayoutDimensionsProvider>
+            </SystemStatusProvider>
+          </DXConfigProvider>
+        </ThemeProvider>
+      </EmotionThemeProvider>
+    </AppCacheProvider>
   );
 }
 
