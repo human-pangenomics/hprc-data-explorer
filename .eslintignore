@@ -1,9 +1,0 @@
-**/node_modules/*
-**/out/*
-**/.next/*
-
-/build
-
-venv
-
-next-env.d.ts
