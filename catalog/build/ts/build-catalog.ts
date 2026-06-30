@@ -118,24 +118,22 @@ async function buildCatalog(): Promise<void> {
 async function buildSamples(): Promise<HPRCDataExplorerSample[]> {
   const sourceRows =
     await readUnknownValuesFile<SourceSampleKey>(SOURCE_PATH_SAMPLES);
-  const mappedRows = sourceRows.map(
-    (row): HPRCDataExplorerSample => ({
-      alternativeId: parseStringOrAbsent(row.alternative_id),
-      biosampleAccession: parseStringOrAbsent(row.biosample_id),
-      collection: parseStringOrAbsent(row.collection),
-      contributors: parseStringOrAbsent(row.contributors),
-      familyId: parseStringOrAbsent(row.family_id),
-      maternalId: parseStringOrAbsent(row.maternal_id),
-      paternalId: parseStringOrAbsent(row.paternal_id),
-      populationAbbreviation: parseStringOrAbsent(row.population_abbreviation),
-      populationDescriptor: parseStringOrAbsent(row.population_descriptor),
-      project: parseStringOrAbsent(row.project),
-      sampleId: parseStringOrAbsent(row.sample_id),
-      sex: parseStringOrAbsent(row.sex),
-      tissue: parseStringOrAbsent(row.tissue),
-      trioAvailable: parseBooleanOrAbsent(row.trio_available),
-    })
-  );
+  const mappedRows = sourceRows.map((row): HPRCDataExplorerSample => ({
+    alternativeId: parseStringOrAbsent(row.alternative_id),
+    biosampleAccession: parseStringOrAbsent(row.biosample_id),
+    collection: parseStringOrAbsent(row.collection),
+    contributors: parseStringOrAbsent(row.contributors),
+    familyId: parseStringOrAbsent(row.family_id),
+    maternalId: parseStringOrAbsent(row.maternal_id),
+    paternalId: parseStringOrAbsent(row.paternal_id),
+    populationAbbreviation: parseStringOrAbsent(row.population_abbreviation),
+    populationDescriptor: parseStringOrAbsent(row.population_descriptor),
+    project: parseStringOrAbsent(row.project),
+    sampleId: parseStringOrAbsent(row.sample_id),
+    sex: parseStringOrAbsent(row.sex),
+    tissue: parseStringOrAbsent(row.tissue),
+    trioAvailable: parseBooleanOrAbsent(row.trio_available),
+  }));
   return mappedRows.sort((a, b) =>
     getSampleId(a).localeCompare(getSampleId(b))
   );
@@ -292,18 +290,16 @@ async function buildAlignments(): Promise<HPRCDataExplorerAlignment[]> {
   const sourceRows = await readUnknownValuesFile<SourceAlignmentKey>(
     SOURCE_PATH_ALIGNMENTS
   );
-  const mappedRows = sourceRows.map(
-    (row): HPRCDataExplorerAlignment => ({
-      alignment: parseStringOrAbsent(row.alignment),
-      fileSize: parseNumberOrAbsent(row.file_size),
-      filename: parseStringOrAbsent(row.file),
-      filetype: parseStringOrAbsent(row.file, getTypeFromFilename),
-      loc: parseStringOrAbsent(row.loc),
-      pipeline: parseStringOrAbsent(row.pipeline),
-      referenceCoordinates: parseStringOrAbsent(row.reference_coordinates),
-      version: parseStringOrAbsent(row.version),
-    })
-  );
+  const mappedRows = sourceRows.map((row): HPRCDataExplorerAlignment => ({
+    alignment: parseStringOrAbsent(row.alignment),
+    fileSize: parseNumberOrAbsent(row.file_size),
+    filename: parseStringOrAbsent(row.file),
+    filetype: parseStringOrAbsent(row.file, getTypeFromFilename),
+    loc: parseStringOrAbsent(row.loc),
+    pipeline: parseStringOrAbsent(row.pipeline),
+    referenceCoordinates: parseStringOrAbsent(row.reference_coordinates),
+    version: parseStringOrAbsent(row.version),
+  }));
   return mappedRows.sort((a, b) => a.loc.localeCompare(b.loc));
 }
 
