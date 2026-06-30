@@ -19,15 +19,9 @@ export type SourceSampleKey = SamplesSlotName;
 export type SourceRawSequencingDataKey = SequencingDataSlotName | KeyFileSize;
 
 export type SourceAssemblyKey =
-  | AssembliesSlotName
-  | KeyFileSize
-  | KeyRelease
-  | KeyBrowser;
+  AssembliesSlotName | KeyFileSize | KeyRelease | KeyBrowser;
 
 export type SourceAnnotationKey =
-  | AnnotationsSlotName
-  | KeyAnnotationType
-  | KeyFileSize
-  | KeyRelease;
+  AnnotationsSlotName | KeyAnnotationType | KeyFileSize | KeyRelease;
 
 export type SourceAlignmentKey = AlignmentsSlotName;

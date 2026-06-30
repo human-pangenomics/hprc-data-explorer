@@ -79,10 +79,7 @@ export type AssembliesSlotName =
   | "assembly";
 
 export type AnnotationsSlotName =
-  | "sample_id"
-  | "haplotype"
-  | "assembly_name"
-  | "location";
+  "sample_id" | "haplotype" | "assembly_name" | "location";
 
 export type AlignmentsSlotName =
   | "alignment"
