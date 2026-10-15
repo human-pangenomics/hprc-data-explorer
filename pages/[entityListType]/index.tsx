@@ -1,12 +1,10 @@
 import { AzulEntitiesStaticResponse } from "@databiosphere/findable-ui/lib/apis/azul/common/entities";
 import { Main as DXMain } from "@databiosphere/findable-ui/lib/components/Layout/components/Main/main.styles";
-import { EntityConfig } from "@databiosphere/findable-ui/lib/config/entities";
 import { getEntityConfig } from "@databiosphere/findable-ui/lib/config/utils";
 import { getEntityService } from "@databiosphere/findable-ui/lib/hooks/useEntityService";
 import { EXPLORE_MODE } from "@databiosphere/findable-ui/lib/hooks/useExploreMode/types";
-import { database } from "@databiosphere/findable-ui/lib/utils/database";
+import { seedDatabase } from "@databiosphere/findable-ui/lib/utils/seedDatabase";
 import { config } from "app/config/config";
-import fsp from "fs/promises";
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { ParsedUrlQuery } from "querystring";
 import type { JSX } from "react";
@@ -19,37 +17,6 @@ interface PageUrl extends ParsedUrlQuery {
 interface ListPageProps extends AzulEntitiesStaticResponse {
   entityListType: string;
 }
-
-/**
- * Seed database.
- * @param entityListType - Entity list type.
- * @param entityConfig - Entity config.
- * @returns Promise<void>.
- */
-const seedDatabase = async function seedDatabase( // TODO get rid of this duplicated code
-  entityListType: string,
-  entityConfig: EntityConfig
-): Promise<void> {
-  const { label, staticLoadFile } = entityConfig;
-
-  if (!staticLoadFile) {
-    throw new Error(`staticLoadFile not found for entity entity ${label}`);
-  }
-
-  // Build database from configured JSON, if any.
-  let jsonText;
-  try {
-    jsonText = await fsp.readFile(staticLoadFile, "utf8");
-  } catch {
-    throw new Error(`File ${staticLoadFile} not found for entity ${label}`);
-  }
-
-  const object = JSON.parse(jsonText);
-  const entities = Object.values(object); // Client-side fetched entities are mapped prior to dispatch to explore state.
-
-  // Seed entities.
-  database.get().seed(entityListType, entities);
-};
 
 /**
  * Explore view page.

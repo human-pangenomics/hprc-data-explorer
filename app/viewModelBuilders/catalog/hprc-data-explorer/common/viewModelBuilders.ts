@@ -1,7 +1,8 @@
 import { ALERT_PROPS } from "@databiosphere/findable-ui/lib/components/common/Alert/constants";
 import { ViewContext } from "@databiosphere/findable-ui/lib/config/entities";
 import { formatFileSize } from "@databiosphere/findable-ui/lib/utils/formatFileSize";
-import { LinkProps } from "@mui/material";
+import type { LinkProps } from "@mui/material";
+import type { Getter } from "@tanstack/react-table";
 import {
   HPRCDataExplorerAlignment,
   HPRCDataExplorerAnnotation,
@@ -815,9 +816,10 @@ export const buildTotalReads = (
  */
 export const buildUcscBrowserUrl = (
   assembly: HPRCDataExplorerAssembly
-): React.ComponentProps<typeof C.LinkCell> => {
+): Pick<React.ComponentProps<typeof C.LinkCell>, "getValue"> => {
   return {
-    getValue(): LinkProps {
+    // Cast because TanStack's `Getter` is generic, which a plain function can't satisfy.
+    getValue: ((): LinkProps => {
       if (assembly.ucscBrowserUrl === LABEL.UNSPECIFIED) {
         return { children: LABEL.UNSPECIFIED };
       }
@@ -825,7 +827,7 @@ export const buildUcscBrowserUrl = (
         children: "UCSC Genome Browser",
         href: assembly.ucscBrowserUrl,
       };
-    },
+    }) as Getter<LinkProps>,
   };
 };
 
