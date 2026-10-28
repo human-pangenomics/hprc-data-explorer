@@ -432,24 +432,47 @@ export const getLastRowNthColumnCellLocator = (
     .nth(columnIndex);
 };
 
-// Scroll the table container to the bottom
-const scrollTableContainerToBottom = async (page: Page): Promise<void> => {
+/**
+ * Wait until the table's first and last rendered rows stop changing, so the
+ * virtualized rows have caught up with the scroll position before they're read
+ * @param page - a Playwright page object
+ **/
+const waitForRowsToSettle = async (page: Page): Promise<void> => {
+  const rows = page.getByRole("rowgroup").nth(1).getByRole("row");
+  let previous: string | undefined;
+  await expect
+    .poll(async () => {
+      const current = `${await rows.first().innerText()}\n${await rows.last().innerText()}`;
+      const settled = current.trim() !== "" && current === previous;
+      previous = current;
+      return settled;
+    })
+    .toBe(true);
+};
+
+// Scroll the table to the bottom. The index page scrolls the window, so scroll
+// it too; the table container still scrolls where findable-ui falls back to it.
+const scrollTableToBottom = async (page: Page): Promise<void> => {
   await page.evaluate(() => {
     const container = document.querySelector(".MuiTableContainer-root");
     if (container) {
       container.scrollTop = container.scrollHeight;
     }
+    window.scrollTo(0, document.documentElement.scrollHeight);
   });
+  await waitForRowsToSettle(page);
 };
 
-// Scroll the table container to the top
-const scrollTableContainerToTop = async (page: Page): Promise<void> => {
+// Scroll the table to the top, scrolling both the container and the window.
+const scrollTableToTop = async (page: Page): Promise<void> => {
   await page.evaluate(() => {
     const container = document.querySelector(".MuiTableContainer-root");
     if (container) {
       container.scrollTop = 0;
     }
+    window.scrollTo(0, 0);
   });
+  await waitForRowsToSettle(page);
 };
 
 /**
@@ -475,28 +498,28 @@ export async function testSortFirstColumn(
   const firstElementTextLocator = getFirstRowNthColumnCellLocator(page, 0);
   const lastElementTextLocator = getLastRowNthColumnCellLocator(page, 0);
   await expect(firstElementTextLocator).toBeVisible();
-  await scrollTableContainerToBottom(page);
+  await scrollTableToBottom(page);
   await expect(lastElementTextLocator).toBeVisible();
-  await scrollTableContainerToTop(page);
+  await scrollTableToTop(page);
   // Click to sort
   await columnSortLocator.click();
   // Expect the first cell to still be visible
   await expect(firstElementTextLocator).toBeVisible();
   const firstElementText = await firstElementTextLocator.innerText();
-  await scrollTableContainerToBottom(page);
+  await scrollTableToBottom(page);
   // Expect the last cell to still be visible
   await expect(
     page.getByRole("rowgroup").nth(1).getByRole("row").last()
   ).not.toHaveText("");
   await expect(lastElementTextLocator).toBeVisible();
   const lastElementText = await lastElementTextLocator.innerText();
-  await scrollTableContainerToTop(page);
+  await scrollTableToTop(page);
   // Click to sort again
   await columnSortLocator.click();
   // Expect the first and last cell to have switched their text
   await expect(firstElementTextLocator).toBeVisible();
   await expect(firstElementTextLocator).toHaveText(lastElementText);
-  await scrollTableContainerToBottom(page);
+  await scrollTableToBottom(page);
   await expect(lastElementTextLocator).toBeVisible();
   await expect(lastElementTextLocator).toHaveText(firstElementText);
 }
