@@ -9,7 +9,6 @@ import { Header as DXHeader } from "@databiosphere/findable-ui/lib/components/La
 import { Main as DXMain } from "@databiosphere/findable-ui/lib/components/Layout/components/Main/main";
 import { ConfigProvider as DXConfigProvider } from "@databiosphere/findable-ui/lib/providers/config";
 import { ExploreStateProvider } from "@databiosphere/findable-ui/lib/providers/exploreState";
-import { LayoutDimensionsProvider } from "@databiosphere/findable-ui/lib/providers/layoutDimensions/provider";
 import { SystemStatusProvider } from "@databiosphere/findable-ui/lib/providers/systemStatus";
 import { createAppTheme } from "@databiosphere/findable-ui/lib/theme/theme";
 import { DataExplorerError } from "@databiosphere/findable-ui/lib/types/error";
@@ -17,7 +16,6 @@ import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { AppCacheProvider } from "@mui/material-nextjs/v16-pagesRouter";
 import { StyledFooter } from "app/components/Layout/components/Footer/footer.styles";
-import { NextPage } from "next";
 import type { AppProps } from "next/app";
 import type { JSX } from "react";
 import { config } from "../app/config/config";
@@ -26,15 +24,7 @@ export interface PageProps extends AzulEntitiesStaticResponse {
   pageTitle?: string;
 }
 
-export type NextPageWithComponent = NextPage & {
-  Main?: typeof DXMain;
-};
-
-export type AppPropsWithComponent = AppProps & {
-  Component: NextPageWithComponent;
-};
-
-function MyApp(props: AppPropsWithComponent): JSX.Element {
+function MyApp(props: AppProps): JSX.Element {
   const { Component, pageProps } = props;
   // Set up the site configuration, layout and theme.
   const appConfig = config();
@@ -42,7 +32,6 @@ function MyApp(props: AppPropsWithComponent): JSX.Element {
   const { floating, footer, header } = layout || {};
   const appTheme = createAppTheme(themeOptions);
   const { entityListType, pageTitle } = pageProps as PageProps;
-  const Main = Component.Main || DXMain;
   return (
     <AppCacheProvider {...props}>
       <EmotionThemeProvider theme={appTheme}>
@@ -51,35 +40,33 @@ function MyApp(props: AppPropsWithComponent): JSX.Element {
             <Head pageTitle={pageTitle} />
             <CssBaseline />
             <SystemStatusProvider>
-              <LayoutDimensionsProvider>
-                <AppLayout>
-                  <DXHeader {...header} />
-                  <ExploreStateProvider entityListType={entityListType}>
-                    <Main>
-                      <ErrorBoundary
-                        fallbackRender={({
-                          error,
-                          reset,
-                        }: {
-                          error: DataExplorerError;
-                          reset: () => void;
-                        }): JSX.Element => (
-                          <Error
-                            errorMessage={error.message}
-                            requestUrlMessage={error.requestUrlMessage}
-                            rootPath={redirectRootToPath}
-                            onReset={reset}
-                          />
-                        )}
-                      >
-                        <Component {...pageProps} />
-                        <Floating {...floating} />
-                      </ErrorBoundary>
-                    </Main>
-                  </ExploreStateProvider>
-                  <StyledFooter {...footer} />
-                </AppLayout>
-              </LayoutDimensionsProvider>
+              <AppLayout>
+                <DXHeader {...header} />
+                <ExploreStateProvider entityListType={entityListType}>
+                  <DXMain>
+                    <ErrorBoundary
+                      fallbackRender={({
+                        error,
+                        reset,
+                      }: {
+                        error: DataExplorerError;
+                        reset: () => void;
+                      }): JSX.Element => (
+                        <Error
+                          errorMessage={error.message}
+                          requestUrlMessage={error.requestUrlMessage}
+                          rootPath={redirectRootToPath}
+                          onReset={reset}
+                        />
+                      )}
+                    >
+                      <Component {...pageProps} />
+                      <Floating {...floating} />
+                    </ErrorBoundary>
+                  </DXMain>
+                </ExploreStateProvider>
+                <StyledFooter {...footer} />
+              </AppLayout>
             </SystemStatusProvider>
           </DXConfigProvider>
         </ThemeProvider>
