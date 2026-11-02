@@ -1,14 +1,13 @@
 import { FILTER_SORT } from "@databiosphere/findable-ui/lib/common/filters/sort/config/types";
-import { ANCHOR_TARGET } from "@databiosphere/findable-ui/lib/components/Links/common/entities";
-import { SiteConfig } from "@databiosphere/findable-ui/lib/config/entities";
+import type { SiteConfig } from "@databiosphere/findable-ui/lib/config/entities";
 import * as C from "../../../app/components/index";
 import { ROUTE } from "../../../app/routes/constants";
-import { DOCUMENTATION_URL } from "../docs";
 import { alignmentEntityConfig } from "./index/alignmentEntityConfig";
 import { annotationEntityConfig } from "./index/annotationEntityConfig";
 import { assemblyEntityConfig } from "./index/assemblyEntityConfig";
 import { rawSequencingDataEntityConfig } from "./index/rawSequencingDataEntityConfig";
 import { sampleEntityConfig } from "./index/sampleEntityConfig";
+import { HEADER_NAVIGATION } from "./navigation";
 
 // Template constants
 const LOCALHOST = "http://localhost:3000";
@@ -17,7 +16,6 @@ const BROWSER_URL = LOCALHOST;
 const GIT_HUB_REPO_URL =
   "https://github.com/human-pangenomics/hprc-data-explorer";
 const HOME_PAGE_PATH = ROUTE.RAW_SEQUENCING_DATA;
-const PORTAL_URL = "https://humanpangenome.org";
 
 export function makeConfig(browserUrl: string, gitHubUrl: string): SiteConfig {
   return {
@@ -58,66 +56,7 @@ export function makeConfig(browserUrl: string, gitHubUrl: string): SiteConfig {
           link: HOME_PAGE_PATH,
           src: "/images/hprcDataExplorer.png",
         }),
-        navigation: [
-          undefined,
-          [
-            {
-              label: "Samples",
-              url: ROUTE.SAMPLES,
-            },
-            {
-              label: "Sequencing Data",
-              url: ROUTE.RAW_SEQUENCING_DATA,
-            },
-            { label: "Assemblies", url: ROUTE.ASSEMBLIES },
-            { label: "Annotations", url: ROUTE.ANNOTATIONS },
-            { label: "Alignments", url: ROUTE.ALIGNMENTS },
-          ],
-          [
-            {
-              label: C.LabelIconMenuItem({ label: "HPRC Website" }),
-              target: ANCHOR_TARGET.BLANK,
-              url: PORTAL_URL,
-            },
-            {
-              label: "Help & Documentation",
-              menuItems: [
-                {
-                  label: "Data Use Agreement",
-                  target: ANCHOR_TARGET.BLANK,
-                  url: "https://humanpangenome.org/data-use/",
-                },
-                {
-                  label: "Samples",
-                  target: ANCHOR_TARGET.BLANK,
-                  url: DOCUMENTATION_URL.SAMPLES,
-                },
-                {
-                  label: "Assemblies",
-                  target: ANCHOR_TARGET.BLANK,
-                  url: DOCUMENTATION_URL.ASSEMBLIES,
-                },
-                {
-                  label: "Sequencing Data",
-                  target: ANCHOR_TARGET.BLANK,
-                  url: DOCUMENTATION_URL.SEQUENCING_DATA,
-                },
-                {
-                  label: "Annotations",
-                  target: ANCHOR_TARGET.BLANK,
-                  url: DOCUMENTATION_URL.ANNOTATIONS,
-                },
-                {
-                  icon: C.GitHubIcon({ fontSize: "small" }),
-                  label: "GitHub",
-                  target: ANCHOR_TARGET.BLANK,
-                  url: "https://github.com/human-pangenomics/hprc-data-explorer",
-                },
-              ],
-              url: "",
-            },
-          ],
-        ],
+        navigation: HEADER_NAVIGATION,
       },
     },
     redirectRootToPath: HOME_PAGE_PATH,
