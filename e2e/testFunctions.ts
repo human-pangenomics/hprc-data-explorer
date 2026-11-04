@@ -141,8 +141,8 @@ export async function testFilterPresence(
     await page.getByText(filterRegex(filterName)).dispatchEvent("click");
     await expect(page.getByRole("checkbox").first()).toBeVisible();
     await expect(page.getByRole("checkbox").first()).not.toBeChecked();
-    // Check that clicking out of the filter menu causes it to disappear
-    await page.locator("body").click();
+    // Check that pressing Escape closes the filter menu
+    await page.keyboard.press("Escape");
     await expect(page.getByRole("checkbox")).toHaveCount(0);
   }
 }
@@ -273,7 +273,7 @@ export async function testFilterCounts(
     await filterButton.getByRole("checkbox").dispatchEvent("click");
     await page.waitForLoadState("load");
     // Exit the filter menu
-    await page.locator("body").click();
+    await page.keyboard.press("Escape");
     await expect(page.getByRole("checkbox")).toHaveCount(0);
     // Expect the displayed count of elements to be 0
     const filterCountPassed = await verifyFilterCount(page, filterNumber);
@@ -376,7 +376,8 @@ export async function testSelectFiltersThroughSearchBar(
     await firstFilterWithTextNameAndLocator.locator.innerText()
   );
   await firstFilterWithTextNameAndLocator.locator.click();
-  await page.locator("body").click();
+  // Close the filter search dropdown
+  await page.keyboard.press("Escape");
   const filterTagLocator = getFilterTagLocator(
     page,
     firstFilterWithTextNameAndLocator.name
