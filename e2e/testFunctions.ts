@@ -1,3 +1,4 @@
+import { TEST_IDS } from "@databiosphere/findable-ui/lib/tests/testIds";
 import { expect, Locator, Page } from "@playwright/test";
 import { TabDescription } from "./testInterfaces";
 
@@ -302,39 +303,38 @@ export const getNamedFilterOptionLocator = (
   });
 };
 
-interface FilterOptionNameAndLocator {
+interface SearchAllFiltersOption {
+  count: number;
   locator: Locator;
   name: string;
 }
 
-const MAX_FILTER_OPTIONS_TO_CHECK = 10;
-
 /**
- * Gets the name of the filter option associated with a locator
- * @param page - a Playwright Page object, on which a filter must be currently selected
- * @returns the innerText of the first nonempty filter option as a promise
+ * Gets the first unselected "Search all filters" option with a nonempty term, along with its term and count.
+ * Unselected, so that clicking it adds a filter rather than removing a default one.
+ * @param page - a Playwright Page object, on which the "Search all filters" dropdown must be open
+ * @returns the locator, term and count of the first nonempty option as a promise
  */
-const getFirstNonEmptyFilterOptionNameAndIndex = async (
+const getFirstNonEmptySearchAllFiltersOption = async (
   page: Page
-): Promise<FilterOptionNameAndLocator> => {
-  let filterToSelect = "";
-  let filterOptionLocator = undefined;
-  let i = 0;
-  while (filterToSelect === "" && i < MAX_FILTER_OPTIONS_TO_CHECK) {
-    // Filter options display as "[text]\n[number]" , sometimes with extra whitespace, so we want the string before the newline
-    const filterOptionRegex = /^(.*)\n+(\d+)\s*$/;
-    filterOptionLocator = getNthFilterOptionLocator(page, i);
-    filterToSelect = ((await filterOptionLocator.innerText())
-      .trim()
-      .match(filterOptionRegex) ?? ["", ""])[1];
-    i += 1;
+): Promise<SearchAllFiltersOption> => {
+  const locator = page
+    .getByRole("option", { selected: false })
+    .filter({
+      has: page.getByTestId(TEST_IDS.FILTER_TERM).filter({ hasText: /\S/ }),
+    })
+    .first();
+  await expect(locator).toBeVisible();
+  const name = (
+    await locator.getByTestId(TEST_IDS.FILTER_TERM).innerText()
+  ).trim();
+  const count = Number(
+    (await locator.getByTestId(TEST_IDS.FILTER_COUNT).innerText()).trim()
+  );
+  if (Number.isNaN(count)) {
+    throw new Error(`Search all filters option "${name}" has no numeric count`);
   }
-  if (filterOptionLocator === undefined) {
-    throw new Error(
-      "No locator found within the maximum number of filter options"
-    );
-  }
-  return { locator: filterOptionLocator, name: filterToSelect };
+  return { count, locator, name };
 };
 
 const FILTER_CSS_SELECTOR = "#sidebar-positioner";
@@ -370,22 +370,16 @@ export async function testSelectFiltersThroughSearchBar(
   await expect(searchFiltersInputLocator).toBeVisible();
   await searchFiltersInputLocator.click();
   // Select the first filter with associated text
-  const firstFilterWithTextNameAndLocator =
-    await getFirstNonEmptyFilterOptionNameAndIndex(page);
-  const filterCount = getFilterNumberFromText(
-    await firstFilterWithTextNameAndLocator.locator.innerText()
-  );
-  await firstFilterWithTextNameAndLocator.locator.click();
+  const { count, locator, name } =
+    await getFirstNonEmptySearchAllFiltersOption(page);
+  await locator.click();
   // Close the filter search dropdown
   await page.keyboard.press("Escape");
-  const filterTagLocator = getFilterTagLocator(
-    page,
-    firstFilterWithTextNameAndLocator.name
-  );
+  const filterTagLocator = getFilterTagLocator(page, name);
   // Check the filter tag is selected
   await expect(filterTagLocator).toBeVisible();
   // Check that the filter counts are equal to the number associated with the selected filter
-  const filterCountSuccess = await verifyFilterCount(page, filterCount);
+  const filterCountSuccess = await verifyFilterCount(page, count);
   if (!filterCountSuccess) {
     return false;
   }

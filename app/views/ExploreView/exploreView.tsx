@@ -1,7 +1,5 @@
-import {
-  ExploreView as DXExploreView,
-  ExploreViewProps,
-} from "@databiosphere/findable-ui/lib/views/ExploreView/exploreView";
+import { ExploreView as DXExploreView } from "@databiosphere/findable-ui/lib/views/ExploreView/exploreView";
+import type { ExploreViewProps } from "@databiosphere/findable-ui/lib/views/ExploreView/types";
 import type { JSX } from "react";
 import { useDefaultEntityFilters } from "./hooks/useDefaultEntityFilters/hook";
 
@@ -15,7 +13,7 @@ import { useDefaultEntityFilters } from "./hooks/useDefaultEntityFilters/hook";
  * The default is applied once per session via sessionStorage and is not reapplied
  * after the user interacts with filters or navigates between tabs.
  *
- * @param props - ExploreView props (entityListType, data, etc.).
+ * @param props - ExploreView props (entityListType and the statically loaded entities, if any).
  * @returns ExploreView component with default entity filters applied.
  */
 export const ExploreView = (props: ExploreViewProps): JSX.Element => {

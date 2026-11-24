@@ -1,8 +1,8 @@
-import { AzulEntitiesStaticResponse } from "@databiosphere/findable-ui/lib/apis/azul/common/entities";
 import { getEntityConfig } from "@databiosphere/findable-ui/lib/config/utils";
 import { getEntityService } from "@databiosphere/findable-ui/lib/hooks/useEntityService";
 import { EXPLORE_MODE } from "@databiosphere/findable-ui/lib/hooks/useExploreMode/types";
 import { seedDatabase } from "@databiosphere/findable-ui/lib/utils/seedDatabase";
+import type { ExploreViewProps } from "@databiosphere/findable-ui/lib/views/ExploreView/types";
 import { config } from "app/config/config";
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { ParsedUrlQuery } from "querystring";
@@ -13,22 +13,14 @@ interface PageUrl extends ParsedUrlQuery {
   entityListType: string;
 }
 
-interface ListPageProps extends AzulEntitiesStaticResponse {
-  entityListType: string;
-}
-
 /**
  * Explore view page.
- * @param props - Explore view page props.
- * @param props.entityListType - Entity list type.
+ * @param props - Explore view page props: the entity list type and its statically loaded entities, if any.
  * @returns ExploreView component.
  */
-const IndexPage = ({
-  entityListType,
-  ...props
-}: ListPageProps): JSX.Element => {
-  if (!entityListType) return <></>;
-  return <ExploreView entityListType={entityListType} {...props} />;
+const IndexPage = (props: ExploreViewProps): JSX.Element => {
+  if (!props.entityListType) return <></>;
+  return <ExploreView {...props} />;
 };
 
 /**
@@ -54,9 +46,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
  * @param context - Object containing values related to the current context.
  * @returns static props.
  */
-export const getStaticProps: GetStaticProps<
-  AzulEntitiesStaticResponse
-> = async (context: GetStaticPropsContext) => {
+export const getStaticProps: GetStaticProps<ExploreViewProps> = async (
+  context: GetStaticPropsContext
+) => {
   const appConfig = config();
   const { entityListType } = context.params as PageUrl;
   const { entities } = appConfig;
@@ -64,7 +56,7 @@ export const getStaticProps: GetStaticProps<
   const { exploreMode } = entityConfig;
   const { fetchAllEntities } = getEntityService(entityConfig, undefined); // Determine the type of fetch, either from an API endpoint or a TSV.
 
-  const props: AzulEntitiesStaticResponse = { entityListType };
+  const props: ExploreViewProps = { entityListType };
 
   // Seed database.
   if (exploreMode === EXPLORE_MODE.CS_FETCH_CS_FILTERING) {
@@ -75,7 +67,8 @@ export const getStaticProps: GetStaticProps<
   }
 
   // Entities are client-side fetched from a local database seeded from a configured TSV.
-  props.data = await fetchAllEntities(entityListType, undefined);
+  // The explore view takes the entities alone, not the rest of the response.
+  props.data = (await fetchAllEntities(entityListType, undefined)).hits;
 
   return {
     props,

@@ -1,4 +1,4 @@
-import { test } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import { HPRC_TABS } from "./hprc-tabs";
 import {
   testAllFiltersPresence,
@@ -58,25 +58,33 @@ test("Expect filter counts to update for the first five on the Alignments tab", 
 test('Check that selecting the first filter through the "Search all Filters" textbox works correctly on the Raw Sequencing Data tab', async ({
   page,
 }) => {
-  await testSelectFiltersThroughSearchBar(page, HPRC_TABS.rawSequencingData);
+  expect(
+    await testSelectFiltersThroughSearchBar(page, HPRC_TABS.rawSequencingData)
+  ).toBe(true);
 });
 
 test('Check that selecting the first filter through the "Search all Filters" textbox works correctly on the Assemblies tab', async ({
   page,
 }) => {
-  await testSelectFiltersThroughSearchBar(page, HPRC_TABS.assemblies);
+  expect(
+    await testSelectFiltersThroughSearchBar(page, HPRC_TABS.assemblies)
+  ).toBe(true);
 });
 
 test('Check that selecting the first filter through the "Search all Filters" textbox works correctly on the Annotations tab', async ({
   page,
 }) => {
-  await testSelectFiltersThroughSearchBar(page, HPRC_TABS.annotations);
+  expect(
+    await testSelectFiltersThroughSearchBar(page, HPRC_TABS.annotations)
+  ).toBe(true);
 });
 
 test('Check that selecting the first filter through the "Search all Filters" textbox works correctly on the Alignments tab', async ({
   page,
 }) => {
-  await testSelectFiltersThroughSearchBar(page, HPRC_TABS.alignments);
+  expect(
+    await testSelectFiltersThroughSearchBar(page, HPRC_TABS.alignments)
+  ).toBe(true);
 });
 
 test("Expect at least one filter to exist on the Samples tab and for all filters to function", async ({
@@ -97,5 +105,7 @@ test("Expect filter counts to update for the first three filters on the Samples 
 test('Check that selecting the first filter through the "Search all Filters" textbox works correctly on the Samples tab', async ({
   page,
 }) => {
-  await testSelectFiltersThroughSearchBar(page, HPRC_TABS.samples);
+  expect(await testSelectFiltersThroughSearchBar(page, HPRC_TABS.samples)).toBe(
+    true
+  );
 });

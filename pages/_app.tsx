@@ -1,5 +1,4 @@
 import "@databiosphere/findable-ui";
-import { AzulEntitiesStaticResponse } from "@databiosphere/findable-ui/lib/apis/azul/common/entities";
 import { Error } from "@databiosphere/findable-ui/lib/components/Error/error";
 import { ErrorBoundary } from "@databiosphere/findable-ui/lib/components/ErrorBoundary/errorBoundary";
 import { Head } from "@databiosphere/findable-ui/lib/components/Head/head";
@@ -20,7 +19,8 @@ import type { AppProps } from "next/app";
 import type { JSX } from "react";
 import { config } from "../app/config/config";
 
-export interface PageProps extends AzulEntitiesStaticResponse {
+export interface PageProps {
+  entityListType: string;
   pageTitle?: string;
 }
 
